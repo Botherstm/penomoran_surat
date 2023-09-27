@@ -9,6 +9,7 @@ class KategoryModel extends Model
     protected $table = 'categories';
     protected $primaryKey = 'id';
     protected $allowedFields = ['id','dinas_id', 'name', 'nomor','urutan_surat','create_at','update_at'];
+   
     // public function saveToken($email, $token)
     // {
     //     $this->where('email', $email)->set(['token' => $token])->update();s
