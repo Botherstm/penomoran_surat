@@ -8,17 +8,13 @@ use App\Controllers\BaseController;
 class AdminController extends BaseController
 {
 
-    protected $dinas;
-    public function __construct(){
-        $this->dinas = new DinasModel();
-    }
+
     public function index(): string
     {
-        $dinas = $this->dinas->getAll();
+  
      
         return view('admin/index',[
             'active'=>'home',
-            'dinas'=>$dinas,
             ]);
         
     }

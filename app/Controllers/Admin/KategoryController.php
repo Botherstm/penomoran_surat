@@ -14,24 +14,9 @@ class KategoryController extends BaseController
     public function __construct(){
         $this->Kategory = new KategoryModel();
     }
-    public function _construct(){
-        $this->dinas = new DinasModel();
-    }
-    protected $dinas;
-   
-        
 
     public function index($dinas_id)
     {
- 
-        $dinasModel = new DinasModel();
-        $dinasl = $dinasModel->find($dinas_id); // Menggunakan method find untuk mencari dinas berdasarkan dinas_id
-        $dinas = $dinasModel->findAll();
-        if (!$dinasl) {
-            // Handle jika dinas tidak ditemukan (misalnya tampilkan pesan error)
-            return view('errors/custom_error', ['error' => 'Dinas not found']);
-        }
-    
         $categories =$this->Kategory->getByDinasId($dinas_id); // Menggunakan method getByDinasId untuk mencari kategori berdasarkan dinas_id
         $nd = $this->Kategory->getOneByDinasId($dinas_id);
         // dd($nd);
@@ -39,24 +24,21 @@ class KategoryController extends BaseController
             'categories' => $categories,
             'active' => 'kategory',
             'category' => $dinas_id,
-            'dinas' => $dinas,
             'nama_dinas' => $nd,
         ]);
     }
     
-    
-
     public function create($dinas_id)
     {
-        $dinasModel = new DinasModel();
         $dinass = $this->Kategory->getOneByDinasId($dinas_id);
-        $dinas = $dinasModel->findAll();
+
         return view('admin/kategory/create', [
             'active' => 'kategory',
             'dinass' => $dinass,
-            'dinas' => $dinas,
+  
         ]);
     }
+    
 
     public function save()
 {

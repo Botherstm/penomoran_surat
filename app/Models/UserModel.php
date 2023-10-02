@@ -8,19 +8,13 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','name', 'email', 'password','token'];
-    public function saveToken($email, $token)
-    {
-        $this->where('email', $email)->set(['token' => $token])->update();
-    }
+    protected $allowedFields = ['id','NIP', 'name', 'username','email','password','level','created_at','updated_at'];
+
 
     public function getAll(){
         
         return $this->findAll();
     }
-    // public function albums()
-    // {
-    //     return $this->hasMany('App\Models\AlbumModel', 'user_id');
-    // }
+
 
 }

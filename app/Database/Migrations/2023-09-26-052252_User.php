@@ -15,7 +15,15 @@ class CreateUsersTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
+            'NIP' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
             'name' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'username' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -24,16 +32,16 @@ class CreateUsersTable extends Migration
                 'constraint' => 255,
             ],
             'password' => [
+                'type' => 'TEXT',
+            ],
+            'instansi_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'dinas' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'is_admin' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+            'level' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'default'=> 0
             ],
             'created_at' => [
                 'type' => 'DATETIME',

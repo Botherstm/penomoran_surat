@@ -23,8 +23,14 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
     $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
 
+
+    //bidang
+    $routes->get('/admin/bidang', 'Admin\BidangController::index');
+    $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
+
     //user
     $routes->get('/admin/user', 'Admin\UserController::index');
+    $routes->get('/admin/user/register', 'Admin\UserController::create');
 
     //kategory
     $routes->get('/admin/kategory/(:segment)', 'Admin\KategoryController::index/$1');
