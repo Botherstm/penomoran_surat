@@ -23,61 +23,50 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Bidang </h2>
+    <h2 class="m-0">Data Perihal </h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/bidang/create">
+        <a href="<?php echo base_url() ?>admin/perihal/create">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
-    <?php if (!empty($bidangs)) : ?>
+    <?php if (!empty($categories)) : ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">Instansi</th>
+                <th class="text-center">tipe surat</th>
                 <th class="text-center">Kode Surat</th>
-                <th class="text-center">nama</th>
-                <th class="text-center">edit kategori</th>
+                <th class="text-center">urutan Surat</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($bidangs as $bidang) : ?>
+            <?php foreach ($categories as $cat) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $instansiMap[$bidang['instansi_id']]; ?></td>
-                <!-- Mengambil data instansi berdasarkan instansi_id -->
-
-                <td><?= $bidang['kode'] ?></td>
-                <td><?= $bidang['name'] ?></td>
-                <td>
-                    <div class="py-2 px-2">
-                        <a href="<?php echo base_url() ?>admin/kategory/<?= $bidang['id'] ?>">
-                            <div class="btn btn-dark">Edit Data</div>
-                        </a>
-                    </div>
-                </td>
-
+                <td><?= $cat['name'] ?></td>
+                <td><?= $cat['nomor'] ?></td>
+                <td><?= $cat['urutan_surat'] ?></td>
                 <td>
                     <div class="btn-group">
-                        <a href="/admin/pages/bidang/detail/<?= $bidang['name']; ?>">
+                        <a href="/admin/pages/cat/detail/<?= $cat['name']; ?>">
                             <button type="button" class="btn btn-outline-success">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </a>
-                        <a href="/admin/pages/bidang/edit/<?= $bidang['name']; ?>">
+                        <a href="/admin/pages/cat/edit/<?= $cat['name']; ?>">
                             <button type="button" class="btn btn-outline-primary">
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </a>
-                        <form id="deleteForm<?= $bidang['id']; ?>"
-                            action="/admin/pages/bidang/delete/<?= $bidang['id']; ?>" method="post">
+                        <form id="deleteForm<?= $cat['id']; ?>" action="/admin/pages/cat/delete/<?= $cat['id']; ?>"
+                            method="post">
                             <?= csrf_field(); ?>
                             <button type="button" class="btn btn-outline-danger"
-                                onclick="confirmDelete(<?= $bidang['id']; ?>)">
+                                onclick="confirmDelete(<?= $cat['id']; ?>)">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </form>
@@ -120,9 +109,6 @@ Swal.fire({
     showConfirmButton: false
 });
 <?php endif; ?>
-<?php
-// Fungsi untuk mendapatkan nama instansi berdasarkan instansi_id
-?>
 </script>
 
 <?= $this->endSection('content'); ?>

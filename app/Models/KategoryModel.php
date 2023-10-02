@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class KategoryModel extends Model
 {
-    protected $table = 'categories';
+    protected $table = 'kategori';
     protected $primaryKey = 'id';
     protected $allowedFields = ['id','dinas_id', 'name', 'nomor','urutan_surat','create_at','update_at'];
    
@@ -33,29 +33,22 @@ class KategoryModel extends Model
     }
 
     //get semua data dinas
-    public function getAllWithDinas()
-    {
-        return $this->select('categories.*, dinas.name as dinas_name')
-            ->join('dinas', 'dinas.id = categories.dinas_id')
-            ->get()
-            ->getResultArray();
-    }
-   
+    
     //ambil semua data dinas berdasarkan dinas_id
-    public function getByDinasId($dinas_id)
+    public function getByBidangId($bidang_id)
     {
-        return $this->where('dinas_id', $dinas_id)->findAll();
+        return $this->where('bidang_id', $bidang_id)->findAll();
     }
     
 
-    //ambil 1 data dinas berdasarkan dinas_id
-    public function getOneByDinasId($dinas_id)
-    {
-        return $this->db->table('dinas')
-            ->where('id', $dinas_id)
-            ->get()
-            ->getRowArray();
-    }
+
+    // public function getOneByDinasId($dinas_id)
+    // {
+    //     return $this->db->table('dinas')
+    //         ->where('id', $dinas_id)
+    //         ->get()
+    //         ->getRowArray();
+    // }
 
 
 }

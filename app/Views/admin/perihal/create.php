@@ -32,9 +32,8 @@
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-            <h2 class="text-center">Create Data Bidang</h2>
-            <form class="album-form" method="POST" action="<?php echo base_url() ?>admin/bidang/save"
-                enctype="multipart/form-data">
+            <h2 class="text-center">Create Data Perihal</h2>
+            <form class="album-form" method="POST" action="/admin/kategory/save" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <?php if (session('error')) : ?>
                 <div class="alert alert-danger">
@@ -52,29 +51,17 @@
                     </div>
                     <?php endif; ?>
                 </div>
-
                 <div class="form-group">
-                    <label for="instansi_id">Pilih Dinas</label>
-                    <select class="form-control" id="instansi_id" name="instansi_id">
-                        <?php foreach ($dinass as $dinas) : ?>
-                        <option value="<?= $dinas->id_instansi; ?>">
-                            <?= $dinas->ket_ukerja; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="kode">Kode</label>
+                    <label for="nomor">Kode Surat</label>
                     <input type="name"
-                        class="form-control <?= (isset($validation) && $validation->hasError('kode')) ? 'is-invalid' : ''; ?>"
-                        id="kode" name="kode" autofocus>
-                    <?php if (isset($validation) && $validation->hasError('kode')) : ?>
+                        class="form-control <?= (isset($validation) && $validation->hasError('nomor')) ? 'is-invalid' : ''; ?>"
+                        id="nomor" name="nomor" autofocus>
+                    <?php if (isset($validation) && $validation->hasError('nomor')) : ?>
                     <div class="invalid-feedback">
-                        <?= $validation->getError('kode'); ?>
+                        <?= $validation->getError('nomor'); ?>
                     </div>
                     <?php endif; ?>
                 </div>
-
 
 
                 <div class="text-center">

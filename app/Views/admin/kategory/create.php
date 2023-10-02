@@ -41,25 +41,6 @@
                 </div>
                 <?php endif; ?>
                 <div class="form-group">
-                    <label for="name">Nama</label>
-                    <input type="text"
-                        class="form-control <?= (isset($validation) && $validation->hasError('name')) ? 'is-invalid' : ''; ?>"
-                        id="name" name="name" autofocus>
-                    <?php if (isset($validation) && $validation->hasError('name')) : ?>
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('name'); ?>
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <div class="form-group">
-                    <input type="hidden" class="form-control " value="<?= $dinass['id']; ?>" id="dinas" name="dinas"
-                        autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="name">dinas</label>
-                    <input type="text" value=" <?= $dinass['name']; ?>" class="form-control " disabled>
-                </div>
-                <div class="form-group">
                     <label for="nomor">Kode Surat</label>
                     <input type="name"
                         class="form-control <?= (isset($validation) && $validation->hasError('nomor')) ? 'is-invalid' : ''; ?>"

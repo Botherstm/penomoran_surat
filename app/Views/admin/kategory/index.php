@@ -23,20 +23,20 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Kategory <?= $nama_dinas['name']; ?></h2>
+    <h2 class="m-0">Data Kategory dinas </h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="/admin/kategory/create/<?= $category ?>">
+        <a href="<?php echo base_url() ?>admin/kategory/create">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
-    <?php if (!empty($categories)) : ?>
+    <?php if (!empty($kategoris)) : ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">tipe surat</th>
+                <th class="text-center">Bidang</th>
                 <th class="text-center">Kode Surat</th>
                 <th class="text-center">urutan Surat</th>
                 <th class="text-center">Aksi</th>
@@ -44,20 +44,18 @@
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($categories as $cat) : ?>
+            <?php foreach ($kategoris as $cat) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $cat['name'] ?></td>
-                <td><?= $cat['nomor'] ?></td>
-                <td><?= $cat['urutan_surat'] ?></td>
+                <td><?= $namaBidang[$cat['bidang_id']]; ?></td>
                 <td>
                     <div class="btn-group">
-                        <a href="/admin/pages/cat/detail/<?= $cat['name']; ?>">
+                        <a href="/admin/pages/cat/detail">
                             <button type="button" class="btn btn-outline-success">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </a>
-                        <a href="/admin/pages/cat/edit/<?= $cat['name']; ?>">
+                        <a href="/admin/pages/cat/edit">
                             <button type="button" class="btn btn-outline-primary">
                                 <i class="bi bi-pencil"></i>
                             </button>
