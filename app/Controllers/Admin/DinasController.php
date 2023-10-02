@@ -22,4 +22,6 @@ class DinasController extends BaseController
             'active'=>'dinas'
         ]);
     }
+
+   
 }

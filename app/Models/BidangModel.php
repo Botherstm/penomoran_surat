@@ -10,10 +10,7 @@ class BidangModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['id','instansi_id', 'kategori_id', 'kode','name','create_at','update_at'];
    
-    // public function saveToken($email, $token)
-    // {
-    //     $this->where('email', $email)->set(['token' => $token])->update();s
-    // }
+
 
     //relasi
     public function instansi()
@@ -27,35 +24,28 @@ class BidangModel extends Model
         return $this->findAll();
     }
 
-    //ambil satu
-    // public function getOne(){
-    //     return $this->first();
-    // }
+    public function getByInstansiId($instansi_id)
+    {
+        return $this->where('instansi_id', $instansi_id)->findAll();
+    }   
 
-    //get semua data dinas
-    // public function getAllWithDinas()
-    // {
-    //     return $this->select('categories.*, dinas.name as dinas_name')
-    //         ->join('dinas', 'dinas.id = categories.dinas_id')
-    //         ->get()
-    //         ->getResultArray();
-    // }
-   
-    //ambil semua data dinas berdasarkan dinas_id
-    // public function getByDinasId($dinas_id)
-    // {
-    //     return $this->where('dinas_id', $dinas_id)->findAll();
-    // }
+    public function getNamaBidangById($bidangId)
+    {
+        // Mengambil nama bidang berdasarkan bidang_id
+        $query = $this->db->table($this->table)
+            ->select('name')
+            ->where('id', $bidangId)
+            ->get();
+
+        $result = $query->getRow();
+
+        if ($result) {
+            return $result->name;
+        } else {
+            return null;
+        }
+    }
+
     
-
-    //ambil 1 data dinas berdasarkan dinas_id
-    // public function getOneByDinasId($dinas_id)
-    // {
-    //     return $this->db->table('dinas')
-    //         ->where('id', $dinas_id)
-    //         ->get()
-    //         ->getRowArray();
-    // }
-
 
 }

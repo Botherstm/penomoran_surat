@@ -90,27 +90,23 @@
                 </li>
                 <!-- kategory -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                    <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Kategory Surat
-                            <i class="fas fa-angle-left right"></i>
+                            Kategory
                         </p>
                     </a>
-                    <?php if (!empty($dinas)) : ?>
-                    <ul class="nav nav-treeview">
-                        <?php foreach ($dinas as $di) : ?>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url() ?>/admin/kategory/<?= $di['id'] ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p><?= $di['name'] ?></p>
-                            </a>
-                        </li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <?php else : ?>
-                    <?php endif ?>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url() ?>admin/perihal" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Perihal
+                        </p>
+                    </a>
+                </li>
+
+
 
 
                 <!-- <li class="nav-item">
