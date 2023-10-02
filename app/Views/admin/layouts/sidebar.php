@@ -56,19 +56,35 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/user" class="nav-link <?php echo ($active == 'users') ? 'active' : ''; ?>">
+                            <a href="<?php echo base_url() ?>admin/user"
+                                class="nav-link <?php echo ($active == 'users') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() ?>admin/user/register"
+                                class="nav-link <?php echo ($active == 'users') ? 'active' : ''; ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Register User</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <!-- dinas -->
                 <li class="nav-item">
-                    <a href="/admin/dinas" class="nav-link">
+                    <a href="<?php echo base_url() ?>admin/dinas" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             dinas
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url() ?>admin/bidang" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            bidang
                         </p>
                     </a>
                 </li>
@@ -85,7 +101,7 @@
                     <ul class="nav nav-treeview">
                         <?php foreach ($dinas as $di) : ?>
                         <li class="nav-item">
-                            <a href="/admin/kategory/<?= $di['id'] ?>" class="nav-link">
+                            <a href="<?php echo base_url() ?>/admin/kategory/<?= $di['id'] ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p><?= $di['name'] ?></p>
                             </a>

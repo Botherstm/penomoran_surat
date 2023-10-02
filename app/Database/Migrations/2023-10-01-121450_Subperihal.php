@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Kategory extends Migration
+class Subperihal extends Migration
 {
     public function up()
     {
@@ -12,23 +12,18 @@ class Kategory extends Migration
             'id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                // 'auto_increment' => true,
             ],
-            'dinas_id' => [
+            'urutan_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255, 
             ],
-            'name' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'nomor' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'urutan_surat' => [
+            'kode' => [
                 'type' => 'INT',
-                'constraint' => 11,
+                'constraint' => 11, 
+            ],
+            'name' => [
+                'type' => 'INT',
+                'constraint' => 11, 
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -39,11 +34,11 @@ class Kategory extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('categories');
+        $this->forge->createTable('subperihal');
     }
 
     public function down()
     {
-        $this->forge->dropTable('categories');
+        $this->forge->dropTable('subperihal');
     }
 }

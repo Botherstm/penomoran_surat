@@ -26,48 +26,20 @@
     <h1 class="m-0">Data Dinas</h1>
 </div>
 <div class="table-container">
-    <div class="py-2 px-2">
-        <a href="/admin/dinas/create">
-            <div class="btn btn-dark">Tambah Data</div>
-        </a>
-    </div>
-    <?php if (!empty($dinas)) : ?>
+    <?php if (!empty($dinass)) : ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th class="text-center">No</th>
                 <th class="text-center">Nama</th>
-                <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($dinas as $user) : ?>
+            <?php foreach ($dinass->data as $dinas) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $user['name'] ?></td>
-                <td>
-                    <div class="btn-group">
-                        <a href="/admin/pages/user/detail/<?= $user['name']; ?>">
-                            <button type="button" class="btn btn-outline-success">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                        </a>
-                        <a href="/admin/pages/user/edit/<?= $user['name']; ?>">
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </a>
-                        <form id="deleteForm<?= $user['id']; ?>" action="/admin/pages/user/delete/<?= $user['id']; ?>"
-                            method="post">
-                            <?= csrf_field(); ?>
-                            <button type="button" class="btn btn-outline-danger"
-                                onclick="confirmDelete(<?= $user['id']; ?>)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </form>
-                    </div>
-                </td>
+                <td><?= $dinas->ket_ukerja ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
@@ -76,35 +48,5 @@
     <h3>belum ada data</h3>
     <?php endif ?>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-function confirmDelete(albumId) {
-    Swal.fire({
-        title: 'Apa Kamu yakin?',
-        text: 'Jika dihapus data tidak bisa di kembalikan.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.getElementById('deleteForm' + albumId).submit();
-        }
-    });
-}
-
-// Popup success message
-<?php if (session()->getFlashdata('success')) : ?>
-Swal.fire({
-    title: 'Success',
-    text: '<?= session()->getFlashdata('success') ?>',
-    icon: 'success',
-    timer: 3000,
-    showConfirmButton: false
-});
-<?php endif; ?>
-</script>
 
 <?= $this->endSection('content'); ?>

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Dinas extends Migration
+class Kategory extends Migration
 {
     public function up()
     {
@@ -14,7 +14,11 @@ class Dinas extends Migration
                 'constraint' => 255,
                 // 'auto_increment' => true,
             ],
-            'name' => [
+            'perihal_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255, 
+            ],
+            'nama' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -27,11 +31,11 @@ class Dinas extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('dinas');
+        $this->forge->createTable('kategori');
     }
 
     public function down()
     {
-        $this->forge->dropTable('dinas');
+        $this->forge->dropTable('kategori');
     }
 }
