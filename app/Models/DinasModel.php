@@ -55,7 +55,6 @@ class DinasModel extends Model
             echo 'Error: ' . curl_error($ch);
         }
         
-        // Tutup koneksi cURL
         curl_close($ch);
         
         // Mendecode hasil respons JSON
@@ -66,11 +65,10 @@ class DinasModel extends Model
         foreach ($data->data as $item) {
             if ($item->id_instansi == $instansi_id) {
                 $instansi = $item;
-                break; // Data ditemukan, keluar dari loop
+                break;
             }
         }
         
-        // Mengembalikan data instansi
         return $instansi;
     }
     

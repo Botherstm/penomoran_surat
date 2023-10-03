@@ -23,33 +23,32 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Perihal </h2>
+    <h2 class="m-0">Data Perihal <?= $katname['name']; ?></h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/perihal/create">
+        <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kat;?>">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
-    <?php if (!empty($categories)) : ?>
+    <?php if (!empty($perihals)) : ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">tipe surat</th>
-                <th class="text-center">Kode Surat</th>
+                <th class="text-center">Perihal</th>
+                <th class="text-center">Kode</th>
                 <th class="text-center">urutan Surat</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($categories as $cat) : ?>
+            <?php foreach ($perihals as $cat) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
                 <td><?= $cat['name'] ?></td>
-                <td><?= $cat['nomor'] ?></td>
-                <td><?= $cat['urutan_surat'] ?></td>
+                <td><?= $cat['kode'] ?></td>
                 <td>
                     <div class="btn-group">
                         <a href="/admin/pages/cat/detail/<?= $cat['name']; ?>">

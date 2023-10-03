@@ -38,8 +38,9 @@
                 <th class="text-center">No</th>
                 <th class="text-center">Instansi</th>
                 <th class="text-center">Kode Surat</th>
-                <th class="text-center">nama</th>
-                <th class="text-center">edit kategori</th>
+                <th class="text-center">Bidang</th>
+                <th class="text-center">Kategori</th>
+                <th class="text-center">Detail Kategori</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -49,14 +50,24 @@
             <tr class="text-center">
                 <td><?= $i++; ?></td>
                 <td><?= $instansiMap[$bidang['instansi_id']]; ?></td>
-                <!-- Mengambil data instansi berdasarkan instansi_id -->
-
                 <td><?= $bidang['kode'] ?></td>
                 <td><?= $bidang['name'] ?></td>
                 <td>
                     <div class="py-2 px-2">
+                        <?php if (isset($kategories[$bidang['id']])) : ?>
+                        <?php $kategoriCounter = 1; ?>
+                        <?php foreach ($kategories[$bidang['id']] as $kategori) : ?>
+                        <p><?= $kategoriCounter++; ?>. <?= $kategori['name']; ?></p>
+                        <?php endforeach; ?>
+                        <?php else : ?>
+                        <p>Tidak ada kategori</p>
+                        <?php endif; ?>
+                    </div>
+                </td>
+                <td>
+                    <div class="py-2 px-2">
                         <a href="<?php echo base_url() ?>admin/kategory/<?= $bidang['id'] ?>">
-                            <div class="btn btn-dark">Edit Data</div>
+                            <div class="btn btn-dark">Lihat Data Kategori</div>
                         </a>
                     </div>
                 </td>

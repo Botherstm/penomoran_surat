@@ -23,11 +23,11 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Kategory dinas </h2>
+    <h2 class="m-0">Data Kategory Bidang <?= $bidang['name']; ?></h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/kategory/create">
+        <a href="<?php echo base_url() ?>admin/kategory/create/<?= $bidang['id']; ?>">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
@@ -36,18 +36,26 @@
         <thead>
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">Bidang</th>
+                <th class="text-center">Nama Kategori</th>
                 <th class="text-center">Kode Surat</th>
-                <th class="text-center">urutan Surat</th>
+                <th class="text-center">Perihal</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($kategoris as $cat) : ?>
+            <?php foreach ($kategoris as $kat) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $namaBidang[$cat['bidang_id']]; ?></td>
+                <td><?= $kat['name'] ?></td>
+                <td><?= $kat['kode'] ?></td>
+                <td>
+                    <div class="py-2 px-2">
+                        <a href="<?php echo base_url() ?>admin/perihal/<?= $kat['id']; ?>">
+                            <div class="btn btn-dark">Lihat Data Perihal</div>
+                        </a>
+                    </div>
+                </td>
                 <td>
                     <div class="btn-group">
                         <a href="/admin/pages/cat/detail">
@@ -60,11 +68,11 @@
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </a>
-                        <form id="deleteForm<?= $cat['id']; ?>" action="/admin/pages/cat/delete/<?= $cat['id']; ?>"
+                        <form id="deleteForm<?= $kat['id']; ?>" action="/admin/pages/cat/delete/<?= $kat['id']; ?>"
                             method="post">
                             <?= csrf_field(); ?>
                             <button type="button" class="btn btn-outline-danger"
-                                onclick="confirmDelete(<?= $cat['id']; ?>)">
+                                onclick="confirmDelete(<?= $kat['id']; ?>)">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </form>

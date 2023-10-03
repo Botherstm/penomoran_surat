@@ -25,7 +25,8 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //bidang
-    $routes->get('/admin/bidang', 'Admin\BidangController::index');
+    $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
+    // $routes->get('/admin/bidang', 'Admin\BidangController::index');
     $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 
@@ -35,15 +36,16 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
     //kategory
     $routes->get('/admin/kategory/(:segment)', 'Admin\KategoryController::index/$1');
-    $routes->get('/admin/kategory/create', 'Admin\KategoryController::create');
+    $routes->get('/admin/kategory/create/(:segment)', 'Admin\KategoryController::create/$1');
     $routes->get('/admin/kategory/created/', 'Admin\KategoryController::created/$1');
     $routes->get('/admin/kategory/(:segment)', 'Admin\KategoryController::index/$1');
     $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');
 
     
     //Perihal
-    $routes->get('/admin/perihal', 'Admin\PerihalController::index');
-    $routes->get('/admin/perihal/create', 'Admin\PerihalController::create');
+    $routes->get('/admin/perihal/(:segment)', 'Admin\PerihalController::index/$1');
+    $routes->get('/admin/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
+    $routes->post('admin/perihal/save', 'Admin\PerihalController::save');
     
     //auth
     $routes->get('/login', 'Auth\LoginController::index');

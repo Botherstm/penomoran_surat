@@ -40,25 +40,27 @@
                     <?= session('error') ?>
                 </div>
                 <?php endif; ?>
+                <input type="name" hidden name="bidang_id" value="<?= $bidang; ?>">
                 <div class="form-group">
-                    <label for="nomor">Kode Surat</label>
+                    <label for="name">nama</label>
                     <input type="name"
-                        class="form-control <?= (isset($validation) && $validation->hasError('nomor')) ? 'is-invalid' : ''; ?>"
-                        id="nomor" name="nomor" autofocus>
-                    <?php if (isset($validation) && $validation->hasError('nomor')) : ?>
+                        class="form-control <?= (isset($validation) && $validation->hasError('name')) ? 'is-invalid' : ''; ?>"
+                        id="name" name="name" autofocus>
+                    <?php if (isset($validation) && $validation->hasError('name')) : ?>
                     <div class="invalid-feedback">
-                        <?= $validation->getError('nomor'); ?>
+                        <?= $validation->getError('name'); ?>
                     </div>
                     <?php endif; ?>
                 </div>
+                <!-- kode -->
                 <div class="form-group">
-                    <label for="urutan_surat">urutan Surat</label>
-                    <input type="number"
-                        class="form-control <?= (isset($validation) && $validation->hasError('urutan_surat')) ? 'is-invalid' : ''; ?>"
-                        id="urutan_surat" name="urutan_surat" autofocus>
-                    <?php if (isset($validation) && $validation->hasError('urutan_surat')) : ?>
+                    <label for="kode">Kode Surat</label>
+                    <input type="name"
+                        class="form-control <?= (isset($validation) && $validation->hasError('kode')) ? 'is-invalid' : ''; ?>"
+                        id="kode" name="kode" autofocus>
+                    <?php if (isset($validation) && $validation->hasError('kode')) : ?>
                     <div class="invalid-feedback">
-                        <?= $validation->getError('urutan_surat'); ?>
+                        <?= $validation->getError('kode'); ?>
                     </div>
                     <?php endif; ?>
                 </div>

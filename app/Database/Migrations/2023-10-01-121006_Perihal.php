@@ -13,7 +13,7 @@ class Perihal extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'bidang_id' => [
+            'kategori_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -23,12 +23,12 @@ class Perihal extends Migration
                 'null'=>true,
             ],
             'kode' => [
-                'type' => 'INT',
-                'constraint' => 11, 
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'name' => [
-                'type' => 'INT',
-                'constraint' => 11, 
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'created_at' => [
                 'type' => 'DATETIME',

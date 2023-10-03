@@ -33,7 +33,8 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
             <h2 class="text-center">Create Data Perihal</h2>
-            <form class="album-form" method="POST" action="/admin/kategory/save" enctype="multipart/form-data">
+            <form class="album-form" method="POST" action="<?php echo base_url() ?>admin/perihal/save"
+                enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <?php if (session('error')) : ?>
                 <div class="alert alert-danger">
@@ -51,19 +52,18 @@
                     </div>
                     <?php endif; ?>
                 </div>
+                <input type="name" name="kategori_id" id="kategori_id" hidden value="<?= $kat;?>">
                 <div class="form-group">
-                    <label for="nomor">Kode Surat</label>
+                    <label for="kode">Kode Surat</label>
                     <input type="name"
-                        class="form-control <?= (isset($validation) && $validation->hasError('nomor')) ? 'is-invalid' : ''; ?>"
-                        id="nomor" name="nomor" autofocus>
-                    <?php if (isset($validation) && $validation->hasError('nomor')) : ?>
+                        class="form-control <?= (isset($validation) && $validation->hasError('kode')) ? 'is-invalid' : ''; ?>"
+                        id="kode" name="kode" autofocus>
+                    <?php if (isset($validation) && $validation->hasError('kode')) : ?>
                     <div class="invalid-feedback">
-                        <?= $validation->getError('nomor'); ?>
+                        <?= $validation->getError('kode'); ?>
                     </div>
                     <?php endif; ?>
                 </div>
-
-
                 <div class="text-center">
                     <button type="submit" class="btn btn-outline-success">Create</button>
                 </div>
