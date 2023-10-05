@@ -23,15 +23,15 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Perihal <?= $kategori['name']; ?></h2>
+    <h2 class="m-0">Data Perihal2 <?= $perihal['name']; ?></h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kategori['slug']; ?>">
+        <a href="<?php echo base_url() ?>admin/subperihal/create/<?= $perihal['slug']; ?>">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
-    <?php if (!empty($perihals)) : ?>
+    <?php if (!empty($sub_perihals)) : ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -44,15 +44,15 @@
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($perihals as $perihal) : ?>
+            <?php foreach ($sub_perihals as $perihal) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
                 <td><?= $perihal['name'] ?></td>
                 <td><?= $perihal['kode'] ?></td>
                 <td>
                     <div class="py-2 px-2">
-                        <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug'] ?>">
-                            <div class="btn btn-dark">Detail2 Sub Perihal</div>
+                        <a href="<?php echo base_url() ?>admin/detailsubperihal/<?= $perihal['slug'] ?>">
+                            <div class="btn btn-dark">Detail Sub Perihal</div>
                         </a>
                     </div>
                 </td>

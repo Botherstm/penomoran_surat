@@ -13,17 +13,21 @@ class Subperihal extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'urutan_id' => [
+            'perihal_id' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255, 
+                'constraint' => 225, 
+            ],
+            'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'kode' => [
-                'type' => 'INT',
-                'constraint' => 11, 
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'name' => [
-                'type' => 'INT',
-                'constraint' => 11, 
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -34,11 +38,11 @@ class Subperihal extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('subperihal');
+        $this->forge->createTable('sub_perihal');
     }
 
     public function down()
     {
-        $this->forge->dropTable('subperihal');
+        $this->forge->dropTable('sub_perihal');
     }
 }

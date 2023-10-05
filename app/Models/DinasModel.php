@@ -55,6 +55,7 @@ class DinasModel extends Model
             echo 'Error: ' . curl_error($ch);
         }
         
+        // Tutup koneksi cURL
         curl_close($ch);
         
         // Mendecode hasil respons JSON
@@ -65,10 +66,42 @@ class DinasModel extends Model
         foreach ($data->data as $item) {
             if ($item->id_instansi == $instansi_id) {
                 $instansi = $item;
-                break;
+                break; // Data ditemukan, keluar dari loop
             }
         }
         
+        // Mengembalikan data instansi
+        return $instansi;
+    }
+
+
+    public function get_one_instansi_by_id($instansi_id) {
+        $apiUrl = 'https://egov.bulelengkab.go.id/api/instansi_utama';
+        $username = 'hadir_rapat';
+        $password = '@rapatBuleleng1#';
+        $ch = curl_init($apiUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+        $result = curl_exec($ch);
+        
+        if (curl_errno($ch)) {
+            echo 'Error: ' . curl_error($ch);
+        }
+        
+        curl_close($ch);
+        
+        $data = json_decode($result);
+        
+        $instansi = null;
+        
+        foreach ($data->data as $item) {
+            if ($item->id_instansi == $instansi_id) {
+                $instansi = $item; // Mengambil nama instansi
+                break;
+            }
+        }
+
         return $instansi;
     }
     

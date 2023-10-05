@@ -8,24 +8,13 @@ class KategoryModel extends Model
 {
     protected $table = 'kategori';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','bidang_id', 'name','kode','create_at','update_at'];
-   
-    // public function saveToken($email, $token)
-    // {
-    //     $this->where('email', $email)->set(['token' => $token])->update();s
-    // }
-
+    protected $allowedFields = ['id','perihal_id','slug', 'kode', 'name','create_at','update_at'];
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    //relasi
-    public function dinas()
-    {
-        return $this->belongsTo('App\Models\DinasModel', 'dinas_id');
-    }
 
     //cari semua
     public function getAll(){
@@ -37,24 +26,28 @@ class KategoryModel extends Model
     public function getOne(){
         return $this->first();
     }
+    public function findBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
+    public function findByid($id)
+    {
+        return $this->where('id', $id)->first();
+    }
 
     //get semua data dinas
     
     //ambil semua data dinas berdasarkan dinas_id
-    public function getByBidangId($bidang_id)
-    {
-        return $this->where('bidang_id', $bidang_id)->findAll();
-    }
     
 
 
-    public function getOneByBidangId($bidang_id)
-    {
-        return $this->db->table('bidang')
-            ->where('id', $bidang_id)
-            ->get()
-            ->getRowArray();
-    }
+    // public function getOneByDinasId($dinas_id)
+    // {
+    //     return $this->db->table('dinas')
+    //         ->where('id', $dinas_id)
+    //         ->get()
+    //         ->getRowArray();
+    // }
 
 
 }

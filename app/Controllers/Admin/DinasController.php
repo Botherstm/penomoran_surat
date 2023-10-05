@@ -14,11 +14,7 @@ class DinasController extends BaseController
     }
     public function index()
     {
-    
         $result = $this->dinas->get_data();
-        // foreach ($result->data as $dinas) {
-        //     $dinas[$dinas['id']] = $this->dinas->getByBidangId($dinas['id']);
-        // }
         // dd($result);
         return view('admin/dinas/index', [
             'dinass' => json_decode($result),
