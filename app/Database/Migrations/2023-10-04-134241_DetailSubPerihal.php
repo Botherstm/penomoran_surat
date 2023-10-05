@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class UrutanSurat extends Migration
+class DetailSubPerihal extends Migration
 {
     public function up()
     {
@@ -13,7 +13,7 @@ class UrutanSurat extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'instansi_id' => [
+            'subperihal_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -21,13 +21,13 @@ class UrutanSurat extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 225, 
             ],
-            'urutan_surat' => [
-                'type' => 'INT',
-                'constraint' => 11, 
+            'kode' => [
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
-            'terlewat' => [
-                'type' => 'INT',
-                'constraint' => 11, 
+            'name' => [
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -38,11 +38,11 @@ class UrutanSurat extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('urutan_surat');
+        $this->forge->createTable('detail_subperihal');
     }
 
     public function down()
     {
-        $this->forge->dropTable('urutan_surat');
+        $this->forge->dropTable('detail_subperihal');
     }
 }

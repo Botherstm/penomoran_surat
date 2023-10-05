@@ -23,56 +23,57 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Kategory Bidang <?= $bidang['name']; ?></h2>
+    <h2 class="m-0">Data Perihal dinas </h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/kategory/create/<?= $bidang['id']; ?>">
+        <a href="<?php echo base_url() ?>admin/kategory/create">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
-    <?php if (!empty($kategoris)) : ?>
+    <?php if (!empty($kategories)) : ?>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">Nama Kategori</th>
-                <th class="text-center">Kode Surat</th>
-                <th class="text-center">Perihal</th>
+                <th class="text-center">Nama Perihal</th>
+                <th class="text-center">Kode</th>
+                <th class="text-center">Detail</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($kategoris as $kat) : ?>
+            <?php foreach ($kategories as $kategori) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $kat['name'] ?></td>
-                <td><?= $kat['kode'] ?></td>
+                <td><?= $kategori['name'] ?></td>
+                <td><?= $kategori['kode'] ?></td>
+
                 <td>
                     <div class="py-2 px-2">
-                        <a href="<?php echo base_url() ?>admin/perihal/<?= $kat['id']; ?>">
-                            <div class="btn btn-dark">Lihat Data Perihal</div>
+                        <a href="<?php echo base_url() ?>admin/perihal/<?= $kategori['slug'] ?>">
+                            <div class="btn btn-dark">Detail Perihal</div>
                         </a>
                     </div>
                 </td>
                 <td>
                     <div class="btn-group">
-                        <a href="/admin/pages/cat/detail">
+                        <a href="/admin/pages/kate$kategori/detail">
                             <button type="button" class="btn btn-outline-success">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </a>
-                        <a href="/admin/pages/cat/edit">
+                        <a href="/admin/pages/kate$kategori/edit">
                             <button type="button" class="btn btn-outline-primary">
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </a>
-                        <form id="deleteForm<?= $kat['id']; ?>" action="/admin/pages/cat/delete/<?= $kat['id']; ?>"
-                            method="post">
+                        <form id="deleteForm<?= $kategori['id']; ?>"
+                            action="/admin/pages/kate$kategori/delete/<?= $kategori['id']; ?>" method="post">
                             <?= csrf_field(); ?>
                             <button type="button" class="btn btn-outline-danger"
-                                onclick="confirmDelete(<?= $kat['id']; ?>)">
+                                onclick="confirmDelete(<?= $kategori['id']; ?>)">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </form>

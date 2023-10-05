@@ -32,8 +32,10 @@
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-            <h2 class="text-center">Create Data Kategory</h2>
-            <form class="album-form" method="POST" action="<?php echo base_url() ?>/admin/kategory/save"
+            <h2 class="text-center">Create Data Perihal <?= $perihal['name']; ?></h2>
+            <br>
+            <form class="album-form" method="POST"
+                action="<?php echo base_url() ?>admin/subperihal/save/<?= $perihal['slug']; ?>"
                 enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <?php if (session('error')) : ?>
@@ -42,8 +44,8 @@
                 </div>
                 <?php endif; ?>
                 <div class="form-group">
-                    <label for="name">Nama Perihal</label>
-                    <input type="name"
+                    <label for="name">Nama Sub Perihal</label>
+                    <input type="text"
                         class="form-control <?= (isset($validation) && $validation->hasError('name')) ? 'is-invalid' : ''; ?>"
                         id="name" name="name" autofocus>
                     <?php if (isset($validation) && $validation->hasError('name')) : ?>
@@ -52,12 +54,14 @@
                     </div>
                     <?php endif; ?>
                 </div>
+                <input type="text" class="form-control" id="perihal_id" value="<?= $perihal['id']; ?>" name="perihal_id"
+                    hidden>
                 <div class="form-group">
                     <label for="slug">Slug</label>
                     <input type="text" class="form-control" id="slug" name="slug" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="kode">Kode Perihal</label>
+                    <label for="kode">Kode Surat</label>
                     <input type="name"
                         class="form-control <?= (isset($validation) && $validation->hasError('kode')) ? 'is-invalid' : ''; ?>"
                         id="kode" name="kode" autofocus>
@@ -74,13 +78,29 @@
         </div>
     </div>
 </div>
+
 <script>
-document.getElementById('name').addEventListener('input', function() {
-    const name = this.value.trim(); // Mengambil teks dari input nama dan menghapus spasi ekstra
-    const slug = name.toLowerCase().replace(/ /g,
-        '-'); // Mengonversi teks ke lowercase dan mengganti spasi dengan tanda '-'
-    document.getElementById('slug').value = slug; // Mengatur nilai pada input slug
+// Mendapatkan referensi elemen input kode surat dan slug
+var kodeInput = document.getElementById('name');
+var slugInput = document.getElementById('slug');
+
+// Menambahkan event listener pada input kode surat untuk mengupdate slug saat nilai berubah
+kodeInput.addEventListener('input', function() {
+    // Menggunakan fungsi slugify untuk membuat slug dari kode surat
+    var slugValue = slugify(kodeInput.value);
+    slugInput.value = slugValue;
 });
+
+// Fungsi untuk membuat slug dari teks
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-') // Replace spasi dengan tanda hubung
+        .replace(/[^\w\-]+/g, '') // Menghapus karakter non-word
+        .replace(/\-\-+/g, '-') // Mengganti dua atau lebih tanda hubung dengan satu tanda hubung
+        .replace(/^-+/, '') // Menghapus tanda hubung di awal teks
+        .replace(/-+$/, ''); // Menghapus tanda hubung di akhir teks
+}
 </script>
+
 
 <?= $this->endSection('content'); ?>

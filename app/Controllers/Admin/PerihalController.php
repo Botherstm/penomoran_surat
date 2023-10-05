@@ -9,33 +9,40 @@ use Ramsey\Uuid\Uuid;
 class PerihalController extends BaseController
 {
 
-
-    protected $Kategory;
+    protected $Kategori;
     protected $perihal;
     public function __construct(){
-        $this->Kategory = new KategoryModel();
+        $this->Kategori = new KategoryModel();
         $this->perihal = new PerihalModel();
     }
-    public function index($kategori_id)
+    public function index($slug)
     {
-        $data = $this->perihal->getByKategori_id($kategori_id);
-        $kat = $this->perihal->getOneByKategoriId($kategori_id);
-    // dd($kat);
+        $kategori = $this->Kategori->findBySlug($slug);
+        if (!$kategori) {
+            // Handle jika kategori tidak ditemukan, misalnya, tampilkan pesan kesalahan
+            return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
+        }
+        $perihals = $this->perihal->getAllByKategoriId($kategori['id']);
+
         return view('admin/perihal/index',[
             'active'=>'perihal',
-            'perihals'=>$data,
-            'kat'=>$kategori_id,
-            'katname'=>$kat
-            ]
+            'perihals'=>$perihals,
+            'kategori'=>$kategori,
+        ],
         );
         
     }
 
-    public function create($kategori_id)
+    public function create($slug)
     {
+        $kategori = $this->Kategori->findBySlug($slug);
+        if (!$kategori) {
+            // Handle jika kategori tidak ditemukan, misalnya, tampilkan pesan kesalahan
+            return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
+        }
         return view('admin/perihal/create', [
             'active' => 'perihal',
-            'kat' => $kategori_id,
+            'kategori'=>$kategori,
         ]);
     }
 
@@ -44,29 +51,53 @@ class PerihalController extends BaseController
         // Validasi input data
         $rules = [
             'kategori_id' => 'required',
-            'kode' => 'required',
             'name' => 'required',
+            'slug' => 'required',
+            'kode' => 'required',
         ];
 
         if ($this->validate($rules)) {
             $kategori_id = $this->request->getPost('kategori_id');
+            $slug = $this->request->getPost('slug');
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
+            // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
             $data = [
                 'id' => $uuidString,
                 'kategori_id' => $kategori_id,
-                'kode' => $kode,
+                'slug' => $slug,
                 'name' => $name,
+                'kode' => $kode,
             ];
             // dd($data);
             $this->perihal->insert($data);
 
-            return redirect()->to('/admin/perihal/' . $kategori_id)->with('success', 'Data Kategory berhasil disimpan.');
+            $kategori = $this->Kategori->findByid($kategori_id);
+            return redirect()->to('/admin/perihal/'.$kategori['slug'])->with('success', 'Data Kategory berhasil disimpan.');
         } else {
-            // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
+
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
+    }
+
+    public function getPerihalByCategory($categoryId)
+    {
+        // Query database untuk mengambil data "Perihal" berdasarkan kategori
+        $perihals = $this->perihal->getAllByKategoriId($categoryId);
+
+        // Ubah data menjadi format JSON
+        $response = [];
+        foreach ($perihals as $perihal) {
+            $response[] = [
+                'id' => $perihal['id'],
+                'name' => $perihal['name'],
+                'kode' => $perihal['kode'],
+            ];
+        }
+
+        // Kembalikan data sebagai respons JSON
+        return $this->response->setJSON($response);
     }
 }

@@ -17,10 +17,9 @@ class Perihal extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'subperihal_id' => [
+            'slug' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255, 
-                'null'=>true,
+                'constraint' => 225, 
             ],
             'kode' => [
                 'type' => 'VARCHAR',

@@ -4,16 +4,18 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class GenerateNomorSurat extends Migration
 {
     public function up()
     {
         $this->forge->addField([
             'id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
-                'auto_increment' => true,
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'user_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
             ],
             'instansi_id' => [
                 'type' => 'VARCHAR',
@@ -22,35 +24,33 @@ class CreateUsersTable extends Migration
             'bidang_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null'=>true
+            ],
+            'kategori_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'perihal_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'sub_perihal_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'detail_sub_perihal_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'urutan_surat-id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
             ],
             'slug' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'NIP' => [
-                'type' => 'INT',
-                'constraint' => 11,
-            ],
-            'name' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'email' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'no_hp' => [
-                'type' => 'INT',
-                'constraint' => 11,
-            ],
-            'password' => [
-                'type' => 'TEXT',
-            ],
-            'level' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'default'=> 0
+            'tanggal' => [
+                'type' => 'DATETIME',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -59,12 +59,13 @@ class CreateUsersTable extends Migration
                 'type' => 'DATETIME',
             ],
         ]);
+
         $this->forge->addKey('id', true);
-        $this->forge->createTable('users');
+        $this->forge->createTable('generate_nomor-surat');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('generate_nomor-surat');
     }
 }

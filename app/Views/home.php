@@ -147,9 +147,13 @@
                     <input type="text" name="text" id="text" required>
                 </div>
                 <button type="button" class="upload-button" onclick="updatePreview()">Update Preview</button>
+
+                <div class="coordinate-input">
+                    <label for="tanggal">Tanggal:</label>
+                    <input type="date" name="tanggal" id="tanggal" required>
+                </div>
                 <br>
                 <button type="submit" class="submit-button">Generate Nomor</button>
-
             </div>
         </form>
         <a href="/admin"><button class="submit-button">admin</button></a>
