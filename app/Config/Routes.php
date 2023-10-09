@@ -7,8 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // Rute untuk halaman beranda dan unggahan PDF
-    $routes->get('/', 'PdfController::index');
-    $routes->post('/', 'PdfController::upload');
+    $routes->get('/', 'GenerateController::index');
+    // $routes->post('/', 'PdfController::upload');
     
     // Rute untuk melihat PDF yang telah diperbarui
     $routes->get('/pdf/view/(:segment)', 'PdfController::view/$1');
