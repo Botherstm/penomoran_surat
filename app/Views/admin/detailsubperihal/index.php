@@ -38,7 +38,6 @@
                 <th class="text-center">No</th>
                 <th class="text-center">Nama surat</th>
                 <th class="text-center">Kode Surat</th>
-                <th class="text-center">Detail nomor</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -49,13 +48,6 @@
                 <td><?= $i++; ?></td>
                 <td><?= $perihal['name'] ?></td>
                 <td><?= $perihal['kode'] ?></td>
-                <td>
-                    <div class="py-2 px-2">
-                        <a href="<?php echo base_url() ?>admin/perihal/<?= $perihal['slug'] ?>">
-                            <div class="btn btn-dark">Detail Sub Perihal</div>
-                        </a>
-                    </div>
-                </td>
                 <td>
                     <div class="btn-group">
                         <a href="/admin/pages/perihal/detail/<?= $perihal['name']; ?>">

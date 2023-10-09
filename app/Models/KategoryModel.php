@@ -38,33 +38,9 @@ class KategoryModel extends Model
         return $this->first();
     }
 
-    //get semua data dinas
-    
-    //ambil semua data dinas berdasarkan dinas_id
-    public function getByBidangId($bidang_id)
+    public function getKategoriByid($kode)
     {
-        return $this->where('bidang_id', $bidang_id)->findAll();
+        return $this->where('kode', $kode)->first();
     }
-    
-
-
-    public function getOneByBidangId($bidang_id)
-    {
-        return $this->db->table('bidang')
-            ->where('id', $bidang_id)
-            ->get()
-            ->getRowArray();
-    }
-
-
-    public function getPerihalByKategori($kategoriId)
-{
-    // Query database untuk mengambil data perihal berdasarkan $kategoriId
-    $query = $this->db->table('kategori')
-        ->where('kategori_id', $kategoriId)
-        ->get();
-
-    return $query->getResult();
-}
 
 }
