@@ -37,10 +37,6 @@ class SubPerihalController extends BaseController
     public function create($slug)
     {
         $perihal = $this->perihal->findBySlug($slug);
-        if (!$perihal) {
-            // Handle jika perihal tidak ditemukan, misalnya, tampilkan pesan kesalahan
-            return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
-        }
         return view('admin/subperihal/create', [
             'active' => 'subperihal',
             'perihal'=>$perihal,

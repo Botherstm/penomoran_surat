@@ -42,6 +42,11 @@
 }
 </style>
 <div class="album-container">
+    <?php if (session()->getFlashdata('error')) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
             <h2 class="text-center">Create Users</h2>
@@ -125,9 +130,14 @@
 
                 <div class="form-group text-center">
                     <label for="password">Password</label>
-                    <input type="password"
-                        class="form-control <?= (isset($validation) && $validation->hasError('password')) ? 'is-invalid' : ''; ?>"
-                        id="password" name="password" autofocus>
+                    <div class="input-group">
+                        <input type="password"
+                            class="form-control <?= (isset($validation) && $validation->hasError('password')) ? 'is-invalid' : ''; ?>"
+                            id="password" name="password" autofocus>
+                        <button type="button" class="btn btn-outline-secondary" id="showPasswordBtn">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
                     <?php if (isset($validation) && $validation->hasError('password')) : ?>
                     <div class="invalid-feedback">
                         <?= $validation->getError('password'); ?>
@@ -161,6 +171,19 @@ nameInput.addEventListener('input', function() {
     var nameValue = nameInput.value;
     var slugValue = slugify(nameValue);
     slugInput.value = slugValue;
+});
+
+const passwordInput = document.getElementById("password");
+const showPasswordBtn = document.getElementById("showPasswordBtn");
+
+showPasswordBtn.addEventListener("click", function() {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        showPasswordBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    } else {
+        passwordInput.type = "password";
+        showPasswordBtn.innerHTML = '<i class="bi bi-eye"></i>';
+    }
 });
 </script>
 

@@ -40,9 +40,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
     //kategory
     $routes->get('/admin/kategory/', 'Admin\KategoryController::index');
-    $routes->get('/admin/kategory/create/(:segment)', 'Admin\KategoryController::create/$1');
-    $routes->get('/admin/kategory/created/', 'Admin\KategoryController::created/$1');
-    $routes->get('/admin/kategory/(:segment)', 'Admin\KategoryController::index/$1');
+    $routes->get('/admin/kategory/create/', 'Admin\KategoryController::create');
     $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');
 
     

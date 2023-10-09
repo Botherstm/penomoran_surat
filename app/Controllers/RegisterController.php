@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use Ramsey\Uuid\Uuid;
 
 class RegisterController extends BaseController
 {
@@ -26,30 +27,31 @@ class RegisterController extends BaseController
 
     // Aturan validasi
     $rules = [
-        'NIP' => 'required|integer',
+        'nip' => 'required|integer',
         'slug' => 'required',
         'name' => 'required',
-        'username' => 'required|alpha_numeric|min_length[3]|is_unique[users.username]',
         'email' => 'required|valid_email|is_unique[users.email]',
         'password' => 'required|min_length[6]',
         'instansi_id' => 'required',
         'bidang_id' => 'required',
     ];
-
+        $uuid = Uuid::uuid4();
+        $uuidString = $uuid->toString();
     // Lakukan validasi
     if ($this->validate($rules)) {
         // Data pengguna yang akan disimpan
         $userData = [
+            'id'=>$uuidString,
             'instansi_id' => $this->request->getPost('instansi_id'),
             'bidang_id' => $this->request->getPost('bidang_id'),
             'slug' => $this->request->getPost('slug'),
             'nip' => $this->request->getPost('nip'),
             'name' => $this->request->getPost('name'),
-            'username' => $this->request->getPost('username'),
             'email' => $this->request->getPost('email'),
+            'no_hp' => $this->request->getPost('no_hp'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
         ];
-            dd();
+        // dd($userData);
         // Simpan data pengguna ke dalam database
         $userModel->insert($userData);
 

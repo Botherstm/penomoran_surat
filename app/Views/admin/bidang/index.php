@@ -49,21 +49,9 @@
             <?php foreach ($bidangs as $bidang) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $instansiMap[$bidang['instansi_id']]; ?></td>
                 <td><?= $bidang['kode'] ?></td>
                 <td><?= $bidang['name'] ?></td>
-                <td>
-                    <div class="py-2 px-2">
-                        <?php if (isset($kategories[$bidang['id']])) : ?>
-                        <?php $kategoriCounter = 1; ?>
-                        <?php foreach ($kategories[$bidang['id']] as $kategori) : ?>
-                        <p><?= $kategoriCounter++; ?>. <?= $kategori['name']; ?></p>
-                        <?php endforeach; ?>
-                        <?php else : ?>
-                        <p>Tidak ada kategori</p>
-                        <?php endif; ?>
-                    </div>
-                </td>
+
                 <td>
                     <div class="py-2 px-2">
                         <a href="<?php echo base_url() ?>admin/kategory/<?= $bidang['id'] ?>">
