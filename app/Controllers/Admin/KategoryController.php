@@ -21,14 +21,7 @@ class KategoryController extends BaseController
     public function index()
 {
     $data = $this->Kategory->getAll();
-    // $bidangs = $this->Kategory->getOneByBidangId($bidang_id) ?? [];
-    // $namaBidang = [];
 
-    // foreach ($data as $kategori) {
-    //     $bidangId = $kategori['bidang_id'];
-    //     $namaBidang[$bidangId] = $this->bidang->getNamaBidangById($bidangId);
-    // }
-// dd($data);
     return view('admin/kategory/index', [
         'active' => 'kategory',
         'kategoris' => $data,
