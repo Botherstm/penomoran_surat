@@ -5,36 +5,60 @@ namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 use App\Models\BidangModel;
 use App\Models\DinasModel;
 use App\Controllers\BaseController;
+use App\Models\KategoryModel;
 use Ramsey\Uuid\Uuid;
 
 class BidangController extends BaseController
 {
     protected $bidang;
-    protected $instansi;
+    protected $dinas;
 
+    protected $kategori;
     public function __construct()
     {
         $this->bidang = new BidangModel();
-        $this->instansi = new DinasModel();
+        $this->dinas = new DinasModel();
+        $this->kategori = new KategoryModel();
     }
     public function index($instansi_id)
     {
-        $bidangs = $this->bidang->getByInstansiId($instansi_id);
-        $instansi = $this->instansi->get_one_instansi_by_id($instansi_id);
+        // dd($instansi_id);
+        if($instansi_id != null){}
+        $dinass = $this->dinas->get_data();
+        $data = json_decode($dinass);
+        $bidangs = $this->bidang->getAllByInstansiId($instansi_id);
+        
+        
+        $instansiData = []; // Membuat array untuk menyimpan data instansi berdasarkan instansi_id
+        // dd($dinass);
+        $instansiMap = [];
+        foreach ($data->data as $instansi) {
+            $instansiMap[$instansi->id_instansi] = $instansi->ket_ukerja;
+        }
+        $kategories = []; // Membuat array untuk menyimpan data kategori
+    
+        foreach ($bidangs as $bidang) {
+            $kategories[$bidang['id']] = $this->kategori->getByBidangId($bidang['id']);
+        }
+
         return view('admin/bidang/index', [
+            'instansiMap' => $instansiMap,
             'bidangs' => $bidangs,
             'active' => 'bidang',
-            'instansi' => $instansi, // Mengirim data instansi ke tampilan
+            'instansiData' => $instansiData, // Mengirim data instansi ke tampilan
+            'kategories' => $kategories,
         ]);
     }
 
     
-    public function create($instansi_id)
+    public function create()
     {
-        $instansi = $this->instansi->get_one_instansi_by_id($instansi_id);
+        $dinass = $this->dinas->get_data();
+        $data['dinass'] = json_decode($dinass)->data; // Mendapatkan data dari API dan mengkonversinya menjadi array
+         
         return view('admin/bidang/create', [
             'active' => 'bidang',
-            'instansi' =>$instansi, // Mengirim data instansi ke view
+            'dinass' => $data['dinass'], // Mengirim data dinas ke view
         ]);
     }
 
@@ -45,7 +69,6 @@ class BidangController extends BaseController
         // Validasi input data
         $validationRules = [
             'instansi_id' => 'required',
-            'slug' => 'required',
             'kode' => 'required',
             'name' => 'required',
         ];
@@ -56,7 +79,6 @@ class BidangController extends BaseController
         
         // Ambil data dari input form
         $name = $this->request->getPost('name');
-        $slug = $this->request->getPost('slug');
         $instansi_id = $this->request->getPost('instansi_id');
         $kode = $this->request->getPost('kode');
         $uuid = Uuid::uuid4();
@@ -66,13 +88,11 @@ class BidangController extends BaseController
             'id'=>$uuidString,
             'instansi_id' => $instansi_id,
             'kode' => $kode,
-            'name' => $name,
-            'slug' => $slug
+            'name' => $name
         ];
-        
-        // dd($data);
+  
         $this->bidang->insert($data);
     
-        return redirect()->to('/admin/bidang/'.$instansi_id)->with('success', 'Data Bidang berhasil disimpan');
+        return redirect()->to('/admin/bidang')->with('success', 'Data Bidang berhasil disimpan');
     }
 }

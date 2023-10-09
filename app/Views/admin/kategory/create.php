@@ -33,16 +33,16 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
             <h2 class="text-center">Create Data Kategory</h2>
-            <form class="album-form" method="POST" action="<?php echo base_url() ?>/admin/kategory/save"
-                enctype="multipart/form-data">
+            <form class="album-form" method="POST" action="/admin/kategory/save" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <?php if (session('error')) : ?>
                 <div class="alert alert-danger">
                     <?= session('error') ?>
                 </div>
                 <?php endif; ?>
+                <input type="name" hidden name="bidang_id" value="<?= $bidang; ?>">
                 <div class="form-group">
-                    <label for="name">Nama Perihal</label>
+                    <label for="name">nama</label>
                     <input type="name"
                         class="form-control <?= (isset($validation) && $validation->hasError('name')) ? 'is-invalid' : ''; ?>"
                         id="name" name="name" autofocus>
@@ -52,12 +52,9 @@
                     </div>
                     <?php endif; ?>
                 </div>
+                <!-- kode -->
                 <div class="form-group">
-                    <label for="slug">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="kode">Kode Perihal</label>
+                    <label for="kode">Kode Surat</label>
                     <input type="name"
                         class="form-control <?= (isset($validation) && $validation->hasError('kode')) ? 'is-invalid' : ''; ?>"
                         id="kode" name="kode" autofocus>
@@ -74,13 +71,6 @@
         </div>
     </div>
 </div>
-<script>
-document.getElementById('name').addEventListener('input', function() {
-    const name = this.value.trim(); // Mengambil teks dari input nama dan menghapus spasi ekstra
-    const slug = name.toLowerCase().replace(/ /g,
-        '-'); // Mengonversi teks ke lowercase dan mengganti spasi dengan tanda '-'
-    document.getElementById('slug').value = slug; // Mengatur nilai pada input slug
-});
-</script>
+
 
 <?= $this->endSection('content'); ?>

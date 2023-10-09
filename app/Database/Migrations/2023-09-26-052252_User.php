@@ -15,19 +15,6 @@ class CreateUsersTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'instansi_id' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'bidang_id' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null'=>true
-            ],
-            'slug' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
             'NIP' => [
                 'type' => 'INT',
                 'constraint' => 11,
@@ -36,16 +23,20 @@ class CreateUsersTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'username' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'email' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'no_hp' => [
-                'type' => 'INT',
-                'constraint' => 11,
-            ],
             'password' => [
                 'type' => 'TEXT',
+            ],
+            'instansi_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
             ],
             'level' => [
                 'type' => 'INT',
@@ -59,6 +50,7 @@ class CreateUsersTable extends Migration
                 'type' => 'DATETIME',
             ],
         ]);
+
         $this->forge->addKey('id', true);
         $this->forge->createTable('users');
     }
