@@ -1,27 +1,22 @@
 <?php
 
+namespace App\Controllers;
 
-namespace App\Controllers\auth;
-use App\Models\UserModel;
 use App\Controllers\BaseController;
+use App\Models\UserModel;
 
-class Login extends BaseController
+class LoginController extends BaseController
 {
+
     protected $userModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
     }
-
     public function index()
     {
-        if (session()->has('user_id')) {
-            return redirect()->to('/home');
-        }
-        return view('login',[
-            'validation' => \Config\Services::validation()
-        ]);
+        return view('login');
     }
 
     public function login()
@@ -37,24 +32,30 @@ class Login extends BaseController
             // Periksa apakah password sesuai
             if (password_verify($password, $user['password'])) {
                 // Buat token unik
-                $token = bin2hex(random_bytes(32));
+                // $token = bin2hex(random_bytes(32));
 
                 // Simpan token ke dalam basis data
-                $data = [
-                    'user_id' => $user['id'],
-                    'token' => $token
-                ];
-                $this->userModel->saveToken($user['email'], $token);
+                // $data = [
+                //     'user_id' => $user['id'],
+                //     // 'token' => $token
+                // ];
+                // $this->userModel->saveToken($user['email'], $token);
 
                 // Set session dengan data pengguna
                 $userData = [
                     'user_id' => $user['id'],
+                    'instansi_id' => $user['instansi_id'],
+                    'bidang_id' => $user['bidang_id'],
+                    'slug' => $user['slug'],
+                    'nip' => $user['nip'],
                     'name' => $user['name'],
                     'email' => $user['email'],
+                    'no_hp' => $user['no_hp'],
+                    'level' => $user['level'],
                 ];
                 session()->set($userData);
 
-                return redirect()->to('/home');
+                return redirect()->to('/');
             } else {
                 return redirect()->back()->withInput()->with('error', 'Invalid email or password');
             }
