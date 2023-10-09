@@ -7,9 +7,12 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // Rute untuk halaman beranda dan unggahan PDF
+
+    //generate
     $routes->get('/', 'GenerateController::index');
-    // $routes->post('/', 'PdfController::upload');
-    
+    $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
+    $routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
+    $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
     // Rute untuk melihat PDF yang telah diperbarui
     $routes->get('/pdf/view/(:segment)', 'PdfController::view/$1');
     
@@ -46,6 +49,16 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/admin/perihal/(:segment)', 'Admin\PerihalController::index/$1');
     $routes->get('/admin/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
     $routes->post('admin/perihal/save', 'Admin\PerihalController::save');
+
+     //Sub Perihal
+    $routes->get('/admin/subperihal/(:segment)', 'Admin\SubPerihalController::index/$1');
+    $routes->get('/admin/subperihal/create/(:segment)', 'Admin\SubPerihalController::create/$1');
+    $routes->post('admin/subperihal/save', 'Admin\SubPerihalController::save');
+    
+    //Detail Sub Perihal
+    $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
+    $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
+    $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
     
     //auth
     $routes->get('/login', 'LoginController::index');
