@@ -18,7 +18,8 @@
         style="background-color: rgb(8, 164, 167);">
         <div class="container">
             <a class="navbar-brand d-flex" href="#">
-                <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng" style="width: 70px;">
+                <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng"
+                    style="width: 70px;">
                 <div class="ms-2 d-flex flex-column align-items-start">
                     <span>E-NOMOR</span>
                     <span class="small">KOMINFO SANTI</span>
@@ -38,21 +39,23 @@
             <div class="col">
                 <div class="card row m-auto mt-1 shadow" style="width: 40%;">
                     <div class="card-body row m-auto">
-                        <form class="">
+                        <form class="" action="<?php echo base_url() ?>login" method="POST">
                             <div class="input-group justify-content-center mt-3 mb-3">
                                 <h2>LOGIN</h2>
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" placeholder="Email" style="opacity: 0.7;">
-                                    <i class="input-group-text bi bi-envelope"></i>
+                                    <i class="input-group-text bi bi-person-fill"></i>
+
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
                                     <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Password" style="opacity: 0.7;">
+                                        placeholder="Passsword" name="password" style="opacity: 0.7;">
+
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
@@ -70,23 +73,23 @@
 
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
     <script>
-        const passwordInput = document.getElementById("exampleInputPassword1");
-        const showPasswordIcon = document.getElementById("showPassword");
+    const passwordInput = document.getElementById("exampleInputPassword1");
+    const showPasswordIcon = document.getElementById("showPassword");
 
-        showPasswordIcon.addEventListener("click", function () {
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                showPasswordIcon.classList.remove("bi-eye-slash");
-                showPasswordIcon.classList.add("bi-eye");
-            } else {
-                passwordInput.type = "password";
-                showPasswordIcon.classList.remove("bi-eye");
-                showPasswordIcon.classList.add("bi-eye-slash");
-            }
-        });
+    showPasswordIcon.addEventListener("click", function() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            showPasswordIcon.classList.remove("bi-eye-slash");
+            showPasswordIcon.classList.add("bi-eye");
+        } else {
+            passwordInput.type = "password";
+            showPasswordIcon.classList.remove("bi-eye");
+            showPasswordIcon.classList.add("bi-eye-slash");
+        }
+    });
     </script>
 </body>
 
