@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?= $this->include('admin/layouts/navbar'); ?>
+
+<?= $this->include('admin/layouts/sidebar'); ?>
+
 <head>
     <meta charset="UTF-8">
     <title>Upload and Add Text to PDF</title>

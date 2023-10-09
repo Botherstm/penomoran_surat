@@ -25,11 +25,6 @@
                     <span class="small">KOMINFO SANTI</span>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
             </div>
         </div>
     </nav>
@@ -50,15 +45,17 @@
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="email" id="exampleInputEmail1"
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" placeholder="Email" style="opacity: 0.7;">
                                     <i class="input-group-text bi bi-person-fill"></i>
+
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
                                     <input type="password" class="form-control" id="exampleInputPassword1"
                                         placeholder="Passsword" name="password" style="opacity: 0.7;">
+
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
