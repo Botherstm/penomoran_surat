@@ -27,7 +27,7 @@
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="/admin/pages/user/add">
+        <a href="<?php echo base_url() ?>admin/user/register">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
@@ -39,6 +39,7 @@
                 <th class="text-center">Nama</th>
                 <th class="text-center">Email</th>
                 <th class="text-center">Dinas</th>
+                <th class="text-center">bidang</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -49,7 +50,7 @@
                 <td><?= $i++; ?></td>
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['email'] ?></td>
-                <td><?= $user['dinas'] ?></td>
+
                 <td>
                     <div class="btn-group">
                         <a href="/admin/pages/user/detail/<?= $user['name']; ?>">
