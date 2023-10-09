@@ -36,6 +36,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //user
     $routes->get('/admin/user', 'Admin\UserController::index');
     $routes->get('/admin/user/register', 'Admin\UserController::create');
+    $routes->post('/admin/user/save', 'RegisterController::save');
 
     //kategory
     $routes->get('/admin/kategory/', 'Admin\KategoryController::index');
