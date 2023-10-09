@@ -19,10 +19,10 @@ class SubPerihalController extends BaseController
     public function index($slug)
     {
         $perihal = $this->perihal->findBySlug($slug);
-        if (!$perihal) {
-            // Handle jika perihal tidak ditemukan, misalnya, tampilkan pesan kesalahan
-            return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
-        }
+        // if (!$perihal) {
+        //     // Handle jika perihal tidak ditemukan, misalnya, tampilkan pesan kesalahan
+        //     return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
+        // }
         $sub_perihals = $this->subperihal->getAllByPerihalId($perihal['id']);
 
         return view('admin/subperihal/index',[

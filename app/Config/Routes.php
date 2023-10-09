@@ -62,4 +62,5 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     
     //auth
     $routes->get('/login', 'LoginController::index');
+    $routes->post('/login', 'LoginController::login');
 });
