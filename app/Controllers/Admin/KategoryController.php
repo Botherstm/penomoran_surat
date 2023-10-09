@@ -34,16 +34,16 @@ class KategoryController extends BaseController
     {
         return view('admin/kategory/create', [
             'active' => 'kategory',
-
         ]);
     }
+
+    
 
 
     public function save()
     {
         // Validasi input data
         $rules = [
-            
             'bidang_id' => 'required',
             'name' => 'required',
             'kode' => 'required',

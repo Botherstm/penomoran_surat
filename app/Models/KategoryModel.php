@@ -57,4 +57,14 @@ class KategoryModel extends Model
     }
 
 
+    public function getPerihalByKategori($kategoriId)
+{
+    // Query database untuk mengambil data perihal berdasarkan $kategoriId
+    $query = $this->db->table('kategori')
+        ->where('kategori_id', $kategoriId)
+        ->get();
+
+    return $query->getResult();
+}
+
 }
