@@ -7,8 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // Rute untuk halaman beranda dan unggahan PDF
+
+    //generate
     $routes->get('/', 'GenerateController::index');
-    // $routes->post('/', 'PdfController::upload');
+$routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
+$routes->get('admin/subperihal/get_subperihal_by_perihal/(:segment)', 'SubPerihalController::getSubPerihalByPerihal/$1');
     
     // Rute untuk melihat PDF yang telah diperbarui
     $routes->get('/pdf/view/(:segment)', 'PdfController::view/$1');
