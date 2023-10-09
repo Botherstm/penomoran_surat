@@ -32,4 +32,10 @@ class DetailSubPerihalModel extends Model
     {
         return $this->where('subperihal_id', $subperihal_id)->findAll();
     }
+
+
+    public function getSubPerihalByid($kode)
+    {
+        return $this->where('kode', $kode)->first();
+    }
 }

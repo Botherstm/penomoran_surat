@@ -38,7 +38,7 @@
                 <th class="text-center">No</th>
                 <th class="text-center">Perihal</th>
                 <th class="text-center">Kode</th>
-                <th class="text-center">urutan Surat</th>
+                <th class="text-center">Sub perihal Surat</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -49,6 +49,14 @@
                 <td><?= $i++; ?></td>
                 <td><?= $cat['name'] ?></td>
                 <td><?= $cat['kode'] ?></td>
+                <td>
+                    <div class="py-2 px-2">
+                        <a href="<?php echo base_url() ?>admin/subperihal/<?= $cat['slug'];?>">
+                            <div class="btn btn-dark">Detail Sub perihal</div>
+                        </a>
+                    </div>
+                </td>
+
                 <td>
                     <div class="btn-group">
                         <a href="/admin/pages/cat/detail/<?= $cat['name']; ?>">

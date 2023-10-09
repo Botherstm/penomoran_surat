@@ -73,7 +73,7 @@
                     <select class="custom-select" id="kategori">
                         <option selected>Pilih kategori...</option>
                         <?php foreach ($kategories as $kategori) : ?>
-                        <option value="<?= $kategori['id'] ?>"><?= $kategori['name'] ?></option>
+                        <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -91,6 +91,15 @@
                 <div class="input-group">
                     <select class="custom-select" id="subPerihal">
                         <option selected>Pilih sub perihal...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group d-none" id="detailSubPerihalGroup">
+                <label for="detailSubPerihal">Detail Sub Perihal</label>
+                <div class="input-group">
+                    <select class="custom-select" id="detailSubPerihal">
+                        <!-- Perubahan ID di sini -->
+                        <option selected>Pilih detail sub perihal...</option>
                     </select>
                 </div>
             </div>
@@ -117,51 +126,58 @@
         var subPerihalSelect = document.getElementById('subPerihal');
         var perihalGroup = document.getElementById('perihalGroup');
         var subPerihalGroup = document.getElementById('subPerihalGroup');
+        var detailSubPerihalSelect = document.getElementById('detailSubPerihal');
+        var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
         var nomorSuratInput = document.getElementById('nomorSurat');
         var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
-
         kategoriSelect.addEventListener('change', function() {
-            var selectedCategoryId = kategoriSelect.value;
+            var selectedKategoriValue = kategoriSelect.value;
 
-            // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
-            fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedCategoryId, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
+            if (selectedKategoriValue !== '') {
+                // Set nilai input "Nomor Surat" dengan nilai kategori yang dipilih
+                nomorSuratInput.value = selectedKategoriValue;
 
-                    // Bersihkan elemen "perihal" select sebelum mengisinya
-                    perihalSelect.innerHTML = '';
-                    // Tambahkan opsi default "Pilih perihal..."
-                    perihalSelect.appendChild(new Option('Pilih perihal...', ''));
+                // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
+                fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
 
-                    // Tambahkan opsi "Perihal" berdasarkan data yang diterima
-                    data.forEach(function(option) {
-                        perihalSelect.appendChild(new Option(option.name, option.kode));
+                        // Bersihkan elemen "perihal" select sebelum mengisinya
+                        perihalSelect.innerHTML = '';
+                        // Tambahkan opsi default "Pilih perihal..."
+                        perihalSelect.appendChild(new Option('Pilih perihal...', ''));
+
+                        // Tambahkan opsi "Perihal" berdasarkan data yang diterima
+                        data.forEach(function(option) {
+                            perihalSelect.appendChild(new Option(option.name, option.kode));
+                        });
+
+                        // Sembunyikan atau tampilkan elemen "perihal" select
+                        if (data.length > 0) {
+                            perihalGroup.classList.remove('d-none');
+                        } else {
+                            perihalGroup.classList.add('d-none');
+                        }
+
+                        // Kosongkan elemen "subPerihal" select dan nomorSuratInput
+                        subPerihalSelect.innerHTML = '';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                     });
-
-                    // Sembunyikan atau tampilkan elemen "perihal" select
-                    if (data.length > 0) {
-                        perihalGroup.classList.remove('d-none');
-                    } else {
-                        perihalGroup.classList.add('d-none');
-                    }
-
-                    // Kosongkan elemen "subPerihal" select dan nomorSuratInput
-                    subPerihalSelect.innerHTML = '';
-                    nomorSuratInput.value = '';
-                    // Sembunyikan elemen "subPerihal" select
-                    subPerihalGroup.classList.add('d-none');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            } else {
+                // Jika tidak ada kategori yang dipilih, kosongkan input "Nomor Surat"
+                nomorSuratInput.value = '';
+            }
         });
+
 
         perihalSelect.addEventListener('change', function() {
             var selectedPerihalKode = perihalSelect.value;
@@ -175,13 +191,13 @@
             }
         });
 
-        subPerihalSelect.addEventListener('change', function() {
-            var selectedSubPerihalId = subPerihalSelect.value;
+        perihalSelect.addEventListener('change', function() {
+            var selectedPerihalKode = perihalSelect.value;
 
-            if (selectedSubPerihalId !== '') {
-                // Buat permintaan AJAX untuk mengambil data "Sub Perihal" berdasarkan sub perihal yang dipilih
-                fetch('<?= site_url('admin/subperihal/get_subperihal_by_perihal/') ?>' +
-                        selectedSubPerihalId, {
+            if (selectedPerihalKode !== '') {
+                // Buat permintaan AJAX untuk mengambil data "Sub Perihal" berdasarkan "Perihal" yang dipilih
+                fetch('<?= site_url('get_subperihal_by_perihal/') ?>' +
+                        selectedPerihalKode, {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -192,17 +208,81 @@
                     .then(data => {
                         console.log(data);
 
-                        // Set nilai input "Nomor Surat" dengan kode sub perihal yang dipilih
-                        nomorSuratInput.value = data.kode;
+                        // Bersihkan elemen "subPerihal" select sebelum mengisinya
+                        subPerihalSelect.innerHTML = '';
+                        // Tambahkan opsi default "Pilih sub perihal..."
+                        subPerihalSelect.appendChild(new Option('Pilih sub perihal...', ''));
+
+                        // Tambahkan opsi "Sub Perihal" berdasarkan data yang diterima
+                        data.forEach(function(option) {
+                            subPerihalSelect.appendChild(new Option(option.name, option
+                                .id));
+                        });
+
+                        // Tampilkan elemen "subPerihal" select
+                        subPerihalGroup.classList.remove('d-none');
                     })
                     .catch(error => {
                         console.error('Error:', error);
                     });
             } else {
-                // Jika tidak ada sub perihal yang dipilih, kosongkan input "Nomor Surat"
-                nomorSuratInput.value = '';
+                // Jika tidak ada "Perihal" yang dipilih, sembunyikan elemen "subPerihal" select
+                subPerihalSelect.innerHTML = '';
+                subPerihalGroup.classList.add('d-none');
             }
         });
+    });
+
+    subPerihalSelect.addEventListener('change', function() {
+        var selectedSubPerihalId = subPerihalSelect.value;
+
+        if (selectedSubPerihalId !== '') {
+            // Set nilai input "Nomor Surat" dengan kode sub perihal yang dipilih
+            nomorSuratInput.value = selectedSubPerihalId;
+            // Buat permintaan AJAX untuk mengambil data "Detail Sub Perihal" berdasarkan id sub perihal yang dipilih
+            fetch('<?= site_url('get_detailsubperihal_by_subperihal/') ?>' + selectedSubPerihalId, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    // Bersihkan elemen "detailSubPerihal" select sebelum mengisinya
+                    detailSubPerihalSelect.innerHTML = '';
+                    // Tambahkan opsi default "Pilih detail sub perihal..."
+                    detailSubPerihalSelect.appendChild(new Option('Pilih detail sub perihal...', ''));
+
+                    // Tambahkan opsi "Detail Sub Perihal" berdasarkan data yang diterima
+                    data.forEach(function(option) {
+                        detailSubPerihalSelect.appendChild(new Option(option.name, option.id));
+                    });
+
+                    // Tampilkan elemen "detailSubPerihal" select
+                    detailSubPerihalGroup.classList.remove('d-none');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        } else {
+            // Jika tidak ada "Sub Perihal" yang dipilih, sembunyikan elemen "detailSubPerihal" select
+            detailSubPerihalSelect.innerHTML = '';
+            detailSubPerihalGroup.classList.add('d-none');
+        }
+    });
+    detailSubPerihalSelect.addEventListener('change', function() {
+        var selectedDetailSubPerihalId = detailSubPerihalSelect.value;
+
+        if (selectedDetailSubPerihalId !== '') {
+            // Set nilai input "Nomor Surat" dengan kode detail sub perihal yang dipilih
+            nomorSuratInput.value = selectedDetailSubPerihalId;
+        } else {
+            // Jika tidak ada detail sub perihal yang dipilih, kosongkan input "Nomor Surat"
+            nomorSuratInput.value = '';
+        }
     });
     </script>
 </body>

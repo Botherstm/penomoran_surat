@@ -23,13 +23,20 @@ class PerihalModel extends Model
         
         return $this->findAll();
     }
-
+public function findBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
 
     public function getByKategori_id($kategori_id)
     {
         return $this->where('kategori_id', $kategori_id)->findAll();
     }
 
+    public function getPerihalByid($kode)
+    {
+        return $this->where('kode', $kode)->first();
+    }
     public function getOneByKategoriId($kategori_id)
     {
         return $this->db->table('kategori')

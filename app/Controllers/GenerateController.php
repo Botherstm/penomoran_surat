@@ -3,24 +3,30 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Database\Migrations\DetailSubPerihal;
 use App\Models\BidangModel;
+use App\Models\DetailSubPerihalModel;
 use App\Models\DinasModel;
 use App\Models\KategoryModel;
 use App\Models\PerihalModel;
+use App\Models\SubPerihalModel;
 
 class GenerateController extends BaseController
 {  
     protected $bidang;
     protected $dinas;
     protected $perihal;
-
     protected $kategori;
+    protected $subperihal;
+    protected $detailsubperihal;
     public function __construct()
     {
         $this->bidang = new BidangModel();
         $this->dinas = new DinasModel();
         $this->kategori = new KategoryModel();
         $this->perihal = new PerihalModel();
+        $this->subperihal = new SubPerihalModel();
+        $this->detailsubperihal = new DetailSubPerihalModel();
     }
     public function index()
     {
@@ -31,21 +37,13 @@ class GenerateController extends BaseController
         ]);
     }
 
-    public function getPerihalByKategori()
-    {
-        $kategoriId = $this->request->getPost('kategori_id'); // Ambil ID kategori dari AJAX request
-        // Lakukan query untuk mendapatkan data perihal berdasarkan $kategoriId
-        $perihals = $this->kategori->getPerihalByKategori($kategoriId);
-        // dd($perihals);
-        return json_encode($perihals); // Kembalikan data perihal dalam format JSON
-    }
 
-
-    public function getPerihalByCategory($perihal_id)
+    public function getPerihalByCategory($kategori_id)
     {
         // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
         // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
-        $perihals = $this->perihal->getByKategori_id($perihal_id);
+        $kategories = $this->kategori->getKategoriByid($kategori_id);
+        $perihals = $this->perihal->getByKategori_id($kategories['id']);
 
         // Ubah data menjadi format JSON
         $response = [];
@@ -54,6 +52,45 @@ class GenerateController extends BaseController
                 'id' => $perihal['id'],
                 'name' => $perihal['name'],
                 'kode' => $perihal['kode'],
+            ];
+        }
+
+        return $this->response->setJSON($response);
+    }
+     public function getSubPerihalByPerihal($perihal_id)
+    {
+        // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
+        // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
+        $perihals = $this->perihal->getPerihalByid($perihal_id);
+        $subperihals = $this->subperihal->getAllByPerihalId($perihals['id']);
+
+        // Ubah data menjadi format JSON
+        $response = [];
+        foreach ($subperihals as $subperihal) {
+            $response[] = [
+                'id' => $subperihal['id'],
+                'name' => $subperihal['name'],
+                'kode' => $subperihal['kode'],
+            ];
+        }
+
+        return $this->response->setJSON($response);
+    }
+
+     public function getdetailSubPerihalByPerihal($subperihal_id)
+    {
+        // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
+        // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
+        $subperihals = $this->subperihal->findByKode($subperihal_id);
+        $detailsubperihals = $this->detailsubperihal->getAllBySubPerihalId($subperihals['id']);
+
+        // Ubah data menjadi format JSON
+        $response = [];
+        foreach ($detailsubperihals as $detailsubperihal) {
+            $response[] = [
+                'id' => $detailsubperihal['id'],
+                'name' => $detailsubperihal['name'],
+                'kode' => $detailsubperihal['kode'],
             ];
         }
 

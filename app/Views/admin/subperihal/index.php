@@ -23,7 +23,7 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Perihal2 <?= $perihal['name']; ?></h2>
+    <h4 class="m-0">Data Sub Perihal <?= $perihal['name']; ?></h4>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
