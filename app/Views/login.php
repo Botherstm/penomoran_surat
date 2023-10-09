@@ -10,6 +10,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                     <span class="small">KOMINFO SANTI</span>
                 </div>
             </a>
-            </div>
+        </div>
         </div>
     </nav>
     <!-- Akhir Navbar -->
@@ -53,9 +55,15 @@
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Passsword" name="password" style="opacity: 0.7;">
-
+                                    <input type="password"
+                                        class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>"
+                                        id="exampleInputPassword1" placeholder="Passsword" name="password"
+                                        style="opacity: 0.7;">
+                                    <?php if ($validation->hasError('password')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('password'); ?>
+                                    </div>
+                                    <?php endif; ?>
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
@@ -75,6 +83,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script>
     const passwordInput = document.getElementById("exampleInputPassword1");
     const showPasswordIcon = document.getElementById("showPassword");
@@ -91,6 +101,15 @@
         }
     });
     </script>
+    <?php if (session()->getFlashdata('error')) : ?>
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '<?php echo session()->getFlashdata('error'); ?>',
+    });
+    </script>
+    <?php endif; ?>
 </body>
 
 </html>

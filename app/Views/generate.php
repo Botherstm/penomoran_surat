@@ -54,7 +54,8 @@
 
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Generate Nomor Surat <?= session()->get('name'); ?></h1>
+        <h3>selamat datang <?= session()->get('name'); ?></h3>
+        <h1 class="text-center">Generate Nomor Surat </h1>
         <form class="text-center">
             <div class="form-group">
                 <label for="bidang">BIDANG</label>
