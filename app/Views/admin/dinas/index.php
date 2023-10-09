@@ -32,7 +32,8 @@
             <tr>
                 <th class="text-center">No</th>
                 <th class="text-center">Nama</th>
-                <th class="text-center">Aksi</th>
+                <th class="text-center">Bidang</th>
+                <!-- <th class="text-center">Aksi</th> -->
             </tr>
         </thead>
         <tbody>
@@ -43,7 +44,7 @@
                 <td><?= $dinas->ket_ukerja ?></td>
                 <td>
                     <div class="py-2 px-2">
-                        <a href="<?php echo base_url() ?>admin/bidang/<?=  $dinas->id_instansi ?>">
+                        <a href="<?php echo base_url() ?>admin/bidang/<?= $dinas->id_instansi ?>">
                             <div class="btn btn-dark">Lihat Data Bidang</div>
                         </a>
                     </div>

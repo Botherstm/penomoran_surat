@@ -32,7 +32,7 @@
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-            <h2 class="text-center">Create Data Bidang <?= $instansi->ket_ukerja; ?></h2>
+            <h2 class="text-center">Create Data Bidang</h2>
             <form class="album-form" method="POST" action="<?php echo base_url() ?>admin/bidang/save"
                 enctype="multipart/form-data">
                 <?= csrf_field(); ?>
@@ -41,8 +41,6 @@
                     <?= session('error') ?>
                 </div>
                 <?php endif; ?>
-
-                <input type="name" hidden name="instansi_id" value="<?= $instansi->id_instansi; ?>">
                 <div class="form-group">
                     <label for="name">Nama</label>
                     <input type="text"
@@ -54,10 +52,17 @@
                     </div>
                     <?php endif; ?>
                 </div>
+
                 <div class="form-group">
-                    <label for="slug">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" readonly>
+                    <label for="instansi_id">Pilih Dinas</label>
+                    <select class="form-control" id="instansi_id" name="instansi_id">
+                        <?php foreach ($dinass as $dinas) : ?>
+                        <option value="<?= $dinas->id_instansi; ?>">
+                            <?= $dinas->ket_ukerja; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="kode">Kode</label>
                     <input type="name"
@@ -69,6 +74,9 @@
                     </div>
                     <?php endif; ?>
                 </div>
+
+
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-outline-success">Create</button>
                 </div>
@@ -77,13 +85,5 @@
     </div>
 </div>
 
-<script>
-document.getElementById('name').addEventListener('input', function() {
-    const name = this.value.trim(); // Mengambil teks dari input nama dan menghapus spasi ekstra
-    const slug = name.toLowerCase().replace(/ /g,
-        '-'); // Mengonversi teks ke lowercase dan mengganti spasi dengan tanda '-'
-    document.getElementById('slug').value = slug; // Mengatur nilai pada input slug
-});
-</script>
 
 <?= $this->endSection('content'); ?>

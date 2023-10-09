@@ -12,14 +12,11 @@ class Bidang extends Migration
             'id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                // 'auto_increment' => true,
             ],
             'instansi_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255, 
-            ],
-            'slug' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
             ],
             'kode' => [
                 'type' => 'VARCHAR',

@@ -48,7 +48,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa fa-user"></i>
                         <p>
                             Users
                             <i class="right fas fa-angle-left"></i>
@@ -58,14 +58,14 @@
                         <li class="nav-item">
                             <a href="<?php echo base_url() ?>admin/user"
                                 class="nav-link <?php echo ($active == 'users') ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa fa-users nav-icon"></i>
                                 <p>All Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo base_url() ?>admin/user/register"
                                 class="nav-link <?php echo ($active == 'users') ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa fa-user-plus nav-icon"></i>
                                 <p>Register User</p>
                             </a>
                         </li>
@@ -74,7 +74,7 @@
                 <!-- dinas -->
                 <li class="nav-item">
                     <a href="<?php echo base_url() ?>admin/dinas" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-columns"></i>
                         <p>
                             dinas
                         </p>
@@ -97,6 +97,18 @@
                         </p>
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="<?php echo base_url() ?>admin/perihal" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Perihal
+                        </p>
+                    </a>
+                </li> -->
+
+
+
+
                 <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>

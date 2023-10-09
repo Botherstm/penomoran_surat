@@ -23,11 +23,11 @@
 }
 </style>
 <div class="col-sm-6">
-    <h2 class="m-0">Data Perihal <?= $kategori['name']; ?></h2>
+    <h2 class="m-0">Data Perihal <?= $katname['name']; ?></h2>
 </div>
 <div class="table-container">
     <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kategori['slug']; ?>">
+        <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kat;?>">
             <div class="btn btn-dark">Tambah Data</div>
         </a>
     </div>
@@ -36,43 +36,36 @@
         <thead>
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">Nama surat</th>
-                <th class="text-center">Kode Surat</th>
-                <th class="text-center">Detail nomor</th>
+                <th class="text-center">Perihal</th>
+                <th class="text-center">Kode</th>
+                <th class="text-center">urutan Surat</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1 ?>
-            <?php foreach ($perihals as $perihal) : ?>
+            <?php foreach ($perihals as $cat) : ?>
             <tr class="text-center">
                 <td><?= $i++; ?></td>
-                <td><?= $perihal['name'] ?></td>
-                <td><?= $perihal['kode'] ?></td>
-                <td>
-                    <div class="py-2 px-2">
-                        <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug'] ?>">
-                            <div class="btn btn-dark">Detail2 Sub Perihal</div>
-                        </a>
-                    </div>
-                </td>
+                <td><?= $cat['name'] ?></td>
+                <td><?= $cat['kode'] ?></td>
                 <td>
                     <div class="btn-group">
-                        <a href="/admin/pages/perihal/detail/<?= $perihal['name']; ?>">
+                        <a href="/admin/pages/cat/detail/<?= $cat['name']; ?>">
                             <button type="button" class="btn btn-outline-success">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </a>
-                        <a href="/admin/pages/perihal/edit/<?= $perihal['name']; ?>">
+                        <a href="/admin/pages/cat/edit/<?= $cat['name']; ?>">
                             <button type="button" class="btn btn-outline-primary">
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </a>
-                        <form id="deleteForm<?= $perihal['id']; ?>"
-                            action="/admin/pages/perihal/delete/<?= $perihal['id']; ?>" method="post">
+                        <form id="deleteForm<?= $cat['id']; ?>" action="/admin/pages/cat/delete/<?= $cat['id']; ?>"
+                            method="post">
                             <?= csrf_field(); ?>
                             <button type="button" class="btn btn-outline-danger"
-                                onclick="confirmDelete(<?= $perihal['id']; ?>)">
+                                onclick="confirmDelete(<?= $cat['id']; ?>)">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </form>

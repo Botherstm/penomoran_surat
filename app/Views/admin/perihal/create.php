@@ -32,9 +32,8 @@
 
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-            <h2 class="text-center">Create Data Perihal <?= $kategori['name']; ?></h2>
-            <form class="album-form" method="POST"
-                action="<?php echo base_url() ?>admin/perihal/save/<?= $kategori['slug']; ?>"
+            <h2 class="text-center">Create Data Perihal</h2>
+            <form class="album-form" method="POST" action="<?php echo base_url() ?>admin/perihal/save"
                 enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <?php if (session('error')) : ?>
@@ -53,12 +52,7 @@
                     </div>
                     <?php endif; ?>
                 </div>
-                <input type="text" class="form-control" id="kategori_id" value="<?= $kategori['id']; ?>"
-                    name="kategori_id" hidden>
-                <div class="form-group">
-                    <label for="slug">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" readonly>
-                </div>
+                <input type="name" name="kategori_id" id="kategori_id" hidden value="<?= $kat;?>">
                 <div class="form-group">
                     <label for="kode">Kode Surat</label>
                     <input type="name"
@@ -77,29 +71,6 @@
         </div>
     </div>
 </div>
-
-<script>
-// Mendapatkan referensi elemen input kode surat dan slug
-var kodeInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
-
-// Menambahkan event listener pada input kode surat untuk mengupdate slug saat nilai berubah
-kodeInput.addEventListener('input', function() {
-    // Menggunakan fungsi slugify untuk membuat slug dari kode surat
-    var slugValue = slugify(kodeInput.value);
-    slugInput.value = slugValue;
-});
-
-// Fungsi untuk membuat slug dari teks
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-') // Replace spasi dengan tanda hubung
-        .replace(/[^\w\-]+/g, '') // Menghapus karakter non-word
-        .replace(/\-\-+/g, '-') // Mengganti dua atau lebih tanda hubung dengan satu tanda hubung
-        .replace(/^-+/, '') // Menghapus tanda hubung di awal teks
-        .replace(/-+$/, ''); // Menghapus tanda hubung di akhir teks
-}
-</script>
 
 
 <?= $this->endSection('content'); ?>
