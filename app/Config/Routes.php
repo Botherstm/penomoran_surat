@@ -61,5 +61,5 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
     
     //auth
-    $routes->get('/login', 'Auth\LoginController::index');
+    $routes->get('/login', 'LoginController::index');
 });
