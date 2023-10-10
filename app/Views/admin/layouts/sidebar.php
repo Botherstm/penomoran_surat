@@ -71,13 +71,13 @@
                     <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Perihal
+                            Kategori
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
+                            <a href="<?php echo base_url() ?>admin/kategori/listkategori" class="nav-link">
                                 <i class="nav-icon fas fa-pen-nib"></i>
                                 <p>Tambah Perihal</p>
                             </a>

@@ -38,6 +38,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/users/save', 'RegisterController::save');
 
     //kategory
+    $routes->get('/admin/kategori/listkategori', 'Admin\KategoryController::view');
+    $routes->get('/admin/kategori/addkategori', 'Admin\KategoryController::add');
+    
+
     $routes->get('/admin/kategory/', 'Admin\KategoryController::index');
     $routes->get('/admin/kategory/create/', 'Admin\KategoryController::create');
     $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');

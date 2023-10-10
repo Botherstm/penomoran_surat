@@ -11,8 +11,18 @@
 }
 
 .halpad {
-    padding: 30px 50px 10px 50px;
+    padding: 30px 300px 10px 300px;
+    text-align: center;
 }
+
+.h1{
+    text-align: center;
+}
+
+.content-header{
+    padding-bottom: 40px;
+}
+
 </style>
 
 
@@ -20,11 +30,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h1 class="m-0 font-weight-bold">Tambah User</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
+        <h1 class="m-0 font-weight-bold">Tambah User</h1>
         </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
@@ -32,34 +38,34 @@
         <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIP">
+                <input type="text" class="form-control" id="exampleFormControlInput1" style="text-align: center;" placeholder="Masukkan NIP" >
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIP">
+                <input type="text" class="form-control" id="exampleFormControlInput1" style="text-align: center;" placeholder="Masukkan NIP">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Email </label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="email" class="form-control" id="exampleInputEmail1" style="text-align: center;" aria-describedby="emailHelp"
                     placeholder="Enter email">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" style="text-align: center;" placeholder="Password">
                 
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">No Telp.</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukan No. Telp">
+                <input type="number" class="form-control" id="exampleFormControlInput1" style="text-align: center;" placeholder="Masukan No. Telp">
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Dinas</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="exampleFormControlSelect1" style="text-align: center;">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -69,7 +75,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Bidang</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="exampleFormControlSelect1" style="text-align: center;">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -81,6 +87,7 @@
                 <button type="submit" class="btn btn-danger" style="width: 150px;">Batal</button>
                 <button type="submit" class="btn btn-success" style="width: 150px;">Konfirmasi</button>
             </div>
+            
         </form>
     </section>
     <!-- /.content -->

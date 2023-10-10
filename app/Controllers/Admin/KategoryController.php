@@ -26,9 +26,29 @@ class KategoryController extends BaseController
         }
         $data = $this->Kategory->getAll();
 
-        return view('admin/kategory/index', [
+        return view('admin/kategori/listkategori', [
             'active' => 'kategory',
             'kategoris' => $data,
+
+        ]);
+    }
+
+    public function view() 
+    {
+
+        return view('admin/kategori/listkategori', [
+            'active' => 'kategory',
+
+
+        ]);
+    }
+
+    public function add() 
+    {
+
+        return view('admin/kategori/addkategori', [
+            'active' => 'kategory',
+
 
         ]);
     }

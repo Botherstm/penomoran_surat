@@ -32,16 +32,22 @@
 
 .jarak {
     justify-content: space-between;
+
 }
+
+.halpad {
+    padding: 30px 50px 10px 50px;
+}
+
 </style>
 
-<div class="content-wrapper">
+<div class="halpad content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
             <div class="row mb-4">
-                <div class="col-sm-6 px-4">
-                    <h1 class="m-0 font-weight-bold ">List Users</h1>
+                <div class="col-sm-6 ">
+                    <h1 class=" font-weight-bold ">List Kategori</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -53,7 +59,7 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="<?php echo base_url('admin/users/create') ?>">
+                    <a href="<?php echo base_url('admin/kategori/addkategori') ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -77,32 +83,32 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>No.Telp</th>
-                            <th>Dinas</th>
-                            <th>Bidang</th>
+                            <th>Nama Kategori</th>
+                            <th>Kode Kategori</th>
+                            <th>Rincian Perihal</th>
                             <th>Aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($users as $user) : ?>
                         <tr>
-                            <td><?= $i++; ?></td>
-                            <td><?= $user['nip']; ?></td>
-                            <td><?= $user['name']; ?></td>
-                            <td><?= $user['email']; ?></td>
-                            <td><?= $user['no_hp']; ?></td>
-                            <td><?= $user['instansi_id']; ?></td>
-                            <td><?= $user['bidang_id']; ?></td>
+                            <td>??</td>
+                            <td>??</td>
+                            <td>??</td>
+                            <td><div>
+                                    <!-- update -->
+                                    <a href="<?php echo base_url('admin/users/create') ?>">
+                        <button type="button" class="btn btn-dark">
+                            Lihat rincian perihal
+                        </button>
+                    </a>
+                                </div></td>
                             <td>
 
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/users/update/<?= $user['slug']; ?>">
+                                        href="#">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
@@ -113,7 +119,7 @@
                                     </a>
                                 </div>
                             </td>
-                            <?php endforeach ?>
+                            
                         </tr>
                     </tbody>
                 </table>
