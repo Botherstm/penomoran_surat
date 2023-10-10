@@ -94,6 +94,7 @@
                             <th>No.</th>
                             <th>Nama Perihal</th>
                             <th>Kode</th>
+                            <th>Data SubPerihal</th>
                             <th>Rincian Perihal</th>
                             <th>Aksi</th>
                         </tr>
@@ -105,6 +106,12 @@
                             <td><?= $i++; ?></td>
                             <td><?= $perihal['name']; ?></td>
                             <td><?= $perihal['kode']; ?></td>
+                            <td>
+                                <?php $subPerihalCounter = 1; ?>
+                                <?php foreach ($subPerihals[$perihal['id']] as $subPerihal) : ?>
+                                <?= $subPerihalCounter++ . '. ' . $subPerihal['name'] . '<br>'; ?>
+                                <?php endforeach; ?>
+                            </td>
                             <td>
                                 <div>
                                     <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">

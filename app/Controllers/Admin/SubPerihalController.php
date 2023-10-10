@@ -18,16 +18,16 @@ class SubPerihalController extends BaseController
     }
     public function index($slug)
     {
-        $perihal = $this->perihal->findBySlug($slug);
+        $perihal = $this->perihal->getBySlug($slug);
         // if (!$perihal) {
         //     // Handle jika perihal tidak ditemukan, misalnya, tampilkan pesan kesalahan
         //     return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         // }
-        $sub_perihals = $this->subperihal->getAllByPerihalId($perihal['id']);
+        $subperihals = $this->subperihal->getAllByPerihalId($perihal['id']);
 
         return view('admin/subperihal/index',[
             'active'=>'subperihal',
-            'sub_perihals'=>$sub_perihals,
+            'subperihals'=>$subperihals,
             'perihal'=>$perihal,
         ],
         );
@@ -36,7 +36,6 @@ class SubPerihalController extends BaseController
 
     public function view()
     {
-
         return view('admin/subperihal/listsubperihal', [
             'active' => 'subperihal',
         ]);
