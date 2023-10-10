@@ -46,11 +46,14 @@ class UserController extends BaseController
 
     public function update($slug)
     {
-
-        $users = $this->UserModel->getBySlug($slug);
+       
+        $user = $this->UserModel->getBySlug($slug);
+        $instansi = $this->dinas->get_instansi_by_id($user['instansi_id']);
+        dd($instansi);
         return view('admin/users/edituser', [
             'active' => 'user',
-            'users' => $users,
+            'user' => $user,
+            'instansi' => $instansi,
         ]);
     }
     

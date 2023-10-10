@@ -32,29 +32,35 @@
         <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIP">
+                <input type="text" value="<?= $user['nip'] ?>" name="nip" class="form-control"
+                    id="exampleFormControlInput1" placeholder="Masukkan NIP">
             </div>
-
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIP">
+                <input type="text" value="<?= $user['name'] ?>" name="name" class="form-control" id="name"
+                    placeholder="Masukkan NIP">
+            </div>
+            <div class="form-group text-center">
+                <input type="text" value="<?= $user['slug'] ?>" class="form-control" id="slug" name="slug" readonly>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Email </label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                
+                <input type="email" value="<?= $user['email'] ?>" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter email">
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">No Telp.</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukan No. Telp">
+                <input type="number" value="<?= $user['no_hp'] ?>" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Masukan No. Telp">
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Dinas</label>
+                <input type="number" value="<?= $instansi->ket_ukerja ?>" class="form-control"
+                    id="exampleFormControlInput1">
             </div>
 
             <div class="form-group">
@@ -86,4 +92,25 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+var nameInput = document.getElementById('name');
+var slugInput = document.getElementById('slug');
+
+// Function to generate a slug from the given string
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-') // Replace spaces with dashes
+        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+        .substring(0, 50); // Limit the slug length
+}
+
+// Add an input event listener to the name input field
+nameInput.addEventListener('input', function() {
+    var nameValue = nameInput.value;
+    var slugValue = slugify(nameValue);
+    slugInput.value = slugValue;
+});
+</script>
 <?= $this->endSection('content'); ?>
