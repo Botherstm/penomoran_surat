@@ -35,6 +35,13 @@ class DetailSubPerihalController extends BaseController
         
     }
 
+    public function view()
+    {
+        return view('admin/detail/listdetail', [
+            'active' => 'detailsubperihal',
+        ]);
+    }
+
     public function create($slug)
     {
         // dd($slug);

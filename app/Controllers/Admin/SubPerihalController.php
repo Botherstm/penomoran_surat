@@ -34,6 +34,14 @@ class SubPerihalController extends BaseController
         
     }
 
+    public function view()
+    {
+
+        return view('admin/subperihal/listsubperihal', [
+            'active' => 'subperihal',
+        ]);
+    }
+
     public function create($slug)
     {
         $perihal = $this->perihal->findBySlug($slug);

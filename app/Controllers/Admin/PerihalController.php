@@ -16,23 +16,32 @@ class PerihalController extends BaseController
         $this->Kategory = new KategoryModel();
         $this->perihal = new PerihalModel();
     }
-    public function index($kategori_id)
+    public function index($slug)
     {
            if (session()->get('level') != 2 && session()->get('level') != 3) {
         // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
         throw new \CodeIgniter\Exceptions\PageNotFoundException();
     }
-        $data = $this->perihal->getByKategori_id($kategori_id);
-        $kat = $this->perihal->getOneByKategoriId($kategori_id);
-    // dd($kat);
+        $kat = $this->Kategory->getBySlug($slug);
+        $kategori = $this->perihal->getOneByKategoriId($kat['id']);
+        $perihals = $this->perihal->getByKategori_id($kat['id']);
+        
+    // dd($perihals);
         return view('admin/perihal/index',[
             'active'=>'perihal',
-            'perihals'=>$data,
-            'kat'=>$kategori_id,
-            'katname'=>$kat
+            'perihals'=>$perihals,
+            'kategori'=>$kategori,
             ]
         );
         
+    }
+
+    public function view( )
+    {
+        return view('admin/perihal/listperihal', [
+            'active' => 'perihal',
+
+        ]);
     }
 
     public function create($kategori_id)

@@ -12,20 +12,23 @@
 <div class="content-wrapper">
 
 
-    <form action="<?php echo base_url() ?>admin/kategori/save" method="POST" class="">
+    <form action="<?php echo base_url() ?>admin/kategori/update/<?= $kategori['id'] ?>" method="POST" class="">
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Kategori</h2>
+            <h2 class="mt-5 mb-5">Edit Kategori</h2>
         </div>
         <div class="mb-5 m-1 ">
             <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
-            <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
+            <input type="text" name="name" value="<?= $kategori['name']; ?>" class="form-control w-50 m-auto" id="name"
+                aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+            <input type="name" hidden value="<?= $kategori['slug']; ?>" class="form-control" id="slug" name="slug"
+                readonly>
         </div>
         <div class="mb-5 m-1">
             <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Kategori</label>
-            <input type="name" name="kode" class="form-control w-50 m-auto" id="kodeKategori">
+            <input type="name" name="kode" value="<?= $kategori['kode']; ?>" class="form-control w-50 m-auto"
+                id="kodeKategori">
         </div>
 
         <div class="row text-center">
@@ -33,10 +36,9 @@
                 <button type="submit" class="btn btn-danger" style="width: 25%;">Batal</button>
             </div>
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
             </div>
         </div>
-
     </form>
 
 

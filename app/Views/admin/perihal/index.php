@@ -32,18 +32,35 @@
 
 .jarak {
     justify-content: space-between;
+
 }
+
+.halpad {
+    padding: 30px 50px 10px 50px;
+}
+
 </style>
 
-<div class="content-wrapper">
+<div class="halpad content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
             <div class="row mb-4">
                 <div class="col-sm-6 px-4">
-                    <h1 class="m-0 font-weight-bold ">List Users</h1>
+                    <h1 class="m-0 font-weight-bold ">List Perihal <?= $kategori['name']; ?></h1>
                 </div><!-- /.col -->
+                <div class="card-tools">
 
+                <div class="btnadd">
+                    <a href="<?php echo base_url() ?>admin/kategori/listkategori">
+                        <button type="button" class="btn btn-warning" style="border: 2px solid black;">
+                            <i class="icon-jarak fa fa-chevron-left"></i>
+                            Kembali
+                        </button>
+                    </a>
+
+                </div>
+            </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -53,7 +70,7 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="<?php echo base_url('admin/users/create') ?>">
+                    <a href="<?php echo base_url('#') ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -77,32 +94,24 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>No.Telp</th>
-                            <th>Dinas</th>
-                            <th>Bidang</th>
+                            <th>Nama Perihal</th>
+                            <th>Kode</th>
                             <th>Aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($users as $user) : ?>
+                        <?php foreach ($perihals as $perihal) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td><?= $user['nip']; ?></td>
-                            <td><?= $user['name']; ?></td>
-                            <td><?= $user['email']; ?></td>
-                            <td><?= $user['no_hp']; ?></td>
-                            <td><?= $user['instansi_id']; ?></td>
-                            <td><?= $user['bidang_id']; ?></td>
+                            <td><?= $perihal['name']; ?></td>
+                            <td><?= $perihal['kode']; ?></td>
                             <td>
-
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/users/update/<?= $user['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/kategori/update/<?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
@@ -113,7 +122,7 @@
                                     </a>
                                 </div>
                             </td>
-                            <?php endforeach ?>
+                            
                         </tr>
                     </tbody>
                 </table>

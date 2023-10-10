@@ -43,14 +43,16 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //kategory
     $routes->get('/admin/kategori/', 'Admin\KategoryController::index');
     $routes->get('/admin/kategori/create/', 'Admin\KategoryController::create');
-    $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');
-
-    //Perihal UI-----------------------------------------------------------------------------------
-    $routes->get('admin/tambahkategory','Admin\KategoryController::tambahkategory');
-    $routes->get('admin/editkategory','Admin\KategoryController::editkategory');
+    $routes->get('/admin/kategori/edit/(:segment)', 'Admin\KategoryController::edit/$1');
+    $routes->post('/admin/kategori/save', 'Admin\KategoryController::save');
+    $routes->post('/admin/kategori/update/(:segment)', 'Admin\KategoryController::update/$1');
+    $routes->post('/admin/kategori/delete/(:segment)', 'Admin\KategoryController::delete/$1');
 
     
     //Perihal
+    
+    $routes->get('/admin/perihal/listperihal', 'Admin\PerihalController::view');
+
     $routes->get('/admin/perihal/(:segment)', 'Admin\PerihalController::index/$1');
     $routes->get('/admin/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
     $routes->post('admin/perihal/save', 'Admin\PerihalController::save');
@@ -59,9 +61,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('admin/tambahperihal','Admin\PerihalController::tambahperihal');
     $routes->get('admin/editperihal','Admin\PerihalController::editperihal');
     
-
-
+    
      //Sub Perihal
+
+     
+     $routes->get('/admin/subperihal/listsubperihal', 'Admin\SubPerihalController::view');
+
     $routes->get('/admin/subperihal/(:segment)', 'Admin\SubPerihalController::index/$1');
     $routes->get('/admin/subperihal/create/(:segment)', 'Admin\SubPerihalController::create/$1');
     $routes->post('admin/subperihal/save', 'Admin\SubPerihalController::save');
@@ -72,6 +77,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     
     
     //Detail Sub Perihal
+
+   
+    $routes->get('/admin/detail/listdetail', 'Admin\DetailSubPerihalController::view');
+
     $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
