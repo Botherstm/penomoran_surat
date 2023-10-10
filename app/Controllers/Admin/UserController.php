@@ -43,5 +43,15 @@ class UserController extends BaseController
             'bidangs' => $bidangs,
         ]);
     }
+
+    public function update($slug)
+    {
+
+        $users = $this->UserModel->getBySlug($slug);
+        return view('admin/users/edituser', [
+            'active' => 'user',
+            'users' => $users,
+        ]);
+    }
     
 }

@@ -72,8 +72,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class=" card-body table-responsive p-10">
                 <table class="table table-bordered table-hover text-nowrap">
                     <thead>
@@ -102,9 +100,12 @@
                             <td>
 
                                 <div class="btn-group ">
-                                    <a class="btnr" href="<?php echo base_url('admin/users/create') ?>">
-                                        <button type="button" class="btn btn-block btn-warning "> <i
-                                                class=" fas fa-pen"></i></button>
+                                    <!-- update -->
+                                    <a class="btnr"
+                                        href="<?php echo base_url() ?>admin/users/update/<?= $user['slug']; ?>">
+                                        <button type="button" class="btn btn-block btn-warning ">
+                                            <i class=" fas fa-pen"></i>
+                                        </button>
                                     </a>
                                     <a class="btnr" href="#">
                                         <button type="button" class="btn btn-block btn-danger"><i
