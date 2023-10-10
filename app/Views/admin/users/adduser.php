@@ -9,9 +9,14 @@
     padding-bottom: 70px;
     justify-content: space-between;
 }
+
+.halpad {
+    padding: 30px 50px 10px 50px;
+}
 </style>
 
-<div class="content-wrapper">
+
+<div class="content-wrapper halpad">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
@@ -44,8 +49,7 @@
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                <small id="exampleInputPassword1" class="form-text text-muted">Pastikan password bisa diingat karena
-                    akan ter-Encrypt.</small>
+                
             </div>
 
             <div class="form-group">

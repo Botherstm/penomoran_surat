@@ -102,7 +102,7 @@
                             <td>
 
                                 <div class="btn-group ">
-                                    <a class="btnr" href="#">
+                                    <a class="btnr" href="<?php echo base_url('admin/users/create') ?>">
                                         <button type="button" class="btn btn-block btn-warning "> <i
                                                 class=" fas fa-pen"></i></button>
                                     </a>
