@@ -29,10 +29,10 @@
     </div>
     <!-- Main content -->
     <section class="content">
-        <form>
+        <form method="POST" action="<?php echo base_url() ?>admin/users/update/<?= $user['id'] ?>">
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
-                <input type="text" value="<?= $user['nip'] ?>" name="nip" class="form-control"
+                <input type="number" value="<?= $user['nip'] ?>" name="nip" class="form-control"
                     id="exampleFormControlInput1" placeholder="Masukkan NIP">
             </div>
             <div class="form-group">
@@ -41,46 +41,37 @@
                     placeholder="Masukkan NIP">
             </div>
             <div class="form-group text-center">
-                <input type="text" value="<?= $user['slug'] ?>" class="form-control" id="slug" name="slug" readonly>
+                <input type="name" hidden value="<?= $user['slug'] ?>" class="form-control" id="slug" name="slug"
+                    readonly>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Email </label>
-                <input type="email" value="<?= $user['email'] ?>" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" value="<?= $user['email'] ?>" name="email" class="form-control"
+                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlInput1">No Telp.</label>
-                <input type="number" value="<?= $user['no_hp'] ?>" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Masukan No. Telp">
+                <label for="no_telp">No Telp.</label>
+                <input type="number" value="<?= $user['no_hp'] ?>" name="no_hp" class="form-control"
+                    id="exampleFormControlInput1" placeholder="Masukan No. Telp">
             </div>
-
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Dinas</label>
-                <input type="number" value="<?= $instansi->ket_ukerja ?>" class="form-control"
-                    id="exampleFormControlInput1">
-            </div>
-
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Dinas</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
+                    <option value="<?= $instansi->id_instansi ?>"><?= $instansi->ket_ukerja ?></option>
+                    <?php foreach ($instansis->data as $dinas) : ?>
+                    <option value="<?= $dinas->id_instansi ?>"><?= $dinas->ket_ukerja ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Bidang</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
+                    <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
+                    <?php foreach ($bidangs as $bidang) : ?>
+                    <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="row jarak">

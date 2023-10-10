@@ -52,7 +52,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('admin/users') ?>" class="nav-link">
+                            <a href="<?php echo base_url('admin/users/create') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>Add User</p>
                             </a>
