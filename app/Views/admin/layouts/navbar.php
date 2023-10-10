@@ -10,7 +10,7 @@
     <span class=" brand-text font-weight-bold ">E-NOMOR</span>
 </div>
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-light navbar-teal">
+<nav class="main-header navbar navbar-expand navbar-light navbar-teal ">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">

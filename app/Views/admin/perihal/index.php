@@ -45,10 +45,9 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row jarak">
-                <div class="col-sm-6 ">
-                    <h1 class=" font-weight-bold ">List Perihal</h1>
-                    <h2 class=" font-weight-bold ">Umum</h2>
+            <div class="row mb-4">
+                <div class="col-sm-6 px-4">
+                    <h1 class="m-0 font-weight-bold ">List Perihal <?= $kategori['name']; ?></h1>
                 </div><!-- /.col -->
                 <div class="card-tools">
 
@@ -96,31 +95,23 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Perihal</th>
-                            <th>Kode Perihal</th>
-                            <th>Rincian Sub-Perihal</th>
+                            <th>Kode</th>
                             <th>Aksi</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($perihals as $perihal) : ?>
                         <tr>
-                            <td>??</td>
-                            <td>??</td>
-                            <td>??</td>
-                            <td><div>
-                                    <!-- update -->
-                                    <a href="<?php echo base_url() ?>admin/subperihal/listsubperihal">
-                        <button type="button" class="btn btn-dark">
-                            Lihat rincian sub-perihal
-                        </button>
-                    </a>
-                                </div></td>
+                            <td><?= $i++; ?></td>
+                            <td><?= $perihal['name']; ?></td>
+                            <td><?= $perihal['kode']; ?></td>
                             <td>
-
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="#">
+                                        href="<?php echo base_url() ?>admin/kategori/update/<?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>

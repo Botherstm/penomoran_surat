@@ -15,14 +15,13 @@
     text-align: center;
 }
 
-.h1{
+.h1 {
     text-align: center;
 }
 
-.content-header{
+.content-header {
     padding-bottom: 40px;
 }
-
 </style>
 
 
@@ -30,7 +29,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-        <h1 class="m-0 font-weight-bold">Tambah User</h1>
+            <h1 class="m-0 font-weight-bold">Tambah User</h1>
         </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
@@ -38,31 +37,20 @@
         <form method="POST" action="<?php echo base_url() ?>admin/users/save">
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
-
                 <input type="number" name="nip" class="form-control" id="nip" placeholder="Masukkan NIP">
-
             </div>
-
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
-
                 <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama">
             </div>
-
             <div class="form-group text-center">
                 <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
-
             </div>
-
             <div class="form-group">
                 <label for="exampleInputEmail1">Email </label>
-                
-
                 <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Enter email">
-
             </div>
-
             <div class="form-group">
                 <label for="exampleFormControlInput1">No Telp.</label>
                 <input type="number" name="no_hp" class="form-control" id="exampleFormControlInput1"
@@ -96,7 +84,7 @@
                 <button type="submit" class="btn btn-danger" style="width: 150px;">Batal</button>
                 <button type="submit" class="btn btn-success" style="width: 150px;">Konfirmasi</button>
             </div>
-            
+
         </form>
     </section>
     <!-- /.content -->

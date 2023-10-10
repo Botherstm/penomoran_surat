@@ -16,14 +16,14 @@
         <form class="">
 
             <div class="input-group justify-content-center mb-3">
-                <h2 class="mt-5 mb-5">Edit Sub Perihal</h2>                
+                <h2 class="mt-5 mb-5">Edit Perihal</h2>                
             </div>
             <div class="mb-5 m-1 ">
-                 <label for="kategori" class="form-label input-group justify-content-center">Sub Perihal</label>
+                 <label for="kategori" class="form-label input-group justify-content-center">Perihal</label>
                  <input type="text" class="form-control w-50 m-auto " id="kategori" aria-describedby="emailHelp">
             </div>
             <div class="mb-5 m-1">
-                <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Sub Perihal</label>
+                <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Perihal</label>
                 <input type="number" class="form-control w-50 m-auto" id="kodeKategori">
             </div>
 

@@ -107,4 +107,15 @@ class SubPerihalController extends BaseController
 
         return $this->response->setJSON($response);
     }
+
+
+
+    public function tambahsubperihal()
+    {
+        return view('admin/detailsubperihal/tambahsubperihal');
+    }
+    public function editsubperihal()
+    {
+        return view('admin/detailsubperihal/editsubperihal');
+    }
 }
