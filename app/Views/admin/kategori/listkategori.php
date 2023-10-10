@@ -38,7 +38,6 @@
 .halpad {
     padding: 30px 50px 10px 50px;
 }
-
 </style>
 
 <div class="halpad content-wrapper">
@@ -59,7 +58,7 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="<?php echo base_url('admin/kategori/addkategori') ?>">
+                    <a href="<?php echo base_url('admin/kategori/create') ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -91,24 +90,28 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($kategoris as $kategori) : ?>
                         <tr>
-                            <td>??</td>
-                            <td>??</td>
-                            <td>??</td>
-                            <td><div>
+
+                            <td><?= $i++; ?></td>
+                            <td><?= $kategori['name']; ?></td>
+                            <td><?= $kategori['kode']; ?></td>
+                            <td>
+                                <div>
                                     <!-- update -->
                                     <a href="<?php echo base_url('admin/users/create') ?>">
-                        <button type="button" class="btn btn-dark">
-                            Lihat rincian perihal
-                        </button>
-                    </a>
-                                </div></td>
+                                        <button type="button" class="btn btn-dark">
+                                            Lihat rincian perihal
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
                             <td>
 
                                 <div class="btn-group ">
                                     <!-- update -->
-                                    <a class="btnr"
-                                        href="#">
+                                    <a class="btnr" href="#">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
@@ -119,8 +122,9 @@
                                     </a>
                                 </div>
                             </td>
-                            
+
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

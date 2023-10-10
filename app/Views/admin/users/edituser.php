@@ -11,7 +11,8 @@
 }
 
 .halpad {
-    padding: 30px 50px 10px 50px;
+    padding: 30px 300px 10px 300px;
+    text-align: center;
 }
 </style>
 

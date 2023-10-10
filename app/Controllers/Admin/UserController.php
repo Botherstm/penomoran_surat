@@ -151,7 +151,7 @@ class UserController extends BaseController
         // Cari data album berdasarkan ID
         $data = $this->UserModel->getBySlug($slug);
         $user = $this->UserModel->find($data['id']);
-        dd($user);
+        // dd($user);
         if ($user) {
           $this->UserModel->delete($data['id']);
             return redirect()->to('admin/users')->with('success', 'data deleted successfully.');
