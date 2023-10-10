@@ -109,7 +109,7 @@
                             <td>??</td>
                             <td><div>
                                     <!-- update -->
-                                    <a href="<?php echo base_url() ?>admin/detail/listdetail">
+                                    <a href="<?php echo base_url() ?>admin/detailsubperihal/listdetailsubperihal">
                         <button type="button" class="btn btn-dark">
                             Lihat rincian detail
                         </button>

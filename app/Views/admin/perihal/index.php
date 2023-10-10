@@ -44,8 +44,8 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6 px-4">
+            <div class="row jarak">
+                <div>
                     <h1 class="m-0 font-weight-bold ">List Perihal <?= $kategori['name']; ?></h1>
                 </div><!-- /.col -->
                 <div class="card-tools">
