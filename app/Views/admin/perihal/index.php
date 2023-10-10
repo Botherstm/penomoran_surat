@@ -119,7 +119,7 @@
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/kategori/update/<?= $kategori['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/perihal/edit/<?= $perihal['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
