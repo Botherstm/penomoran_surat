@@ -20,19 +20,18 @@ class KategoryController extends BaseController
 
     public function index() 
     {
-        if (session()->get('level') != 2 && session()->get('level') != 3) {
-            // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
-            throw new \CodeIgniter\Exceptions\PageNotFoundException();
-        }
+        // if (session()->get('level') != 2 && session()->get('level') != 3) {
+        //     // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+        //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        // }
         $data = $this->Kategory->getAll();
-
-        return view('admin/kategory/index', [
+        // dd($data);
+        return view('admin/kategori/listkategori', [
             'active' => 'kategory',
             'kategoris' => $data,
 
         ]);
     }
-
     
     public function create()
     {

@@ -34,11 +34,15 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //user
     $routes->get('/admin/users', 'Admin\UserController::index');
     $routes->get('/admin/users/create', 'Admin\UserController::create');
-    $routes->post('/admin/users/save', 'RegisterController::save');
+    $routes->get('/admin/users/edit/(:segment)', 'Admin\UserController::edit/$1');
+    $routes->post('/admin/users/save', 'Admin\UserController::save');
+    $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
+    $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
+
 
     //kategory
-    $routes->get('/admin/kategory/', 'Admin\KategoryController::index');
-    $routes->get('/admin/kategory/create/', 'Admin\KategoryController::create');
+    $routes->get('/admin/kategori/', 'Admin\KategoryController::index');
+    $routes->get('/admin/kategori/create/', 'Admin\KategoryController::create');
     $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');
 
     //Perihal UI-----------------------------------------------------------------------------------

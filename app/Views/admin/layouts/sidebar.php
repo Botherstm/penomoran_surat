@@ -52,7 +52,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('admin/users') ?>" class="nav-link">
+                            <a href="<?php echo base_url('admin/users/create') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>Add User</p>
                             </a>
@@ -102,13 +102,13 @@
                     <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Perihal
+                            Kategori
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('admin/tambahperihal') ?>" class="nav-link">
+                            <a href="<?php echo base_url() ?>admin/kategori" class="nav-link">
                                 <i class="nav-icon fas fa-pen-nib"></i>
                                 <p>Tambah Perihal</p>
                             </a>
@@ -195,6 +195,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
+                        <i class="bi bi-envelope"></i>
                         <i class="fa-solid fa-wrench"></i>
                         <p>
                             Pengaturan

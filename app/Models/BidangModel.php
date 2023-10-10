@@ -28,6 +28,10 @@ class BidangModel extends Model
         return $this->findAll();
     }
 
+    public function getById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
     public function getAllByInstansiId($instansi_id)
     {
         return $this->where('instansi_id', $instansi_id)->findAll();

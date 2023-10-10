@@ -27,8 +27,6 @@ class BidangController extends BaseController
         throw new \CodeIgniter\Exceptions\PageNotFoundException();
     }
         // dd($instansi_id);
-
-
         $bidangs = $this->bidang->getAllByInstansiId($instansi_id);
 
 
