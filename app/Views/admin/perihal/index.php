@@ -46,7 +46,8 @@
         <div class="container-fluid ">
             <div class="row jarak">
                 <div>
-                    <h1 class="m-0 font-weight-bold ">List Perihal <?= $kategori['name']; ?></h1>
+                    <h1 class="m-0 font-weight-bold ">List Perihal </h1>
+                    <h1 class="m-0 font-weight-bold "> <?= $kategori['name']; ?></h1>
                 </div><!-- /.col -->
                 <div class="card-tools">
 
