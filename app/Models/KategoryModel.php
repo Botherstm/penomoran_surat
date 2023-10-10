@@ -8,7 +8,7 @@ class KategoryModel extends Model
 {
     protected $table = 'kategori';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','bidang_id', 'name','kode','create_at','update_at'];
+    protected $allowedFields = ['id','bidang_id','slug', 'name','kode','create_at','update_at'];
    
     // public function saveToken($email, $token)
     // {
@@ -31,6 +31,11 @@ class KategoryModel extends Model
     public function getAll(){
         
         return $this->findAll();
+    }
+
+    public function getBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
     }
 
     //ambil satu

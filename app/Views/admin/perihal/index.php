@@ -1,9 +1,6 @@
 <?= $this->extend('admin/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
-<<<<<<< HEAD
-
-=======
 <style>
 .table td {
     text-align: center;
@@ -35,21 +32,16 @@
 
 .jarak {
     justify-content: space-between;
-
-}
-
-.halpad {
-    padding: 30px 50px 10px 50px;
 }
 </style>
 
-<div class="halpad content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
             <div class="row mb-4">
-                <div class="col-sm-6 ">
-                    <h1 class=" font-weight-bold ">List Kategori</h1>
+                <div class="col-sm-6 px-4">
+                    <h1 class="m-0 font-weight-bold ">List Perihal <?= $kategori['name']; ?></h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -61,7 +53,7 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="<?php echo base_url('admin/kategori/create') ?>">
+                    <a href="<?php echo base_url('admin/users/create') ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -85,36 +77,23 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Kategori</th>
-                            <th>Kode Kategori</th>
-                            <th>Rincian Perihal</th>
+                            <th>Nama Perihal</th>
+                            <th>Kode</th>
                             <th>Aksi</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($kategoris as $kategori) : ?>
+                        <?php foreach ($perihals as $perihal) : ?>
                         <tr>
-
                             <td><?= $i++; ?></td>
-                            <td><?= $kategori['name']; ?></td>
-                            <td><?= $kategori['kode']; ?></td>
+                            <td><?= $perihal['name']; ?></td>
+                            <td><?= $perihal['kode']; ?></td>
                             <td>
-                                <div>
-                                    <!-- update -->
-                                    <a href="<?php echo base_url('admin/users/create') ?>">
-                                        <button type="button" class="btn btn-dark">
-                                            Lihat rincian perihal
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
-
                                 <div class="btn-group ">
                                     <!-- update -->
-                                    <a class="btnr" href="#">
+                                    <a class="btnr"
+                                        href="<?php echo base_url() ?>admin/kategori/update/<?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
@@ -125,9 +104,8 @@
                                     </a>
                                 </div>
                             </td>
-
+                            <?php endforeach ?>
                         </tr>
-                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -138,4 +116,3 @@
 
 
 <?= $this->endSection('content'); ?>
->>>>>>> 223b6c98e3604dc3580bb3744013b684c673daf1
