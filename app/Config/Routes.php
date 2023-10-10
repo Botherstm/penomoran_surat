@@ -79,7 +79,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //Detail Sub Perihal
 
    
-    $routes->get('/admin/detail/listdetail', 'Admin\DetailSubPerihalController::view');
+    $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPerihalController::view');
 
     $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
