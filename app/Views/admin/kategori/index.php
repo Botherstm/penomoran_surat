@@ -79,29 +79,32 @@
                 </div>
             </div>
             <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
+                <table class="table table-bordered table-hover text-nowrap table-light">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>Nama Kategori</th>
                             <th>Kode Kategori</th>
+                            <th>Data Perihal</th>
                             <th>Rincian Perihal</th>
                             <th>Aksi</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($kategoris as $kategori) : ?>
+                        <?php foreach ($data as $item) : ?>
                         <tr>
-
                             <td><?= $i++; ?></td>
-                            <td><?= $kategori['name']; ?></td>
-                            <td><?= $kategori['kode']; ?></td>
+                            <td><?= $item['kategori']['name']; ?></td>
+                            <td><?= $item['kategori']['kode']; ?></td>
+                            <td>
+                                <?php foreach ($item['perihals'] as $index => $perihal) : ?>
+                                <?= $index + 1; ?>. <?= $perihal['name']; ?><br>
+                                <?php endforeach; ?>
+                            </td>
                             <td>
                                 <div>
-                                    <!-- update -->
-                                    <a href="<?php echo base_url() ?>admin/perihal/<?= $kategori['slug']; ?>">
+                                    <a href="<?php echo base_url() ?>admin/perihal/<?= $item['kategori']['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat rincian perihal
                                         </button>
@@ -109,27 +112,26 @@
                                 </div>
                             </td>
                             <td>
-
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/kategori/edit/<?= $kategori['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/kategori/edit/<?= $item['kategori']['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
                                     <form id="deleteForm"
-                                        action="<?php echo base_url() ?>admin/kategori/delete/<?= $kategori['slug']; ?>"
+                                        action="<?php echo base_url() ?>admin/kategori/delete/<?= $item['kategori']['slug']; ?>"
                                         method="POST">
                                         <?= csrf_field(); ?>
-                                        <button type="button" onclick="confirmDelete('<?= $kategori['slug']; ?>')"
+                                        <button type="button"
+                                            onclick="confirmDelete('<?= $item['kategori']['slug']; ?>')"
                                             class="btn btn-block btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </div>
                             </td>
-
                         </tr>
                         <?php endforeach ?>
                     </tbody>

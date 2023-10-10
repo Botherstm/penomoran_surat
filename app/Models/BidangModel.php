@@ -37,23 +37,5 @@ class BidangModel extends Model
         return $this->where('instansi_id', $instansi_id)->findAll();
     }   
 
-    public function getNamaBidangById($bidangId)
-    {
-        // Mengambil nama bidang berdasarkan bidang_id
-        $query = $this->db->table($this->table)
-            ->select('name')
-            ->where('id', $bidangId)
-            ->get();
-
-        $result = $query->getRow();
-
-        if ($result) {
-            return $result->name;
-        } else {
-            return null;
-        }
-    }
-
-    
 
 }

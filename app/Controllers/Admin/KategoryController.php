@@ -8,30 +8,36 @@ use App\Models\DinasModel;
 use App\Models\KategoryModel;
 use setasign\Fpdi\Fpdi;
 use App\Controllers\BaseController;
+use App\Models\PerihalModel;
 
 class KategoryController extends BaseController
 {
     protected $Kategory;
-    protected $bidang;
+    protected $perihal;
     public function __construct(){
         $this->Kategory = new KategoryModel();
-        $this->bidang = new BidangModel();
+        $this->perihal = new PerihalModel();
     }
 
     public function index() 
-    {
-        // if (session()->get('level') != 2 && session()->get('level') != 3) {
-        //     // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
-        //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
-        // }
-        $data = $this->Kategory->getAll();
-        // dd($data);
-        return view('admin/kategori/index', [
-            'active' => 'kategory',
-            'kategoris' => $data,
+{
+    $kategoris = $this->Kategory->getAll();
+    $data = [];
 
-        ]);
+    foreach ($kategoris as $kategori) {
+        $kategoriId = $kategori['id'];
+        $perihals = $this->perihal->getByKategori_id($kategoriId);
+        $data[] = [
+            'kategori' => $kategori,
+            'perihals' => $perihals,
+        ];
     }
+
+    return view('admin/kategori/index', [
+        'active' => 'kategory',
+        'data' => $data,
+    ]);
+}
     
     public function create()
     {
