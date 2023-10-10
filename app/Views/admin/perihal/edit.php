@@ -3,42 +3,50 @@
 <?= $this->section('content'); ?>
 
 <style>
-    .row {
-        padding-left: 150px;
-        padding-right: 150px;
-    }
-
+.row {
+    padding-left: 150px;
+    padding-right: 150px;
+}
 </style>
 
 <div class="content-wrapper">
-    
+    <form action="<?php echo base_url() ?>admin/perihal/update/<?= $perihal['id']; ?>" method="POST" class="">
+        <div class="input-group justify-content-center mb-3">
+            <h2 class="mt-5 mb-5">Edit Perihal</h2>
+        </div>
+        <div class="mb-5 m-1 ">
+            <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+            <input type="text" class="form-control w-50 m-auto " value="<?= $perihal['name']; ?>" name="name" id="name"
+                aria-describedby="emailHelp">
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden class="form-control" id="kategori_id" name="kategori_id"
+                value="<?= $kategori['id']; ?>" readonly>
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug"
+                readonly>
+        </div>
+        <div class="mb-5 m-1">
+            <label for="kodePerihal" class="form-label input-group justify-content-center">Kode Perihal</label>
+            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control w-50 m-auto"
+                id="kodePerihal">
+        </div>
 
-        <form class="">
-
-            <div class="input-group justify-content-center mb-3">
-                <h2 class="mt-5 mb-5">Edit Perihal</h2>                
-            </div>
-            <div class="mb-5 m-1 ">
-                 <label for="kategori" class="form-label input-group justify-content-center">Perihal</label>
-                 <input type="text" class="form-control w-50 m-auto " id="kategori" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-5 m-1">
-                <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Perihal</label>
-                <input type="number" class="form-control w-50 m-auto" id="kodeKategori">
-            </div>
-
-            <div class="row text-center">
+        <div class="row text-center">
             <div class="col-md-6">
-                <button type="submit" class="btn btn-danger" style="width: 25%;">Batal</button>
+                <a href="<?php echo base_url() ?>admin/perihal/<?= $kategori['slug']; ?>">
+                    <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                </a>
             </div>
             <div class="col-md-6">
                 <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
             </div>
         </div>
 
-        </form>
+    </form>
 
-      
+
 </div>
 
 

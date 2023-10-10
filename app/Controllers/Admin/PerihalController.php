@@ -79,6 +79,70 @@ class PerihalController extends BaseController
         }
     }
 
+
+    public function edit($slug)
+    {
+        $perihal = $this->perihal->getBySlug($slug);
+        $kategori = $this->Kategory->getById($perihal['kategori_id']);
+        // dd($kategori);
+        return view('admin/perihal/edit', [
+            'active' => 'user',
+            'perihal' => $perihal,
+            'kategori' => $kategori,
+        ]);
+    }
+
+
+    public function update($id)
+    {
+        // Validasi input form
+        $rules = [
+            'kategori_id' => 'required',
+            'name' => 'required',
+            'kode' => 'required',
+            'slug' => 'required',
+        ];
+
+        $validation = \Config\Services::validation(); // Mendapatkan instance validasi
+
+        if ($this->validate($rules)) {
+            $kategori = $this->request->getPost('kategori_id');
+            $data = $this->Kategory->getById($kategori);
+            // Data pengguna yang akan disimpan
+            $perihalData = [
+                'kategori_id' => $kategori,
+                'name' => $this->request->getPost('name'),
+                'kode' => $this->request->getPost('kode'),
+                'slug' => $this->request->getPost('slug'),
+            ];
+            // dd($perihalData);
+            // Simpan data pengguna ke dalam database
+            $this->perihal->update($id, $perihalData);
+
+            // Redirect ke halaman yang sesuai dengan pesan sukses
+            return redirect()->to('/admin/perihal/'. $data['slug'])->with('success', 'Data berhasil Di Update !');
+        } else {
+            // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
+            return redirect()->back()
+                ->withInput()
+                ->with('validationErrors', $validation->getErrors());
+        }
+    }
+
+    public function delete($slug)
+    {
+        // Cari data album berdasarkan ID
+        $data = $this->Kategory->getBySlug($slug);
+        $kategori = $this->Kategory->find($data['id']);
+        // dd($kategori);
+        if ($kategori) {
+          $this->Kategory->delete($data['id']);
+            return redirect()->to('admin/kategori')->with('success', 'data deleted successfully.');
+        } else {
+            return redirect()->to('admin/kategori')->with('error', 'data not found.');
+        }
+    }
+
     public function tambahperihal()
     {
         return view('admin/perihal/tambahperihal');
