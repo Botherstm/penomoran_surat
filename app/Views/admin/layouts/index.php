@@ -14,6 +14,10 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet"
         href="<?php echo base_url() ?>adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+        <!-- kode tambahan -->
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css')?>">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/dist/css/adminlte.min.css">
 </head>
@@ -95,7 +99,6 @@
     <script src="<?php echo base_url() ?>adminlte/plugins/jquery-mapael/maps/usa_states.min.js"></script>
     <!-- ChartJS -->
     <script src="<?php echo base_url() ?>adminlte/plugins/chart.js/Chart.min.js"></script>
-
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 </body>
 
