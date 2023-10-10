@@ -96,4 +96,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
     //dashboard
     $routes->get('/dashboard', 'DashboardController::index');
+
+
+
+    // USER ROUTES----------------------------------------------
+    
+    //user dashboard
+    $routes->get('/user/dashboard/', 'User\UserController::index');
+   
 });
