@@ -6,8 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
-    // Rute untuk halaman beranda dan unggahan PDF
-
     //generate
     $routes->get('/', 'GenerateController::index');
     $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
@@ -34,9 +32,9 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 
     //user
-    $routes->get('/admin/user', 'Admin\UserController::index');
-    $routes->get('/admin/user/register', 'Admin\UserController::create');
-    $routes->post('/admin/user/save', 'RegisterController::save');
+    $routes->get('/admin/users', 'Admin\UserController::index');
+    $routes->get('/admin/users/create', 'Admin\UserController::create');
+    $routes->post('/admin/users/save', 'RegisterController::save');
 
     //kategory
     $routes->get('/admin/kategory/', 'Admin\KategoryController::index');

@@ -27,7 +27,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="/" class="nav-link">
+                    <a href="<?php echo base_url() ?>admin" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Beranda
@@ -52,7 +52,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/addusers" class="nav-link">
+                            <a href="<?php echo base_url('admin/users') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>Add User</p>
                             </a>
@@ -60,7 +60,7 @@
                     </ul>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <a href="<?php echo base_url('admin/user') ?>" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Dinas
@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url() ?>/" class="nav-link">
+                    <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Perihal
@@ -96,7 +96,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-gear"></i>
+                        <i class="fa-solid fa-wrench"></i>
                         <p>
                             Pengaturan
                         </p>

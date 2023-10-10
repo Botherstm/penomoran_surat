@@ -34,10 +34,9 @@ class UserController extends BaseController
     public function create()
     {
         $dinass = $this->dinas->get_data();
-        // dd($dinass);
         $bidangs = $this->bidangs->findAll();
         $users = $this->UserModel->getAll();
-        return view('admin/users/create', [
+        return view('admin/users/adduser', [
             'active' => 'user',
             'users' => $users,
             'dinass' => json_decode($dinass),
