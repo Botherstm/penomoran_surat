@@ -18,6 +18,10 @@ class PerihalController extends BaseController
     }
     public function index($kategori_id)
     {
+           if (session()->get('level') != 2 && session()->get('level') != 3) {
+        // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    }
         $data = $this->perihal->getByKategori_id($kategori_id);
         $kat = $this->perihal->getOneByKategoriId($kategori_id);
     // dd($kat);

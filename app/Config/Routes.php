@@ -6,8 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
-    // Rute untuk halaman beranda dan unggahan PDF
-
     //generate
     $routes->get('/', 'GenerateController::index');
     $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
@@ -34,15 +32,17 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 
     //user
-    $routes->get('/admin/user', 'Admin\UserController::index');
-    $routes->get('/admin/user/register', 'Admin\UserController::create');
-    $routes->post('/admin/user/save', 'RegisterController::save');
+    $routes->get('/admin/users', 'Admin\UserController::index');
+    $routes->get('/admin/users/create', 'Admin\UserController::create');
+    $routes->get('/admin/users/edit/(:segment)', 'Admin\UserController::edit/$1');
+    $routes->post('/admin/users/save', 'Admin\UserController::save');
+    $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
+    $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
+
 
     //kategory
     $routes->get('/admin/kategory/', 'Admin\KategoryController::index');
-    $routes->get('/admin/kategory/create/(:segment)', 'Admin\KategoryController::create/$1');
-    $routes->get('/admin/kategory/created/', 'Admin\KategoryController::created/$1');
-    $routes->get('/admin/kategory/(:segment)', 'Admin\KategoryController::index/$1');
+    $routes->get('/admin/kategory/create/', 'Admin\KategoryController::create');
     $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');
 
     

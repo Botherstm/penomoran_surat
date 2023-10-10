@@ -1,89 +1,140 @@
-<?= $this->extend('admin/layouts/index'); ?>
+<?= $this->extend('admin/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
 <style>
-.table-container {
-    animation: fadeInUp 1s ease;
+.table td {
+    text-align: center;
+    background-color: #C5E9DE;
+
 }
 
-.table>tbody>tr>* {
-    vertical-align: middle;
+
+.table>thead>tr>* {
+    background-color: #20c997;
+    text-align: center;
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.btnadd {
+
+    padding-left: 17px;
+}
+
+.btnr {
+
+    padding-inline-end: 15%;
+
+}
+
+.icon-jarak {
+    padding-right: 10px;
+}
+
+.jarak {
+    justify-content: space-between;
 }
 </style>
-<div class="col-sm-6">
-    <h1 class="m-0">Data Users</h1>
-</div>
-<div class="table-container">
-    <div class="py-2 px-2">
-        <a href="<?php echo base_url() ?>admin/user/register">
-            <div class="btn btn-dark">Tambah Data</div>
-        </a>
-    </div>
-    <?php if (!empty($users)) : ?>
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th class="text-center">No</th>
-                <th class="text-center">Nama</th>
-                <th class="text-center">Email</th>
-                <th class="text-center">Dinas</th>
-                <th class="text-center">bidang</th>
-                <th class="text-center">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1 ?>
-            <?php foreach ($users as $user) : ?>
-            <tr class="text-center">
-                <td><?= $i++; ?></td>
-                <td><?= $user['name'] ?></td>
-                <td><?= $user['email'] ?></td>
 
-                <td>
-                    <div class="btn-group">
-                        <a href="/admin/pages/user/detail/<?= $user['name']; ?>">
-                            <button type="button" class="btn btn-outline-success">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                        </a>
-                        <a href="/admin/pages/user/edit/<?= $user['name']; ?>">
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </a>
-                        <form id="deleteForm<?= $user['id']; ?>" action="/admin/pages/user/delete/<?= $user['id']; ?>"
-                            method="post">
-                            <?= csrf_field(); ?>
-                            <button type="button" class="btn btn-outline-danger"
-                                onclick="confirmDelete(<?= $user['id']; ?>)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </form>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid ">
+            <div class="row mb-4">
+                <div class="col-sm-6 px-4">
+                    <h1 class="m-0 font-weight-bold ">List Users</h1>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row jarak ">
+            <div class="card-tools">
+
+                <div class="btnadd">
+                    <a href="<?php echo base_url('admin/users/create') ?>">
+                        <button type="button" class="btn btn-success">
+                            <i class="icon-jarak fas fa-plus"></i>
+                            Tambah
+                        </button>
+                    </a>
+
+                </div>
+            </div>
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <?php else : ?>
-    <h3>belum ada data</h3>
-    <?php endif ?>
+                </div>
+            </div>
+            <div class=" card-body table-responsive p-10">
+                <table class="table table-bordered table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>NIP</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>No.Telp</th>
+                            <th>Dinas</th>
+                            <th>Bidang</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($users as $user) : ?>
+                        <tr>
+                            <td><?= $i++; ?></td>
+                            <td><?= $user['nip']; ?></td>
+                            <td><?= $user['name']; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><?= $user['no_hp']; ?></td>
+                            <td><?= $user['instansi_id']; ?></td>
+                            <td><?= $user['bidang_id']; ?></td>
+                            <td>
+
+                                <div class="btn-group ">
+                                    <!-- update -->
+                                    <a class="btnr"
+                                        href="<?php echo base_url() ?>admin/users/edit/<?= $user['slug']; ?>">
+                                        <button type="button" class="btn btn-block btn-warning ">
+                                            <i class=" fas fa-pen"></i>
+                                        </button>
+                                    </a>
+
+                                    <form id="deleteForm"
+                                        action="<?php echo base_url() ?>admin/users/delete/<?= $user['slug']; ?>"
+                                        method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button type="button" onclick="confirmDelete('<?= $user['slug']; ?>')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                            <?php endforeach ?>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
 </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
-function confirmDelete(albumId) {
+// function showAlert() {
+//     Swal.fire('Ini adalah pesan SweetAlert2!');
+// }
+
+function confirmDelete(slug) {
     Swal.fire({
         title: 'Apa Kamu yakin?',
         text: 'Jika dihapus data tidak bisa di kembalikan.',
@@ -95,7 +146,10 @@ function confirmDelete(albumId) {
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('deleteForm' + albumId).submit();
+            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+            const form = document.getElementById('deleteForm');
+            form.action = "<?php echo base_url() ?>admin/users/delete/" + slug;
+            form.submit();
         }
     });
 }
@@ -111,5 +165,4 @@ Swal.fire({
 });
 <?php endif; ?>
 </script>
-
 <?= $this->endSection('content'); ?>

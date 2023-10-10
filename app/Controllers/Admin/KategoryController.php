@@ -18,16 +18,20 @@ class KategoryController extends BaseController
         $this->bidang = new BidangModel();
     }
 
-    public function index()
-{
-    $data = $this->Kategory->getAll();
+    public function index() 
+    {
+        if (session()->get('level') != 2 && session()->get('level') != 3) {
+            // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
+        $data = $this->Kategory->getAll();
 
-    return view('admin/kategory/index', [
-        'active' => 'kategory',
-        'kategoris' => $data,
+        return view('admin/kategory/index', [
+            'active' => 'kategory',
+            'kategoris' => $data,
 
-    ]);
-}
+        ]);
+    }
 
     
     public function create()
@@ -44,13 +48,11 @@ class KategoryController extends BaseController
     {
         // Validasi input data
         $rules = [
-            'bidang_id' => 'required',
             'name' => 'required',
             'kode' => 'required',
         ];
 
         if ($this->validate($rules)) {
-            $bidang_id = $this->request->getPost('bidang_id');
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             // Data valid, simpan ke dalam database
@@ -59,13 +61,12 @@ class KategoryController extends BaseController
             $data = [
                 'id' => $uuidString,
                 'name' => $name,
-                'bidang_id' => $bidang_id,
                 'kode' => $kode,
             ];
     // dd($data);
             $this->Kategory->insert($data);
 
-            return redirect()->to('/admin/kategory/' . $bidang_id)->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to('/admin/kategory')->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->withInput()->with('validation', $this->validator);
