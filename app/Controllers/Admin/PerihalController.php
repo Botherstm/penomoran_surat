@@ -73,4 +73,14 @@ class PerihalController extends BaseController
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
     }
+
+    public function tambahperihal()
+    {
+        return view('admin/perihal/tambahperihal');
+    }
+    
+    public function editperihal()
+    {
+        return view('admin/perihal/editperihal');
+    }
 }

@@ -41,22 +41,42 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/admin/kategory/create/', 'Admin\KategoryController::create');
     $routes->post('/admin/kategory/save', 'Admin\KategoryController::save');
 
+    //Perihal UI-----------------------------------------------------------------------------------
+    $routes->get('admin/tambahkategory','Admin\KategoryController::tambahkategory');
+    $routes->get('admin/editkategory','Admin\KategoryController::editkategory');
+
     
     //Perihal
     $routes->get('/admin/perihal/(:segment)', 'Admin\PerihalController::index/$1');
     $routes->get('/admin/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
     $routes->post('admin/perihal/save', 'Admin\PerihalController::save');
 
+    //Perihal UI-----------------------------------------------------------------------------------
+    $routes->get('admin/tambahperihal','Admin\PerihalController::tambahperihal');
+    $routes->get('admin/editperihal','Admin\PerihalController::editperihal');
+    
+
+
      //Sub Perihal
     $routes->get('/admin/subperihal/(:segment)', 'Admin\SubPerihalController::index/$1');
     $routes->get('/admin/subperihal/create/(:segment)', 'Admin\SubPerihalController::create/$1');
     $routes->post('admin/subperihal/save', 'Admin\SubPerihalController::save');
+
+    //Perihal UI-----------------------------------------------------------------------------------
+    $routes->get('admin/tambahsubperihal','Admin\SubPerihalController::tambahsubperihal');
+    $routes->get('admin/editsubperihal','Admin\SubPerihalController::editsubperihal'); 
+    
     
     //Detail Sub Perihal
     $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
     
+    //Datail Sub Perihal UI-----------------------------------------------------------------------------------
+    $routes->get('admin/tambahdetailsubperihal','Admin\DetailSubPerihalController::tambahdetailsubperihal');
+    $routes->get('admin/editdetailsubperihal','Admin\DetailSubPerihalController::editdetailsubperihal'); 
+
+
     //auth
     $routes->get('/login', 'LoginController::index');
     $routes->post('/login', 'LoginController::login');

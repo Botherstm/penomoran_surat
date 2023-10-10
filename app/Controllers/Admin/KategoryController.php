@@ -72,4 +72,14 @@ class KategoryController extends BaseController
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
     }
+
+
+    public function tambahkategory()
+    {
+        return view('admin/kategori/tambahkategori');
+    }
+    public function editkategory()
+    {
+        return view('admin/kategori/editkategori');
+    }
 }
