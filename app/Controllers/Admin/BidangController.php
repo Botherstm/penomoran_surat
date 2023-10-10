@@ -50,6 +50,13 @@ class BidangController extends BaseController
         ]);
     }
 
+    public function view()
+    {
+        return view('admin/dinas/listbidang', [
+            'active' => 'bidang',
+        ]);
+    }
+
     
 
     public function save()

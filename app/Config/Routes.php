@@ -20,12 +20,19 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
     //dinas
+
+    
+    $routes->get('/admin/dinas/listdinas', 'Admin\DinasController::view');
+
     $routes->get('/admin/dinas', 'Admin\DinasController::index');
     $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
     $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
 
 
     //bidang
+
+    $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
+
     $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
     // $routes->get('/admin/bidang', 'Admin\BidangController::index');
     $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
