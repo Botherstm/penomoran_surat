@@ -80,21 +80,110 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('admin/kategori') ?>" class="nav-link">
-                                <i class="nav-icon fas fa-pen-nib"></i>
-                                <p>List Kategori</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('admin/kategori/create') ?>" class="nav-link">
+                            <a href="<?php echo base_url('admin/tambahkategory') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-pen-nib"></i>
                                 <p>Tambah Kategori</p>
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('admin/editkategory') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Edit Kategori</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
+                <!-- Develop kategor, PERIHAL, sub perihal, detail  -->
+                <li class="nav-item ">
+                    <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Kategori
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() ?>admin/kategori" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Tambah Perihal</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('admin/editperihal') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Edit Perihal</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <!-- Develop kategor, perihal, SUB PERIHAL, detail  -->
+                <li class="nav-item ">
+                    <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Sub Perihal
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('admin/tambahsubperihal') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Tambah Sub Perihal</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('admin/editsubperihal') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Edit Sub Perihal</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- Develop kategor, perihal, sub perihal, DETAIL SUB PERIHAL  -->
+                <li class="nav-item ">
+                    <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Detail Sub Perihal
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('admin/tambahdetailsubperihal') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Tambah Detail Sub Perihal</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('admin/editdetailsubperihal') ?>" class="nav-link">
+                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <p>Edit Detail Sub Perihal</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
 
                 <li class="nav-item ">
                     <a href="#" class="nav-link">

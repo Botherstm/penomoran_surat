@@ -29,9 +29,13 @@
         </div>
 
         <div class="row text-center">
+
             <div class="col-md-6">
-                <button type="submit" class="btn btn-danger" style="width: 25%;">Batal</button>
+                <a href="<?php echo base_url() ?>admin/kategori">
+                    <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                </a>
             </div>
+
             <div class="col-md-6">
                 <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
             </div>
