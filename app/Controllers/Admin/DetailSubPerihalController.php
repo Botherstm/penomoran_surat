@@ -37,7 +37,7 @@ class DetailSubPerihalController extends BaseController
 
     public function view()
     {
-        return view('admin/detail/listdetail', [
+        return view('admin/detailsubperihal/listdetailsubperihal', [
             'active' => 'detailsubperihal',
         ]);
     }
