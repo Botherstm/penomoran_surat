@@ -53,8 +53,13 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <button type="button" class="btn btn-success"><i class="icon-jarak fas fa-plus"></i>Tambah </button>
-                    <br>
+                    <a href="<?php echo base_url('admin/users/create') ?>">
+                        <button type="button" class="btn btn-success">
+                            <i class="icon-jarak fas fa-plus"></i>
+                            Tambah
+                        </button>
+                    </a>
+
                 </div>
             </div>
             <div class="card-tools">
@@ -84,14 +89,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($users as $user) : ?>
                         <tr>
-                            <td>1</td>
-                            <td>2013239131</td>
-                            <td>John Bogler</td>
-                            <td>Johnbog@gmail.com</td>
-                            <td>088282123</td>
-                            <td>Kominfosanti</td>
-                            <td>umum</td>
+                            <td><?= $i++; ?></td>
+                            <td><?= $user['nip']; ?></td>
+                            <td><?= $user['name']; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><?= $user['no_hp']; ?></td>
+                            <td><?= $user['instansi_id']; ?></td>
+                            <td><?= $user['bidang_id']; ?></td>
                             <td>
 
                                 <div class="btn-group ">
@@ -105,6 +112,7 @@
                                     </a>
                                 </div>
                             </td>
+                            <?php endforeach ?>
                         </tr>
                     </tbody>
                 </table>
