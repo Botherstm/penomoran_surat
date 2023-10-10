@@ -97,7 +97,7 @@
                             <td>??</td>
                             <td><div>
                                     <!-- update -->
-                                    <a href="<?php echo base_url('admin/users/create') ?>">
+                                    <a href="<?php echo base_url('admin/perihal/listperihal') ?>">
                         <button type="button" class="btn btn-dark">
                             Lihat rincian perihal
                         </button>

@@ -35,6 +35,14 @@ class PerihalController extends BaseController
         
     }
 
+    public function view( )
+    {
+        return view('admin/perihal/listperihal', [
+            'active' => 'perihal',
+
+        ]);
+    }
+
     public function create($kategori_id)
     {
         return view('admin/perihal/create', [
