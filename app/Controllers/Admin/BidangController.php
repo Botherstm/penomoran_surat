@@ -22,31 +22,21 @@ class BidangController extends BaseController
     }
     public function index($instansi_id)
     {
+        if (session()->get('level') != 2 && session()->get('level') != 3) {
+        // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    }
         // dd($instansi_id);
-        if($instansi_id != null){}
-        $dinass = $this->dinas->get_data();
-        $data = json_decode($dinass);
+
+
         $bidangs = $this->bidang->getAllByInstansiId($instansi_id);
-        
-        
-        $instansiData = []; // Membuat array untuk menyimpan data instansi berdasarkan instansi_id
-        // dd($dinass);
-        $instansiMap = [];
-        foreach ($data->data as $instansi) {
-            $instansiMap[$instansi->id_instansi] = $instansi->ket_ukerja;
-        }
-        $kategories = []; // Membuat array untuk menyimpan data kategori
-    
-        foreach ($bidangs as $bidang) {
-            $kategories[$bidang['id']] = $this->kategori->getByBidangId($bidang['id']);
-        }
+
 
         return view('admin/bidang/index', [
-            'instansiMap' => $instansiMap,
+
             'bidangs' => $bidangs,
             'active' => 'bidang',
-            'instansiData' => $instansiData, // Mengirim data instansi ke tampilan
-            'kategories' => $kategories,
+  
         ]);
     }
 

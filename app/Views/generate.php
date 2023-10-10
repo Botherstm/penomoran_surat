@@ -54,8 +54,24 @@
 
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Generate Nomor Surat <?= session()->get('name'); ?></h1>
+        <div class="text-center">
+            <h3>selamat datang <?= session()->get('name'); ?> </h3>
+            <?php if( session()->get('level') == 3): ?>
+            <a href="<?php echo base_url() ?>admin" target="_blank">
+                <button class="btn btn-outline-dark">Admin</button>
+            </a>
+            <?php elseif(session()->get('level') == 2): ?>
+            <a href="<?php echo base_url() ?>admin" target="_blank">
+                <button class="btn btn-outline-dark">Instansi</button>
+            </a>
+            <?php else: ?>
+            <?php endif; ?>
+            <a href="<?php echo base_url() ?>logout">
+                <button class="btn btn-outline-danger">log out !</button>
+            </a>
+        </div>
         <form class="text-center">
+            <h1 class="text-center f">Generate Nomor Surat </h1>
             <div class="form-group">
                 <label for="bidang">BIDANG</label>
                 <div class="input-group">
@@ -156,7 +172,8 @@
 
                         // Tambahkan opsi "Perihal" berdasarkan data yang diterima
                         data.forEach(function(option) {
-                            perihalSelect.appendChild(new Option(option.name, option.kode));
+                            perihalSelect.appendChild(new Option(option.name, option
+                                .kode));
                         });
 
                         // Sembunyikan atau tampilkan elemen "perihal" select
@@ -234,7 +251,8 @@
                     .then(data => {
                         console.log(data);
                         detailsubPerihalSelect.innerHTML = '';
-                        detailsubPerihalSelect.appendChild(new Option('Pilih detail sub perihal...',
+                        detailsubPerihalSelect.appendChild(new Option(
+                            'Pilih detail sub perihal...',
                             ''));
                         data.forEach(function(option) {
                             detailsubPerihalSelect.appendChild(new Option(option.name,

@@ -14,7 +14,10 @@ class DinasController extends BaseController
     }
     public function index()
     {
-    
+    if (session()->get('level') != 2 && session()->get('level') != 3) {
+        // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    }
         $result = $this->dinas->get_data();
         // foreach ($result->data as $dinas) {
         //     $dinas[$dinas['id']] = $this->dinas->getByBidangId($dinas['id']);

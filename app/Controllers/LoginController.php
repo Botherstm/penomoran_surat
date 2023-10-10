@@ -16,7 +16,9 @@ class LoginController extends BaseController
     }
     public function index()
     {
-        return view('login');
+        return view('login',[
+             'validation' => \Config\Services::validation()
+        ]);
     }
 
     public function login()
@@ -31,17 +33,6 @@ class LoginController extends BaseController
         if ($user) {
             // Periksa apakah password sesuai
             if (password_verify($password, $user['password'])) {
-                // Buat token unik
-                // $token = bin2hex(random_bytes(32));
-
-                // Simpan token ke dalam basis data
-                // $data = [
-                //     'user_id' => $user['id'],
-                //     // 'token' => $token
-                // ];
-                // $this->userModel->saveToken($user['email'], $token);
-
-                // Set session dengan data pengguna
                 $userData = [
                     'user_id' => $user['id'],
                     'instansi_id' => $user['instansi_id'],
@@ -67,8 +58,7 @@ class LoginController extends BaseController
     public function logout()
     {
         // Hapus data pengguna dari session
-        session()->remove(['user_id', 'name', 'email', 'is_admin', 'token']);
-
+        session()->remove(['user_id','instansi_id','bidang_id','slug', 'nip', 'name', 'email', 'no_hp', 'level']);
         return redirect()->to('/');
     }
 }
