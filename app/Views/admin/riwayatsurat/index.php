@@ -32,34 +32,18 @@
 
 .jarak {
     justify-content: space-between;
-
-}
-
-.halpad {
-    padding: 30px 50px 10px 50px;
 }
 </style>
 
-<div class="halpad content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row jarak">
-                <div>
-                    <h1 class="m-0 font-weight-bold ">List Perihal </h1>
-                    <h1 class="m-0 font-weight-bold "> <?= $kategori['name']; ?></h1>
+            <div class="row mb-4">
+                <div class="col-sm-6 px-4">
+                    <h1 class="m-0 font-weight-bold ">List Users</h1>
                 </div><!-- /.col -->
-                <div class="card-tools">
 
-                    <div class="btnadd">
-                        <a href="<?php echo base_url() ?>admin/kategori">
-                            <button type="button" class="btn btn-warning" style="border: 2px solid black;">
-                                <i class="icon-jarak fa fa-chevron-left"></i>
-                                Kembali
-                            </button>
-                        </a>
-                    </div>
-                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -67,8 +51,9 @@
     <section class="content">
         <div class="row jarak ">
             <div class="card-tools">
+
                 <div class="btnadd">
-                    <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kategori['slug']; ?>">
+                    <a href="<?php echo base_url('admin/users/create') ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -88,57 +73,54 @@
                 </div>
             </div>
             <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap table-light">
+                <table class="table table-bordered table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Perihal</th>
-                            <th>Kode</th>
-                            <th>Data SubPerihal</th>
-                            <th>Rincian Perihal</th>
+                            <th>NIP</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>No.Telp</th>
+                            <th>Dinas</th>
+                            <th>Bidang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($perihals as $perihal) : ?>
+                        <?php foreach ($users as $user) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td><?= $perihal['name']; ?></td>
-                            <td><?= $perihal['kode']; ?></td>
+                            <td><?= $user['nip']; ?></td>
+                            <td><?= $user['name']; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><?= $user['no_hp']; ?></td>
+                            <td><?= $user['instansi_id']; ?></td>
+                            <td><?= $user['bidang_id']; ?></td>
                             <td>
-                                <?php $subPerihalCounter = 1; ?>
-                                <?php foreach ($subPerihals[$perihal['id']] as $subPerihal) : ?>
-                                <?= $subPerihalCounter++ . '. ' . $subPerihal['name'] . '<br>'; ?>
-                                <?php endforeach; ?>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">
-                                        <button type="button" class="btn btn-dark">
-                                            Lihat rincian perihal
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
+
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/perihal/edit/<?= $perihal['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/users/edit/<?= $user['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
-                                    <a class="btnr" href="#">
-                                        <button type="button" class="btn btn-block btn-danger"><i
-                                                class=" fas fa-trash"></i></button>
-                                    </a>
+
+                                    <form id="deleteForm"
+                                        action="<?php echo base_url() ?>admin/users/delete/<?= $user['slug']; ?>"
+                                        method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button type="button" onclick="confirmDelete('<?= $user['slug']; ?>')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
-
+                            <?php endforeach ?>
                         </tr>
-                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -146,8 +128,6 @@
         </div>
 
 </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
 // function showAlert() {
@@ -168,7 +148,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/kategori/delete/" + slug;
+            form.action = "<?php echo base_url() ?>admin/users/delete/" + slug;
             form.submit();
         }
     });

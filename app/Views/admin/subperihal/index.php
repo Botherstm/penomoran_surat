@@ -38,7 +38,6 @@
 .halpad {
     padding: 30px 50px 10px 50px;
 }
-
 </style>
 
 <div class="halpad content-wrapper">
@@ -51,17 +50,15 @@
                     <h2 class=" font-weight-bold ">Kerumahtanggan</h2>
                 </div><!-- /.col -->
                 <div class="card-tools">
-
-                <div class="btnadd">
-                    <a href= "<?php echo base_url('admin/perihal/listperihal') ?>">
-                        <button type="button" class="btn btn-warning" style="border: 2px solid black;">
-                            <i class="icon-jarak fa fa-chevron-left"></i>
-                            Kembali
-                        </button>
-                    </a>
-
+                    <div class="btnadd">
+                        <a href="<?php echo base_url('admin/perihal/listperihal') ?>">
+                            <button type="button" class="btn btn-warning" style="border: 2px solid black;">
+                                <i class="icon-jarak fa fa-chevron-left"></i>
+                                Kembali
+                            </button>
+                        </a>
+                    </div>
                 </div>
-            </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -69,7 +66,6 @@
     <section class="content">
         <div class="row jarak ">
             <div class="card-tools">
-
                 <div class="btnadd">
                     <a href="<?php echo base_url('#') ?>">
                         <button type="button" class="btn btn-success">
@@ -77,7 +73,6 @@
                             Tambah
                         </button>
                     </a>
-
                 </div>
             </div>
             <div class="card-tools">
@@ -103,24 +98,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($subperihals as $subperihal) : ?>
                         <tr>
-                            <td>??</td>
-                            <td>??</td>
-                            <td>??</td>
-                            <td><div>
+                            <td><?= $i++; ?></td>
+                            <td><?= $subperihal['name']; ?></td>
+                            <td><?= $subperihal['kode']; ?></td>
+                            <td>
+                                <div>
                                     <!-- update -->
                                     <a href="<?php echo base_url() ?>admin/detailsubperihal/listdetailsubperihal">
-                        <button type="button" class="btn btn-dark">
-                            Lihat rincian detail
-                        </button>
-                    </a>
-                                </div></td>
+                                        <button type="button" class="btn btn-dark">
+                                            Lihat rincian detail
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
                             <td>
 
                                 <div class="btn-group ">
                                     <!-- update -->
-                                    <a class="btnr"
-                                        href="#">
+                                    <a class="btnr" href="#">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
@@ -131,8 +129,9 @@
                                     </a>
                                 </div>
                             </td>
-                            
+
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

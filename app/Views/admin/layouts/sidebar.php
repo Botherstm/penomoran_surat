@@ -68,6 +68,25 @@
                     </a>
                 </li>
 
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('#') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Riwayat Surat
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('#') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-hashtag"></i>
+                        <p>
+                            Urutan Surat
+                        </p>
+                    </a>
+                </li>
+
+
 
                 <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
                 <li class="nav-item ">

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 use App\Controllers\BaseController;
 use App\Models\KategoryModel;
 use App\Models\PerihalModel;
+use App\Models\SubPerihalModel;
 use Ramsey\Uuid\Uuid;
 
 class PerihalController extends BaseController
@@ -12,26 +13,36 @@ class PerihalController extends BaseController
 
     protected $Kategory;
     protected $perihal;
+    protected $subperihal;
     public function __construct(){
         $this->Kategory = new KategoryModel();
         $this->perihal = new PerihalModel();
+        $this->subperihal = new SubPerihalModel();
     }
     public function index($slug)
     {
-           if (session()->get('level') != 2 && session()->get('level') != 3) {
-        // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
-        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    //        if (session()->get('level') != 2 && session()->get('level') != 3) {
+    //     // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+    //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    // }
+    $kat = $this->Kategory->getBySlug($slug);
+    $kategori = $this->perihal->getOneByKategoriId($kat['id']);
+    $perihals = $this->perihal->getByKategori_id($kat['id']);
+    
+    // Anda juga perlu mendapatkan data sub perihal berdasarkan perihal id di sini
+    $subPerihals = [];
+    foreach ($perihals as $perihal) {
+        $perihalId = $perihal['id'];
+        $subPerihalData = $this->subperihal->getAllByPerihalId($perihalId);
+        $subPerihals[$perihalId] = $subPerihalData;
     }
-        $kat = $this->Kategory->getBySlug($slug);
-        $kategori = $this->perihal->getOneByKategoriId($kat['id']);
-        $perihals = $this->perihal->getByKategori_id($kat['id']);
-
-        return view('admin/perihal/index',[
-            'active'=>'perihal',
-            'perihals'=>$perihals,
-            'kategori'=>$kategori,
-            ]
-        );
+        // dd($subPerihals);
+    return view('admin/perihal/index', [
+        'active' => 'perihal',
+        'perihals' => $perihals,
+        'kategori' => $kategori,
+        'subPerihals' => $subPerihals,
+    ]);
         
     }
 
