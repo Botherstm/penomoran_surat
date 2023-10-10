@@ -33,6 +33,12 @@ class KategoryModel extends Model
         return $this->findAll();
     }
 
+     public function getById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+
+
     public function getBySlug($slug)
     {
         return $this->where('slug', $slug)->first();

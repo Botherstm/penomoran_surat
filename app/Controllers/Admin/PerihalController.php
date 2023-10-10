@@ -25,8 +25,7 @@ class PerihalController extends BaseController
         $kat = $this->Kategory->getBySlug($slug);
         $kategori = $this->perihal->getOneByKategoriId($kat['id']);
         $perihals = $this->perihal->getByKategori_id($kat['id']);
-        
-    // dd($perihals);
+
         return view('admin/perihal/index',[
             'active'=>'perihal',
             'perihals'=>$perihals,
@@ -36,19 +35,14 @@ class PerihalController extends BaseController
         
     }
 
-    public function view( )
-    {
-        return view('admin/perihal/listperihal', [
-            'active' => 'perihal',
 
-        ]);
-    }
-
-    public function create($kategori_id)
+    public function create($slug)
     {
+         $kat = $this->Kategory->getBySlug($slug);
+        //  dd($kat);
         return view('admin/perihal/create', [
             'active' => 'perihal',
-            'kat' => $kategori_id,
+            'kategori' => $kat,
         ]);
     }
 
@@ -65,6 +59,7 @@ class PerihalController extends BaseController
             $kategori_id = $this->request->getPost('kategori_id');
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
+            $slug = $this->request->getPost('slug');
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
             $data = [
@@ -72,11 +67,12 @@ class PerihalController extends BaseController
                 'kategori_id' => $kategori_id,
                 'kode' => $kode,
                 'name' => $name,
+                'slug' => $slug,
             ];
             // dd($data);
             $this->perihal->insert($data);
-
-            return redirect()->to('/admin/perihal/' . $kategori_id)->with('success', 'Data Kategory berhasil disimpan.');
+            $kategori = $this->Kategory->getById($kategori_id);
+            return redirect()->to('/admin/perihal/' . $kategori['slug'])->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->withInput()->with('validation', $this->validator);

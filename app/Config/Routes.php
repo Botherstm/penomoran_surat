@@ -51,8 +51,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     
     //Perihal
     
-    $routes->get('/admin/perihal/listperihal', 'Admin\PerihalController::view');
-
     $routes->get('/admin/perihal/(:segment)', 'Admin\PerihalController::index/$1');
     $routes->get('/admin/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
     $routes->post('admin/perihal/save', 'Admin\PerihalController::save');

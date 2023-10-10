@@ -38,7 +38,6 @@
 .halpad {
     padding: 30px 50px 10px 50px;
 }
-
 </style>
 
 <div class="halpad content-wrapper">
@@ -51,16 +50,16 @@
                 </div><!-- /.col -->
                 <div class="card-tools">
 
-                <div class="btnadd">
-                    <a href="<?php echo base_url() ?>admin/kategori/listkategori">
-                        <button type="button" class="btn btn-warning" style="border: 2px solid black;">
-                            <i class="icon-jarak fa fa-chevron-left"></i>
-                            Kembali
-                        </button>
-                    </a>
+                    <div class="btnadd">
+                        <a href="<?php echo base_url() ?>admin/kategori/listkategori">
+                            <button type="button" class="btn btn-warning" style="border: 2px solid black;">
+                                <i class="icon-jarak fa fa-chevron-left"></i>
+                                Kembali
+                            </button>
+                        </a>
 
+                    </div>
                 </div>
-            </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -68,9 +67,8 @@
     <section class="content">
         <div class="row jarak ">
             <div class="card-tools">
-
                 <div class="btnadd">
-                    <a href="<?php echo base_url('#') ?>">
+                    <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kategori['slug']; ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -96,8 +94,8 @@
                             <th>No.</th>
                             <th>Nama Perihal</th>
                             <th>Kode</th>
+                            <th>Rincian Perihal</th>
                             <th>Aksi</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -107,6 +105,15 @@
                             <td><?= $i++; ?></td>
                             <td><?= $perihal['name']; ?></td>
                             <td><?= $perihal['kode']; ?></td>
+                            <td>
+                                <div>
+                                    <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">
+                                        <button type="button" class="btn btn-dark">
+                                            Lihat rincian perihal
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
                             <td>
                                 <div class="btn-group ">
                                     <!-- update -->
@@ -122,8 +129,9 @@
                                     </a>
                                 </div>
                             </td>
-                            
+
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -133,4 +141,41 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+<script>
+// function showAlert() {
+//     Swal.fire('Ini adalah pesan SweetAlert2!');
+// }
+
+function confirmDelete(slug) {
+    Swal.fire({
+        title: 'Apa Kamu yakin?',
+        text: 'Jika dihapus data tidak bisa di kembalikan.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+            const form = document.getElementById('deleteForm');
+            form.action = "<?php echo base_url() ?>admin/kategori/delete/" + slug;
+            form.submit();
+        }
+    });
+}
+
+// Popup success message
+<?php if (session()->getFlashdata('success')) : ?>
+Swal.fire({
+    title: 'Success',
+    text: '<?= session()->getFlashdata('success') ?>',
+    icon: 'success',
+    timer: 3000,
+    showConfirmButton: false
+});
+<?php endif; ?>
+</script>
 <?= $this->endSection('content'); ?>
