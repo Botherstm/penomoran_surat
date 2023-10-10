@@ -29,5 +29,12 @@ class DinasController extends BaseController
         ]);
     }
 
+    public function view()
+    {
+    
+        return view('admin/dinas/listdinas', [
+            'active'=>'dinas'
+        ]);
+    }
    
 }

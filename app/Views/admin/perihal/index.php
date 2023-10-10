@@ -52,13 +52,12 @@
                 <div class="card-tools">
 
                     <div class="btnadd">
-                        <a href="<?php echo base_url() ?>admin/kategori/listkategori">
+                        <a href="<?php echo base_url() ?>admin/kategori">
                             <button type="button" class="btn btn-warning" style="border: 2px solid black;">
                                 <i class="icon-jarak fa fa-chevron-left"></i>
                                 Kembali
                             </button>
                         </a>
-
                     </div>
                 </div>
             </div><!-- /.row -->
@@ -89,7 +88,7 @@
                 </div>
             </div>
             <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
+                <table class="table table-bordered table-hover text-nowrap table-light">
                     <thead>
                         <tr>
                             <th>No.</th>

@@ -60,7 +60,7 @@
                     </ul>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/user') ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/dinas/listdinas') ?>" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Dinas

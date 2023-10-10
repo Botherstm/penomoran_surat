@@ -53,5 +53,12 @@ class KategoryModel extends Model
     {
         return $this->where('kode', $kode)->first();
     }
-
+    public function getAllWithPerihal()
+    {
+        return $this->db->table($this->table)
+            ->select('kategori.*, perihal.nama_perihal')
+            ->join('perihal', 'perihal.kategori_id = kategori.id', 'left')
+            ->get()
+            ->getResultArray();
+    }
 }

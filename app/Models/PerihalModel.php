@@ -44,5 +44,4 @@ class PerihalModel extends Model
             ->get()
             ->getRowArray();
     }
-    
 }
