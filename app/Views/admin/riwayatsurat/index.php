@@ -95,25 +95,13 @@
                                 <div class="btn-group ">
 
                                 <a class="btnr"
-                                        href="#">
+                                        href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
                                         <button type="button" class="btn btn-block btn-primary ">
                                             <i class=" fas fa-info"></i>
                                         </button>
                                     </a>
                                     <!-- update -->
-                                    <a class="btnr"
-                                        href="#">
-                                        <button type="button" class="btn btn-block btn-warning ">
-                                            <i class=" fas fa-pen"></i>
-                                        </button>
-                                    </a>
-
-                                    <form id="deleteForm">
-                                        <button type="button" 
-                                            class="btn btn-block btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    
                                 </div>
                             </td>
                         </tr>

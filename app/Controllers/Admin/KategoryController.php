@@ -53,6 +53,13 @@ public function view2()
     ]);
 }
 
+public function view3()
+{
+    return view('admin/riwayatsurat/rinciansurat', [
+        'active' => 'kategory',
+    ]);
+}
+
     public function create()
     {
         return view('admin/kategori/create', [
