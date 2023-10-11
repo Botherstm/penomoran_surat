@@ -100,6 +100,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // USER ROUTES----------------------------------------------
     
     //user dashboard
-    $routes->get('/user', 'User\UserController::index');
+    $routes->get('/user', 'UserController::index');
    
 });
