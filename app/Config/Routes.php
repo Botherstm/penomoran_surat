@@ -83,7 +83,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //Detail Sub Perihal
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
-    $routes->post('/admin/kategori/perihal/subperihal/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
+    $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/edit/(:segment)', 'Admin\DetailSubPerihalController::edit/$1');
+    $routes->post('/admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
+    $routes->post('/admin/detailsubperihal/update/(:segment)', 'Admin\DetailSubPerihalController::update/$1');
+    $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerihalController::delete/$1');
 
     //auth
     $routes->get('/login', 'LoginController::index');

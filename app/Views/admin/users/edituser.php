@@ -33,7 +33,7 @@
     </div>
     <!-- Main content -->
     <section class="content">
-        <form method="POST" action="<?php echo base_url() ?>admin/users/update/<?= $user['id'] ?>">
+        <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?= $user['id'] ?>">
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
                 <input type="number" value="<?= $user['nip'] ?>" name="nip" class="form-control"
@@ -78,9 +78,16 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="row jarak">
-                <button type="submit" class="btn btn-danger" style="width: 150px;">Batal</button>
-                <button type="submit" class="btn btn-success" style="width: 150px;">Konfirmasi</button>
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <a href="<?php echo base_url('admin/users') ?>">
+                        <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                </div>
             </div>
         </form>
     </section>
