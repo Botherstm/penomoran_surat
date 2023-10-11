@@ -30,12 +30,6 @@
         </div>
        
 
-        <div class="mb-5 m-1 ">
-            <label for="terlewat" class="form-label input-group justify-content-center">No. Terlewat</label>
-            <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
-        </div>
-       
-
         <div class="row text-center">
 
             <div class="col-md-6">

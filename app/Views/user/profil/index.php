@@ -8,58 +8,58 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Data User</h5>
+                        <h5 class="card-title">DATA USER</h5>
                     </div>
                     <table class="table table-borderless">
                         <tr style="padding-left: 1%;">
-                            <td>NIP</td>
+                            <th>NIP</th>
                             <td>:</td>
                             <td>2015051090</td>
                         </tr>
                         <tr>
-                            <td>Nama Lengkap</td>
+                            <th>Nama Lengkap</th>
                             <td>:</td>
-                            <td>I GEDE ARYA YASODA PUTRA</td>
+                            <td>nama lengkap</td>
                         </tr>
                         <tr>
-                            <td>Tempat Lahir, Tanggal Lahir</td>
+                            <th>Tempat Lahir, Tanggal Lahir</th>
                             <td>:</td>
-                            <td>Kab. Gianyar, 2002-01-07</td>
+                            <td>Indonesia, 2000-01-01</td>
                         </tr>
                         <tr>
-                            <td>Jenis Kelamin</td>
+                            <th>Jenis Kelamin</th>
                             <td>:</td>
                             <td>Laki-laki</td>
                         </tr>
                         <tr>
-                            <td>Agama</td>
+                            <th>Agama</th>
                             <td>:</td>
                             <td>Hindu</td>
                         </tr>
 
                         <tr>
-                            <td>Nomor KTP</td>
+                            <th>Nomor KTP</th>
                             <td>:</td>
                             <td>12345678909876</td>
                         </tr>
 
                         <tr>
-                            <td>Jabatan</td>
+                            <th>Jabatan</th>
                             <td>:</td>
                             <td>Pegawai</td>
                         </tr>
                         <tr>
-                            <td>Telepon</td>
+                            <th>Telepon</th>
                             <td>:</td>
                             <td>08123456789</td>
                         </tr>
                     </table>
                     <hr>
                     <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="" class="btn btn-info"><i class="icon-pencil7"></i> Ubah Profil</a>
+                        <a href="" class="btn btn-info"><i class="icon-pencil7"></i> Ganti Username</a>
                     </div>
                     <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="" class="btn btn-info"><i class="icon-printer"></i> Cetak Biodata</a>
+                        <a href="" class="btn btn-info"><i class="icon-printer"></i> Ganti Password</a>
                     </div>
                     <br>
                 </div>
