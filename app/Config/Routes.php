@@ -13,7 +13,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
     // Rute untuk melihat PDF yang telah diperbarui
     $routes->get('/pdf/view/(:segment)', 'PdfController::view/$1');
-    
     // Rute untuk halaman admin (contoh)
     $routes->get('/admin', 'Admin\AdminController::index');
     //pdf
@@ -30,11 +29,8 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //bidang
-
     $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
-
     $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
-    // $routes->get('/admin/bidang', 'Admin\BidangController::index');
     $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 
@@ -57,28 +53,24 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
     
     //Perihal
-    
     $routes->get('/admin/perihal/(:segment)', 'Admin\PerihalController::index/$1');
     $routes->get('/admin/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
     $routes->get('/admin/perihal/edit/(:segment)', 'Admin\PerihalController::edit/$1');
     $routes->post('admin/perihal/save', 'Admin\PerihalController::save');
     $routes->post('admin/perihal/update/(:segment)', 'Admin\PerihalController::update/$1');
+    $routes->post('/admin/perihal/delete/(:segment)', 'Admin\PerihalController::delete/$1');
     
-     //Sub Perihal
+
+    //Sub Perihal
     $routes->get('/admin/subperihal/(:segment)', 'Admin\SubPerihalController::index/$1');
     $routes->get('/admin/subperihal/create/(:segment)', 'Admin\SubPerihalController::create/$1');
+    $routes->get('/admin/subperihal/edit/(:segment)', 'Admin\SubPerihalController::edit/$1');
     $routes->post('admin/subperihal/save', 'Admin\SubPerihalController::save');
+    $routes->post('admin/subperihal/update/(:segment)', 'Admin\SubPerihalController::update/$1');
+    $routes->post('/admin/subperihal/delete/(:segment)', 'Admin\SubPerihalController::delete/$1');
 
-    //Perihal UI-----------------------------------------------------------------------------------
-    $routes->get('admin/tambahsubperihal','Admin\SubPerihalController::tambahsubperihal');
-    $routes->get('admin/editsubperihal','Admin\SubPerihalController::editsubperihal'); 
-    
-    
     //Detail Sub Perihal
-
-   
     $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPerihalController::view');
-
     $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');

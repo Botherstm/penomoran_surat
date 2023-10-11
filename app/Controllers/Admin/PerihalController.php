@@ -142,25 +142,16 @@ class PerihalController extends BaseController
 
     public function delete($slug)
     {
-        // Cari data album berdasarkan ID
-        $data = $this->Kategory->getBySlug($slug);
-        $kategori = $this->Kategory->find($data['id']);
-        // dd($kategori);
-        if ($kategori) {
-          $this->Kategory->delete($data['id']);
-            return redirect()->to('admin/kategori')->with('success', 'data deleted successfully.');
+        $data = $this->perihal->getBySlug($slug);
+        $perihal = $this->perihal->find($data['id']);
+        $kategori = $this->Kategory->getById($perihal['kategori_id']);
+        // dd($perihal);
+        if ($perihal) {
+          $this->perihal->delete($data['id']);
+            return redirect()->to('admin/perihal/'. $kategori['slug'])->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/kategori')->with('error', 'data not found.');
+            return redirect()->to('admin/perihal/'.$kategori['slug'])->with('error', 'data not found.');
         }
     }
 
-    public function tambahperihal()
-    {
-        return view('admin/perihal/tambahperihal');
-    }
-    
-    public function editperihal()
-    {
-        return view('admin/perihal/editperihal');
-    }
 }

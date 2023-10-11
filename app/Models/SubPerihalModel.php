@@ -19,15 +19,15 @@ class SubPerihalModel extends Model
      protected $allowedFields    = ['id','perihal_id','slug','kode','name','create_at','update_at'];
 
 
-     public function findBySlug($slug)
+     public function getBySlug($slug)
     {
         return $this->where('slug', $slug)->first();
     }
-    public function findByKode($kode)
+    public function getByKode($kode)
     {
         return $this->where('kode', $kode)->first();
     }  
-     public function findByid($id)
+     public function getByid($id)
     {
         return $this->where('id', $id)->first();
     }

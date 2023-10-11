@@ -130,10 +130,15 @@
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
-                                    <a class="btnr" href="#">
-                                        <button type="button" class="btn btn-block btn-danger"><i
-                                                class=" fas fa-trash"></i></button>
-                                    </a>
+                                    <form id="deleteForm" class="mr-3"
+                                        action="<?php echo base_url() ?>admin/perihal/delete/<?= $perihal['slug']; ?>"
+                                        method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button type="button" onclick="confirmDelete('<?= $perihal['slug']; ?>')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
 
@@ -150,10 +155,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
-// function showAlert() {
-//     Swal.fire('Ini adalah pesan SweetAlert2!');
-// }
-
 function confirmDelete(slug) {
     Swal.fire({
         title: 'Apa Kamu yakin?',
@@ -168,7 +169,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/kategori/delete/" + slug;
+            form.action = "<?php echo base_url() ?>admin/perihal/delete/" + slug;
             form.submit();
         }
     });
