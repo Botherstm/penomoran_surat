@@ -69,7 +69,7 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('#') ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/riwayatsurat/index') ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Riwayat Surat
@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('#') ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/urutansurat/index') ?>" class="nav-link">
                         <i class="nav-icon fas fa-hashtag"></i>
                         <p>
                             Urutan Surat

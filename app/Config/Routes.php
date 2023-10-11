@@ -44,6 +44,11 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //kategory
+
+    
+    $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
+    $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
+
     $routes->get('/admin/kategori/', 'Admin\KategoryController::index');
     $routes->get('/admin/kategori/create/', 'Admin\KategoryController::create');
     $routes->get('/admin/kategori/edit/(:segment)', 'Admin\KategoryController::edit/$1');

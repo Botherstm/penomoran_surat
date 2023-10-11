@@ -14,18 +14,21 @@
     padding: 30px 300px 10px 300px;
     text-align: center;
 }
-</style>
 
+.h1 {
+    text-align: center;
+}
+
+.content-header {
+    padding-bottom: 40px;
+}
+</style>
 
 <div class="content-wrapper halpad">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h1 class="m-0 font-weight-bold">Edit User</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
+            <h1 class="m-0 font-weight-bold">Edit User</h1>
         </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
