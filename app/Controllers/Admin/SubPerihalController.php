@@ -10,11 +10,12 @@ use Ramsey\Uuid\Uuid;
 
 class SubPerihalController extends BaseController
 {
-
+    protected $kategori;
     protected $perihal;
     protected $subperihal;
     protected $detailsubperihal;
     public function __construct(){
+        $this->kategori = new KategoryModel();
         $this->perihal = new PerihalModel();
         $this->subperihal = new SubPerihalModel();
         $this->detailsubperihal = new DetailSubPerihalModel();
@@ -27,7 +28,7 @@ class SubPerihalController extends BaseController
         //     return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         // }
         $subperihals = $this->subperihal->getAllByPerihalId($perihal['id']);
-        
+        $kategori = $this->kategori->getById($perihal['kategori_id']);
         $detailSubPerihals = [];
 
         foreach ($subperihals as $subperihal) {
@@ -42,10 +43,10 @@ class SubPerihalController extends BaseController
             'active'=>'subperihal',
             'subperihals'=>$subperihals,
             'perihal'=>$perihal,
+            'kategori'=>$kategori,
             'detailsubperihals'=>$detailSubPerihals
         ],
         );
-        
     }
 
 
@@ -62,24 +63,24 @@ class SubPerihalController extends BaseController
     {
         // Validasi input data
         $rules = [
-            'perihal_id' => 'required',
+            'detail_id' => 'required',
             'name' => 'required',
             'slug' => 'required',
             'kode' => 'required',
         ];
 
         if ($this->validate($rules)) {
-            $perihal_id = $this->request->getPost('perihal_id');
+            $detail_id = $this->request->getPost('detail_id');
             $slug = $this->request->getPost('slug');
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
-            $perihal = $this->perihal->getById($perihal_id);
+            $perihal = $this->perihal->getById($detail_id);
             $data = [
                 'id' => $uuidString,
-                'perihal_id' => $perihal_id,
+                'detail_id' => $detail_id,
                 'slug' => $slug,
                 'name' => $name,
                 'kode' => $kode,
@@ -88,7 +89,7 @@ class SubPerihalController extends BaseController
             $this->subperihal->insert($data);
 
          
-            return redirect()->to('/admin/subperihal/'.$perihal['slug'])->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to('/admin/kategori/perihal/subperihal/'.$perihal['slug'])->with('success', 'Data Kategory berhasil disimpan.');
         } else {
 
             return redirect()->back()->withInput()->with('validation', $this->validator);
@@ -98,7 +99,7 @@ class SubPerihalController extends BaseController
     public function edit($slug)
     {
         $subperihal = $this->subperihal->getBySlug($slug);
-        $perihal = $this->perihal->getById($subperihal['perihal_id']);
+        $perihal = $this->perihal->getById($subperihal['detail_id']);
         // dd($subperihal,$perihal);
         return view('admin/subperihal/edit', [
             'active' => 'user',
@@ -112,7 +113,7 @@ class SubPerihalController extends BaseController
     {
         // Validasi input form
         $rules = [
-            'perihal_id' => 'required',
+            'detail_id' => 'required',
             'name' => 'required',
             'kode' => 'required',
             'slug' => 'required',
@@ -121,11 +122,11 @@ class SubPerihalController extends BaseController
         $validation = \Config\Services::validation(); // Mendapatkan instance validasi
 
         if ($this->validate($rules)) {
-            $perihal = $this->request->getPost('perihal_id');
+            $perihal = $this->request->getPost('detail_id');
             $data = $this->perihal->getById($perihal);
             // Data pengguna yang akan disimpan
             $subperihalData = [
-                'perihal_id' => $perihal,
+                'detail_id' => $perihal,
                 'name' => $this->request->getPost('name'),
                 'kode' => $this->request->getPost('kode'),
                 'slug' => $this->request->getPost('slug'),
@@ -135,7 +136,7 @@ class SubPerihalController extends BaseController
             $this->subperihal->update($id, $subperihalData);
 
             // Redirect ke halaman yang sesuai dengan pesan sukses
-            return redirect()->to('/admin/subperihal/'. $data['slug'])->with('success', 'Data berhasil Di Update !');
+            return redirect()->to('/admin/kategori/perihal/subperihal/'. $data['slug'])->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()
@@ -150,13 +151,13 @@ class SubPerihalController extends BaseController
         
         $data = $this->subperihal->getBySlug($slug);
         $subperihal = $this->subperihal->find($data['id']);
-        $perihal = $this->perihal->getById($subperihal['perihal_id']);
+        $perihal = $this->perihal->getById($subperihal['detail_id']);
         // dd($perihal);
         if ($subperihal) {
           $this->subperihal->delete($data['id']);
-            return redirect()->to('admin/subperihal/'. $perihal['slug'])->with('success', 'data deleted successfully.');
+            return redirect()->to('admin/kategori/perihal/subperihal/'. $perihal['slug'])->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/subperihal'. $perihal['slug'])->with('error', 'data not found.');
+            return redirect()->to('admin/kategori/perihal/subperihal'. $perihal['slug'])->with('error', 'data not found.');
         }
     }
 

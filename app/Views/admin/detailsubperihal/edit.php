@@ -12,34 +12,40 @@
 <div class="content-wrapper">
 
 
-    <form action="<?php echo base_url() ?>admin/subperihal/save" method="POST" class="">
+    <form action="<?php echo base_url() ?>admin/detailsubperihal/update/<?= $detailsubperihal['id']; ?>" method="POST"
+        class="">
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Sub Perihal <?= $perihal['name']; ?></h2>
+            <h2 class="mt-5 mb-5">Edit Detail <?= $detailsubperihal['name']; ?></h2>
         </div>
         <div class="mb-5 m-1 ">
-            <label for="SubPerihal" class="form-label input-group justify-content-center">Sub Perihal</label>
-            <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
+            <label for="kategori" class="form-label input-group justify-content-center">Detail</label>
+            <input type="name" name="name" value="<?= $detailsubperihal['name']; ?>" class="form-control w-50 m-auto "
+                id="name" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group text-center">
+            <input type="name" hidden class="form-control" id="subperihal_id" name="subperihal_id"
+                value="<?= $subperihal['id']; ?>" readonly>
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                value="<?= $perihal['id']; ?>" readonly>
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+            <input type="name" hidden value="<?= $detailsubperihal['slug']; ?>" class="form-control" id="slug"
+                name="slug" readonly>
         </div>
         <div class="mb-5 m-1">
-            <label for="kodeSubPerihal" class="form-label input-group justify-content-center">Kode Sub Perihal</label>
-            <input type="name" name="kode" class="form-control w-50 m-auto" id="kodeSubPerihal">
+            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Detail</label>
+            <input type="name" name="kode" value="<?= $detailsubperihal['kode']; ?>" class="form-control w-50 m-auto"
+                id="kodeKategori">
         </div>
 
         <div class="row text-center">
             <div class="col-md-6">
-                <a href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/<?= $perihal['slug']; ?>">
+                <a
+                    href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/detailsubperihal/<?= $subperihal['slug']; ?>">
                     <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
                 </a>
             </div>
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
             </div>
         </div>
 
@@ -69,4 +75,5 @@ nameInput.addEventListener('input', function() {
     slugInput.value = slugValue;
 });
 </script>
+
 <?= $this->endSection('content'); ?>

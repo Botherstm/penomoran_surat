@@ -45,14 +45,14 @@
     <div class="content-header">
         <div class="container-fluid ">
             <div class="row jarak">
-                <div>
-                    <h1 class="m-0 font-weight-bold ">List Perihal </h1>
-                    <h1 class="m-0 font-weight-bold "> <?= $kategori['name']; ?></h1>
+                <div class="col-sm-6 ">
+                    <h1 class=" font-weight-bold ">List detail</h1>
+                    <h2 class=" font-weight-bold "><?= $subperihal['name']; ?></h2>
                 </div><!-- /.col -->
                 <div class="card-tools">
 
                     <div class="btnadd">
-                        <a href="<?php echo base_url() ?>admin/kategori">
+                        <a href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/<?= $perihal['slug']; ?>">
                             <button type="button" class="btn btn-warning" style="border: 2px solid black;">
                                 <i class="icon-jarak fa fa-chevron-left"></i>
                                 Kembali
@@ -67,8 +67,10 @@
     <section class="content">
         <div class="row jarak ">
             <div class="card-tools">
+
                 <div class="btnadd">
-                    <a href="<?php echo base_url() ?>admin/kategori/perihal/create/<?= $kategori['slug']; ?>">
+                    <a
+                        href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/detailsubperihal/create/<?= $subperihal['slug']; ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -88,54 +90,38 @@
                 </div>
             </div>
             <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap table-light">
+                <table class="table table-bordered table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Perihal</th>
-                            <th>Kode</th>
-                            <th>Data SubPerihal</th>
-                            <th>Rincian Sub Perihal</th>
+                            <th>Nama Detail</th>
+                            <th>Kode Detail</th>
                             <th>Aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($perihals as $perihal) : ?>
+                        <?php foreach ($detailsubperihals as $detailsubperihal) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td><?= $perihal['name']; ?></td>
-                            <td><?= $perihal['kode']; ?></td>
-                            <td>
-                                <?php $subPerihalCounter = 1; ?>
-                                <?php foreach ($subPerihals[$perihal['id']] as $subPerihal) : ?>
-                                <?= $subPerihalCounter++ . '. ' . $subPerihal['name'] . '<br>'; ?>
-                                <?php endforeach; ?>
-                            </td>
-                            <td>
-                                <div>
-                                    <a
-                                        href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/<?= $perihal['slug']; ?>">
-                                        <button type="button" class="btn btn-dark">
-                                            Lihat rincian sub perihal
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
+                            <td><?= $detailsubperihal['name']; ?></td>
+                            <td><?= $detailsubperihal['kode']; ?></td>
                             <td>
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/kategori/perihal/edit/<?= $perihal['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/detailsubperihal/edit/<?= $detailsubperihal['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
                                     <form id="deleteForm" class="mr-3"
-                                        action="<?php echo base_url() ?>admin/perihal/delete/<?= $perihal['slug']; ?>"
+                                        action="<?php echo base_url() ?>admin/detailsubperihal/delete/<?=$detailsubperihal['slug']; ?>"
                                         method="POST">
                                         <?= csrf_field(); ?>
-                                        <button type="button" onclick="confirmDelete('<?= $perihal['slug']; ?>')"
+                                        <button type="button"
+                                            onclick="confirmDelete('<?= $detailsubperihal['slug']; ?>')"
                                             class="btn btn-block btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -144,7 +130,7 @@
                             </td>
 
                         </tr>
-                        <?php endforeach ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -153,9 +139,12 @@
 
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
+// function showAlert() {
+//     Swal.fire('Ini adalah pesan SweetAlert2!');
+// }
+
 function confirmDelete(slug) {
     Swal.fire({
         title: 'Apa Kamu yakin?',
@@ -170,7 +159,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/perihal/delete/" + slug;
+            form.action = "<?php echo base_url() ?>admin/detailsubperihal/delete/" + slug;
             form.submit();
         }
     });
