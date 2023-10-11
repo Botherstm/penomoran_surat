@@ -63,11 +63,11 @@ class GenerateController extends BaseController
 
         return $this->response->setJSON($response);
     }
-     public function getSubPerihalByPerihal($perihal_id)
+     public function getSubPerihalByPerihal($perihal_slug)
     {
         // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
         // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
-        $perihals = $this->perihal->getPerihalByid($perihal_id);
+        $perihals = $this->perihal->getBykode($perihal_slug);
         $subperihals = $this->subperihal->getAllByPerihalId($perihals['id']);
 
         // Ubah data menjadi format JSON

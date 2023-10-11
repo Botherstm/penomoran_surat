@@ -49,5 +49,27 @@
 
 </div>
 
+<script>
+var nameInput = document.getElementById('name');
+var slugInput = document.getElementById('slug');
+
+// Function to generate a slug from the given string
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-') // Replace spaces with dashes
+        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+        .substring(0, 50); // Limit the slug length
+}
+
+// Add an input event listener to the name input field
+nameInput.addEventListener('input', function() {
+    var nameValue = nameInput.value;
+    var slugValue = slugify(nameValue);
+    slugInput.value = slugValue;
+});
+</script>
+
 
 <?= $this->endSection('content'); ?>
