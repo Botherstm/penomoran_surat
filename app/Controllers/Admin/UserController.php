@@ -58,13 +58,13 @@ class UserController extends BaseController
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[6]',
         ];
-            $uuid = Uuid::uuid4();
-            $uuidString = $uuid->toString();
+        $uuid = Uuid::uuid4();
+        $uuidString = $uuid->toString();
         // Lakukan validasi
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
             $userData = [
-                'id'=>$uuidString,
+                'id' => $uuidString,
                 'instansi_id' => $this->request->getPost('instansi_id'),
                 'bidang_id' => $this->request->getPost('bidang_id'),
                 'slug' => $this->request->getPost('slug'),
@@ -76,7 +76,7 @@ class UserController extends BaseController
             ];
             // dd($userData);
             // Simpan data pengguna ke dalam database
-           $this->UserModel->insert($userData);
+            $this->UserModel->insert($userData);
 
             // Redirect ke halaman yang sesuai dengan pesan sukses
             return redirect()->to('/admin/users')->with('success', 'Akun berhasil terdaftar.');
@@ -116,7 +116,7 @@ class UserController extends BaseController
             'name' => 'required',
             'nip' => 'required|integer',
             'no_hp' => 'required|integer',
-            'email' => 'required|valid_email',     
+            'email' => 'required|valid_email',
         ];
 
         $validation = \Config\Services::validation(); // Mendapatkan instance validasi
@@ -153,10 +153,16 @@ class UserController extends BaseController
         $user = $this->UserModel->find($data['id']);
         // dd($user);
         if ($user) {
-          $this->UserModel->delete($data['id']);
+            $this->UserModel->delete($data['id']);
             return redirect()->to('admin/users')->with('success', 'data deleted successfully.');
         } else {
             return redirect()->to('admin/users')->with('error', 'data not found.');
         }
+    }
+
+
+    public function profile()
+    {
+        return view('user/profil/index');
     }
 }
