@@ -52,7 +52,7 @@
                 <div class="card-tools">
 
                     <div class="btnadd">
-                        <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">
+                        <a href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/<?= $perihal['slug']; ?>">
                             <button type="button" class="btn btn-warning" style="border: 2px solid black;">
                                 <i class="icon-jarak fa fa-chevron-left"></i>
                                 Kembali
@@ -69,7 +69,8 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="<?php echo base_url() ?>admin/detailsubperihal/create/<?= $subperihal['slug']; ?>">
+                    <a
+                        href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/detailsubperihal/create/<?= $subperihal['slug']; ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -107,19 +108,24 @@
                             <td><?= $detailsubperihal['name']; ?></td>
                             <td><?= $detailsubperihal['kode']; ?></td>
                             <td>
-
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/detailsubperihal/edit/<?= $detailsubperihal['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/detailsubperihal/edit/<?= $detailsubperihal['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
-                                    <a class="btnr" href="#">
-                                        <button type="button" class="btn btn-block btn-danger"><i
-                                                class=" fas fa-trash"></i></button>
-                                    </a>
+                                    <form id="deleteForm" class="mr-3"
+                                        action="<?php echo base_url() ?>admin/detailsubperihal/delete/<?=$detailsubperihal['slug']; ?>"
+                                        method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button type="button"
+                                            onclick="confirmDelete('<?= $detailsubperihal['slug']; ?>')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
 
@@ -153,7 +159,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/subperihal/delete/" + slug;
+            form.action = "<?php echo base_url() ?>admin/detailsubperihal/delete/" + slug;
             form.submit();
         }
     });

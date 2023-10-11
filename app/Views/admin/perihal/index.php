@@ -68,7 +68,7 @@
         <div class="row jarak ">
             <div class="card-tools">
                 <div class="btnadd">
-                    <a href="<?php echo base_url() ?>admin/perihal/create/<?= $kategori['slug']; ?>">
+                    <a href="<?php echo base_url() ?>admin/kategori/perihal/create/<?= $kategori['slug']; ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -114,7 +114,8 @@
                             </td>
                             <td>
                                 <div>
-                                    <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">
+                                    <a
+                                        href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/<?= $perihal['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat rincian sub perihal
                                         </button>
@@ -125,7 +126,7 @@
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/perihal/edit/<?= $perihal['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/kategori/perihal/edit/<?= $perihal['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>

@@ -105,7 +105,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <a href="<?php echo base_url() ?>admin/perihal/<?= $kategori['slug']; ?>">
+                                    <a href="<?php echo base_url() ?>admin/kategori/perihal/<?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat rincian perihal
                                         </button>

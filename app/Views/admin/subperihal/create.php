@@ -34,7 +34,7 @@
 
         <div class="row text-center">
             <div class="col-md-6">
-                <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">
+                <a href="<?php echo base_url() ?>admin/kategori/perihal/subperihal/<?= $perihal['slug']; ?>">
                     <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
                 </a>
             </div>
