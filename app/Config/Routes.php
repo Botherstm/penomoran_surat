@@ -90,7 +90,9 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
     //auth
     $routes->get('/login', 'LoginController::index');
+    $routes->get('/logout', 'LoginController::logout');
     $routes->post('/login', 'LoginController::login');
+    
 
     //dashboard
     $routes->get('/dashboard', 'DashboardController::index');
