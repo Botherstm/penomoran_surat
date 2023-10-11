@@ -27,7 +27,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url() ?>admin" class="nav-link">
+                    <a href="<?php echo base_url('admin') ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Beranda
@@ -60,7 +60,7 @@
                     </ul>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/dinas/listdinas') ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/dinas/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Dinas
@@ -90,7 +90,7 @@
 
                 <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url() ?>admin/kategory" class="nav-link">
+                    <a href="<?php echo base_url('admin/kategory') ?>" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Kategori

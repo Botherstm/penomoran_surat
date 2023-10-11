@@ -18,23 +18,22 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //pdf
     $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
+
+
     //dinas
-
-    
-    $routes->get('/admin/dinas/listdinas', 'Admin\DinasController::view');
-
     $routes->get('/admin/dinas', 'Admin\DinasController::index');
-    $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
-    $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
+    // $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
+    // $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
 
 
     //bidang
-    $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
-    $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
-    $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
-    $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
-    $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
+    $routes->get('/admin/dinas/bidang/(:segment)', 'Admin\BidangController::index/$1');
+    $routes->get('/admin/dinas/bidang/create/(:segment)', 'Admin\BidangController::create/$1');
+    $routes->get('/admin/dinas/bidang/edit/(:segment)', 'Admin\BidangController::edit/$1');
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
+    $routes->post('/admin/bidang/update/(:segment)', 'Admin\BidangController::update/$1');
+    $routes->post('/admin/bidang/delete/(:segment)', 'Admin\BidangController::delete/$1');
+
 
     //user
     $routes->get('/admin/users', 'Admin\UserController::index');
@@ -77,6 +76,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('admin/subperihal/save', 'Admin\SubPerihalController::save');
     $routes->post('admin/subperihal/update/(:segment)', 'Admin\SubPerihalController::update/$1');
     $routes->post('/admin/subperihal/delete/(:segment)', 'Admin\SubPerihalController::delete/$1');
+
 
     //Detail Sub Perihal
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');

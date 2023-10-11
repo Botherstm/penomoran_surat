@@ -71,5 +71,42 @@ class DinasModel extends Model
         
         return $instansi;
     }
+
+     public function getByKet_org($ket_uorg){
+        $apiUrl = 'https://egov.bulelengkab.go.id/api/instansi_utama';
+        
+        // Username dan Password untuk Basic Authentication
+        $username = 'hadir_rapat';
+        $password = '@rapatBuleleng1#';
+        
+        // Konfigurasi cURL
+        $ch = curl_init($apiUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+        
+        // Eksekusi cURL
+        $result = curl_exec($ch);
+        
+        // Cek jika ada error dalam pengambilan data
+        if (curl_errno($ch)) {
+            echo 'Error: ' . curl_error($ch);
+        }
+        
+        curl_close($ch);
+        
+        // Mendecode hasil respons JSON
+        $data = json_decode($result);
+        
+        // Cari data instansi berdasarkan instansi_id
+        $instansi = null;
+        foreach ($data->data as $item) {
+            if ($item->ket_uorg == $ket_uorg) {
+                $instansi = $item;
+                break;
+            }
+        }
+        return $instansi;
+    }
     
 }
