@@ -28,7 +28,7 @@ class DetailSubPerihalController extends BaseController
             return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         }
         $detailsubperihal = $this->detailsubperihal->getAllBySubPerihalId($subperihal['id']);
-        $perihal = $this->perihal->getById($subperihal['perihal_id']);
+        $perihal = $this->perihal->getById($subperihal['detail_id']);
         // dd($detailsubperihal);
         return view('admin/detailsubperihal/index',[
             'active'=>'detailsubperihal',
@@ -65,29 +65,29 @@ class DetailSubPerihalController extends BaseController
     {
         // Validasi input data
         $rules = [
-            'subperihal_id' => 'required',
+            'detail_id' => 'required',
             'name' => 'required',
             'slug' => 'required',
             'kode' => 'required',
         ];
 
         if ($this->validate($rules)) {
-            $subperihal_id = $this->request->getPost('subperihal_id');
+            $detail_id = $this->request->getPost('detail_id');
             $slug = $this->request->getPost('slug');
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
-            $subperihal = $this->subperihal->getByid($subperihal_id);
+            $subperihal = $this->subperihal->getByid($detail_id);
             $data = [
                 'id' => $uuidString,
-                'subperihal_id' => $subperihal_id,
+                'detail_id' => $detail_id,
                 'slug' => $slug,
                 'name' => $name,
                 'kode' => $kode,
             ];
-    // dd($data);
+
             $this->detailsubperihal->insert($data);
 
          
@@ -102,7 +102,7 @@ class DetailSubPerihalController extends BaseController
      public function edit($slug)
     {
         $detailsubperihal = $this->detailsubperihal->getBySlug($slug);
-        $subperihal = $this->subperihal->getById($detailsubperihal['subperihal_id']);
+        $subperihal = $this->subperihal->getById($detailsubperihal['detail_id']);
         // dd($detailsubperihal,$subperihal);
         return view('admin/detailsubperihal/edit', [
             'active' => 'user',
@@ -115,7 +115,7 @@ class DetailSubPerihalController extends BaseController
     {
         // Validasi input form
         $rules = [
-            'subperihal_id' => 'required',
+            'detail_id' => 'required',
             'name' => 'required',
             'kode' => 'required',
             'slug' => 'required',
@@ -124,11 +124,11 @@ class DetailSubPerihalController extends BaseController
         $validation = \Config\Services::validation(); // Mendapatkan instance validasi
 
         if ($this->validate($rules)) {
-            $subperihal = $this->request->getPost('subperihal_id');
+            $subperihal = $this->request->getPost('detail_id');
             $data = $this->subperihal->getById($subperihal);
             // Data pengguna yang akan disimpan
             $detailsubperihalData = [
-                'subperihal_id' => $subperihal,
+                'detail_id' => $subperihal,
                 'name' => $this->request->getPost('name'),
                 'kode' => $this->request->getPost('kode'),
                 'slug' => $this->request->getPost('slug'),
@@ -153,7 +153,7 @@ class DetailSubPerihalController extends BaseController
         
         $data = $this->detailsubperihal->getBySlug($slug);
         $detailsubperihal = $this->detailsubperihal->find($data['id']);
-        $subperihal = $this->subperihal->getById($detailsubperihal['subperihal_id']);
+        $subperihal = $this->subperihal->getById($detailsubperihal['detail_id']);
         // dd($subperihal);
         if ($detailsubperihal) {
           $this->detailsubperihal->delete($data['id']);

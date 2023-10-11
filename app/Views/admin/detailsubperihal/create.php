@@ -12,7 +12,7 @@
 <div class="content-wrapper">
     <form action="<?php echo base_url() ?>admin/detailsubperihal/save" method="POST" class="">
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Detail</h2>
+            <h2 class="mt-5 mb-5">Tambah Detail <?= $subperihal['name']; ?></h2>
         </div>
         <div class="mb-5 m-1 ">
             <label for="detail" class="form-label input-group justify-content-center">Detail</label>
@@ -20,7 +20,7 @@
                 aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="subperihal_id" name="subperihal_id"
+            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
                 value="<?= $subperihal['id']; ?>" readonly>
         </div>
         <div class="form-group text-center">
