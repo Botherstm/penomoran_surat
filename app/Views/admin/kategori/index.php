@@ -92,19 +92,20 @@
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($data as $item) : ?>
+                        <?php foreach ($kategoris as $kategori) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td><?= $item['kategori']['name']; ?></td>
-                            <td><?= $item['kategori']['kode']; ?></td>
+                            <td><?= $kategori['name']; ?></td>
+                            <td><?= $kategori['kode']; ?></td>
                             <td>
-                                <?php foreach ($item['perihals'] as $index => $perihal) : ?>
-                                <?= $index + 1; ?>. <?= $perihal['name']; ?><br>
+                                <?php $PerihalCounter = 1; ?>
+                                <?php foreach ($perihals[$kategori['id']] as $perihal) : ?>
+                                <?= $PerihalCounter++ . '. ' . $perihal['name'] . '<br>'; ?>
                                 <?php endforeach; ?>
                             </td>
                             <td>
                                 <div>
-                                    <a href="<?php echo base_url() ?>admin/perihal/<?= $item['kategori']['slug']; ?>">
+                                    <a href="<?php echo base_url() ?>admin/kategori/perihal/<?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat rincian perihal
                                         </button>
@@ -115,17 +116,16 @@
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/kategori/edit/<?= $item['kategori']['slug']; ?>">
+                                        href="<?php echo base_url() ?>admin/kategori/edit/<?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
-                                    <form id="deleteForm"
-                                        action="<?php echo base_url() ?>admin/kategori/delete/<?= $item['kategori']['slug']; ?>"
+                                    <form id="deleteForm" class="mr-3"
+                                        action="<?php echo base_url() ?>admin/kategori/delete/<?= $kategori['slug']; ?>"
                                         method="POST">
                                         <?= csrf_field(); ?>
-                                        <button type="button"
-                                            onclick="confirmDelete('<?= $item['kategori']['slug']; ?>')"
+                                        <button type="button" onclick="confirmDelete('<?= $kategori['slug']; ?>')"
                                             class="btn btn-block btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>

@@ -71,7 +71,7 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="<?php echo base_url('#') ?>">
+                    <a href="<?php echo base_url('/admin/tambahbidang') ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -109,7 +109,7 @@
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="#">
+                                        href="/admin/editbidang">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>

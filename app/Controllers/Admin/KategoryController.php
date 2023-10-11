@@ -20,24 +20,22 @@ class KategoryController extends BaseController
     }
 
     public function index() 
-{
-    $kategoris = $this->Kategory->getAll();
-    $data = [];
+    {
+        $kategoris = $this->Kategory->getAll();
 
-    foreach ($kategoris as $kategori) {
-        $kategoriId = $kategori['id'];
-        $perihals = $this->perihal->getByKategori_id($kategoriId);
-        $data[] = [
-            'kategori' => $kategori,
+        $perihals = [];
+        foreach ($kategoris as $kategori) {
+            $kategoriId = $kategori['id'];
+            $perihalData = $this->perihal->getByKategori_id($kategoriId);
+            $perihals[$kategoriId] = $perihalData;
+        }
+            // dd($perihals);
+        return view('admin/kategori/index', [
+            'active' => 'kategory',
+            'kategoris' => $kategoris,
             'perihals' => $perihals,
-        ];
+        ]);
     }
-
-    return view('admin/kategori/index', [
-        'active' => 'kategory',
-        'data' => $data,
-    ]);
-}
     
 public function view()
 {
@@ -158,5 +156,16 @@ public function view3()
         } else {
             return redirect()->to('admin/kategori')->with('error', 'data not found.');
         }
+    }
+
+
+    public function createurutansurat()
+    {
+        return view('admin/urutansurat/createurutan');
+    }
+    
+    public function editurutansurat()
+    {
+        return view('admin/urutansurat/editurutan');
     }
 }
