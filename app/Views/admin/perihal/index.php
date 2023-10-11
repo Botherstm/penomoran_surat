@@ -95,7 +95,7 @@
                             <th>Nama Perihal</th>
                             <th>Kode</th>
                             <th>Data SubPerihal</th>
-                            <th>Rincian Perihal</th>
+                            <th>Rincian Sub Perihal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -116,7 +116,7 @@
                                 <div>
                                     <a href="<?php echo base_url() ?>admin/subperihal/<?= $perihal['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
-                                            Lihat rincian perihal
+                                            Lihat rincian sub perihal
                                         </button>
                                     </a>
                                 </div>

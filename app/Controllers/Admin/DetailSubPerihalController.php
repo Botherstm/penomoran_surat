@@ -4,32 +4,37 @@ namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 use App\Controllers\BaseController;
 
 use App\Models\DetailSubPerihalModel;
+use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
 use Ramsey\Uuid\Uuid;
 
 class DetailSubPerihalController extends BaseController
 {
 
+    protected $perihal;
     protected $sub_perihal;
     protected $detailsubperihal;
     public function __construct(){
+        $this->perihal = new PerihalModel();
         $this->sub_perihal = new SubPerihalModel();
         $this->detailsubperihal = new DetailSubPerihalModel;
     }
     public function index($slug)
     {
-        $sub_perihal = $this->sub_perihal->findBySlug($slug);
+        $subperihal = $this->sub_perihal->getBySlug($slug);
         // dd($slug);
-        if (!$sub_perihal) {
+        if (!$subperihal) {
             // Handle jika detailsubperihal tidak ditemukan, misalnya, tampilkan pesan kesalahan
             return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         }
-        $detailsubperihal = $this->detailsubperihal->getAllBySubPerihalId($sub_perihal['id']);
+        $detailsubperihal = $this->detailsubperihal->getAllBySubPerihalId($subperihal['id']);
+        $perihal = $this->perihal->getById($subperihal['perihal_id']);
         // dd($detailsubperihal);
         return view('admin/detailsubperihal/index',[
             'active'=>'detailsubperihal',
-            'sub_perihal'=>$sub_perihal,
-            'detailsubperihal'=>$detailsubperihal,
+            'perihal'=>$perihal,
+            'subperihal'=>$subperihal,
+            'detailsubperihals'=>$detailsubperihal,
         ],
         );
         
@@ -45,14 +50,14 @@ class DetailSubPerihalController extends BaseController
     public function create($slug)
     {
         // dd($slug);
-        $sub_perihal = $this->sub_perihal->findBySlug($slug);
-        if (!$sub_perihal) {
+        $subperihal = $this->sub_perihal->getBySlug($slug);
+        if (!$subperihal) {
             // Handle jika detailsubperihal tidak ditemukan, misalnya, tampilkan pesan kesalahan
             return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         }
         return view('admin/detailsubperihal/create', [
             'active' => 'detailsubperihal',
-            'sub_perihal'=>$sub_perihal,
+            'subperihal'=>$subperihal,
         ]);
     }
 
@@ -74,7 +79,7 @@ class DetailSubPerihalController extends BaseController
             // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
-            $sub_perihal = $this->sub_perihal->findByid($subperihal_id);
+            $subperihal = $this->sub_perihal->getByid($subperihal_id);
             $data = [
                 'id' => $uuidString,
                 'subperihal_id' => $subperihal_id,
@@ -86,7 +91,7 @@ class DetailSubPerihalController extends BaseController
             $this->detailsubperihal->insert($data);
 
          
-            return redirect()->to('/admin/detailsubperihal/'.$sub_perihal['slug'])->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to('/admin/detailsubperihal/'.$subperihal['slug'])->with('success', 'Data Kategory berhasil disimpan.');
         } else {
 
             return redirect()->back()->withInput()->with('validation', $this->validator);
@@ -94,32 +99,15 @@ class DetailSubPerihalController extends BaseController
     }
 
 
-    public function getDetailSubPerihalBySubPerihal($subPerihalId)
+     public function edit($slug)
     {
-        
-        $sub_perihal = $this->sub_perihal->findByKode($subPerihalId);
-        $detail_sub_perihals = $this->detailsubperihal->getAllBySubPerihalId($sub_perihal['id']);
-        // dd($detail_sub_perihals);
-        // Ubah data menjadi format JSON
-        $response = [];
-        foreach ($detail_sub_perihals as $detail_sub_perihal) {
-            $response[] = [
-                'id' => $detail_sub_perihal['id'],
-                'name' => $detail_sub_perihal['name'],
-                'kode' => $detail_sub_perihal['kode'],
-            ];
-        }
-        return $this->response->setJSON($response);
-    }
-
-
-
-    public function tambahdetailsubperihal()
-    {
-        return view('admin/subperihal/tambahdetailsubperihal');
-    }
-    public function editdetailsubperihal()
-    {
-        return view('admin/subperihal/editdetailsubperihal');
+        $detailsubperihal = $this->detailsubperihal->getBySlug($slug);
+        $subperihal = $this->sub_perihal->getById($detailsubperihal['subperihal_id']);
+        // dd($detailsubperihal,$subperihal);
+        return view('admin/detailsubperihal/edit', [
+            'active' => 'user',
+            'subperihal' => $subperihal,
+            'detailsubperihal' => $detailsubperihal,
+        ]);
     }
 }

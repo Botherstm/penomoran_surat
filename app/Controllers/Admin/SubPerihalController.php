@@ -10,11 +10,12 @@ use Ramsey\Uuid\Uuid;
 
 class SubPerihalController extends BaseController
 {
-
+    protected $kategori;
     protected $perihal;
     protected $subperihal;
     protected $detailsubperihal;
     public function __construct(){
+        $this->kategori = new KategoryModel();
         $this->perihal = new PerihalModel();
         $this->subperihal = new SubPerihalModel();
         $this->detailsubperihal = new DetailSubPerihalModel();
@@ -27,7 +28,7 @@ class SubPerihalController extends BaseController
         //     return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         // }
         $subperihals = $this->subperihal->getAllByPerihalId($perihal['id']);
-        
+        $kategori = $this->kategori->getById($perihal['kategori_id']);
         $detailSubPerihals = [];
 
         foreach ($subperihals as $subperihal) {
@@ -42,10 +43,10 @@ class SubPerihalController extends BaseController
             'active'=>'subperihal',
             'subperihals'=>$subperihals,
             'perihal'=>$perihal,
+            'kategori'=>$kategori,
             'detailsubperihals'=>$detailSubPerihals
         ],
         );
-        
     }
 
 

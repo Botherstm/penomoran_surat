@@ -124,7 +124,6 @@
 </head>
 
 <body>
-
     <div class="upload-container">
         <h2>Upload and Add Text to PDF</h2>
         <form action="#" method="post" enctype="multipart/form-data">

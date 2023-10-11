@@ -47,11 +47,11 @@
             <div class="row jarak">
                 <div class="col-sm-6 ">
                     <h1 class=" font-weight-bold ">List Sub-Perihal</h1>
-                    <h2 class=" font-weight-bold ">Kerumahtanggan</h2>
+                    <h2 class=" font-weight-bold "><?= $perihal['name']; ?></h2>
                 </div><!-- /.col -->
                 <div class="card-tools">
                     <div class="btnadd">
-                        <a href="<?php echo base_url('admin/perihal/listperihal') ?>">
+                        <a href="<?php echo base_url() ?>admin/perihal/<?= $kategori['slug']; ?>">
                             <button type="button" class="btn btn-warning" style="border: 2px solid black;">
                                 <i class="icon-jarak fa fa-chevron-left"></i>
                                 Kembali
@@ -114,7 +114,8 @@
                             <td>
                                 <div>
                                     <!-- update -->
-                                    <a href="<?php echo base_url() ?>admin/detailsubperihal/listdetailsubperihal">
+                                    <a
+                                        href="<?php echo base_url() ?>admin/detailsubperihal/<?= $subperihal['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat rincian detail
                                         </button>
