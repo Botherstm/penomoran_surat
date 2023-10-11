@@ -39,6 +39,20 @@ class KategoryController extends BaseController
     ]);
 }
     
+public function view()
+{
+    return view('admin/urutansurat/index', [
+        'active' => 'kategory',
+    ]);
+}
+
+public function view2()
+{
+    return view('admin/riwayatsurat/index', [
+        'active' => 'kategory',
+    ]);
+}
+
     public function create()
     {
         return view('admin/kategori/create', [
