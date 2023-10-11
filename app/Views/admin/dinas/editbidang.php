@@ -14,7 +14,7 @@
 
     <form action="<?php echo base_url() ?>admin/kategori/save" method="POST" class="">
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Bidang</h2>
+            <h2 class="mt-5 mb-5">Edit Bidang</h2>
         </div>
         <div class="mb-5 m-1 ">
             <label for="bidang" class="form-label input-group justify-content-center">Nama Bidang</label>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                <button type="submit" class="btn btn-success " style="width: 25%;">Edit Data</button>
             </div>
         </div>
 

@@ -90,4 +90,17 @@ class BidangController extends BaseController
     
         return redirect()->to('/admin/bidang')->with('success', 'Data Bidang berhasil disimpan');
     }
+
+
+
+    // -------------------------------------------------------
+    public function tambah()
+    {
+        return view('/admin/dinas/addbidang');
+    }
+    
+    public function edit()
+    {
+        return view('/admin/dinas/editbidang');
+    }
 }
