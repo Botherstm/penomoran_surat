@@ -75,16 +75,15 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/admin/kategori/perihal/subperihal/(:segment)', 'Admin\SubPerihalController::index/$1');
     $routes->get('/admin/kategori/perihal/subperihal/create/(:segment)', 'Admin\SubPerihalController::create/$1');
     $routes->get('/admin/kategori/perihal/subperihal/edit/(:segment)', 'Admin\SubPerihalController::edit/$1');
-    $routes->post('admin/subperihal/save', 'Admin\SubPerihalController::save');
-    $routes->post('admin/subperihal/update/(:segment)', 'Admin\SubPerihalController::update/$1');
+    $routes->post('/admin/subperihal/save', 'Admin\SubPerihalController::save');
+    $routes->post('/admin/subperihal/update/(:segment)', 'Admin\SubPerihalController::update/$1');
     $routes->post('/admin/subperihal/delete/(:segment)', 'Admin\SubPerihalController::delete/$1');
 
 
     //Detail Sub Perihal
-    $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPerihalController::view');
-    $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
-    $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
-    $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
+    $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
+    $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
+    $routes->post('/admin/kategori/perihal/subperihal/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
 
     //auth
     $routes->get('/login', 'LoginController::index');
