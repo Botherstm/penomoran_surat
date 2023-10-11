@@ -32,9 +32,14 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //bidang
 
     $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
-
     $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
-    // $routes->get('/admin/bidang', 'Admin\BidangController::index');
+
+    // -------------------------------------------------------------------
+    $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
+    $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
+
+
+    
     $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 
@@ -52,6 +57,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     
     $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
     $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
+    // --------------------------------------------------------------------
+    $routes->get('/admin/urutansurat/create', 'Admin\KategoryController::createurutansurat');
+    $routes->get('/admin/urutansurat/edit', 'Admin\KategoryController::editurutansurat');
+
+
+
 
     $routes->get('/admin/kategori/', 'Admin\KategoryController::index');
     $routes->get('/admin/kategori/create/', 'Admin\KategoryController::create');

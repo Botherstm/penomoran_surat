@@ -152,4 +152,15 @@ public function view2()
             return redirect()->to('admin/kategori')->with('error', 'data not found.');
         }
     }
+
+
+    public function createurutansurat()
+    {
+        return view('admin/urutansurat/createurutan');
+    }
+    
+    public function editurutansurat()
+    {
+        return view('admin/urutansurat/editurutan');
+    }
 }
