@@ -46,7 +46,7 @@
             <div class="row mb-4">
                 <div class="col-sm-6 px-4">
                     <h1 class="m-0 font-weight-bold ">List</h1>
-                    <h1 class="m-0 font-weight-bold ">Riwayat Surat</h1>
+                    <h1 class="m-0 font-weight-bold ">Urutan Surat</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -55,9 +55,17 @@
     <!-- Main content -->
     <section class="content">
         <div class="row jarak ">
-        <div class="card-tools">
- 
-                
+            <div class="card-tools">
+
+                <div class="btnadd">
+                    <a href="#">
+                        <button type="button" class="btn btn-success">
+                            <i class="icon-jarak fas fa-plus"></i>
+                            Tambah
+                        </button>
+                    </a>
+
+                </div>
             </div>
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -74,11 +82,9 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>No. Surat</th>
-                            <th>Tanggal Surat</th>
-                            <th>User</th>
-                            <th>Dinas</th>
-                            <th>Urutan</th>
+                            <th>Instansi</th>
+                            <th>No. Urutan</th>
+                            <th>No. Terlewat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -88,18 +94,9 @@
                             <td>?</td>
                             <td>?</td>
                             <td>?</td>
-                            <td>?</td>
-                            <td>?</td>
                             <td>
 
                                 <div class="btn-group ">
-
-                                <a class="btnr"
-                                        href="#">
-                                        <button type="button" class="btn btn-block btn-primary ">
-                                            <i class=" fas fa-info"></i>
-                                        </button>
-                                    </a>
                                     <!-- update -->
                                     <a class="btnr"
                                         href="#">
