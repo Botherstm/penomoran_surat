@@ -40,12 +40,6 @@ class DetailSubPerihalController extends BaseController
         
     }
 
-    public function view()
-    {
-        return view('admin/detailsubperihal/listdetailsubperihal', [
-            'active' => 'detailsubperihal',
-        ]);
-    }
 
     public function create($slug)
     {
@@ -91,10 +85,9 @@ class DetailSubPerihalController extends BaseController
             $this->detailsubperihal->insert($data);
 
          
-            return redirect()->to('/admin/kategori/perihal/subperihal/detailsubperihal/'.$subperihal['slug'])->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to('/admin/kategori/perihal/subperihal/detailsubperihal/'.$subperihal['slug'])->with('success', 'Data detail berhasil disimpan.');
         } else {
-
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
 
@@ -121,8 +114,6 @@ class DetailSubPerihalController extends BaseController
             'slug' => 'required',
         ];
 
-        $validation = \Config\Services::validation(); // Mendapatkan instance validasi
-
         if ($this->validate($rules)) {
             $subperihal = $this->request->getPost('detail_id');
             $data = $this->subperihal->getById($subperihal);
@@ -134,23 +125,16 @@ class DetailSubPerihalController extends BaseController
                 'slug' => $this->request->getPost('slug'),
             ];
             // dd($detailsubperihalData, $data);
-            // Simpan data pengguna ke dalam database
             $this->detailsubperihal->update($id, $detailsubperihalData);
-
-            // Redirect ke halaman yang sesuai dengan pesan sukses
             return redirect()->to('/admin/kategori/perihal/subperihal/detailsubperihal/'. $data['slug'])->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()
-                ->withInput()
-                ->with('validationErrors', $validation->getErrors());
+            return redirect()->back()->with('error','periksa apakah data sudah terisi dengan benar');
         }
     }
 
     public function delete($slug)
     {
-        // Cari data album berdasarkan ID
-        
         $data = $this->detailsubperihal->getBySlug($slug);
         $detailsubperihal = $this->detailsubperihal->find($data['id']);
         $subperihal = $this->subperihal->getById($detailsubperihal['detail_id']);

@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class UserController extends BaseController
 {
-    public function index()
+    public function profile()
     {
-        return view('public/home/index');
+        return view('user/profil/index');
     }
 }

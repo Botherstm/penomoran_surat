@@ -27,6 +27,10 @@ class BidangModel extends Model
         
         return $this->findAll();
     }
+     public function getBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
 
     public function getById($id)
     {

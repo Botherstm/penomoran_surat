@@ -1,7 +1,6 @@
 <?= $this->extend('admin/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
-
 <style>
 .table td {
     text-align: center;
@@ -42,14 +41,22 @@
 </style>
 
 <div class="halpad content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row mb-4">
+            <div class="row jarak">
                 <div class="col-sm-6 ">
-                    <h1 class=" font-weight-bold ">List Dinas</h1>
+                    <h2 class=" font-weight-bold "><?= $instansi->ket_uorg; ?></h2>
                 </div><!-- /.col -->
-
+                <div class="card-tools">
+                    <div class="btnadd">
+                        <a href="<?php echo base_url('admin/dinas') ?>">
+                            <button type="button" class="btn btn-warning" style="border: 2px solid black;">
+                                <i class="icon-jarak fa fa-chevron-left"></i>
+                                Kembali
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -57,8 +64,14 @@
     <section class="content">
         <div class="row jarak ">
             <div class="card-tools">
- 
-                
+                <div class="btnadd">
+                    <a href="<?php echo base_url('admin/dinas/bidang/create/') ?><?= $instansi->ket_uorg; ?>">
+                        <button type="button" class="btn btn-success">
+                            <i class="icon-jarak fas fa-plus"></i>
+                            Tambah
+                        </button>
+                    </a>
+                </div>
             </div>
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -75,35 +88,50 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Dinas</th>
+                            <th>Nama Bidang</th>
+                            <th>Kode Bidang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach($bidangs as $bidang): ?>
                         <tr>
-
-                            <td>?</td>
-                            <td>?</td>
+                            <td><?= $i++; ?></td>
+                            <td><?= $bidang['name']; ?></td>
+                            <td><?= $bidang['kode']; ?></td>
                             <td>
-                                <div>
+
+                                <div class="btn-group ">
                                     <!-- update -->
-                                    <a href="<?php echo base_url('admin/dinas/listbidang') ?>">
-                                        <button type="button" class="btn btn-dark">
-                                            Lihat Bidang
+                                    <a class="btnr"
+                                        href="<?php echo base_url('admin/dinas/bidang/edit/') ?><?= $bidang['slug']; ?>">
+                                        <button type="button" class="btn btn-block btn-warning ">
+                                            <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
+                                    <form id="deleteForm" class="mr-3"
+                                        action="<?php echo base_url('admin/bidang/delete/') ?><?= $bidang['slug']; ?>"
+                                        method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button type="button" onclick="confirmDelete('<?= $bidang['slug']; ?>')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
 
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
+
                 </table>
             </div>
 
         </div>
-
+    </section>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
@@ -125,7 +153,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/kategori/delete/" + slug;
+            form.action = "<?php echo base_url('admin/bidang/delete/') ?>" + slug;
             form.submit();
         }
     });
@@ -142,5 +170,6 @@ Swal.fire({
 });
 <?php endif; ?>
 </script>
+
 
 <?= $this->endSection('content'); ?>

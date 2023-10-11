@@ -96,7 +96,7 @@ public function view3()
             return redirect()->to('/admin/kategori')->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+            return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
 
@@ -139,8 +139,7 @@ public function view3()
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()
-                ->withInput()
-                ->with('validationErrors', $validation->getErrors());
+                ->with('validationErrors', 'periksa apakah data sudah terisi dengan benar');
         }
     }
 
@@ -159,13 +158,4 @@ public function view3()
     }
 
 
-    public function createurutansurat()
-    {
-        return view('admin/urutansurat/createurutan');
-    }
-    
-    public function editurutansurat()
-    {
-        return view('admin/urutansurat/editurutan');
-    }
 }

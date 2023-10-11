@@ -34,7 +34,8 @@
     </div>
     <!-- Main content -->
     <section class="content">
-        <form method="POST" action="<?php echo base_url() ?>admin/users/save">
+        <form method="POST" action="<?php echo base_url('admin/users/save') ?>">
+            <?= csrf_field(); ?>
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
                 <input type="number" name="nip" class="form-control" id="nip" placeholder="Masukkan NIP">
@@ -80,9 +81,16 @@
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1"
                     placeholder="Password">
             </div>
-            <div class="row jarak">
-                <button type="submit" class="btn btn-danger" style="width: 150px;">Batal</button>
-                <button type="submit" class="btn btn-success" style="width: 150px;">Konfirmasi</button>
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <a href="<?php echo base_url('admin/users') ?>">
+                        <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                </div>
             </div>
 
         </form>
