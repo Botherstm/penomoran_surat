@@ -99,6 +99,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // USER ROUTES----------------------------------------------
     
     //user dashboard
-    $routes->get('/user', 'UserController::index');
+    $routes->get('/public/home/index', 'UserController::index');
    
 });
