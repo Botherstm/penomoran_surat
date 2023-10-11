@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class DetailSubPerihalModel extends Model
 {
    
-    protected $table            = 'detail_subperihal';
+    protected $table            = 'perihal';
     protected $primaryKey       = 'id';
     
     // Dates
@@ -17,7 +17,7 @@ class DetailSubPerihalModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    protected $allowedFields    = ['id','subperihal_id','slug','kode','name','create_at','update_at'];
+    protected $allowedFields    = ['id','detail_id','slug','kode','name','create_at','update_at'];
 
     public function getAll(){
         
@@ -28,9 +28,14 @@ class DetailSubPerihalModel extends Model
     public function getOne(){
         return $this->first();
     }
-    public function getAllBySubPerihalId($subperihal_id)
+    public function getAllBySubPerihalId($detail_id)
     {
-        return $this->where('subperihal_id', $subperihal_id)->findAll();
+        return $this->where('detail_id', $detail_id)->findAll();
+    }
+
+    public function getBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
     }
 
 

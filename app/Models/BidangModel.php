@@ -8,7 +8,7 @@ class BidangModel extends Model
 {
     protected $table = 'bidang';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','instansi_id', 'kode','name','create_at','update_at'];
+    protected $allowedFields = ['id','instansi_id', 'slug', 'kode','name','create_at','update_at'];
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
@@ -27,6 +27,10 @@ class BidangModel extends Model
         
         return $this->findAll();
     }
+     public function getBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
 
     public function getById($id)
     {
@@ -37,23 +41,5 @@ class BidangModel extends Model
         return $this->where('instansi_id', $instansi_id)->findAll();
     }   
 
-    public function getNamaBidangById($bidangId)
-    {
-        // Mengambil nama bidang berdasarkan bidang_id
-        $query = $this->db->table($this->table)
-            ->select('name')
-            ->where('id', $bidangId)
-            ->get();
-
-        $result = $query->getRow();
-
-        if ($result) {
-            return $result->name;
-        } else {
-            return null;
-        }
-    }
-
-    
 
 }

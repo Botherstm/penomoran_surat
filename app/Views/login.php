@@ -42,6 +42,7 @@
                 <div class="card row m-auto mt-1 shadow" style="width: 40%;">
                     <div class="card-body row m-auto">
                         <form class="" action="<?php echo base_url() ?>login" method="POST">
+                            <?= csrf_field(); ?>
                             <div class="input-group justify-content-center mt-3 mb-3">
                                 <h2>LOGIN</h2>
                             </div>

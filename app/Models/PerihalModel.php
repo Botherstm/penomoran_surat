@@ -9,7 +9,7 @@ class PerihalModel extends Model
     protected $table            = 'perihal';
     protected $primaryKey       = 'id';
 
-    protected $allowedFields    = ['id','kategori_id','sub_perihal_id','kode','name','create_at','update_at'];
+    protected $allowedFields    = ['id','kategori_id','sub_perihal_id','slug','kode','name','create_at','update_at'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,7 +23,11 @@ class PerihalModel extends Model
         
         return $this->findAll();
     }
-public function findBySlug($slug)
+    public function getById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+    public function getBySlug($slug)
     {
         return $this->where('slug', $slug)->first();
     }
@@ -33,7 +37,7 @@ public function findBySlug($slug)
         return $this->where('kategori_id', $kategori_id)->findAll();
     }
 
-    public function getPerihalByid($kode)
+    public function getBykode($kode)
     {
         return $this->where('kode', $kode)->first();
     }
@@ -44,5 +48,4 @@ public function findBySlug($slug)
             ->get()
             ->getRowArray();
     }
-    
 }

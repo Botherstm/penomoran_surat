@@ -56,13 +56,13 @@
     <div class="container mt-5">
         <div class="text-center">
             <h3>selamat datang <?= session()->get('name'); ?> </h3>
-            <?php if( session()->get('level') == 3): ?>
+            <?php if( session()->get('level') == 2): ?>
+            <a href="<?php echo base_url() ?>admin" target="_blank">
+                <button class="btn btn-outline-dark">Super Admin</button>
+            </a>
+            <?php elseif(session()->get('level') == 1): ?>
             <a href="<?php echo base_url() ?>admin" target="_blank">
                 <button class="btn btn-outline-dark">Admin</button>
-            </a>
-            <?php elseif(session()->get('level') == 2): ?>
-            <a href="<?php echo base_url() ?>admin" target="_blank">
-                <button class="btn btn-outline-dark">Instansi</button>
             </a>
             <?php else: ?>
             <?php endif; ?>

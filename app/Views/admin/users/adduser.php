@@ -11,7 +11,16 @@
 }
 
 .halpad {
-    padding: 30px 50px 10px 50px;
+    padding: 30px 300px 10px 300px;
+    text-align: center;
+}
+
+.h1 {
+    text-align: center;
+}
+
+.content-header {
+    padding-bottom: 40px;
 }
 </style>
 
@@ -20,36 +29,29 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h1 class="m-0 font-weight-bold">Tambah User</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
+            <h1 class="m-0 font-weight-bold">Tambah User</h1>
         </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
     <section class="content">
-        <form method="POST" action="<?php echo base_url() ?>admin/users/save">
+        <form method="POST" action="<?php echo base_url('admin/users/save') ?>">
+            <?= csrf_field(); ?>
             <div class="form-group">
                 <label for="exampleFormControlInput1">NIP</label>
                 <input type="number" name="nip" class="form-control" id="nip" placeholder="Masukkan NIP">
             </div>
-
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama">
             </div>
-
             <div class="form-group text-center">
                 <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
             </div>
-
             <div class="form-group">
                 <label for="exampleInputEmail1">Email </label>
                 <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Enter email">
             </div>
-
             <div class="form-group">
                 <label for="exampleFormControlInput1">No Telp.</label>
                 <input type="number" name="no_hp" class="form-control" id="exampleFormControlInput1"
@@ -70,6 +72,7 @@
                     <?php foreach ($bidangs as $bidang) : ?>
                     <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
                     <?php endforeach; ?>
+
                 </select>
             </div>
 
@@ -78,10 +81,18 @@
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1"
                     placeholder="Password">
             </div>
-            <div class="row jarak">
-                <button type="submit" class="btn btn-danger" style="width: 150px;">Batal</button>
-                <button type="submit" class="btn btn-success" style="width: 150px;">Konfirmasi</button>
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <a href="<?php echo base_url('admin/users') ?>">
+                        <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                </div>
             </div>
+
         </form>
     </section>
     <!-- /.content -->
