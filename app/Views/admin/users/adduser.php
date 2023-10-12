@@ -81,15 +81,15 @@
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1"
                     placeholder="Password">
             </div>
-            <div class="row text-center">
+            <div class="row text-center" style="padding-bottom: 50px;" >
                 <div class="col-md-6">
                     <a href="<?php echo base_url('admin/users') ?>">
-                        <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                        <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                     </a>
                 </div>
 
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                    <button type="submit" class="btn btn-success " style="width: 150px;">Tambah data</button>
                 </div>
             </div>
 

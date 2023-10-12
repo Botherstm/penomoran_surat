@@ -57,7 +57,10 @@ public function view3()
         'active' => 'kategory',
     ]);
 }
-
+public function home()
+{
+    return view('public/index');
+}
     public function create()
     {
         return view('admin/kategori/create', [

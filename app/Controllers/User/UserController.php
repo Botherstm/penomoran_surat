@@ -10,4 +10,7 @@ class UserController extends BaseController
     {
         return view('user/profil/index');
     }
+
+
 }
+

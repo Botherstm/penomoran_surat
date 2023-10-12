@@ -49,6 +49,8 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //riwayat
     $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
     $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
+    $routes->get('/public/index', 'Admin\KategoryController::home');
+   
     // --------------------------------------------------------------------
     $routes->get('/admin/urutansurat/create', 'Admin\KategoryController::createurutansurat');
     $routes->get('/admin/urutansurat/edit', 'Admin\KategoryController::editurutansurat');
