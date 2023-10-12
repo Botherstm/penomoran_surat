@@ -31,9 +31,9 @@
                 alt="AdminLTELogo" height="60" width="60">
         </div>
 
-        <?= $this->include('admin/layouts/navbar'); ?>
+        <?= $this->include('public/layouts/navbar'); ?>
 
-        <?= $this->include('admin/layouts/sidebar'); ?>
+        <?= $this->include('public/layouts/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

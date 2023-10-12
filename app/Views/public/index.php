@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?= $this->extend('public/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
 <div class="content-wrapper">
@@ -6,7 +6,7 @@
     <div class="content-header " style="padding-bottom: 40px; padding-top: 30px;" >
         <div class="container-fluid ">
         <div class="col">
-        <div class="card" style="width: 60%; height: 75%; background: #0BDBB6; border-radius: 27px; margin: 0 auto; ">
+        <div class="card" style="width: 60%; height: 75%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
         
                         <div class="card-header border-0" style="color: white;" >
                             <h3 class="card-title font-weight-bold">
@@ -33,7 +33,7 @@
     </div>
     <div class="container-fluid">
         <section class="content">
-        <div  style="width: 100%; background: #0BDBB6; padding-top: 10px; padding-bottom: 10px; ">
+        <div  style="width: 100%; background: #048c7f; padding-top: 10px; padding-bottom: 10px; ">
         
         <div class="row">
 <div class="col-md-8 offset-md-2">
