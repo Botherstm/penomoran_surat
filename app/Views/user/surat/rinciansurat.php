@@ -1,4 +1,4 @@
-<?= $this->extend('user/layouts/main'); ?>
+<?= $this->extend('public/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -64,7 +64,7 @@
                     </table>
                     <hr>
                     <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="#" class="btn btn-info" id="ubahUsernameBtn"><i class="icon-pencil7"></i> Ganti Username</a>
+                        <a href="#" class="btn btn-info" id="ubahUsernameBtn"><i class="icon-pencil7"></i> Edit Surat</a>
                     </div>
                     <div id="formUbahUsername" style="display: none; margin-left:6%;">
                         <form method="" action="">

@@ -26,7 +26,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('user') ?>" class="nav-link">
+                    <a href="<?php echo base_url('/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Beranda
@@ -43,6 +43,30 @@
                         </p>
                     </a>
                 </li>
+
+
+                <!--coba untuk buat view------------------------------------------------------------------------------------------- -->
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('/user/rinciansurat') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Rincian Surat (coba)
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('/user/generate') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Generate Surat (coba)
+                        </p>
+                    </a>
+                </li>
+
+
+
+
+
 
 
                 <li class="nav-item ">

@@ -1,4 +1,4 @@
-<?= $this->extend('user/layouts/main'); ?>
+<?= $this->extend('public/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -56,12 +56,32 @@
                     </table>
                     <hr>
                     <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="#" class="btn btn-info" id="ubahUsernameBtn"><i class="icon-pencil7"></i> Ganti Username</a>
+                        <a href="#" class="btn btn-info" id="ubahNamaBtn"><i class="icon-pencil7"></i> Ganti Nama</a>
                     </div>
-                    <div id="formUbahUsername" style="display: none; margin-left:6%;">
+                    <div id="formUbahNama" style="display: none; margin-left:6%;">
                         <form method="" action="">
-                            <label for="newUsername">Username Baru:</label><br>
-                            <input type="text" name="newUsername" id="newUsername" required>
+                            <label for="oldNama">Nama Lama:</label><br>
+                            <input type="text" name="oldNama" id="oldNama" required>
+                        </form>
+                        <form method="" action="">
+                            <label for="newNama">Nama Baru:</label><br>
+                            <input type="text" name="newNama" id="newNama" required>
+                        </form>
+                        <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
+                    </div>
+
+
+                    <div class="header-elements" style="margin-left:5%; padding:1%">
+                        <a href="#" class="btn btn-info" id="ubahEmailBtn"><i class="icon-pencil7"></i> Ganti Email</a>
+                    </div>
+                    <div id="formUbahEmail" style="display: none; margin-left:6%;">
+                        <form method="" action="">
+                            <label for="oldEmail">Email Lama:</label><br>
+                            <input type="text" name="oldEmail" id="oldEmail" required>
+                        </form>
+                        <form method="" action="">
+                            <label for="newEmail">Email Baru:</label><br>
+                            <input type="text" name="newEmail" id="newEmail" required>
                         </form>
                         <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
                     </div>
@@ -71,6 +91,10 @@
                         <a href="#" class="btn btn-info" id="ubahPasswordBtn"><i class="icon-pencil7"></i> Ganti Password</a>
                     </div>
                     <div id="formUbahPassword" style="display: none; margin-left:6%;">
+                        <form method="" action="">
+                            <label for="oldPassword">Password Lama:</label><br>
+                            <input type="text" name="oldPassword" id="oldPassword" required>
+                        </form>
                         <form method="" action="">
                             <label for="newPassword">Password Baru:</label><br>
                             <input type="text" name="newPassword" id="newPassword" required>
@@ -119,10 +143,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $("#ubahUsernameBtn").click(function(e) {
+        $("#ubahNamaBtn").click(function(e) {
             e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
-            $("#formUbahUsername").toggle();
+            $("#formUbahNama").toggle();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#ubahEmailBtn").click(function(e) {
+            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
+
+            $("#formUbahEmail").toggle();
         });
     });
 </script>
