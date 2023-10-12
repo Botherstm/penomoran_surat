@@ -18,19 +18,19 @@
         </li>
         <!-- <li class="nav-item d-none d-sm-inline-block font-weight-bold">
             <a href="index3.html" class="nav-link  ">Home</a>
-        </li> -->
-        <li class="nav-item d-none d-sm-inline-block font-weight-bold ">
-            <a href="#" class="nav-link">Contact</a>
         </li>
-    </ul>
+    </ul>-->
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-
-        <!-- Messages Dropdown Menu -->
-
-        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item">
+            <a class="nav-link text-light" data-widget="fullscreen" href="#" role="button">
+                <b>Masukan/Saran</b>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" data-widget="fullscreen" href="#" role="button">
+                <b>Kontak</b>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">

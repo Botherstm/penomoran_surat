@@ -6,14 +6,14 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
-        // USER ROUTES----------------------------------------------
+    // USER ROUTES----------------------------------------------
     //public
-     $routes->get('/', 'User\HomeController::index');
+    $routes->get('/', 'User\HomeController::index');
     //user dashboard
     $routes->get('/user', '\UserController::index');
     $routes->get('/user/profile', 'Admin\UserController::profile');
 
-    
+
     //generate
     // $routes->get('/', 'GenerateController::index');
     $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
@@ -35,6 +35,18 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //bidang
+    $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
+    $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
+
+    // -------------------------------------------------------------------
+    $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
+    $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
+
+
+
+    $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
+    $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
+    $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
 
     $routes->get('/admin/dinas/bidang/(:segment)', 'Admin\BidangController::index/$1');
     $routes->get('/admin/dinas/bidang/create/(:segment)', 'Admin\BidangController::create/$1');
@@ -53,12 +65,16 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
 
 
+    //kategory
+
+
+    //urutan    
 
     //riwayat
     $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
     $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
-    
-   
+
+
     // --------------------------------------------------------------------
     $routes->get('/admin/urutansurat/create', 'Admin\KategoryController::createurutansurat');
     $routes->get('/admin/urutansurat/edit', 'Admin\KategoryController::editurutansurat');
@@ -91,6 +107,16 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //Detail Sub Perihal
+    $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPerihalController::view');
+    $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
+    $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
+    $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
+
+    //Datail Sub Perihal UI-----------------------------------------------------------------------------------
+    $routes->get('admin/tambahdetailsubperihal', 'Admin\DetailSubPerihalController::tambahdetailsubperihal');
+    $routes->get('admin/editdetailsubperihal', 'Admin\DetailSubPerihalController::editdetailsubperihal');
+
+
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/edit/(:segment)', 'Admin\DetailSubPerihalController::edit/$1');
@@ -98,11 +124,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/detailsubperihal/update/(:segment)', 'Admin\DetailSubPerihalController::update/$1');
     $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerihalController::delete/$1');
 
+
     //auth
     $routes->get('/login', 'LoginController::index');
     $routes->get('/logout', 'LoginController::logout');
     $routes->post('/login', 'LoginController::login');
-    
+
 
     //dashboard
     $routes->get('/dashboard', 'DashboardController::index');
@@ -111,5 +138,9 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //TODO
 
 
-
+    //user dashboard
+    $routes->get('/user', 'User\UserController::beranda');
+    $routes->get('/user/profile', 'User\UserController::profile');
+    $routes->get('/user/rinciansurat', 'User\UserController::rinciansurat');
+    $routes->get('/user/generate', 'GenerateController::generate');
 });

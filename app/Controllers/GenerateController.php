@@ -12,7 +12,7 @@ use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
 
 class GenerateController extends BaseController
-{  
+{
     protected $bidang;
     protected $dinas;
     protected $perihal;
@@ -32,15 +32,17 @@ class GenerateController extends BaseController
     {
         session();
         if (!session()->has('user_id')) {
-             return view('login',[
-             'validation' => \Config\Services::validation()
-        ]);
+            return view('login', [
+                'validation' => \Config\Services::validation()
+            ]);
         }
         $kategories = $this->kategori->getAll();
-        return view('generate',
-        [
-            'kategories'=> $kategories
-        ]);
+        return view(
+            'generate',
+            [
+                'kategories' => $kategories
+            ]
+        );
     }
 
 
@@ -63,7 +65,7 @@ class GenerateController extends BaseController
 
         return $this->response->setJSON($response);
     }
-     public function getSubPerihalByPerihal($perihal_slug)
+    public function getSubPerihalByPerihal($perihal_slug)
     {
         // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
         // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
@@ -83,7 +85,7 @@ class GenerateController extends BaseController
         return $this->response->setJSON($response);
     }
 
-     public function getdetailSubPerihalByPerihal($subperihal_id)
+    public function getdetailSubPerihalByPerihal($subperihal_id)
     {
         $subperihals = $this->subperihal->findByKode($subperihal_id);
         $detailsubperihals = $this->detailsubperihal->getAllBySubPerihalId($subperihals['id']);
@@ -99,5 +101,10 @@ class GenerateController extends BaseController
         }
 
         return $this->response->setJSON($response);
+    }
+
+    public function generate()
+    {
+        return view('generate');
     }
 }
