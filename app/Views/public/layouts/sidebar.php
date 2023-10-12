@@ -27,15 +27,24 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin') ?>" class="nav-link">
+                    <a href="<?php echo base_url('/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Beranda
                         </p>
                     </a>
                 </li>
-        
 
+                <?php if(session()->get('level') != 0): ?>
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('admin') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Admin
+                        </p>
+                    </a>
+                </li>
+                <?php endif ?>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/riwayatsurat/index') ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
@@ -44,8 +53,6 @@
                         </p>
                     </a>
                 </li>
-
-        
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>

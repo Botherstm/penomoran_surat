@@ -14,10 +14,7 @@ class HomeController extends BaseController
                 'validation' => \Config\Services::validation()
             ]);
         }
-          return view('public/index');
+          return view('public/home/index');
     }
-
-        
-
 
 }
