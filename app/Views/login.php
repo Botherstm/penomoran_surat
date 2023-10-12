@@ -11,7 +11,9 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
-
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy">
+    </script>
 </head>
 
 <body>
@@ -28,7 +30,6 @@
                 </div>
             </a>
         </div>
-        </div>
     </nav>
     <!-- Akhir Navbar -->
 
@@ -41,23 +42,23 @@
             <div class="col">
                 <div class="card row m-auto mt-1 shadow" style="width: 40%;">
                     <div class="card-body row m-auto">
-                        <form class="" action="<?php echo base_url() ?>login" method="POST">
+                        <form class="form" method="POST" action="<?php echo base_url('login') ?>">
+                            <?= csrf_field(); ?>
                             <div class="input-group justify-content-center mt-3 mb-3">
                                 <h2>LOGIN</h2>
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
                                     <input type="email" class="form-control" name="email" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Email" style="opacity: 0.7;">
+                                        aria-describedby="emailHelp" required placeholder="Email" style="opacity: 0.7;">
                                     <i class="input-group-text bi bi-person-fill"></i>
-
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <div class="input-group">
                                     <input type="password"
                                         class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>"
-                                        id="exampleInputPassword1" placeholder="Passsword" name="password"
+                                        required id="exampleInputPassword1" placeholder="Password" name="password"
                                         style="opacity: 0.7;">
                                     <?php if ($validation->hasError('password')) : ?>
                                     <div class="invalid-feedback">
@@ -67,9 +68,12 @@
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
-                            <div class="mb-3 rounded-1 text-center">
+                            <div class="g-recaptcha" data-sitekey="6Ldc6pQoAAAAABy53tE2F8_oNYBrSt3jFmG5Z0L6"></div>
+                            <br>
+                            <br>
+                            <div class="mb-3 rounded-1 text-center ">
                                 <button type="submit" class="btn btn-primary mx-auto border border-0"
-                                    style="background-color: rgb(8, 164, 167);">Login</button>
+                                    style="background-color: rgb(8, 164, 167); ">Login</button>
                             </div>
                         </form>
                     </div>
@@ -77,15 +81,73 @@
             </div>
         </div>
     </div>
-    <!-- Akhir Form Login -->
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+    <?php if (session()->getFlashdata('error')) : ?>
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '<?php echo session()->getFlashdata('error'); ?>',
+    });
+    </script>
+    <?php endif; ?>
+
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $recaptchaSecretKey = '6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy';
+            $recaptchaResponse = $_POST['g-recaptcha-response'];
+
+            $recaptchaVerificationUrl = "https://www.google.com/recaptcha/api/siteverify";
+            $data = [
+                'secret' => $recaptchaSecretKey,
+                'response' => $recaptchaResponse,
+            ];
+
+            $options = [
+                'http' => [
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($data),
+                ],
+            ];
+
+            $context = stream_context_create($options);
+            $recaptchaResult = file_get_contents($recaptchaVerificationUrl, false, $context);
+            $recaptchaResult = json_decode($recaptchaResult);
+
+            if (!$recaptchaResult->success) {
+                // ReCAPTCHA tidak berhasil, tampilkan pesan kesalahan
+                echo "Silakan verifikasi reCAPTCHA terlebih dahulu.";
+                exit();
+            } else {
+                echo "BERHASIL";
+            }
+        }
+        ?>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        const submitButton = form.querySelector("button");
+        const recaptcha = document.querySelector(".g-recaptcha");
+
+        // Nonaktifkan tombol "Login" saat halaman dimuat
+        submitButton.disabled = false;
+
+        recaptcha.addEventListener("change", function() {
+            const recaptchaResponse = grecaptcha.getResponse();
+            // Aktifkan tombol "Login" jika reCAPTCHA diverifikasi
+            if (recaptchaResponse.length > 0) {
+                submitButton.disabled = false;
+            }
+        });
+    });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script>
+    function showAlert() {
+        Swal.fire('berhasil');
+    }
     const passwordInput = document.getElementById("exampleInputPassword1");
     const showPasswordIcon = document.getElementById("showPassword");
 
@@ -101,15 +163,6 @@
         }
     });
     </script>
-    <?php if (session()->getFlashdata('error')) : ?>
-    <script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: '<?php echo session()->getFlashdata('error'); ?>',
-    });
-    </script>
-    <?php endif; ?>
 </body>
 
 </html>

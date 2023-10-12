@@ -12,7 +12,8 @@
 <div class="content-wrapper">
 
 
-    <form action="<?php echo base_url() ?>admin/kategori/save" method="POST" class="">
+    <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
+        <?= csrf_field(); ?>
         <div class="input-group justify-content-center mb-3">
             <h2 class="mt-5 mb-5">Tambah Kategori</h2>
         </div>
@@ -31,7 +32,7 @@
         <div class="row text-center">
 
             <div class="col-md-6">
-                <a href="<?php echo base_url() ?>admin/kategori">
+                <a href="<?php echo base_url('admin/kategori') ?>">
                     <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
                 </a>
             </div>

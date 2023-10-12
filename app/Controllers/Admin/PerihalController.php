@@ -148,7 +148,7 @@ class PerihalController extends BaseController
         // dd($perihal);
         if ($perihal) {
           $this->perihal->delete($data['id']);
-            return redirect()->to('admin/kategoriperihal/'. $kategori['slug'])->with('success', 'data deleted successfully.');
+            return redirect()->to('admin/kategori/perihal/'. $kategori['slug'])->with('success', 'data deleted successfully.');
         } else {
             return redirect()->to('admin/kategori/perihal/'.$kategori['slug'])->with('error', 'data not found.');
         }

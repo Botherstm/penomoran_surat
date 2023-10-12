@@ -105,7 +105,8 @@
                             </td>
                             <td>
                                 <div>
-                                    <a href="<?php echo base_url() ?>admin/kategori/perihal/<?= $kategori['slug']; ?>">
+                                    <a
+                                        href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat rincian perihal
                                         </button>
@@ -116,13 +117,13 @@
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
-                                        href="<?php echo base_url() ?>admin/kategori/edit/<?= $kategori['slug']; ?>">
+                                        href="<?php echo base_url('admin/kategori/edit/') ?><?= $kategori['slug']; ?>">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
                                     <form id="deleteForm" class="mr-3"
-                                        action="<?php echo base_url() ?>admin/kategori/delete/<?= $kategori['slug']; ?>"
+                                        action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>"
                                         method="POST">
                                         <?= csrf_field(); ?>
                                         <button type="button" onclick="confirmDelete('<?= $kategori['slug']; ?>')"
@@ -163,7 +164,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/kategori/delete/" + slug;
+            form.action = "<?php echo base_url('admin/kategori/delete/') ?>" + slug;
             form.submit();
         }
     });

@@ -2,6 +2,8 @@
 
 namespace App\Controllers\User;
 
+namespace App\Controllers\User;
+
 use App\Controllers\BaseController;
 
 class UserController extends BaseController
@@ -22,5 +24,9 @@ class UserController extends BaseController
     public function rinciansurat()
     {
         return view('user/surat/rinciansurat');
+    }
+    public function generate()
+    {
+        return view('generate');
     }
 }

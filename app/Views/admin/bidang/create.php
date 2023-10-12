@@ -10,35 +10,33 @@
 </style>
 
 <div class="content-wrapper">
-
-
-    <form action="<?php echo base_url('admin/subperihal/save') ?>" method="POST" class="">
-        <?= csrf_field(); ?>
+    <form action="<?php echo base_url('admin/bidang/save') ?>" method="POST" class="">
+    <?= csrf_field(); ?>
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Sub Perihal <?= $perihal['name']; ?></h2>
+            <h2 class="mt-5 mb-5">Tambah Bidang</h2>
         </div>
         <div class="mb-5 m-1 ">
-            <label for="SubPerihal" class="form-label input-group justify-content-center">Sub Perihal</label>
+            <label for="bidang" class="form-label input-group justify-content-center">Nama Bidang</label>
             <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                value="<?= $perihal['id']; ?>" readonly>
+            <input type="name" hidden class="form-control" id="instansi_ket_uorg" name="instansi_ket_uorg"
+                value="<?= $instansi->ket_uorg; ?>" readonly>
         </div>
         <div class="form-group text-center">
             <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
         </div>
-        <div class="mb-5 m-1">
-            <label for="kodeSubPerihal" class="form-label input-group justify-content-center">Kode Sub Perihal</label>
-            <input type="name" name="kode" class="form-control w-50 m-auto" id="kodeSubPerihal">
+        <div class="mb-5 m-1 ">
+            <label for="bidang" class="form-label input-group justify-content-center">Kode Bidang</label>
+            <input type="name" class="form-control w-50 m-auto " name="kode" id="kode" aria-describedby="emailHelp">
         </div>
-
         <div class="row text-center">
             <div class="col-md-6">
-                <a href="<?php echo base_url('admin/kategori/perihal/subperihal/') ?><?= $perihal['slug']; ?>">
+                <a href="<?php echo base_url('admin/dinas/bidang/') ?><?= $instansi->ket_uorg; ?>">
                     <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
                 </a>
             </div>
+
             <div class="col-md-6">
                 <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
             </div>
@@ -48,6 +46,7 @@
 
 
 </div>
+
 
 <script>
 var nameInput = document.getElementById('name');
