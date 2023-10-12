@@ -8,10 +8,12 @@ class HomeController extends BaseController
 {
     public function index()
     {
-          return view('public/index');
-    }
-
-        
-
-
+        session();
+        if (!session()->has('user_id')) {
+            return view('login', [
+                'validation' => \Config\Services::validation()
+            ]);
+        }
+        return view('public/index');
+    }
 }

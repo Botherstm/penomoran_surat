@@ -142,5 +142,5 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/user', 'User\UserController::beranda');
     $routes->get('/user/profile', 'User\UserController::profile');
     $routes->get('/user/rinciansurat', 'User\UserController::rinciansurat');
-    $routes->get('/user/generate', 'User\UserController::generate');
+    $routes->get('/user/generate', 'GenerateController::generate');
 });
