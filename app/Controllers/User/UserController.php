@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\User; 
 
 use App\Controllers\BaseController;
 
@@ -11,6 +11,4 @@ class UserController extends BaseController
         return view('user/profil/index');
     }
 
-
 }
-

@@ -6,8 +6,16 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
+        // USER ROUTES----------------------------------------------
+    //public
+     $routes->get('/', 'User\HomeController::index');
+    //user dashboard
+    $routes->get('/user', '\UserController::index');
+    $routes->get('/user/profile', 'Admin\UserController::profile');
+
+    
     //generate
-    $routes->get('/', 'GenerateController::index');
+    // $routes->get('/', 'GenerateController::index');
     $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
     $routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
     $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
@@ -49,7 +57,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //riwayat
     $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
     $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
-    $routes->get('/public/index', 'Admin\KategoryController::home');
+    
    
     // --------------------------------------------------------------------
     $routes->get('/admin/urutansurat/create', 'Admin\KategoryController::createurutansurat');
@@ -100,10 +108,8 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/dashboard', 'DashboardController::index');
 
 
+    //TODO
 
-    // USER ROUTES----------------------------------------------
 
-    //user dashboard
-    $routes->get('/user', '\UserController::index');
-    $routes->get('/user/profile', 'Admin\UserController::profile');
+
 });

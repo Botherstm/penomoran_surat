@@ -36,31 +36,7 @@ class KategoryController extends BaseController
             'perihals' => $perihals,
         ]);
     }
-    
-public function view()
-{
-    return view('admin/urutansurat/index', [
-        'active' => 'kategory',
-    ]);
-}
 
-public function view2()
-{
-    return view('admin/riwayatsurat/index', [
-        'active' => 'kategory',
-    ]);
-}
-
-public function view3()
-{
-    return view('admin/riwayatsurat/rinciansurat', [
-        'active' => 'kategory',
-    ]);
-}
-public function home()
-{
-    return view('public/index');
-}
     public function create()
     {
         return view('admin/kategori/create', [
