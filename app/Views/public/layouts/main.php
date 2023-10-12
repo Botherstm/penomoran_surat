@@ -38,13 +38,13 @@
 
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
     <div class="wrapper">
-        <?= $this->include('admin/layouts/navbar'); ?>
-        <?= $this->include('admin/layouts/sidebar'); ?>
+        <?= $this->include('public/layouts/navbar'); ?>
+        <?= $this->include('public/layouts/sidebar'); ?>
         <!-- Main content -->
         <section class="content">
             <?= $this->renderSection('content'); ?>
         </section>
-        <?= $this->include('admin/layouts/footer'); ?>
+        <?= $this->include('public/layouts/footer'); ?>
     </div>
     <!-- Control Sidebar -->
 
