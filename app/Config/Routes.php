@@ -97,12 +97,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
+    $routes->post('admin/detailsubperihal/update', 'Admin\DetailSubPerihalController::save');
+    $routes->post('admin/detailsubperihal/delete', 'Admin\DetailSubPerihalController::save');
 
-    //Datail Sub Perihal UI-----------------------------------------------------------------------------------
-    $routes->get('admin/tambahdetailsubperihal', 'Admin\DetailSubPerihalController::tambahdetailsubperihal');
-    $routes->get('admin/editdetailsubperihal', 'Admin\DetailSubPerihalController::editdetailsubperihal');
-
-
+    //kategori
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/edit/(:segment)', 'Admin\DetailSubPerihalController::edit/$1');
