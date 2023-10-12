@@ -20,14 +20,13 @@
             <a href="index3.html" class="nav-link  ">Home</a>
         </li>
     </ul>-->
-
         <li class="nav-item">
-            <a class="nav-link text-light" data-widget="fullscreen" href="#" role="button">
+            <a class="nav-link text-light" data-widget="" href="#" role="button">
                 <b>Masukan/Saran</b>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" data-widget="fullscreen" href="#" role="button">
+            <a class="nav-link text-light" data-widget="" href="#" role="button">
                 <b>Kontak</b>
             </a>
         </li>

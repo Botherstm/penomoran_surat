@@ -59,6 +59,16 @@
                         </li>
                     </ul>
                 </li>
+                <?php if(session()->get('level') == 1): ?>
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('admin/bidang/') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-city"></i>
+                        <p>
+                            Bidang
+                        </p>
+                    </a>
+                </li>
+                <?php elseif(session()->get('level') == 2): ?>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/dinas/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
@@ -67,6 +77,8 @@
                         </p>
                     </a>
                 </li>
+                <?php endif; ?>
+
 
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/riwayatsurat/index') ?>" class="nav-link">
@@ -133,7 +145,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <a href="/logout" class="nav-link">
                         <i class="fas fa-arrow-right-from-bracket"></i>
                         <p>
                             Keluar

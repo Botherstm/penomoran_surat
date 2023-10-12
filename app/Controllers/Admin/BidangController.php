@@ -38,6 +38,24 @@ class BidangController extends BaseController
         ]);
     }
 
+    public function view1()
+    {
+    //     if (session()->get('level') != 2 && session()->get('level') != 3) {
+    //     // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+    //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    // }
+    $instansis = $this->dinas->get_instansi_by_id(session()->get('instansi_id'));
+    $instansijson = json_encode($instansis);
+    $instansi = json_decode($instansijson);
+    $bidangs = $this->bidang->getAllByInstansiId(session()->get('instansi_id'));
+    return view('admin/bidang/index', [
+        'bidangs' => $bidangs,
+        'active' => 'bidang',
+        'instansi' => $instansi,
+        ]);
+    }
+
+
     
     public function create($ket_uorg)
     {

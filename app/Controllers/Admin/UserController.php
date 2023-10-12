@@ -24,7 +24,13 @@ class UserController extends BaseController
 
     public function index()
     {
-        $users = $this->UserModel->getAll();
+        if (session()->get('level') == 2) {
+            $users = $this->UserModel->getAll();
+        }
+        elseif(session()->get('level') == 1){
+            $users = $this->UserModel->getByInstansiId(session()->get('instansi_id'));
+        }
+        
         return view('admin/users/index', [
             'users' => $users,
             'active' => 'user',
@@ -37,7 +43,7 @@ class UserController extends BaseController
         $instansis = $this->dinas->get_data();
         $bidangs = $this->bidangs->findAll();
         $users = $this->UserModel->getAll();
-        return view('admin/users/adduser', [
+        return view('admin/users/create', [
             'active' => 'user',
             'users' => $users,
             'instansis' => json_decode($instansis),
@@ -96,7 +102,7 @@ class UserController extends BaseController
         $bidang = $this->bidangs->getById($user['bidang_id']);
         $bidangs = $this->bidangs->getAll();
         // dd($instansi);
-        return view('admin/users/edituser', [
+        return view('admin/users/edit', [
             'active' => 'user',
             'user' => $user,
             'instansi' => $instansi,

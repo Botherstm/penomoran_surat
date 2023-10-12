@@ -35,19 +35,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //bidang
-    $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
-    $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
-
-    // -------------------------------------------------------------------
-    $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
-    $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
-
-
-
-    $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
-    $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
-    $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
-
+ 
     $routes->get('/admin/dinas/bidang/(:segment)', 'Admin\BidangController::index/$1');
     $routes->get('/admin/dinas/bidang/create/(:segment)', 'Admin\BidangController::create/$1');
     $routes->get('/admin/dinas/bidang/edit/(:segment)', 'Admin\BidangController::edit/$1');
@@ -64,8 +52,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
     $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
 
-
-    //kategory
 
 
     //urutan    
@@ -143,4 +129,11 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/user/profile', 'User\UserController::profile');
     $routes->get('/user/rinciansurat', 'User\UserController::rinciansurat');
     $routes->get('/user/generate', 'GenerateController::generate');
+
+
+
+
+    //---------Admin-Biasa---------------
+
+    $routes->get('/admin/bidang', 'Admin\BidangController::view1');
 });

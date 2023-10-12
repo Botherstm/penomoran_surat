@@ -46,7 +46,8 @@
             <div class="row jarak">
                 <div class="col-sm-6 ">
                     <h2 class=" font-weight-bold "><?= $instansi->ket_uorg; ?></h2>
-                </div><!-- /.col -->
+                </div>
+                <?php if(session()->get('level') == 2): ?>
                 <div class="card-tools">
                     <div class="btnadd">
                         <a href="<?php echo base_url('admin/dinas') ?>">
@@ -57,12 +58,15 @@
                         </a>
                     </div>
                 </div>
+                <?php endif; ?>
+                <!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- Main content -->
     <section class="content">
         <div class="row jarak ">
+            <?php if(session()->get('level') == 2): ?>
             <div class="card-tools">
                 <div class="btnadd">
                     <a href="<?php echo base_url('admin/dinas/bidang/create/') ?><?= $instansi->ket_uorg; ?>">
@@ -73,6 +77,8 @@
                     </a>
                 </div>
             </div>
+            <?php endif; ?>
+
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -90,7 +96,10 @@
                             <th>No.</th>
                             <th>Nama Bidang</th>
                             <th>Kode Bidang</th>
+                            <?php if(session()->get('level') == 2): ?>
                             <th>Aksi</th>
+                            <?php endif; ?>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -100,8 +109,8 @@
                             <td><?= $i++; ?></td>
                             <td><?= $bidang['name']; ?></td>
                             <td><?= $bidang['kode']; ?></td>
+                            <?php if(session()->get('level') == 2): ?>
                             <td>
-
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
@@ -121,6 +130,8 @@
                                     </form>
                                 </div>
                             </td>
+
+                            <?php endif; ?>
 
                         </tr>
                         <?php endforeach; ?>

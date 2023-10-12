@@ -24,7 +24,7 @@ class LoginController extends BaseController
     public function login()
     {
 
-        $recaptchaSecretKey = '6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy';
+    $recaptchaSecretKey = '6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy';
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
     $recaptchaVerificationUrl = "https://www.google.com/recaptcha/api/siteverify";
