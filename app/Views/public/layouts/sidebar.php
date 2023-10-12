@@ -7,14 +7,14 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" style="position: fixed;">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <!-- <div class="image">
                 <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> -->
             <div class="info">
-                <a href="#" class="d-block"><?= session()->get('name'); ?></a>
+                <a href="/user/profile" class="d-block"><?= session()->get('name'); ?></a>
             </div>
         </div>
 
@@ -27,15 +27,25 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin') ?>" class="nav-link">
+                    <a href="<?php echo base_url('/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Beranda
                         </p>
                     </a>
                 </li>
-        
 
+
+                <?php if(session()->get('level') != 0): ?>
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('admin') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Admin
+                        </p>
+                    </a>
+                </li>
+                <?php endif ?>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/riwayatsurat/index') ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
@@ -45,7 +55,26 @@
                     </a>
                 </li>
 
-        
+
+                <!--coba untuk buat view------------------------------------------------------------------------------------------- -->
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('/user/rinciansurat') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Rincian Surat (coba)
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('/user/generate') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Generate Surat (coba)
+                        </p>
+                    </a>
+                </li>
+
+
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
@@ -64,7 +93,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <a href="/logout" class="nav-link">
                         <i class="fas fa-arrow-right-from-bracket"></i>
                         <p>
                             Keluar

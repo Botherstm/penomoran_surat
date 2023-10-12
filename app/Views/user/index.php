@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Data User</h5>
+                        <h5 class="card-title">INI ADALAH INDEX PADA USER</h5>
                     </div>
                     <table class="table table-borderless">
                         <tr style="padding-left: 1%;">
