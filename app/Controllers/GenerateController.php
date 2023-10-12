@@ -85,8 +85,6 @@ class GenerateController extends BaseController
 
      public function getdetailSubPerihalByPerihal($subperihal_id)
     {
-        // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
-        // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
         $subperihals = $this->subperihal->findByKode($subperihal_id);
         $detailsubperihals = $this->detailsubperihal->getAllBySubPerihalId($subperihals['id']);
 
