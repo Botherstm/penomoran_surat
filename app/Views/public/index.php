@@ -22,7 +22,26 @@
                     </div>
                     <div style="margin: 0 auto; padding-bottom: 20px;" >
 
-                    <input class="form-control" id="formFileLg" type="file" />
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+    <button class="btn btn-warning" type="button">Upload</button>
+  </div>
+  
+  <div class="input-group-append">
+  <input class="form-control" aria-label="Text input with dropdown button">
+    <button class="btn btn-warning " type="file" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-file mr-1"></i>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item"> Device </a>
+     <!-- (Opsi) 
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a> -->
+    </div>
+  </div>
+</div>
 
                 </div>        
                 
