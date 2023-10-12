@@ -60,11 +60,9 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <a href="<?php echo base_url() ?>logout">
                         <i class="fas fa-arrow-right-from-bracket"></i>
-                        <p>
-                            Keluar
-                        </p>
+                        <button class="btn btn-outline-danger">Keluar</button>
                     </a>
                 </li>
             </ul>

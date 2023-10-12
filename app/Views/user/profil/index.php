@@ -56,11 +56,28 @@
                     </table>
                     <hr>
                     <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="" class="btn btn-info"><i class="icon-pencil7"></i> Ganti Username</a>
+                        <a href="#" class="btn btn-info" id="ubahUsernameBtn"><i class="icon-pencil7"></i> Ganti Username</a>
                     </div>
+                    <div id="formUbahUsername" style="display: none; margin-left:6%;">
+                        <form method="" action="">
+                            <label for="newUsername">Username Baru:</label><br>
+                            <input type="text" name="newUsername" id="newUsername" required>
+                        </form>
+                        <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
+                    </div>
+
+
                     <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="" class="btn btn-info"><i class="icon-printer"></i> Ganti Password</a>
+                        <a href="#" class="btn btn-info" id="ubahPasswordBtn"><i class="icon-pencil7"></i> Ganti Password</a>
                     </div>
+                    <div id="formUbahPassword" style="display: none; margin-left:6%;">
+                        <form method="" action="">
+                            <label for="newPassword">Password Baru:</label><br>
+                            <input type="text" name="newPassword" id="newPassword" required>
+                        </form>
+                        <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
+                    </div>
+
                     <br>
                 </div>
             </div>
@@ -87,7 +104,11 @@
                         </form>
                     </div>
                 </div>
-
+                <div class="mt-3 text-right" style="margin-right: 3%;">
+                    <button class="btn btn-outline-info" id="tombolBaru"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg> Kembali</button>
+                </div>
             </div>
         </div>
     </div>
@@ -95,5 +116,23 @@
 
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#ubahUsernameBtn").click(function(e) {
+            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
+            $("#formUbahUsername").toggle();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#ubahPasswordBtn").click(function(e) {
+            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
+
+            $("#formUbahPassword").toggle();
+        });
+    });
+</script>
 <?= $this->endSection('content'); ?>

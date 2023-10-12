@@ -31,7 +31,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //bidang
     $routes->get('/admin/dinas/listbidang', 'Admin\BidangController::view');
     $routes->get('/admin/bidang/(:segment)', 'Admin\BidangController::index/$1');
-<<<<<<< HEAD
 
     // -------------------------------------------------------------------
     $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
@@ -39,10 +38,8 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
 
-=======
     $routes->get('/admin/tambahbidang', 'Admin\BidangController::tambah');
     $routes->get('/admin/editbidang', 'Admin\BidangController::edit');
->>>>>>> 6c9b69249fd0b1102c7e721cf48b84b07d2e3848
     $routes->get('/admin/bidang/create', 'Admin\BidangController::create');
     $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 
@@ -55,13 +52,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
 
 
-<<<<<<< HEAD
     //kategory
 
 
-=======
     //urutan    
->>>>>>> 6c9b69249fd0b1102c7e721cf48b84b07d2e3848
     $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
     $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
     // --------------------------------------------------------------------
@@ -95,7 +89,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/subperihal/delete/(:segment)', 'Admin\SubPerihalController::delete/$1');
 
     //Detail Sub Perihal
-<<<<<<< HEAD
     $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPerihalController::view');
     $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
@@ -106,7 +99,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('admin/editdetailsubperihal', 'Admin\DetailSubPerihalController::editdetailsubperihal');
 
 
-=======
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
     $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/edit/(:segment)', 'Admin\DetailSubPerihalController::edit/$1');
@@ -114,8 +106,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/detailsubperihal/update/(:segment)', 'Admin\DetailSubPerihalController::update/$1');
     $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerihalController::delete/$1');
 
-    
->>>>>>> 6c9b69249fd0b1102c7e721cf48b84b07d2e3848
+
     //auth
     $routes->get('/login', 'LoginController::index');
     $routes->post('/login', 'LoginController::login');
@@ -128,6 +119,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // USER ROUTES----------------------------------------------
 
     //user dashboard
-    $routes->get('/user', '\UserController::index');
-    $routes->get('/user/profile', 'Admin\UserController::profile');
+    $routes->get('/user', 'User\UserController::beranda');
+    $routes->get('/user/profile', 'User\UserController::profile');
+    $routes->get('/user/rinciansurat', 'User\UserController::rinciansurat');
 });
