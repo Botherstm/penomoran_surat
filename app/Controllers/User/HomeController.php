@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\User; 
+namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 
@@ -15,5 +15,5 @@ class HomeController extends BaseController
             ]);
         }
         return view('public/index');
-    }
+    }
 }

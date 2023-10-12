@@ -159,4 +159,10 @@ class UserController extends BaseController
             return redirect()->to('admin/users')->with('error', 'data not found.');
         }
     }
+
+
+    public function profile()
+    {
+        return view('user/profil/index');
+    }
 }
