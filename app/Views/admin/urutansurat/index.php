@@ -58,7 +58,7 @@
             <div class="card-tools">
 
                 <div class="btnadd">
-                    <a href="/admin/urutansurat/create"> 
+                    <a href="<?php echo base_url('admin/dinas/urutansurat/create/') ?><?= $instansi; ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -98,16 +98,14 @@
 
                                 <div class="btn-group ">
                                     <!-- update -->
-                                    <a class="btnr"
-                                        href="/admin/urutansurat/edit">
+                                    <a class="btnr" href="/admin/urutansurat/edit">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
 
                                     <form id="deleteForm">
-                                        <button type="button" 
-                                            class="btn btn-block btn-danger">
+                                        <button type="button" class="btn btn-block btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>

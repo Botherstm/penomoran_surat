@@ -32,9 +32,9 @@ class PerihalModel extends Model
         return $this->where('slug', $slug)->first();
     }
 
-    public function getByKategori_id($kategori_id)
+    public function getByKategori_id($detail_id)
     {
-        return $this->where('kategori_id', $kategori_id)->findAll();
+        return $this->where('detail_id', $detail_id)->findAll();
     }
 
     public function getBykode($kode)

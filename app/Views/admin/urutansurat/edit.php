@@ -12,23 +12,16 @@
 <div class="content-wrapper">
 
 
-    <form action="<?php echo base_url() ?>admin/kategori/save" method="POST" class="">
+    <form action="<?php echo base_url('admin/urutansurat/update/') ?><?= $urutan['id']; ?>" method="POST" class="">
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Urutan Surat</h2>
+            <h2 class="mt-5 mb-5">Edit Urutan Surat</h2>
         </div>
-
-        
-        <div class="mb-5 m-1 ">
-            <label for="institusi" class="form-label input-group justify-content-center">Nama Institusi</label>
-            <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
-        </div>
-       
 
         <div class="mb-5 m-1 ">
             <label for="urutan" class="form-label input-group justify-content-center">No. Urutan</label>
-            <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
+            <input type="text" value="<?= $urutan['urutan']; ?>" class="form-control w-50 m-auto " name="urutan"
+                id="urutan" aria-describedby="urutan">
         </div>
-       
 
         <div class="row text-center">
 

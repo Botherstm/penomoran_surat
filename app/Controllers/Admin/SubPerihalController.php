@@ -28,7 +28,7 @@ class SubPerihalController extends BaseController
         //     return view('errors/404'); // atau sesuaikan dengan kebijakan Anda
         // }
         $subperihals = $this->subperihal->getAllByPerihalId($perihal['id']);
-        $kategori = $this->kategori->getById($perihal['kategori_id']);
+        $kategori = $this->kategori->getById($perihal['detail_id']);
         $detailSubPerihals = [];
 
         foreach ($subperihals as $subperihal) {
