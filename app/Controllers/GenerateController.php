@@ -105,6 +105,19 @@ class GenerateController extends BaseController
 
     public function generate()
     {
+         session();
+        if (!session()->has('user_id')) {
+            return view('login', [
+                'validation' => \Config\Services::validation()
+            ]);
+        }
+        $kategories = $this->kategori->getAll();
+        return view(
+            'generate',
+            [
+                'kategories' => $kategories
+            ]
+        );
         return view('generate');
     }
 }

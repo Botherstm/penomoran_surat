@@ -51,8 +51,6 @@
 </style>
 
 
-
-
 <div class="container content-wrapper ">
     <div class="col">
 
