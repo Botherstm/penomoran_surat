@@ -1,138 +1,174 @@
-<?= $this->extend('user/layouts/main'); ?>
+<?= $this->extend('public/layouts/main'); ?>
+
 
 <?= $this->section('content'); ?>
-
-
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- Add custom CSS for animation -->
 <style>
-    /* Animasi ketika tombol Generate diklik */
-    @keyframes generateButtonAnimation {
-        0% {
-            background-color: #007bff;
-        }
-
-        100% {
-            background-color: #28a745;
-        }
+/* Animasi ketika tombol Generate diklik */
+@keyframes generateButtonAnimation {
+    0% {
+        background-color: #007bff;
     }
 
-    /* Gaya untuk kontainer utama */
-    .container {
-        max-width: 50%;
-        /* Atur lebar maksimum sesuai keinginan Anda */
-
+    100% {
+        background-color: #28a745;
     }
+}
 
-    /* Gaya untuk label */
-    label {
-        font-weight: bold;
-        /* Tambahkan ketebalan huruf untuk label */
-    }
+/* Gaya untuk kontainer utama */
 
-    /* Gaya untuk tombol Generate */
-    #generateButton {
-        margin-top: 10px;
-        /* Beri jarak atas antara tombol dan elemen di atasnya */
-        animation: generateButtonAnimation 0.3s ease-in-out;
-        /* Animasikan tombol ketika diklik */
-        background-size: 2em;
 
-    }
+.input-group {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    /* Gaya untuk nomor surat input */
-    #nomorSurat {
-        font-weight: bold;
-        /* Tambahkan ketebalan huruf untuk nomor surat */
-        background-color: #f8f9fa;
-        /* Atur latar belakang menjadi abu-abu muda */
-    }
+#nomorSurat {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Gaya untuk label */
+label {
+    font-weight: bold;
+    /* Tambahkan ketebalan huruf untuk label */
+}
+
+/* Gaya untuk tombol Generate */
+#generateButton {
+    margin-top: 10px;
+    /* Beri jarak atas antara tombol dan elemen di atasnya */
+    animation: generateButtonAnimation 0.3s ease-in-out;
+    /* Animasikan tombol ketika diklik */
+    background-size: 2em;
+
+}
+
+/* Gaya untuk nomor surat input */
+#nomorSurat {
+    font-weight: bold;
+    /* Tambahkan ketebalan huruf untuk nomor surat */
+    background-color: #f8f9fa;
+    /* Atur latar belakang menjadi abu-abu muda */
+}
 </style>
 
-
-<div class="container content-wrapper ">
-    <div class="col">
-
-        <div class="">
-            <h3 class="mt-5">selamat datang <?= session()->get('name'); ?> </h3>
-            <?php if (session()->get('level') == 3) : ?>
-                <a href="<?php echo base_url() ?>admin" target="_blank">
-                    <button class="btn btn-outline-dark">Admin</button>
-                </a>
-            <?php elseif (session()->get('level') == 2) : ?>
-                <a href="<?php echo base_url() ?>admin" target="_blank">
-                    <button class="btn btn-outline-dark">Instansi</button>
-                </a>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h3>selamat datang <?= session()->get('name'); ?> </h3>
+            <?php if (session()->get('level') == 2) : ?>
+            <a href="<?php echo base_url() ?>admin" target="_blank">
+                <button class="btn btn-outline-dark">Super Admin</button>
+            </a>
+            <?php elseif (session()->get('level') == 1) : ?>
+            <a href="<?php echo base_url() ?>admin" target="_blank">
+                <button class="btn btn-outline-dark">Admin</button>
+            </a>
             <?php else : ?>
             <?php endif; ?>
         </div>
-        <form class="text-center">
-            <h1 class="text-center f">Generate Nomor Surat </h1>
-            <div class="form-group">
-                <label for="bidang">BIDANG</label>
-                <div class="input-group">
-                    <select class="custom-select" id="bidang">
-                        <option selected>Pilih bidang...</option>
-                        <option value="kategori1">Kategori 1</option>
-                        <option value="kategori2">Kategori 2</option>
-                        <option value="kategori3">Kategori 3</option>
-                    </select>
+        <div class="row ">
+            <div class="col-md-6">
+                <div class="card">
+
+                    <form class="text-center">
+                        <h1 class="text-center mt-3 mb-3">Generate Nomor Surat </h1>
+                        <div class="form-group">
+                            <label for="bidang">BIDANG</label>
+                            <div class="input-group">
+                                <select class="custom-select" id="bidang">
+                                    <option selected>Pilih bidang...</option>
+                                    <option value="kategori1">Kategori 1</option>
+                                    <option value="kategori2">Kategori 2</option>
+                                    <option value="kategori3">Kategori 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <div class="input-group">
+                                <select class="custom-select" id="kategori">
+                                    <option selected>Pilih kategori...</option>
+                                    <?php foreach ($kategories as $kategori) : ?>
+                                    <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group d-none" id="perihalGroup">
+                            <label for="perihal">Perihal</label>
+                            <div class="input-group">
+                                <select class="custom-select" id="perihal">
+                                    <option selected>Pilih perihal...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group d-none" id="subPerihalGroup">
+                            <label for="subPerihal">Sub Perihal</label>
+                            <div class="input-group">
+                                <select class="custom-select" id="subPerihal">
+                                    <option selected>Pilih sub perihal...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group d-none" id="detailSubPerihalGroup">
+                            <label for="detailsubPerihal">Detail Sub Perihal</label>
+                            <div class="input-group">
+                                <select class="custom-select" id="detailsubPerihal">
+                                    <option selected>Pilih detail sub perihal...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorSurat">Nomor Tercetak</label>
+                            <input type="text" class="form-control" id="nomorSurat" readonly>
+                        </div>
+                        <div class="form-group mb-3">
+                            <button class="btn btn-info " type="button" id="generateButton">Generate</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
-            <div class="form-group">
-                <label for="kategori">Kategori</label>
-                <div class="input-group">
-                    <select class="custom-select" id="kategori">
-                        <option selected>Pilih kategori...</option>
-                        <?php foreach ($kategories as $kategori) : ?>
-                            <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
-                        <?php endforeach ?>
-                    </select>
+            <div class="col-md-6 " style="padding-right: 1%;">
+                <div class="card ">
+                    <div class="card-body">
+                        <div class="text-center ">
+                            <img src="" id="sample_image" style="width: 50%;" />
+                        </div>
+                    </div>
+
+                    <div class="card-footer " style="text-align: center;">
+                        <form class="" method="POST" action="">
+                            <div class="row ">
+                                <label class="col-form-label col-md-3">Tampilan Surat</label>
+
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
             </div>
-            <div class="form-group d-none" id="perihalGroup">
-                <label for="perihal">Perihal</label>
-                <div class="input-group">
-                    <select class="custom-select" id="perihal">
-                        <option selected>Pilih perihal...</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group d-none" id="subPerihalGroup">
-                <label for="subPerihal">Sub Perihal</label>
-                <div class="input-group">
-                    <select class="custom-select" id="subPerihal">
-                        <option selected>Pilih sub perihal...</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group d-none" id="detailSubPerihalGroup">
-                <label for="detailsubPerihal">Detail Sub Perihal</label>
-                <div class="input-group">
-                    <select class="custom-select" id="detailsubPerihal">
-                        <option selected>Pilih detail sub perihal...</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="nomorSurat">Nomor Surat</label>
-                <input type="text" class="form-control" id="nomorSurat" readonly>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-info" type="button" id="generateButton">Generate</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<!-- Add Bootstrap JS and Popper.js scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- JavaScript untuk mengambil data -->
-<script>
+    </div>
+
+
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript untuk mengambil data -->
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
         var kategoriSelect = document.getElementById('kategori');
         var perihalSelect = document.getElementById('perihal');
@@ -288,7 +324,7 @@
             }
         });
     });
-</script>
+    </script>
 
 
-<?= $this->endSection('content'); ?>
+    <?= $this->endSection('content'); ?>

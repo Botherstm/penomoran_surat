@@ -55,10 +55,17 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //urutan    
+    $routes->get('/admin/dinas/urutansurat/(:segment)', 'Admin\UrutanSuratController::index/$1');
+    $routes->get('/admin/dinas/urutansurat/create/(:segment)', 'Admin\UrutanSuratController::create/$1');
+    $routes->get('/admin/dinas/urutansurat/edit/(:segment)', 'Admin\UrutanSuratController::edit/$1');
+    $routes->post('/admin/urutansurat/save', 'Admin\UrutanSuratController::save');
+    $routes->post('/admin/urutansurat/update/(:segment)', 'Admin\UrutanSuratController::update/$1');
+    $routes->post('/admin/urutansurat/delete/(:segment)', 'Admin\UrutanSuratController::delete/$1');
+
 
     //riwayat
-    $routes->get('/admin/urutansurat/index', 'Admin\KategoryController::view');
-    $routes->get('/admin/riwayatsurat/index', 'Admin\KategoryController::view2');
+
+    $routes->get('/admin/riwayatsurat/index', 'Admin\RiwayatsuratController::view2');
 
 
     // --------------------------------------------------------------------

@@ -64,9 +64,9 @@
             </div>
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                        <button type="button" id="searchButton" class="btn btn-default">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -89,6 +89,7 @@
                     <tbody>
                         <?php $i = 1 ?>
                         <?php foreach ($users as $user) : ?>
+                        <?php if (session()->get('level') == 2 || $user['level'] != 2) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
                             <td><?= $user['nip']; ?></td>
@@ -96,9 +97,18 @@
                             <td><?= $user['email']; ?></td>
                             <td><?= $user['no_hp']; ?></td>
                             <td><?= $user['instansi_id']; ?></td>
-                            <td><?= $user['bidang_id']; ?></td>
                             <td>
-
+                                <?php
+                                    $bidangNames = [];
+                                    foreach ($bidangs as $bidangId => $bidang) {
+                                        if ($bidangId == $user['bidang_id']) {
+                                            $bidangNames[] = $bidang['name'];
+                                        }
+                                    }
+                                    echo implode(', ', $bidangNames);     
+                                ?>
+                            </td>
+                            <td>
                                 <div class="btn-group ">
                                     <!-- update -->
                                     <a class="btnr"
@@ -107,8 +117,10 @@
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
-
-                                    <form id="deleteForm"
+                                    <?php if (session()->get('name') == $user['name']) : ?>
+                                    <!-- Sembunyikan tombol delete jika user saat ini adalah pemilik data -->
+                                    <?php else : ?>
+                                    <form id="deleteForm" class="pr-3"
                                         action="<?php echo base_url('admin/users/delete/') ?><?= $user['slug']; ?>"
                                         method="POST">
                                         <?= csrf_field(); ?>
@@ -117,16 +129,18 @@
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
+                                    <?php endif; ?>
                                 </div>
                             </td>
-                            <?php endforeach ?>
                         </tr>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
 
         </div>
-
+    </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
@@ -164,5 +178,35 @@ Swal.fire({
     showConfirmButton: false
 });
 <?php endif; ?>
+
+
+
+
+
+
+
+function performSearch() {
+    // Ambil nilai dari input pencarian
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+
+    // Ambil semua baris data dalam tabel
+    var tableRows = document.querySelectorAll('.table tbody tr');
+
+    // Loop melalui setiap baris data
+    tableRows.forEach(function(row) {
+        var rowData = row.textContent.toLowerCase();
+        if (rowData.includes(searchText)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+// Tambahkan event listener pada tombol pencarian
+document.getElementById('searchButton').addEventListener('click', performSearch);
+
+// Tambahkan event listener pada input pencarian untuk mendukung pencarian instan saat mengetik
+document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 <?= $this->endSection('content'); ?>

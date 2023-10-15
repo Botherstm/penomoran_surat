@@ -88,15 +88,15 @@
                         </p>
                     </a>
                 </li>
-
-                <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/urutansurat/index') ?>" class="nav-link">
+                <?php if(session()->get('level') == 2): ?>
+                <!-- <li class="nav-item ">
+                    <a href="<?php echo base_url('admin/urutansurat') ?>" class="nav-link">
                         <i class="nav-icon fas fa-hashtag"></i>
                         <p>
                             Urutan Surat
                         </p>
                     </a>
-                </li>
+                </li> -->
 
 
 
@@ -126,7 +126,7 @@
                         </li>
                     </ul>
                 </li>
-
+                <?php endif; ?>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
@@ -137,8 +137,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
-                        <i class="bi bi-envelope"></i>
-                        <i class="fa-solid fa-wrench"></i>
+                        <i class="nav-icon fa-solid fa-wrench"></i>
                         <p>
                             Pengaturan
                         </p>
@@ -146,7 +145,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="/logout" class="nav-link">
-                        <i class="fas fa-arrow-right-from-bracket"></i>
+                        <i class="nav-icon fa fa-sign-out"></i>
                         <p>
                             Keluar
                         </p>

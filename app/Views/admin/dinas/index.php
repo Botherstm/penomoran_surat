@@ -57,21 +57,23 @@
         <div class="row jarak ">
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                        <button type="button" id="searchButton" class="btn btn-default">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
             </div>
             <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
+                <table class="table table-bordered table-hover text-nowrap table-light">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>Nama Dinas</th>
-                            <th>Aksi</th>
+                            <th>Urutan Surat</th>
+                            <th>Aksi Urutan Surat</th>
+                            <th>Data Bidang</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,6 +82,35 @@
                         <tr class="text-center">
                             <td><?= $i++; ?></td>
                             <td><?= $dinas->ket_ukerja ?></td>
+                            <td>
+                                <?php if (isset($urutans[$dinas->id_instansi]) && !empty($urutans[$dinas->id_instansi])) {
+                                    foreach ($urutans[$dinas->id_instansi] as $urutan) {
+                                        echo $urutan['urutan'];
+                                    }
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <div>
+                                    <?php if (isset($urutans[$dinas->id_instansi]) && !empty($urutans[$dinas->id_instansi])) : ?>
+                                    <!-- update -->
+                                    <a
+                                        href="<?php echo base_url('admin/dinas/urutansurat/edit/') ?><?= $dinas->ket_uorg ?>">
+                                        <button type="button" class="btn btn-warning">
+                                            Edit Urutan
+                                        </button>
+                                    </a>
+                                    <?php else : ?>
+                                    <!-- tambah -->
+                                    <a
+                                        href="<?php echo base_url('admin/dinas/urutansurat/create/') ?><?= $dinas->ket_uorg ?>">
+                                        <button type="button" class="btn btn-success">
+                                            Tambah Urutan
+                                        </button>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                            </td>
                             <td>
                                 <div>
                                     <!-- update -->
@@ -137,6 +168,26 @@ Swal.fire({
     showConfirmButton: false
 });
 <?php endif; ?>
+
+
+
+
+function performSearch() {
+
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+    var tableRows = document.querySelectorAll('.table tbody tr');
+    tableRows.forEach(function(row) {
+        var rowData = row.textContent.toLowerCase();
+        if (rowData.includes(searchText)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+document.getElementById('searchButton').addEventListener('click', performSearch);
+document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
 <?= $this->endSection('content'); ?>

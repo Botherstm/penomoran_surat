@@ -10,20 +10,26 @@ class CreateUsersTable extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
-                'auto_increment' => true,
-            ],
-            'NIP' => [
-                'type' => 'INT',
-                'constraint' => 11,
-            ],
-            'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'username' => [
+            'instansi_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'bidang_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'nip' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -31,12 +37,12 @@ class CreateUsersTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'password' => [
-                'type' => 'TEXT',
-            ],
-            'instansi_id' => [
+            'no_hp' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+            ],
+            'password' => [
+                'type' => 'TEXT',
             ],
             'level' => [
                 'type' => 'INT',

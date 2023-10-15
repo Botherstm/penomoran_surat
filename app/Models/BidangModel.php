@@ -27,6 +27,7 @@ class BidangModel extends Model
         
         return $this->findAll();
     }
+    
      public function getBySlug($slug)
     {
         return $this->where('slug', $slug)->first();
@@ -40,6 +41,5 @@ class BidangModel extends Model
     {
         return $this->where('instansi_id', $instansi_id)->findAll();
     }   
-
 
 }

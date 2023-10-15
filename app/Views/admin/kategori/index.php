@@ -70,9 +70,9 @@
             </div>
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                        <button type="button" id="searchButton" class="btn btn-default">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -180,6 +180,27 @@ Swal.fire({
     showConfirmButton: false
 });
 <?php endif; ?>
+
+
+function performSearch() {
+
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+
+    var tableRows = document.querySelectorAll('.table tbody tr');
+
+    tableRows.forEach(function(row) {
+        var rowData = row.textContent.toLowerCase();
+        if (rowData.includes(searchText)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+document.getElementById('searchButton').addEventListener('click', performSearch);
+
+document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
 <?= $this->endSection('content'); ?>

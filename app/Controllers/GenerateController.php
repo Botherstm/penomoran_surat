@@ -105,6 +105,15 @@ class GenerateController extends BaseController
 
     public function generate()
     {
+<<<<<<< HEAD
+=======
+         session();
+        if (!session()->has('user_id')) {
+            return view('login', [
+                'validation' => \Config\Services::validation()
+            ]);
+        }
+>>>>>>> 3b84fc1a151356c0aea87cb36c0a6434ee075e5a
         $kategories = $this->kategori->getAll();
         return view(
             'generate',
@@ -112,7 +121,10 @@ class GenerateController extends BaseController
                 'kategories' => $kategories
             ]
         );
+<<<<<<< HEAD
         $kategories = $this->kategori->getAll();
+=======
+>>>>>>> 3b84fc1a151356c0aea87cb36c0a6434ee075e5a
         return view('generate');
     }
 }

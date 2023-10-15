@@ -13,19 +13,13 @@ class UrutanSurat extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'perihal_id' => [
+            'instansi_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null'=>true, 
             ],
-            'subperihal_id' => [
+            'urutan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255, 
-                'null'=>true,
-            ],
-            'nomor' => [
-                'type' => 'INT',
-                'constraint' => 11, 
             ],
             'created_at' => [
                 'type' => 'DATETIME',
