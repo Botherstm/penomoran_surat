@@ -105,6 +105,14 @@ class GenerateController extends BaseController
 
     public function generate()
     {
+        $kategories = $this->kategori->getAll();
+        return view(
+            'generate',
+            [
+                'kategories' => $kategories
+            ]
+        );
+        $kategories = $this->kategori->getAll();
         return view('generate');
     }
 }
