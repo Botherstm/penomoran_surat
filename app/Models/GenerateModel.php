@@ -8,7 +8,7 @@ class GenerateModel extends Model
 {    protected $table            = 'generate';
     protected $primaryKey       = 'id';
 
-    protected $allowedFields    = ['id', 'user_id', 'instansi_id', 'bidang_id', 'urutan_id', 'slug','tanggal','pdf','urutan','nomor','create_at','update_at'];
+    protected $allowedFields    = ['id', 'user_id', 'instansi_id', 'bidang_id', 'urutan_id', 'slug','tanggal','pdf','perihal','urutan','nomor','create_at','update_at'];
 
     // Dates
     protected $useTimestamps = true;

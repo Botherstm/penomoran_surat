@@ -30,7 +30,7 @@ class Generate extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'slug' => [
+            'perihal' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
