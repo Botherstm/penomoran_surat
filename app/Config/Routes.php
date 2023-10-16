@@ -9,6 +9,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // USER ROUTES----------------------------------------------
     //public
     $routes->get('/', 'User\HomeController::index');
+    $routes->get('/generateterlewat', 'User\HomeController::terlewat');
     //user dashboard
     $routes->get('/user', '\UserController::index');
     //$routes->get('/user/profile', 'Admin\UserController::profile');

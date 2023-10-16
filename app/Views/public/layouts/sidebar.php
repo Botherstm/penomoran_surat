@@ -65,10 +65,10 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('/user/generate') ?>" class="nav-link">
+                    <a href="<?php echo base_url('/generateterlewat') ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
-                            Generate Surat (coba)
+                            Generate Surat Terlewat (coba)
                         </p>
                     </a>
                 </li>

@@ -3,7 +3,6 @@
 <?= $this->section('content'); ?>
 
 
-
 <div>
     <div class="content-wrapper" style="padding-top:1%; padding-left: 1% ">
         <div class="row">
@@ -17,14 +16,14 @@
                         </div>
                     </div>
 
-                    <div class="card-footer">
-                        <form method="POST" action="" accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data"><input name="_method" type="hidden" value="PATCH"><input name="_token" type="hidden" value="hylqApcELmsucQ2kZKl4yvR3fqC0wkBgKDQa3IAn">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <button type="submit" class="btn btn-info">Download</button>
-                                </div>
+                    <div class="card-footer justify-content-center">
+                        <div class="row justify-content-center">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-info">Download</button>
                             </div>
-                        </form>
+
+                        </div>
+
                     </div>
                 </div>
 
@@ -37,9 +36,19 @@
                     </div>
                     <table class="table table-borderless">
                         <tr style="padding-left: 1%;">
-                            <th>Kategori Surat</th>
+                            <th>Nomor Surat</th>
                             <td>:</td>
                             <td> ... </td>
+                        </tr>
+                        <tr>
+                            <th>Dinas</th>
+                            <td>:</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <th>Bidang</th>
+                            <td>:</td>
+                            <td>...</td>
                         </tr>
                         <tr>
                             <th>Tanggal Surat</th>
@@ -47,12 +56,7 @@
                             <td>...</td>
                         </tr>
                         <tr>
-                            <th>Acara Kegiatan</th>
-                            <td>:</td>
-                            <td>...</td>
-                        </tr>
-                        <tr>
-                            <th>No. Surat</th>
+                            <th>Nama User</th>
                             <td>:</td>
                             <td>...</td>
                         </tr>
@@ -85,25 +89,6 @@
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#ubahUsernameBtn").click(function(e) {
-            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
-
-            $("#formUbahUsername").toggle();
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $("#ubahPasswordBtn").click(function(e) {
-            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
-
-            $("#formUbahPassword").toggle();
-        });
-    });
-</script>
 
 
 <?= $this->endSection('content'); ?>

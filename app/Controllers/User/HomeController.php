@@ -35,10 +35,24 @@ class HomeController extends BaseController
                 'validation' => \Config\Services::validation()
             ]);
         }
-         $kategories = $this->kategori->getAll();
-          return view('public/home/index', [
-                'kategories' => $kategories
-            ]);
+        $kategories = $this->kategori->getAll();
+        return view('public/home/index', [
+            'kategories' => $kategories
+        ]);
     }
 
+
+    public function terlewat()
+    {
+        session();
+        if (!session()->has('user_id')) {
+            return view('login', [
+                'validation' => \Config\Services::validation()
+            ]);
+        }
+        $kategories = $this->kategori->getAll();
+        return view('public/home/terlewat', [
+            'kategories' => $kategories
+        ]);
+    }
 }
