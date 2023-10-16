@@ -9,9 +9,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // USER ROUTES----------------------------------------------
     //public
     $routes->get('/', 'User\HomeController::index');
+    $routes->get('/public/riwayat/index', 'User\UserController::riwayat');
     //user dashboard
     $routes->get('/user', '\UserController::index');
     $routes->get('/user/profile', 'Admin\UserController::profile');
+    
+
 
 
     //generate
@@ -136,9 +139,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/user/generate', 'GenerateController::generate');
 
 
-
-
     //---------Admin-Biasa---------------
 
     $routes->get('/admin/bidang', 'Admin\BidangController::view1');
+
+
+    
 });
