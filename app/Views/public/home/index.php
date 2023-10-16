@@ -82,6 +82,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control" id="tanggal" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label for="nomorSurat">Nomor Tercetak</label>
                                 <input type="text" class="form-control" id="nomorSurat" readonly>
                             </div>
@@ -113,7 +117,7 @@ document.getElementById("inputGroupFile01").addEventListener("change", function(
             pdfObject.data = URL.createObjectURL(file);
             pdfObject.type = "application/pdf";
             pdfObject.style.width = "100%";
-            pdfObject.style.height = "400px"; // Adjust the height as needed
+            pdfObject.style.height = "1000px"; // Adjust the height as needed
             previewContainer.appendChild(pdfObject);
 
             // Show the form
