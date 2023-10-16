@@ -15,10 +15,9 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/user/profile', 'Admin\UserController::profile');
     
 
-
-
     //generate
     // $routes->get('/', 'GenerateController::index');
+    $routes->post('/generate/save', 'GenerateController::save');
     $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
     $routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
     $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
@@ -66,16 +65,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/urutansurat/save', 'Admin\UrutanSuratController::save');
     $routes->post('/admin/urutansurat/update/(:segment)', 'Admin\UrutanSuratController::update/$1');
     $routes->post('/admin/urutansurat/delete/(:segment)', 'Admin\UrutanSuratController::delete/$1');
-
-
-    //riwayat
-
-    $routes->get('/admin/riwayatsurat/index', 'Admin\RiwayatsuratController::view2');
-
-
-    // --------------------------------------------------------------------
-    $routes->get('/admin/urutansurat/create', 'Admin\KategoryController::createurutansurat');
-    $routes->get('/admin/urutansurat/edit', 'Admin\KategoryController::editurutansurat');
 
     //kategori
     $routes->get('/admin/kategori/', 'Admin\KategoryController::index');
@@ -144,6 +133,13 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //---------Admin-Biasa---------------
 
     $routes->get('/admin/bidang', 'Admin\BidangController::view1');
+
+
+
+    //----------User--------
+    
+    //riwayat
+    $routes->get('/public/riwayat/(:segment)', 'User\RiwayatController::index/$1');
 
 
     

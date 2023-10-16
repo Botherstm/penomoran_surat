@@ -37,7 +37,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-navbar-fixed">
+<body class="sidebar-mini layout-fixed sidebar-collapse layout-navbar-fixed">
     <div class="wrapper">
         <?= $this->include('public/layouts/navbar'); ?>
         <?= $this->include('public/layouts/sidebar'); ?>

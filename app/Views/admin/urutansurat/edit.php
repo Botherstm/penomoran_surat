@@ -26,7 +26,7 @@
         <div class="row text-center">
 
             <div class="col-md-6">
-                <a href="<?php echo base_url() ?>admin/urutansurat/index">
+                <a href="<?php echo base_url() ?>admin/dinas">
                     <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
                 </a>
             </div>

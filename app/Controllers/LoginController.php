@@ -71,6 +71,7 @@ class LoginController extends BaseController
                         'no_hp' => $user['no_hp'],
                         'level' => $user['level'],
                     ];
+                    // dd($userData);
                     session()->set($userData);
 
                     return redirect()->to('/');
