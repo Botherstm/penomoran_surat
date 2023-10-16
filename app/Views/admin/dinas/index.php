@@ -79,7 +79,6 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Dinas</th>
-                            <th>Urutan Surat</th>
                             <th>Aksi Urutan Surat</th>
                             <th>Data Bidang</th>
                             <th>Aksi</th>
@@ -91,12 +90,25 @@
                         <tr class="text-center">
                             <td><?= $i++; ?></td>
                             <td><?= $dinas['name'] ?></td>
-                            <td>
 
-                            </td>
                             <td>
-
+                                <?php if (!empty($urutans[$dinas['id']])) : ?>
+                                <?php foreach ($urutans[$dinas['id']] as $urutan) : ?>
+                                <?=  $urutan['urutan'] . '<br>'; ?>
+                                <?php endforeach; ?>
+                                <!-- Jika data urutan sudah ada, tampilkan tombol "Edit" -->
+                                <a href="<?php echo base_url('admin/dinas/urutansurat/edit/') ?><?= $dinas['slug']; ?>">
+                                    <button type="button" class="btn btn-primary">Edit</button>
+                                </a>
+                                <?php else : ?>
+                                <!-- Jika data urutan belum ada, tampilkan tombol "Tambah Data" -->
+                                <a
+                                    href="<?php echo base_url('admin/dinas/urutansurat/create/') ?><?= $dinas['slug']; ?>">
+                                    <button type="button" class="btn btn-success">Tambah Data</button>
+                                </a>
+                                <?php endif; ?>
                             </td>
+
                             <td>
                                 <!-- data bidang -->
                                 <div>
@@ -109,7 +121,7 @@
                             </td>
 
                             <td>
-                                <div class="btn-group ">
+                                <div class="btn-group">
                                     <!-- update -->
                                     <a class="btnr"
                                         href="<?php echo base_url('admin/dinas/edit/') ?><?= $dinas['slug']; ?>">

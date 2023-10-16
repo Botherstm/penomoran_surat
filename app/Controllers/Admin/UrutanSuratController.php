@@ -19,26 +19,25 @@ class UrutanSuratController extends BaseController
         $this->dinas = new DinasModel();
         $this->urutan = new UrutanSuratModel();
     }
-    public function index($ket_uorg)
+    public function index($slug)
     {
         if (session()->get('level') != 2) {
         throw new \CodeIgniter\Exceptions\PageNotFoundException();
         }
+        $dinas = $this->dinas->getBySlug($slug);
         return view('admin/urutansurat/index', [
             'active' => 'urutansurat',
-            'instansi'=> $ket_uorg
+            'instansi'=> $dinas
         ]);
     }
 
-    public function create($ket_uorg)
+    public function create($slug)
     {
-        $instansis = $this->dinas->getByKet_org($ket_uorg);
-        $instansijson = json_encode($instansis);
-        $instansi = json_decode($instansijson);
+        $dinas = $this->dinas->getBySlug($slug);
         // dd($instansi);
         return view('admin/urutansurat/create', [
             'active' => 'urutansurat',
-             'instansi' => $instansi,
+            'instansi' => $dinas,
         ]);
     }
 
@@ -72,12 +71,10 @@ class UrutanSuratController extends BaseController
     }
 
 
-    public function edit($ket_uorg)
+    public function edit($slug)
     {
-        $instansis = $this->dinas->get_instansi_by_id(session()->get('instansi_id'));
-        $instansijson = json_encode($instansis);
-        $instansi = json_decode($instansijson);
-        $urutan = $this->urutan->getOneByInstansiId($instansi->id_instansi);
+        $dinas = $this->dinas->getBySlug($slug);
+        $urutan = $this->urutan->getOneByInstansiId($dinas['id']);
         // dd($instansi,$urutan);
         return view('admin/urutansurat/edit', [
             'active' => 'user',
