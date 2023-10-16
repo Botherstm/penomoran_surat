@@ -65,7 +65,6 @@
                             Tambah
                         </button>
                     </a>
-
                 </div>
             </div>
             <div class="card-tools">
