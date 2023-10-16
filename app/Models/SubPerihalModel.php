@@ -19,7 +19,10 @@ class SubPerihalModel extends Model
 
 
 
-
+    public function getByKode($kode)
+    {
+        return $this->where('kode', $kode)->first();
+    }
      public function getByid($id)
     {
         return $this->where('id', $id)->first();
