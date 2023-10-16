@@ -11,7 +11,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/', 'User\HomeController::index');
     //user dashboard
     $routes->get('/user', '\UserController::index');
-    $routes->get('/user/profile', 'Admin\UserController::profile');
+    //$routes->get('/user/profile', 'Admin\UserController::profile');
 
 
     //generate
@@ -35,7 +35,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //bidang
- 
+
     $routes->get('/admin/dinas/bidang/(:segment)', 'Admin\BidangController::index/$1');
     $routes->get('/admin/dinas/bidang/create/(:segment)', 'Admin\BidangController::create/$1');
     $routes->get('/admin/dinas/bidang/edit/(:segment)', 'Admin\BidangController::edit/$1');
