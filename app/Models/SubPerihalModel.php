@@ -23,6 +23,10 @@ class SubPerihalModel extends Model
     {
         return $this->where('kode', $kode)->first();
     }
+    public function getBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
      public function getByid($id)
     {
         return $this->where('id', $id)->first();

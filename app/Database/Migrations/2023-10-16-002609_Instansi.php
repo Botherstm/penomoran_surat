@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Bidang extends Migration
+class Instansi extends Migration
 {
     public function up()
     {
@@ -13,10 +13,6 @@ class Bidang extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 // 'auto_increment' => true,
-            ],
-            'instansi_id' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255, 
             ],
              'slug' => [
                 'type' => 'VARCHAR',
@@ -39,11 +35,11 @@ class Bidang extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('bidang');
+        $this->forge->createTable('instansi');
     }
 
     public function down()
     {
-        $this->forge->dropTable('bidang');
+         $this->forge->dropTable('instansi');
     }
 }

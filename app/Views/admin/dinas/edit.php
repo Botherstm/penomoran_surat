@@ -10,38 +10,38 @@
 </style>
 
 <div class="content-wrapper">
-    <form action="<?php echo base_url('admin/bidang/save') ?>" method="POST" class="">
+
+
+    <form action="<?php echo base_url('admin/dinas/update/') ?><?= $dinas['id'] ?>" method="POST" class="">
         <?= csrf_field(); ?>
         <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Tambah Bidang <?= $instansi['name']; ?></h2>
+            <h2 class="mt-5 mb-5">Edit Data Dinas</h2>
         </div>
         <div class="mb-5 m-1 ">
-            <label for="bidang" class="form-label input-group justify-content-center">Nama Bidang</label>
-            <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
+            <label for="dinas" class="form-label input-group justify-content-center">Kategori</label>
+            <input type="text" name="name" value="<?= $dinas['name']; ?>" class="form-control w-50 m-auto" id="name"
+                aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="instansi_id" name="instansi_id"
-                value="<?= $instansi['id']; ?>" readonly>
+            <input type="name" hidden value="<?= $dinas['slug']; ?>" class="form-control" id="slug" name="slug"
+                readonly>
         </div>
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+        <div class="mb-5 m-1">
+            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Kategori</label>
+            <input type="name" name="kode" value="<?= $dinas['kode']; ?>" class="form-control w-50 m-auto"
+                id="kodeKategori">
         </div>
-        <div class="mb-5 m-1 ">
-            <label for="bidang" class="form-label input-group justify-content-center">Kode Bidang</label>
-            <input type="name" class="form-control w-50 m-auto " name="kode" id="kode" aria-describedby="emailHelp">
-        </div>
+
         <div class="row text-center">
             <div class="col-md-6">
-                <a href="<?php echo base_url('admin/dinas/bidang/') ?><?= $instansi['slug']; ?>">
+                <a href="<?php echo base_url('admin/dinas') ?>">
                     <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
                 </a>
             </div>
-
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 25%;">Tambah data</button>
+                <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
             </div>
         </div>
-
     </form>
 
 
@@ -69,4 +69,5 @@ nameInput.addEventListener('input', function() {
     slugInput.value = slugValue;
 });
 </script>
+
 <?= $this->endSection('content'); ?>

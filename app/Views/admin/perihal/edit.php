@@ -21,7 +21,7 @@
                 aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="kategori_id" name="kategori_id"
+            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
                 value="<?= $kategori['id']; ?>" readonly>
         </div>
         <div class="form-group text-center">

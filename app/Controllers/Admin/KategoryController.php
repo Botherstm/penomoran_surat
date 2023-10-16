@@ -20,7 +20,10 @@ class KategoryController extends BaseController
     }
 
     public function index() 
-    {
+    {    
+        if (session()->get('level') != 2) {
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
         $kategoris = $this->Kategory->getAll();
 
         $perihals = [];

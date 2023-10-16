@@ -21,7 +21,9 @@ class UrutanSuratController extends BaseController
     }
     public function index($ket_uorg)
     {
-        
+        if (session()->get('level') != 2) {
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
         return view('admin/urutansurat/index', [
             'active' => 'urutansurat',
             'instansi'=> $ket_uorg

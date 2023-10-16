@@ -52,6 +52,14 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+    <div class="btnadd">
+        <a href="<?php echo base_url('admin/dinas/create') ?>">
+            <button type="button" class="btn btn-success">
+                <i class="icon-jarak fas fa-plus"></i>
+                Tambah
+            </button>
+        </a>
+    </div>
     <!-- Main content -->
     <section class="content">
         <div class="row jarak ">
@@ -74,51 +82,50 @@
                             <th>Urutan Surat</th>
                             <th>Aksi Urutan Surat</th>
                             <th>Data Bidang</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($dinass->data as $dinas) : ?>
+                        <?php foreach ($dinass as $dinas) : ?>
                         <tr class="text-center">
                             <td><?= $i++; ?></td>
-                            <td><?= $dinas->ket_ukerja ?></td>
+                            <td><?= $dinas['name'] ?></td>
                             <td>
-                                <?php if (isset($urutans[$dinas->id_instansi]) && !empty($urutans[$dinas->id_instansi])) {
-                                    foreach ($urutans[$dinas->id_instansi] as $urutan) {
-                                        echo $urutan['urutan'];
-                                    }
-                                }
-                                ?>
+
                             </td>
                             <td>
-                                <div>
-                                    <?php if (isset($urutans[$dinas->id_instansi]) && !empty($urutans[$dinas->id_instansi])) : ?>
-                                    <!-- update -->
-                                    <a
-                                        href="<?php echo base_url('admin/dinas/urutansurat/edit/') ?><?= $dinas->ket_uorg ?>">
-                                        <button type="button" class="btn btn-warning">
-                                            Edit Urutan
-                                        </button>
-                                    </a>
-                                    <?php else : ?>
-                                    <!-- tambah -->
-                                    <a
-                                        href="<?php echo base_url('admin/dinas/urutansurat/create/') ?><?= $dinas->ket_uorg ?>">
-                                        <button type="button" class="btn btn-success">
-                                            Tambah Urutan
-                                        </button>
-                                    </a>
-                                    <?php endif; ?>
-                                </div>
+
                             </td>
                             <td>
+                                <!-- data bidang -->
                                 <div>
-                                    <!-- update -->
-                                    <a href="<?php echo base_url('admin/dinas/bidang/') ?><?= $dinas->ket_uorg ?>">
+                                    <a href="<?php echo base_url('admin/dinas/bidang/') ?><?= $dinas['slug'] ?>">
                                         <button type="button" class="btn btn-dark">
                                             Lihat Bidang
                                         </button>
                                     </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="btn-group ">
+                                    <!-- update -->
+                                    <a class="btnr"
+                                        href="<?php echo base_url('admin/dinas/edit/') ?><?= $dinas['slug']; ?>">
+                                        <button type="button" class="btn btn-block btn-warning ">
+                                            <i class=" fas fa-pen"></i>
+                                        </button>
+                                    </a>
+                                    <form id="deleteForm" class="mr-3"
+                                        action="<?php echo base_url('admin/dinas/delete/') ?><?= $dinas['slug']; ?>"
+                                        method="POST">
+                                        <?= csrf_field(); ?>
+                                        <button type="button" onclick="confirmDelete('<?= $dinas['slug']; ?>')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -152,7 +159,7 @@ function confirmDelete(slug) {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/kategori/delete/" + slug;
+            form.action = "<?php echo base_url() ?>admin/dinas/delete/" + slug;
             form.submit();
         }
     });

@@ -17,6 +17,10 @@ class Perihal extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
+            ],
             'kode' => [
                 'type' => 'VARCHAR',
                 'constraint' => 225, 
