@@ -26,4 +26,10 @@ class UserController extends BaseController
     {
         return view('generate');
     }
+
+    public function riwayat()
+    {
+        return view('public/riwayat/index');
+    }
+    
 }

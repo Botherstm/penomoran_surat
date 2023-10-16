@@ -32,17 +32,16 @@ class DinasController extends BaseController
 
        
         $urutans = [];
-        // $urutan = $this->urutan->getAll();
-        // $urutans = [];
-        // foreach ($result->data as $dinas) {
-        //     $dinasId = $dinas->id_instansi;
-        //     // dd($dinasId);
-        //     $urutanData = $this->urutan->getByInstansi_id($dinasId);
-        //     $urutans[$dinasId] = $urutanData;
-        // }
-        // dd($urutans);
-        $bidangs = [];
         $dinass = $this->dinas->getAll();
+        foreach ($dinass as $dinas) {
+            $dinasId = $dinas['id'];
+            // dd($dinasId);
+            $urutanData = $this->urutan->getByInstansi_id($dinasId);
+            $urutans[$dinasId] = $urutanData;
+        }
+        // dd($urutans);
+
+        
         foreach ($dinass as $dinas) {
             $dinasId = $dinas['id'];
             $bidangData = $this->bidang->getAllByInstansiId($dinasId);

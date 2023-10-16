@@ -18,7 +18,7 @@
         </div>
         <div class="form-group text-center">
             <input type="name" hidden class="form-control" id="instansi_id" name="instansi_id"
-                value="<?= $instansi->id_instansi; ?>" readonly>
+                value="<?= $instansi['id']; ?>" readonly>
         </div>
         <div class="mb-5 m-1 ">
             <label for="urutan" class="form-label input-group justify-content-center">No. Urutan</label>
