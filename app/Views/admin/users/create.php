@@ -64,8 +64,8 @@
             <div class="form-group">
                 <label for="instansiSelect">Dinas</label>
                 <select class="form-control" id="instansiSelect" name="instansi_id">
-                    <?php foreach ($instansis->data as $dinas) : ?>
-                    <option value="<?= $dinas->id_instansi ?>"><?= $dinas->ket_ukerja ?></option>
+                    <?php foreach ($instansis as $dinas) : ?>
+                    <option value="<?= $dinas['id'] ?>"><?= $dinas['name'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -77,7 +77,6 @@
                     <?php foreach ($bidangs as $bidang) : ?>
                     <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
                     <?php endforeach; ?>
-
                 </select>
             </div>
             <div class="form-group">

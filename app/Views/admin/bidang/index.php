@@ -45,7 +45,7 @@
         <div class="container-fluid ">
             <div class="row jarak">
                 <div class="col-sm-6 ">
-                    <h2 class=" font-weight-bold "><?= $instansi->ket_uorg; ?></h2>
+                    <h2 class=" font-weight-bold ">Bidang <?= $instansi['name']; ?></h2>
                 </div>
                 <?php if(session()->get('level') == 2): ?>
                 <div class="card-tools">
@@ -69,7 +69,7 @@
             <?php if(session()->get('level') == 2): ?>
             <div class="card-tools">
                 <div class="btnadd">
-                    <a href="<?php echo base_url('admin/dinas/bidang/create/') ?><?= $instansi->ket_uorg; ?>">
+                    <a href="<?php echo base_url('admin/dinas/bidang/create/') ?><?= $instansi['slug']; ?>">
                         <button type="button" class="btn btn-success">
                             <i class="icon-jarak fas fa-plus"></i>
                             Tambah
@@ -130,9 +130,7 @@
                                     </form>
                                 </div>
                             </td>
-
                             <?php endif; ?>
-
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

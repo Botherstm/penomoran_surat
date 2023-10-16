@@ -62,13 +62,13 @@ class UserController extends BaseController
 
     public function create()
     {
-        $instansis = $this->dinas->get_data();
+        $instansis = $this->dinas->getAll();
         $bidangs = $this->bidangs->findAll();
         $users = $this->UserModel->getAll();
         return view('admin/users/create', [
             'active' => 'user',
             'users' => $users,
-            'instansis' => json_decode($instansis),
+            'instansis' => $instansis,
             'bidangs' => $bidangs,
         ]);
     }

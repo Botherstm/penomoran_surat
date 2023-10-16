@@ -9,7 +9,7 @@ class PerihalModel extends Model
     protected $table            = 'perihal';
     protected $primaryKey       = 'id';
 
-    protected $allowedFields    = ['id','kategori_id','sub_perihal_id','slug','kode','name','create_at','update_at'];
+    protected $allowedFields    = ['id','detail_id','slug','kode','name','create_at','update_at'];
 
     // Dates
     protected $useTimestamps = true;

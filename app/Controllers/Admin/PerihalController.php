@@ -61,13 +61,13 @@ class PerihalController extends BaseController
     {
         // Validasi input data
         $rules = [
-            'kategori_id' => 'required',
+            'detail_id' => 'required',
             'kode' => 'required',
             'name' => 'required',
         ];
 
         if ($this->validate($rules)) {
-            $kategori_id = $this->request->getPost('kategori_id');
+            $detail_id = $this->request->getPost('detail_id');
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             $slug = $this->request->getPost('slug');
@@ -75,14 +75,14 @@ class PerihalController extends BaseController
             $uuidString = $uuid->toString();
             $data = [
                 'id' => $uuidString,
-                'kategori_id' => $kategori_id,
+                'detail_id' => $detail_id,
                 'kode' => $kode,
                 'name' => $name,
                 'slug' => $slug,
             ];
             // dd($data);
             $this->perihal->insert($data);
-            $kategori = $this->Kategory->getById($kategori_id);
+            $kategori = $this->Kategory->getById($detail_id);
             return redirect()->to('/admin/kategori/perihal/' . $kategori['slug'])->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
@@ -94,7 +94,7 @@ class PerihalController extends BaseController
     public function edit($slug)
     {
         $perihal = $this->perihal->getBySlug($slug);
-        $kategori = $this->Kategory->getById($perihal['kategori_id']);
+        $kategori = $this->Kategory->getById($perihal['detail_id']);
         // dd($kategori);
         return view('admin/perihal/edit', [
             'active' => 'user',
@@ -108,7 +108,7 @@ class PerihalController extends BaseController
     {
         // Validasi input form
         $rules = [
-            'kategori_id' => 'required',
+            'detail_id' => 'required',
             'name' => 'required',
             'kode' => 'required',
             'slug' => 'required',
@@ -117,11 +117,11 @@ class PerihalController extends BaseController
         $validation = \Config\Services::validation(); // Mendapatkan instance validasi
 
         if ($this->validate($rules)) {
-            $kategori = $this->request->getPost('kategori_id');
+            $kategori = $this->request->getPost('detail_id');
             $data = $this->Kategory->getById($kategori);
             // Data pengguna yang akan disimpan
             $perihalData = [
-                'kategori_id' => $kategori,
+                'detail_id' => $kategori,
                 'name' => $this->request->getPost('name'),
                 'kode' => $this->request->getPost('kode'),
                 'slug' => $this->request->getPost('slug'),
@@ -144,7 +144,7 @@ class PerihalController extends BaseController
     {
         $data = $this->perihal->getBySlug($slug);
         $perihal = $this->perihal->find($data['id']);
-        $kategori = $this->Kategory->getById($perihal['kategori_id']);
+        $kategori = $this->Kategory->getById($perihal['detail_id']);
         // dd($perihal);
         if ($perihal) {
           $this->perihal->delete($data['id']);

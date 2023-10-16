@@ -30,9 +30,11 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
     //dinas
     $routes->get('/admin/dinas', 'Admin\DinasController::index');
-    // $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
-    // $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
-
+    $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
+    $routes->get('/admin/dinas/edit/(:segment)', 'Admin\DinasController::edit/$1');
+    $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
+    $routes->post('/admin/dinas/update/(:segment)', 'Admin\DinasController::update/$1');
+    $routes->post('/admin/dinas/delete/(:segment)', 'Admin\DinasController::delete/$1');
 
     //bidang
  
