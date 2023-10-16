@@ -87,7 +87,7 @@ class GenerateController extends BaseController
 
     public function getdetailSubPerihalByPerihal($subperihal_id)
     {
-        $subperihals = $this->subperihal->findByKode($subperihal_id);
+        $subperihals = $this->subperihal->getByKode($subperihal_id);
         $detailsubperihals = $this->detailsubperihal->getAllBySubPerihalId($subperihals['id']);
 
         // Ubah data menjadi format JSON
