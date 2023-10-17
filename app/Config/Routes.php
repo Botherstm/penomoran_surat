@@ -6,7 +6,14 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
+
+
+
     // USER ROUTES----------------------------------------------
+    $routes->get('/generateterlewat', 'User\HomeController::terlewat');
+
+
+
     //public
     $routes->get('/', 'User\HomeController::index');
     $routes->get('/public/riwayat/index', 'User\UserController::riwayat');
