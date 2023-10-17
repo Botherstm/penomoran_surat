@@ -3,42 +3,42 @@
 <?= $this->section('content'); ?>
 
 <style>
-.table td {
-    text-align: center;
-    background-color: #C5E9DE;
+    .table td {
+        text-align: center;
+        background-color: #C5E9DE;
 
-}
-
-
-.table>thead>tr>* {
-    background-color: #20c997;
-    text-align: center;
-}
+    }
 
 
-.btnadd {
+    .table>thead>tr>* {
+        background-color: #20c997;
+        text-align: center;
+    }
 
-    padding-left: 17px;
-}
 
-.btnr {
+    .btnadd {
 
-    padding-inline-end: 15%;
+        padding-left: 17px;
+    }
 
-}
+    .btnr {
 
-.icon-jarak {
-    padding-right: 10px;
-}
+        padding-inline-end: 15%;
 
-.jarak {
-    justify-content: space-between;
+    }
 
-}
+    .icon-jarak {
+        padding-right: 10px;
+    }
 
-.halpad {
-    padding: 30px 50px 10px 50px;
-}
+    .jarak {
+        justify-content: space-between;
+
+    }
+
+    .halpad {
+        padding: 30px 50px 10px 50px;
+    }
 </style>
 
 <div class="halpad content-wrapper">
@@ -67,6 +67,7 @@
                     </a>
                 </div>
             </div>
+
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
@@ -92,47 +93,42 @@
                     <tbody>
                         <?php $i = 1 ?>
                         <?php foreach ($kategoris as $kategori) : ?>
-                        <tr>
-                            <td><?= $i++; ?></td>
-                            <td><?= $kategori['name']; ?></td>
-                            <td><?= $kategori['kode']; ?></td>
-                            <td>
-                                <?php $PerihalCounter = 1; ?>
-                                <?php foreach ($perihals[$kategori['id']] as $perihal) : ?>
-                                <?= $PerihalCounter++ . '. ' . $perihal['name'] . '<br>'; ?>
-                                <?php endforeach; ?>
-                            </td>
-                            <td>
-                                <div>
-                                    <a
-                                        href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
-                                        <button type="button" class="btn btn-dark">
-                                            Lihat rincian perihal
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group ">
-                                    <!-- update -->
-                                    <a class="btnr"
-                                        href="<?php echo base_url('admin/kategori/edit/') ?><?= $kategori['slug']; ?>">
-                                        <button type="button" class="btn btn-block btn-warning ">
-                                            <i class=" fas fa-pen"></i>
-                                        </button>
-                                    </a>
-                                    <form id="deleteForm" class="mr-3"
-                                        action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>"
-                                        method="POST">
-                                        <?= csrf_field(); ?>
-                                        <button type="button" onclick="confirmDelete('<?= $kategori['slug']; ?>')"
-                                            class="btn btn-block btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $kategori['name']; ?></td>
+                                <td><?= $kategori['kode']; ?></td>
+                                <td>
+                                    <?php $PerihalCounter = 1; ?>
+                                    <?php foreach ($perihals[$kategori['id']] as $perihal) : ?>
+                                        <?= $PerihalCounter++ . '. ' . $perihal['name'] . '<br>'; ?>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td>
+                                    <div>
+                                        <a href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
+                                            <button type="button" class="btn btn-dark">
+                                                Lihat rincian perihal
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group ">
+                                        <!-- update -->
+                                        <a class="btnr" href="<?php echo base_url('admin/kategori/edit/') ?><?= $kategori['slug']; ?>">
+                                            <button type="button" class="btn btn-block btn-warning ">
+                                                <i class=" fas fa-pen"></i>
+                                            </button>
+                                        </a>
+                                        <form id="deleteForm" class="mr-3" action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>" method="POST">
+                                            <?= csrf_field(); ?>
+                                            <button type="button" onclick="confirmDelete('<?= $kategori['slug']; ?>')" class="btn btn-block btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
@@ -145,61 +141,61 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
-// function showAlert() {
-//     Swal.fire('Ini adalah pesan SweetAlert2!');
-// }
+    // function showAlert() {
+    //     Swal.fire('Ini adalah pesan SweetAlert2!');
+    // }
 
-function confirmDelete(slug) {
-    Swal.fire({
-        title: 'Apa Kamu yakin?',
-        text: 'Jika dihapus data tidak bisa di kembalikan.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
-            const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url('admin/kategori/delete/') ?>" + slug;
-            form.submit();
-        }
-    });
-}
+    function confirmDelete(slug) {
+        Swal.fire({
+            title: 'Apa Kamu yakin?',
+            text: 'Jika dihapus data tidak bisa di kembalikan.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+                const form = document.getElementById('deleteForm');
+                form.action = "<?php echo base_url('admin/kategori/delete/') ?>" + slug;
+                form.submit();
+            }
+        });
+    }
 
-// Popup success message
-<?php if (session()->getFlashdata('success')) : ?>
-Swal.fire({
-    title: 'Success',
-    text: '<?= session()->getFlashdata('success') ?>',
-    icon: 'success',
-    timer: 3000,
-    showConfirmButton: false
-});
-<?php endif; ?>
+    // Popup success message
+    <?php if (session()->getFlashdata('success')) : ?>
+        Swal.fire({
+            title: 'Success',
+            text: '<?= session()->getFlashdata('success') ?>',
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    <?php endif; ?>
 
 
-function performSearch() {
+    function performSearch() {
 
-    var searchText = document.getElementById('searchInput').value.toLowerCase();
+        var searchText = document.getElementById('searchInput').value.toLowerCase();
 
-    var tableRows = document.querySelectorAll('.table tbody tr');
+        var tableRows = document.querySelectorAll('.table tbody tr');
 
-    tableRows.forEach(function(row) {
-        var rowData = row.textContent.toLowerCase();
-        if (rowData.includes(searchText)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
+        tableRows.forEach(function(row) {
+            var rowData = row.textContent.toLowerCase();
+            if (rowData.includes(searchText)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
 
-document.getElementById('searchButton').addEventListener('click', performSearch);
+    document.getElementById('searchButton').addEventListener('click', performSearch);
 
-document.getElementById('searchInput').addEventListener('input', performSearch);
+    document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
 <?= $this->endSection('content'); ?>

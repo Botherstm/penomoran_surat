@@ -1,13 +1,9 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <<<<<<< HEAD <a href="index3.html" class="brand-link bg-teal">
-        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
-        <span class="brand-text font-weight-bold">E-NOMOR</span>
-        =======
+    <a href="index3.html" class="brand-link bg-teal">
         <a href="index3.html" class="brand-link bg-teal ">
             <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
             <span class="brand-text font-weight-bold ">E-NOMOR</span>
-            >>>>>>> 33fcfca6d30561347f94517ea341cf872d9ea345
         </a>
 
         <!-- Sidebar -->
@@ -67,43 +63,40 @@
                             </p>
                         </a>
                     </li>
-                    <<<<<<< HEAD <li class="nav-item">
-                        <a href="<?php echo base_url('/generateterlewat') ?>" class="nav-link">
-                            =======
-                            <li class="nav-item ">
-                                <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>" class="nav-link">
-                                    >>>>>>> 33fcfca6d30561347f94517ea341cf872d9ea345
-                                    <i class="nav-icon fas fa-envelope"></i>
-                                    <p>
-                                        Generate Surat Terlewat
-                                    </p>
-                                </a>
-                            </li>
 
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-info"></i>
-                                    <p>
-                                        Tentang
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fa-solid fa-wrench"></i>
-                                    <p>
-                                        Pengaturan
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/logout" class="nav-link">
-                                    <i class="nav-icon fa fa-sign-out"></i>
-                                    <p>
-                                        Keluar
-                                    </p>
-                                </a>
-                            </li>
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>" class="nav-link">
+                            <i class="nav-icon fas fa-envelope"></i>
+                            <p>
+                                Generate Surat Terlewat
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-info"></i>
+                            <p>
+                                Tentang
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa-solid fa-wrench"></i>
+                            <p>
+                                Pengaturan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">
+                            <i class="nav-icon fa fa-sign-out"></i>
+                            <p>
+                                Keluar
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
