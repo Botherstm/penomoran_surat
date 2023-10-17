@@ -18,6 +18,13 @@
                         <i style="font-size: 5em; color: white;" class="fas fa-file-pdf"></i>
                     </div>
                     <div style="margin: 0 auto; padding-bottom: 20px; width: 75%;">
+                        <!-- <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="pdf_upload" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div> -->
                         <div class="preview-container" style="display: inline;">
                             <!-- Preview of the uploaded PDF will be displayed here -->
                         </div>
@@ -39,11 +46,6 @@
                             <div class="form-group">
                                 <label for="nomorSurat">Bidang</label>
                                 <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="datetime-local" name="tanggal" class="form-control" id="tanggalSurat"
-                                    min="<?= date('Y-m-d\TH:i'); ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
@@ -84,14 +86,10 @@
                                 <label for="nomorSurat">Nomor Tercetak</label>
                                 <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
                             </div>
-<<<<<<< HEAD
                             <div class="form-group">
                                 <label for="tanggalSurat">Tanggal Surat</label>
                                 <input type="datetime-local" name="tanggal" class="form-control" id="tanggalSurat" min="<?= date('Y-m-d\TH:i'); ?>" required>
                             </div>
-=======
-
->>>>>>> ecdd5f2506dd1e2c5ac8ebc437f966e03f1451f8
                             <div class="form-group mb-3">
                                 <button class="btn btn-success" type="button" id="generateButton" onclick="confirmGenerate()">Generate</button>
                             </div>
