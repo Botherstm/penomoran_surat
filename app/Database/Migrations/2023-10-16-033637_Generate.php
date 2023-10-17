@@ -30,6 +30,11 @@ class Generate extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'terlewat' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                null => true
+            ],
             'perihal' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

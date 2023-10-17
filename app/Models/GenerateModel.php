@@ -7,8 +7,7 @@ use CodeIgniter\Model;
 class GenerateModel extends Model
 {    protected $table            = 'generate';
     protected $primaryKey       = 'id';
-
-    protected $allowedFields    = ['id', 'user_id', 'instansi_id', 'bidang_id', 'urutan_id', 'slug','tanggal','pdf','perihal','urutan','nomor','create_at','update_at'];
+    protected $allowedFields    = ['id', 'user_id', 'instansi_id', 'bidang_id', 'urutan_id', 'terlewat','tanggal','pdf','perihal','urutan','nomor','create_at','update_at'];
 
     // Dates
     protected $useTimestamps = true;
@@ -22,6 +21,7 @@ class GenerateModel extends Model
     {
         return $this->belongsTo('App\Models\DinasModel', 'dinas_id');
     }
+
 
     //cari semua
     public function getAll(){
@@ -40,9 +40,13 @@ class GenerateModel extends Model
     }
 
 
-    public function getByInstansiId($instansi_id)
+    public function getOneByInstansiId($instansi_id)
     {
         return $this->where('$instansi_id', $instansi_id)->first();
+    }
+    public function getAllByInstansi_id($instansi_id)
+    {
+        return $this->where('instansi_id', $instansi_id)->findAll();
     }
 
     //ambil satu

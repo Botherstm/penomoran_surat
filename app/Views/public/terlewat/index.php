@@ -2,21 +2,34 @@
 
 <?= $this->section('content'); ?>
 
+
+<style>
+.form-group {
+    margin-top: 30px;
+}
+
+#form-hide {
+    display: none;
+    /* Mengatur elemen menjadi tidak tampil (sembunyikan) */
+}
+</style>
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header" style="padding-bottom: 40px; padding-top: 30px;">
         <div class="container-fluid">
             <div class="col">
                 <div class="card"
-                    style="width: 100%; height: 800%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
+                    style="width: 100%; height: 100%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
                     <div class="card-header border-0" style="color: white;">
-                        <h3 class="card-title font-weight-bold">
+                        <h1 class="card-title font-weight-bold">
                             <i class="fas fa-file mr-1"></i>
-                            Generate Surat
-                        </h3>
+                            Generate Surat (TERLEWAT)
+                        </h1>
                     </div>
-                    <div style="margin: 0 auto; padding-bottom: 20px; padding-top: 80px; ">
-                        <i style="font-size: 9em; color: white;" class="fas fa-file-pdf"></i>
+                    <div style="margin: 0 auto; padding-bottom: 20px; ">
+                        <i style="font-size: 5em; color: white;" class="fas fa-file-pdf"></i>
                     </div>
                     <div style="margin: 0 auto; padding-bottom: 20px; width: 75%;">
                         <div class="preview-container" style="display: inline;">
@@ -24,77 +37,85 @@
                         </div>
                     </div>
                     <!-- <div class="form-container" style="display: none; padding: 10%; color: white;"> -->
-                    <div class="form-container" style=" padding: 0px 300px 50px 300px; color: white;">
+                    <div class="form-container" style=" padding: 1% 10%; color: white;">
                         <!-- Your form code goes here -->
-                        <form action="<?php echo base_url('generate/save') ?>" method="post"
+                        <form action="<?php echo base_url('generate/terlewat') ?>" method="post"
                             enctype="multipart/form-data" id="generateForm" class="text-center">
-                            <div class="input-group" style="padding-bottom: 80px;">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" required name="pdf_upload"
-                                        id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".pdf">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                            </div>
-
-                            <label style="font-weight: bold; padding-bottom: 40px; font-size: 32px; ">Isi Data
-                                Penomoran</label>
-                            <div class="form-group">
-                                <label for="nomorSurat">Dinas</label>
-                                <input type="text" value="<?= $dinas['name']; ?>" class="form-control" name="instansi"
-                                    id="dinas" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Bidang</label>
-                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang"
-                                    id="bidang" readonly>
-                            </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group pb-4">
                                 <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat"
-                                    min="<?= date('Y-m-d'); ?>" required>
+                                <input type="datetime-local" name="tanggal" class="form-control" id="tanggalSurat"
+                                    max="<?= date('Y-m-d\TH:i'); ?>" required>
+                            </div> -->
+                            <div class="form-group pb-4">
+                                <label for="tanggalSurat">Tanggal Surat</label>
+                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat" required
+                                    max="<?= date('Y-m-d'); ?>">
+                                <!-- Atur atribut max ke tanggal saat ini untuk membatasi pemilihan hingga hari ini -->
                             </div>
-                            <div class="form-group">
-                                <label for="kategori">Kategori</label>
+                            <div id="form-hide" class="form-group tersembunyi">
                                 <div class="input-group">
-                                    <select class="custom-select" required name="kategori" id="kategori">
-                                        <option selected>Pilih kategori...</option>
-                                        <?php foreach ($kategories as $kategori) : ?>
-                                        <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" required name="pdf_upload"
+                                            id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                                            accept=".pdf">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Dinas</label>
+                                    <input type="text" value="<?= $dinas['name']; ?>" class="form-control"
+                                        name="instansi" id="dinas" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Bidang</label>
+                                    <input type="text" value="<?= $bidang['name']; ?>" class="form-control"
+                                        name="bidang" id="bidang" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="kategori">Kategori</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" required name="kategori" id="kategori">
+                                            <option selected>Pilih kategori...</option>
+                                            <?php foreach ($kategories as $kategori) : ?>
+                                            <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="perihalGroup">
+                                    <label for="perihal">Perihal</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="perihal" id="perihal">
+                                            <option selected>Pilih perihal...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="subPerihalGroup">
+                                    <label for="subPerihal">Sub Perihal</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="subperihal" id="subPerihal">
+                                            <option selected>Pilih sub perihal...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="detailSubPerihalGroup">
+                                    <label for="detailsubPerihal">Detail Sub Perihal</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
+                                            <option selected>Pilih detail sub perihal...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Nomor Tercetak</label>
+                                    <input type="text" required name="nomor" class="form-control" id="nomorSurat"
+                                        readonly>
                                 </div>
                             </div>
-                            <div class="form-group d-none" id="perihalGroup">
-                                <label for="perihal">Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="perihal" id="perihal">
-                                        <option selected>Pilih perihal...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group d-none" id="subPerihalGroup">
-                                <label for="subPerihal">Sub Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="subperihal" id="subPerihal">
-                                        <option selected>Pilih sub perihal...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group d-none" id="detailSubPerihalGroup">
-                                <label for="detailsubPerihal">Detail Sub Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
-                                        <option selected>Pilih detail sub perihal...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Nomor Tercetak</label>
-                                <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
-                            </div>
-                            <div class="form-group mb-3" style="padding-top: 30px; ">
-                                <button class="btn btn-success " type="button" id="generateButton"
-                                    onclick="confirmGenerate()" style="width: 250px;">Generate</button>
+                            <div class="form-group mb-3">
+                                <button class="btn btn-success" type="button" id="generateButton"
+                                    onclick="confirmGenerate()">Generate</button>
                             </div>
                         </form>
                     </div>
@@ -104,8 +125,59 @@
     </div>
     <!--  -->
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
+//sembunyikan form
+$(document).ready(function() {
+    var formHide = document.getElementById("form-hide");
+    var tanggalSurat = $("#tanggalSurat");
+    var dataAda = false;
+
+    function tampilkanForm() {
+        formHide.style.display = "block";
+    }
+
+    function sembunyikanForm() {
+        formHide.style.display = "none";
+    }
+    if (dataAda) {
+        tampilkanForm();
+    } else {
+        sembunyikanForm();
+    }
+
+    function cekTanggal() {
+        var selectedDate = tanggalSurat.val();
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(selectedDate)) {
+            alert("Format tanggal tidak valid. Gunakan format 'YYYY-MM-DD'.");
+            tanggalSurat.val('');
+            sembunyikanForm();
+            return;
+        }
+
+        var availableDates = <?= json_encode(array_map(function($item) {
+            return substr($item['tanggal'], 0, 10);
+        }, $generate)) ?>;
+
+        if (availableDates.indexOf(selectedDate) === -1) {
+            sembunyikanForm();
+            Swal.fire(
+                'Maaf',
+                'Tidak Ada Surat Pada Tanggal Itu!',
+                'warning'
+            );
+            tanggalSurat.val('');
+        } else {
+            tampilkanForm();
+        }
+    }
+
+    tanggalSurat.change(cekTanggal);
+});
+//alert berhasil
 <?php if (session()->getFlashdata('success')) : ?>
 Swal.fire({
     title: 'Success',
@@ -115,16 +187,15 @@ Swal.fire({
     showConfirmButton: false
 });
 <?php endif; ?>
-</script>
-<script>
+
+
+//hidden
 document.getElementById("inputGroupFile01").addEventListener("change", function() {
     var fileName = this.files[0].name;
     var label = document.querySelector(".custom-file-label");
     label.textContent = fileName;
 });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script>
+//preview pdf
 document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
     const fileInput = event.target;
     const previewContainer = document.querySelector(".preview-container");
@@ -140,7 +211,7 @@ document.getElementById("inputGroupFile01").addEventListener("change", function(
             pdfObject.data = URL.createObjectURL(file);
             pdfObject.type = "application/pdf";
             pdfObject.style.width = "100%";
-            pdfObject.style.height = "1000px"; // Adjust the height as needed
+            pdfObject.style.height = "400px"; // Adjust the height as needed
             previewContainer.appendChild(pdfObject);
 
             // Show the form
