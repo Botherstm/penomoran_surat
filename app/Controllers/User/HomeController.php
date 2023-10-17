@@ -34,8 +34,11 @@ class HomeController extends BaseController
     {
         session();
         if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+            // dd($siteKey);
             return view('login', [
-                'validation' => \Config\Services::validation()
+                'validation' => \Config\Services::validation(),
+                'key'=> $siteKey
             ]);
         }
         $generate = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'))??[];

@@ -20,6 +20,15 @@ class DinasController extends BaseController
     }
     public function index()
     {
+
+        if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+        // dd($siteKey);
+        return view('login',[
+             'validation' => \Config\Services::validation(),
+             'key'=> $siteKey
+        ]);
+        }
     if (session()->get('level') != 2) {
         // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
         throw new \CodeIgniter\Exceptions\PageNotFoundException();

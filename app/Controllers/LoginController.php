@@ -15,9 +15,12 @@ class LoginController extends BaseController
         $this->userModel = new UserModel();
     }
     public function index()
-    {
+    {   
+        $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+        // dd($siteKey);
         return view('login',[
-             'validation' => \Config\Services::validation()
+             'validation' => \Config\Services::validation(),
+             'key'=> $siteKey
         ]);
     }
 

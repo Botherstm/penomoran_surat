@@ -5,29 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
-
-    // USER ROUTES----------------------------------------------
-    
-
-    //public
-    $routes->get('/', 'User\HomeController::index');
-
-    
-    //user dashboard
-    $routes->get('/user', '\UserController::index');
-    $routes->get('/user/profile', 'Admin\UserController::profile');
-
-
-    //generate
-    // $routes->get('/', 'GenerateController::index');
-    $routes->post('/generate/save', 'GenerateController::save');
-    $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
-    $routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
-    $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
-    $routes->get('/pdf/view/(:segment)', 'PdfController::view/$1');
+ //----------------ADMIN--------------------------------------------------------------------------
     $routes->get('/admin', 'Admin\AdminController::index');
     $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
@@ -42,7 +22,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/dinas/delete/(:segment)', 'Admin\DinasController::delete/$1');
 
     //bidang
-
+    $routes->get('/admin/bidang', 'Admin\BidangController::view1');
     $routes->get('/admin/dinas/bidang/(:segment)', 'Admin\BidangController::index/$1');
     $routes->get('/admin/dinas/bidang/create/(:segment)', 'Admin\BidangController::create/$1');
     $routes->get('/admin/dinas/bidang/edit/(:segment)', 'Admin\BidangController::edit/$1');
@@ -58,8 +38,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/users/save', 'Admin\UserController::save');
     $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
     $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
-
-
 
     //urutan    
     $routes->get('/admin/dinas/urutansurat/(:segment)', 'Admin\UrutanSuratController::index/$1');
@@ -113,10 +91,26 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerihalController::delete/$1');
 
 
-    //auth
-    $routes->get('/login', 'LoginController::index');
-    $routes->get('/logout', 'LoginController::logout');
-    $routes->post('/login', 'LoginController::login');
+
+ 
+ //----------------PUBLIC--------------------------------------------------------------------------
+    
+
+    //public
+    $routes->get('/', 'User\HomeController::index');
+
+    //user dashboard
+    $routes->get('/user', '\UserController::index');
+    $routes->get('/user/profile', 'Admin\UserController::profile');
+
+    //generate
+    // $routes->get('/', 'GenerateController::index');
+    $routes->post('/generate/save', 'GenerateController::save');
+    $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
+    $routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
+    $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
+
+    //----------User--------------------------------------------
 
 
     //dashboard
@@ -130,19 +124,37 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/user/generate', 'GenerateController::generate');
 
 
-    //---------Admin-Biasa---------------
-
-    $routes->get('/admin/bidang', 'Admin\BidangController::view1');
-
-
-
-    //----------User--------
-    //TODO
     //riwayat
     $routes->get('/public/riwayat/(:segment)', 'User\RiwayatController::index/$1');
     $routes->get('/public/riwayat/detail/(:segment)', 'User\RiwayatController::detail/$1');
-    //terlewat
-    $routes->post('/generate/terlewat/save', 'TerlewatController::terlewat');
-    $routes->get('/generate/terlewat/(:segment)', 'TerlewatController::index/$1');
 
-});
+
+
+    //terlewat
+    $routes->post('/generate/terlewat/save', 'TerlewatController::save');
+    $routes->get('/generate/terlewat/', 'TerlewatController::index');
+
+    $routes->get('/generate/terlewat/get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
+    $routes->get('/generate/terlewat/get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
+    $routes->get('/generate/terlewat/get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
+
+    //tentang
+    // $routes->post('/pdf/generatePdf', 'TerlewatController::generatePdf');
+    $routes->get('/tentang', 'TerlewatController::tentang');
+
+
+
+ //----------------LOGIN--------------------------------------------------------------------------
+
+    //auth
+    $routes->get('/login', 'LoginController::index');
+    $routes->get('/logout', 'LoginController::logout');
+    $routes->post('/login', 'LoginController::login');
+
+
+    //TODO
+
+    $routes->get('/rinciansurat', 'TerlewatController::rinciansurat');
+
+    //-----coba2------
+    $routes->post('server', 'TerlewatController::generatePdf');

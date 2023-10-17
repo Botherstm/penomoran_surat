@@ -25,7 +25,14 @@ class UserController extends BaseController
     public function index()
     {
 
-
+        if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+        // dd($siteKey);
+        return view('login',[
+             'validation' => \Config\Services::validation(),
+             'key'=> $siteKey
+        ]);
+        }
 
         if (session()->get('level') == 2) {
             $users = $this->UserModel->getAll();
@@ -49,11 +56,17 @@ class UserController extends BaseController
                 $bidangs[$userId] = $bidang;
             }
         }
-        // dd($bidangs);
+        foreach ($users as $user) {
+            $userId = $user['instansi_id'];
+            $dinas = $this->dinas->getById($userId);
+            $dinas[$userId] = $dinas;
+        }
+        // dd($dinas);
         return view('admin/users/index', [
             'users' => $users,
             'bidangs' => $bidangs,
             'active' => 'user',
+            'dinass' => $dinas,
         ]);
     }
 

@@ -21,6 +21,14 @@ class KategoryController extends BaseController
 
     public function index() 
     {    
+        if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+        // dd($siteKey);
+            return view('login',[
+                'validation' => \Config\Services::validation(),
+                'key'=> $siteKey
+            ]);
+        }
         if (session()->get('level') != 2) {
         throw new \CodeIgniter\Exceptions\PageNotFoundException();
         }

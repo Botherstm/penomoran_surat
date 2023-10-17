@@ -57,18 +57,17 @@
                     </li>
 
                     <!-- coba untuk buat view -->
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('/user/rinciansurat') ?>" class="nav-link">
+                    <!-- <li class="nav-item">
+                        <a href="<?php echo base_url('rinciansurat') ?>" class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Rincian Surat Download (coba)
                             </p>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item ">
-                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>"
-                            class="nav-link">
+                        <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Generate Surat Terlewat
@@ -77,7 +76,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                             <i class="nav-icon fas fa-info"></i>
                             <p>
                                 Tentang
@@ -86,9 +85,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fa-solid fa-wrench"></i>
+                            <i class="nav-icon fa fa-user"></i>
                             <p>
-                                Pengaturan
+                                Pengaturan Akun
                             </p>
                         </a>
                     </li>

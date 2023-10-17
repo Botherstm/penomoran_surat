@@ -96,7 +96,17 @@
                             <td><?= $user['name']; ?></td>
                             <td><?= $user['email']; ?></td>
                             <td><?= $user['no_hp']; ?></td>
-                            <td><?= $user['instansi_id']; ?></td>
+                            <td>
+                                <?php
+                                    $dinasname = [];
+                                    foreach ($dinass as $dinasId => $dinas) {
+                                        if ($dinasId == $user['instansi_id']) {
+                                            $dinasname[] = $dinas['name'];
+                                        }
+                                    }
+                                    echo implode(', ', $dinasname);     
+                                ?>
+                            </td>
                             <td>
                                 <?php
                                     $bidangNames = [];

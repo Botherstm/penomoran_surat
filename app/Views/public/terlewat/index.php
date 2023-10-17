@@ -39,18 +39,12 @@
                     <!-- <div class="form-container" style="display: none; padding: 10%; color: white;"> -->
                     <div class="form-container" style=" padding: 1% 10%; color: white;">
                         <!-- Your form code goes here -->
-                        <form action="<?php echo base_url('generate/terlewat') ?>" method="post"
+                        <form action="<?php echo base_url('generate/terlewat/save') ?>" method="post"
                             enctype="multipart/form-data" id="generateForm" class="text-center">
-                            <!-- <div class="form-group pb-4">
-                                <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="datetime-local" name="tanggal" class="form-control" id="tanggalSurat"
-                                    max="<?= date('Y-m-d\TH:i'); ?>" required>
-                            </div> -->
                             <div class="form-group pb-4">
                                 <label for="tanggalSurat">Tanggal Surat</label>
                                 <input type="date" name="tanggal" class="form-control" id="tanggalSurat" required
-                                    max="<?= $tanggal['tanggal']; ?>">
-                                <!-- Atur atribut max ke tanggal saat ini untuk membatasi pemilihan hingga hari ini -->
+                                    <?php if($tanggal != null): ?> max="<?= $tanggal; ?>" <?php endif ?>>
                             </div>
                             <div id="form-hide" class="form-group tersembunyi">
                                 <div class="input-group">
@@ -152,7 +146,7 @@ $(document).ready(function() {
     function cekTanggal() {
         var selectedDate = tanggalSurat.val();
         if (!/^\d{4}-\d{2}-\d{2}$/.test(selectedDate)) {
-            alert("Format tanggal tidak valid. Gunakan format 'YYYY-MM-DD'.");
+            alert("Format tanggal tidak valid. Gunakan format 'YYYY-MM-DD'");
             tanggalSurat.val('');
             sembunyikanForm();
             return;
@@ -238,7 +232,7 @@ function confirmGenerate() {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('generateForm');
-            form.action = "<?php echo base_url('generate/save') ?>";
+            form.action = "<?php echo base_url('/generate/terlewat/save') ?>";
             form.submit();
         }
     });
