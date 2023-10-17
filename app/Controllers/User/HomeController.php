@@ -40,10 +40,24 @@ class HomeController extends BaseController
         $kategories = $this->kategori->getAll();
         // dd($bidang);
         return view('public/home/index', [
-                'kategories' => $kategories,
-                'bidang' => $bidang,
-                'dinas' => $dinas
-            ]);
+            'kategories' => $kategories,
+            'bidang' => $bidang,
+            'dinas' => $dinas
+        ]);
     }
 
+
+    public function terlewat()
+    {
+        session();
+        if (!session()->has('user_id')) {
+            return view('login', [
+                'validation' => \Config\Services::validation()
+            ]);
+        }
+        $kategories = $this->kategori->getAll();
+        return view('public/home/terlewat', [
+            'kategories' => $kategories
+        ]);
+    }
 }

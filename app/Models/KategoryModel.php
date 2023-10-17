@@ -43,6 +43,10 @@ class KategoryModel extends Model
     {
         return $this->where('slug', $slug)->first();
     }
+    public function getByKode($kode)
+    {
+        return $this->where('kode', $kode)->first();
+    }
 
     //ambil satu
     public function getOne(){

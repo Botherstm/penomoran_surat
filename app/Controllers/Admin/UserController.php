@@ -25,11 +25,11 @@ class UserController extends BaseController
     public function index()
     {
 
-        
-       
+
+
         if (session()->get('level') == 2) {
             $users = $this->UserModel->getAll();
-             
+
             //bidang
             $bidangs = [];
             $bidang = $this->bidangs->getAll();
@@ -38,11 +38,9 @@ class UserController extends BaseController
                 $bidang = $this->bidangs->getById($userId);
                 $bidangs[$userId] = $bidang;
             }
-        
-        }
-        elseif(session()->get('level') == 1){
+        } elseif (session()->get('level') == 1) {
             $users = $this->UserModel->getByInstansiId(session()->get('instansi_id'));
-              //bidang
+            //bidang
             $bidangs = [];
             $bidang = $this->bidangs->getAll();
             foreach ($users as $user) {
@@ -87,10 +85,9 @@ class UserController extends BaseController
             'password' => 'required|min_length[6]',
         ];
 
-         if(session()->get('level') == 2){
+        if (session()->get('level') == 2) {
             $level = 1;
-        }
-        else{
+        } else {
             $level = 0;
         }
         $uuid = Uuid::uuid4();
@@ -156,7 +153,7 @@ class UserController extends BaseController
         ];
 
         $validation = \Config\Services::validation(); // Mendapatkan instance validasi
-       
+
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
             $userData = [
@@ -173,11 +170,11 @@ class UserController extends BaseController
 
             $this->UserModel->update($id, $userData);
 
-          
+
             return redirect()->to('/admin/users')->with('success', 'Akun berhasil Di Update !');
         } else {
             return redirect()->back()
-               
+
                 ->with('error', 'ada kesalahan periksa kembali data!');
         }
     }
@@ -198,6 +195,6 @@ class UserController extends BaseController
 
     public function profile()
     {
-        return view('user/profil/index');
+        return view('public/user/profil/index');
     }
 }

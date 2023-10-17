@@ -35,6 +35,8 @@
                         <div class="card">
                             <img src="gambar4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
+                                <h5 class="card-title"><b>Perihal Surat :</b> <?= $generate['perihal']; ?></h5>
+                                <br>
                                 <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
                                 <br>
                                 <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
@@ -62,7 +64,6 @@ function performSearch() {
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
         var cardText = card.innerText.toLowerCase();
-
         if (cardText.includes(searchText)) {
             card.style.display = 'block';
         } else {
