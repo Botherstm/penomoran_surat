@@ -71,8 +71,14 @@ class GenerateController extends BaseController
        
         if ($this->validate($rules)) {
             $nomor = $this->request->getPost('nomor');
-            
-
+            $kategori = $this->kategori->getByKode($this->request->getPost('nomor')) ?? [];
+            if ($kategori != null) {
+                $data = $kategori;
+            }
+            else{
+                $data = $this->perihal->getBykode($this->request->getPost('nomor'));
+            }
+            // dd($data);
             //dinas
             $dinas = $this->dinas->getById(session()->get('instansi_id'));
 
@@ -94,8 +100,7 @@ class GenerateController extends BaseController
             $tahun_angka = intval($tahun);
             // dd($bulan_romawi,$tahun_angka);
 
-         
-
+    
             //urutan
             $urutan = $this->urutan->getOneByInstansiId(session()->get('instansi_id'));
             $urutanPlusOne = $urutan['urutan'] + 1; // Menambahkan 1 ke nilai yang ada
@@ -105,7 +110,7 @@ class GenerateController extends BaseController
             // dd($urutanData);
             $kode = $nomor ."/". $urutan['urutan'] ."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
             // dd($kode);
-
+            
 
             //id
             $uuid = Uuid::uuid4();
@@ -119,6 +124,7 @@ class GenerateController extends BaseController
                 'bidang_id' => session()->get('bidang_id'),
                 'urutan' => $urutan['urutan'],
                 'pdf' => $newName,
+                'perihal' => $data['name'],
                 'nomor' => $kode,
                 'tanggal' =>$this->request->getPost('tanggal'),
             ];
