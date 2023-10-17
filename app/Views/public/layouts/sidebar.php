@@ -7,7 +7,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar" style="position: fixed;">
+    <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <!-- <div class="image">
@@ -35,7 +35,6 @@
                     </a>
                 </li>
 
-
                 <?php if(session()->get('level') != 0): ?>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
@@ -61,15 +60,15 @@
                     <a href="<?php echo base_url('/user/rinciansurat') ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
-                            Rincian Surat (coba)
+                            Rincian Surat Download (coba)
                         </p>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('/user/generate') ?>" class="nav-link">
+                    <a href="<?php echo base_url('/generateterlewat') ?>" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
-                            Generate Surat (coba)
+                            Generate Surat Terlewat (coba)
                         </p>
                     </a>
                 </li>

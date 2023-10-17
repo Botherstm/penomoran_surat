@@ -2,48 +2,48 @@
 
 <?= $this->section('content'); ?>
 <div class="content-wrapper ">
-    <!-- Content Header (Page header) -->
-   
-    <div class="container-fluid" style="padding-top: 50px;">
-        <section class="content">
-            <div class="row">
-                <!-- Left col -->
-                <section class="col-lg-7 connectedSortable">
-                    <!-- Custom tabs (Charts with tabs)-->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-file mr-1"></i>
-                                File Pdf
-                            </h3>
+  <!-- Content Header (Page header) -->
 
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content p-0">
-                                <!-- Morris chart - Sales -->
-                                
-                            </div>
-                        </div><!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+  <div class="container-fluid" style="padding-top: 50px;">
+    <section class="content">
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-file mr-1"></i>
+                File Pdf
+              </h3>
+
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+
+              </div>
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.card -->
 
 
-                    <!-- /.card -->
-                </section>
+          <!-- /.card -->
+        </section>
 
-                
-                <section class="col-lg-5 connectedSortable">
-                    <!-- Custom tabs (Charts with tabs)-->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-info"></i>
-                                Rincian
-                            </h3>
 
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                        <div class="row">
+        <section class="col-lg-5 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-info"></i>
+                Rincian
+              </h3>
+
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Kategori Surat</p>
                 </div>
@@ -114,22 +114,22 @@
                   <p class="text-muted mb-0">0883213093</p>
                 </div>
               </div>
-              
-              
-                        </div><!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
 
 
-                    <!-- /.card -->
-                </section>
-                <!-- /.Left col -->
-                
-                <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.card -->
 
-            </div>
+
+          <!-- /.card -->
         </section>
-    </div>
+        <!-- /.Left col -->
+
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+      </div>
+    </section>
+  </div>
 
 
-    <?= $this->endSection('content'); ?>
+  <?= $this->endSection('content'); ?>

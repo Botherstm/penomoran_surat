@@ -12,7 +12,7 @@ class UserController extends BaseController
 
     public function profile()
     {
-        return view('user/profil/index');
+        return view('public/user/profil/index');
     }
     public function beranda()
     {
@@ -20,7 +20,7 @@ class UserController extends BaseController
     }
     public function rinciansurat()
     {
-        return view('user/surat/rinciansurat');
+        return view('public/user/surat/rinciansurat');
     }
     public function generate()
     {

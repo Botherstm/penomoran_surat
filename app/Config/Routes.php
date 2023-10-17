@@ -6,14 +6,21 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
+
+
+
     // USER ROUTES----------------------------------------------
+    $routes->get('/generateterlewat', 'User\HomeController::terlewat');
+
+
+
     //public
     $routes->get('/', 'User\HomeController::index');
     $routes->get('/public/riwayat/index', 'User\UserController::riwayat');
     //user dashboard
     $routes->get('/user', '\UserController::index');
     $routes->get('/user/profile', 'Admin\UserController::profile');
-    
+
 
     //generate
     // $routes->get('/', 'GenerateController::index');
@@ -39,7 +46,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/admin/dinas/delete/(:segment)', 'Admin\DinasController::delete/$1');
 
     //bidang
- 
+
     $routes->get('/admin/dinas/bidang/(:segment)', 'Admin\BidangController::index/$1');
     $routes->get('/admin/dinas/bidang/create/(:segment)', 'Admin\BidangController::create/$1');
     $routes->get('/admin/dinas/bidang/edit/(:segment)', 'Admin\BidangController::edit/$1');
@@ -137,10 +144,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //----------User--------
-    
+
     //riwayat
     $routes->get('/public/riwayat/(:segment)', 'User\RiwayatController::index/$1');
-
-
-    
 });
