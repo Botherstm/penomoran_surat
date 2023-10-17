@@ -7,15 +7,15 @@
     <div class="content-header" style="padding-bottom: 40px; padding-top: 30px;">
         <div class="container-fluid">
             <div class="col">
-                <div class="card" style="width: 100%; height: 100%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
+                <div class="card" style="width: 100%; height: 800%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
                     <div class="card-header border-0" style="color: white;">
                         <h3 class="card-title font-weight-bold">
                             <i class="fas fa-file mr-1"></i>
                             Generate Surat
                         </h3>
                     </div>
-                    <div style="margin: 0 auto; padding-bottom: 20px; ">
-                        <i style="font-size: 5em; color: white;" class="fas fa-file-pdf"></i>
+                    <div style="margin: 0 auto; padding-bottom: 20px; padding-top: 80px; ">
+                        <i style="font-size: 9em; color: white;" class="fas fa-file-pdf"></i>
                     </div>
                     <div style="margin: 0 auto; padding-bottom: 20px; width: 75%;">
                         <!-- <div class="input-group">
@@ -30,15 +30,18 @@
                         </div>
                     </div>
                     <!-- <div class="form-container" style="display: none; padding: 10%; color: white;"> -->
-                    <div class="form-container" style=" padding: 10%; color: white;">
+                    <div class="form-container" style=" padding: 0px 300px 50px 300px; color: white;">
                         <!-- Your form code goes here -->
                         <form action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm" class="text-center">
-                            <div class="input-group">
+                            <div class="input-group" style="padding-bottom: 80px;">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" required name="pdf_upload" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".pdf">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>
+
+                            <label style="font-weight: bold; padding-bottom: 40px; font-size: 32px; ">Isi Data
+                                Penomoran</label>
                             <div class="form-group">
                                 <label for="nomorSurat">Dinas</label>
                                 <input type="text" value="<?= $dinas['name']; ?>" class="form-control" name="instansi" id="dinas" readonly>
@@ -46,6 +49,10 @@
                             <div class="form-group">
                                 <label for="nomorSurat">Bidang</label>
                                 <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggalSurat">Tanggal Surat</label>
+                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat" min="<?= date('Y-m-d'); ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
@@ -86,12 +93,8 @@
                                 <label for="nomorSurat">Nomor Tercetak</label>
                                 <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
                             </div>
-                            <div class="form-group">
-                                <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="datetime-local" name="tanggal" class="form-control" id="tanggalSurat" min="<?= date('Y-m-d\TH:i'); ?>" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <button class="btn btn-success" type="button" id="generateButton" onclick="confirmGenerate()">Generate</button>
+                            <div class="form-group mb-3" style="padding-top: 30px; ">
+                                <button class="btn btn-success " type="button" id="generateButton" onclick="confirmGenerate()" style="width: 250px;">Generate</button>
                             </div>
                         </form>
                     </div>
@@ -137,7 +140,7 @@
                 pdfObject.data = URL.createObjectURL(file);
                 pdfObject.type = "application/pdf";
                 pdfObject.style.width = "100%";
-                pdfObject.style.height = "400px"; // Adjust the height as needed
+                pdfObject.style.height = "1000px"; // Adjust the height as needed
                 previewContainer.appendChild(pdfObject);
 
                 // Show the form

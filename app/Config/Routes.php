@@ -10,7 +10,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     // USER ROUTES----------------------------------------------
-    $routes->get('/generateterlewat', 'User\HomeController::terlewat');
+    
 
 
 
@@ -35,6 +35,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     //pdf
     $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
+
+    //terlewat
+    $routes->post('/generate/terlewat/save', 'TerlewatController::terlewat');
+    $routes->get('/generate/terlewat/(:segment)', 'TerlewatController::index/$1');
 
 
     //dinas

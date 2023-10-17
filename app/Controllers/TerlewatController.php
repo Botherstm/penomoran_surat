@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Database\Migrations\DetailSubPerihal;
 use App\Models\BidangModel;
 use App\Models\DetailSubPerihalModel;
 use App\Models\DinasModel;
@@ -12,10 +11,11 @@ use App\Models\KategoryModel;
 use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
 use App\Models\UrutanSuratModel;
-use Ramsey\Uuid\Uuid;
+use App\Models\UserModel;
 
-class GenerateController extends BaseController
+class TerlewatController extends BaseController
 {
+    protected $user;
     protected $generate;
     protected $urutan;
     protected $bidang;
@@ -26,6 +26,7 @@ class GenerateController extends BaseController
     protected $detailsubperihal;
     public function __construct()
     {
+        $this->user = new UserModel();
         $this->generate = new GenerateModel();
         $this->urutan = new UrutanSuratModel();
         $this->bidang = new BidangModel();
@@ -35,21 +36,23 @@ class GenerateController extends BaseController
         $this->subperihal = new SubPerihalModel();
         $this->detailsubperihal = new DetailSubPerihalModel();
     }
-    public function index()
+
+
+    public function index($slug)
     {
-        session();
-        if (!session()->has('user_id')) {
-            return view('login', [
-                'validation' => \Config\Services::validation()
-            ]);
-        }
+        $user = $this->user->getBySlug($slug);
+        $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
+        //  dd($generate,$user);
+        $bidang = $this->bidang->getById(session()->get('bidang_id'));
+        $dinas = $this->dinas->getById(session()->get('instansi_id'));
         $kategories = $this->kategori->getAll();
-        return view(
-            'generate',
-            [
-                'kategories' => $kategories
-            ]
-        );
+        // dd($bidang);
+        return view('public/terlewat/index', [
+            'kategories' => $kategories,
+            'bidang' => $bidang,
+            'dinas' => $dinas,
+            'generate' => $generate
+        ]);
     }
 
 
@@ -138,84 +141,5 @@ class GenerateController extends BaseController
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
-    }
-
-    
-    
-
-
-    public function getPerihalByCategory($kategori_id)
-    {
-        // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
-        // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
-        $kategories = $this->kategori->getKategoriByid($kategori_id);
-        $perihals = $this->perihal->getByKategori_id($kategories['id']);
-
-        // Ubah data menjadi format JSON
-        $response = [];
-        foreach ($perihals as $perihal) {
-            $response[] = [
-                'id' => $perihal['id'],
-                'name' => $perihal['name'],
-                'kode' => $perihal['kode'],
-            ];
-        }
-
-        return $this->response->setJSON($response);
-    }
-    public function getSubPerihalByPerihal($perihal_slug)
-    {
-        // Query database untuk mengambil data "Sub Perihal" berdasarkan perihal
-        // Gantilah dengan logika pengambilan data sesuai dengan aplikasi Anda
-        $perihals = $this->perihal->getBykode($perihal_slug);
-        $subperihals = $this->subperihal->getAllByPerihalId($perihals['id']);
-
-        // Ubah data menjadi format JSON
-        $response = [];
-        foreach ($subperihals as $subperihal) {
-            $response[] = [
-                'id' => $subperihal['id'],
-                'name' => $subperihal['name'],
-                'kode' => $subperihal['kode'],
-            ];
-        }
-
-        return $this->response->setJSON($response);
-    }
-
-    public function getdetailSubPerihalByPerihal($subperihal_id)
-    {
-        $subperihals = $this->subperihal->getByKode($subperihal_id);
-        $detailsubperihals = $this->detailsubperihal->getAllBySubPerihalId($subperihals['id']);
-
-        // Ubah data menjadi format JSON
-        $response = [];
-        foreach ($detailsubperihals as $detailsubperihal) {
-            $response[] = [
-                'id' => $detailsubperihal['id'],
-                'name' => $detailsubperihal['name'],
-                'kode' => $detailsubperihal['kode'],
-            ];
-        }
-
-        return $this->response->setJSON($response);
-    }
-
-    public function generate()
-    {
-        session();
-        if (!session()->has('user_id')) {
-            return view('login', [
-                'validation' => \Config\Services::validation()
-            ]);
-        }
-        $kategories = $this->kategori->getAll();
-        return view(
-            'generate',
-            [
-                'kategories' => $kategories
-            ]
-        );
-        return view('generate');
     }
 }
