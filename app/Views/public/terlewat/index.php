@@ -49,7 +49,7 @@
                             <div class="form-group pb-4">
                                 <label for="tanggalSurat">Tanggal Surat</label>
                                 <input type="date" name="tanggal" class="form-control" id="tanggalSurat" required
-                                    max="<?= date('Y-m-d'); ?>">
+                                    max="<?= $tanggal['tanggal']; ?>">
                                 <!-- Atur atribut max ke tanggal saat ini untuk membatasi pemilihan hingga hari ini -->
                             </div>
                             <div id="form-hide" class="form-group tersembunyi">

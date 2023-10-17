@@ -79,7 +79,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Dinas</th>
-                            <th>Aksi Urutan Surat</th>
+                            <th>Urutan Surat</th>
                             <th>Data Bidang</th>
                             <th>Aksi</th>
                         </tr>

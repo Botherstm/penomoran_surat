@@ -33,7 +33,9 @@
     <link rel="stylesheet" href="<?php echo base_url()?>adminlte/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url()?>adminlte/plugins/summernote/summernote-bs4.min.css">
-
+    <link href="
+https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/web/pdf_viewer.min.css
+" rel="stylesheet">
 
 </head>
 

@@ -12,11 +12,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     // USER ROUTES----------------------------------------------
     
 
-
-
     //public
     $routes->get('/', 'User\HomeController::index');
-    $routes->get('/public/riwayat/index', 'User\UserController::riwayat');
+
+    
     //user dashboard
     $routes->get('/user', '\UserController::index');
     $routes->get('/user/profile', 'Admin\UserController::profile');
@@ -28,17 +27,10 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
     $routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
     $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
-    // Rute untuk melihat PDF yang telah diperbarui
     $routes->get('/pdf/view/(:segment)', 'PdfController::view/$1');
-    // Rute untuk halaman admin (contoh)
     $routes->get('/admin', 'Admin\AdminController::index');
-    //pdf
     $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
-
-    //terlewat
-    $routes->post('/generate/terlewat/save', 'TerlewatController::terlewat');
-    $routes->get('/generate/terlewat/(:segment)', 'TerlewatController::index/$1');
 
 
     //dinas
@@ -131,9 +123,6 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('/dashboard', 'DashboardController::index');
 
 
-    //TODO
-
-
     //user dashboard
     $routes->get('/user', 'User\UserController::beranda');
     $routes->get('/user/profile', 'User\UserController::profile');
@@ -148,7 +137,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     //----------User--------
-
+    //TODO
     //riwayat
     $routes->get('/public/riwayat/(:segment)', 'User\RiwayatController::index/$1');
+    $routes->get('/public/riwayat/detail/(:segment)', 'User\RiwayatController::detail/$1');
+    //terlewat
+    $routes->post('/generate/terlewat/save', 'TerlewatController::terlewat');
+    $routes->get('/generate/terlewat/(:segment)', 'TerlewatController::index/$1');
+
 });

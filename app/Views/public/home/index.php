@@ -51,7 +51,8 @@
                             <div class="form-group">
                                 <label for="tanggalSurat">Tanggal Surat</label>
                                 <input type="date" name="tanggal" class="form-control" id="tanggalSurat"
-                                    min="<?= date('Y-m-d'); ?>" required>
+                                    <?php if($generate != null): ?> min="<?= $generate['tanggal']; ?>" <?php endif ?>
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
@@ -105,7 +106,21 @@
     <!--  -->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
+function validateForm() {
+    var fileInput = document.getElementById('inputGroupFile01');
+
+    if (fileInput.files.length === 0) {
+        alert("Please select a file before submitting the form.");
+        return false;
+    }
+
+    // If you have additional validation logic, you can include it here.
+
+    return true; // Form will be submitted if everything is valid.
+}
+
 <?php if (session()->getFlashdata('success')) : ?>
 Swal.fire({
     title: 'Success',
@@ -115,16 +130,15 @@ Swal.fire({
     showConfirmButton: false
 });
 <?php endif; ?>
-</script>
-<script>
+
+
+
 document.getElementById("inputGroupFile01").addEventListener("change", function() {
     var fileName = this.files[0].name;
     var label = document.querySelector(".custom-file-label");
     label.textContent = fileName;
 });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script>
+
 document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
     const fileInput = event.target;
     const previewContainer = document.querySelector(".preview-container");
@@ -154,6 +168,16 @@ document.getElementById("inputGroupFile01").addEventListener("change", function(
 });
 
 function confirmGenerate() {
+
+    const fileInput = document.getElementById('inputGroupFile01');
+    if (fileInput.files.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'File PDF belum diunggah',
+            text: 'Mohon unggah file PDF terlebih dahulu.'
+        });
+        return;
+    }
     Swal.fire({
         title: 'Apa Kamu yakin?',
         text: 'Perhatikan data yang kamu inputkan !!.',
@@ -165,7 +189,6 @@ function confirmGenerate() {
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('generateForm');
             form.action = "<?php echo base_url('generate/save') ?>";
             form.submit();

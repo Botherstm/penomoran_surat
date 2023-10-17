@@ -111,6 +111,13 @@ class GenerateController extends BaseController
             $kode = $nomor ."/". $urutan['urutan'] ."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
             // dd($kode);
             
+            
+            //slug
+            $mentahan = $nomor ."/". $urutan['urutan'] ."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
+            $slug = preg_replace('/[^a-z0-9-]/', '-', strtolower($mentahan));
+            $slug = str_replace(' ', '-', $slug);
+            $slug = preg_replace('/-+/', '-', $slug);
+
 
             //id
             $uuid = Uuid::uuid4();
@@ -124,6 +131,7 @@ class GenerateController extends BaseController
                 'bidang_id' => session()->get('bidang_id'),
                 'urutan' => $urutan['urutan'],
                 'pdf' => $newName,
+                'slug'=> $slug,
                 'perihal' => $data['name'],
                 'nomor' => $kode,
                 'tanggal' =>$this->request->getPost('tanggal'),
