@@ -38,7 +38,7 @@
 
                 <?php if(session()->get('level') != 0): ?>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin') ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Admin

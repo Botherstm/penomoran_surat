@@ -89,7 +89,6 @@
                                 <label for="nomorSurat">Nomor Tercetak</label>
                                 <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
                             </div>
-
                             <div class="form-group mb-3">
                                 <button class="btn btn-success" type="button" id="generateButton"
                                     onclick="confirmGenerate()">Generate</button>
