@@ -2,7 +2,8 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link bg-teal">
         <a href="index3.html" class="brand-link bg-teal ">
-            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
+            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja"
+                class="justify-content-center" height="40" width="65">
             <span class="brand-text font-weight-bold ">E-NOMOR</span>
         </a>
 
@@ -26,27 +27,28 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="<?php echo base_url('admin') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <a href="<?php echo base_url('/') ?>" class="nav-link">
+                            <i class="nav-icon fa fa-home"></i>
                             <p>
-                                Beranda
+                                Home
                             </p>
                         </a>
                     </li>
 
                     <?php if (session()->get('level') != 0) : ?>
-                        <li class="nav-item ">
-                            <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
-                                <i class="nav-icon fas fa-envelope"></i>
-                                <p>
-                                    Admin
-                                </p>
-                            </a>
-                        </li>
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
+                            <i class="nav-icon fa fa-lock"></i>
+                            <p>
+                                Admin
+                            </p>
+                        </a>
+                    </li>
                     <?php endif ?>
 
                     <li class="nav-item">
-                        <a href="<?php echo base_url('public/riwayat/') ?><?= session()->get('slug'); ?>" class="nav-link">
+                        <a href="<?php echo base_url('public/riwayat/') ?><?= session()->get('slug'); ?>"
+                            class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Riwayat Surat
@@ -65,7 +67,8 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>" class="nav-link">
+                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>"
+                            class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Generate Surat Terlewat

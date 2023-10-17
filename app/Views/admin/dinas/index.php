@@ -79,22 +79,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap table-light">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Dinas</th>
-                            <th>Urutan Surat</th>
-                            <th>Data Bidang</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($dinass as $dinas) : ?>
-=======
         </div>
         <div class=" card-body table-responsive p-10">
             <table class="table table-bordered table-hover text-nowrap table-light">
@@ -110,7 +94,6 @@
                 <tbody>
                     <?php $i = 1 ?>
                     <?php foreach ($dinass as $dinas) : ?>
->>>>>>> 76d52c271c96bb834cf2845a6458a339da1bad86
                         <tr class="text-center">
                             <td><?= $i++; ?></td>
                             <td><?= $dinas['name'] ?></td>
