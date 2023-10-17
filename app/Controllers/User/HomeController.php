@@ -55,9 +55,14 @@ class HomeController extends BaseController
                 'validation' => \Config\Services::validation()
             ]);
         }
+        $bidang = $this->bidang->getById(session()->get('bidang_id'));
+        $dinas = $this->dinas->getById(session()->get('instansi_id'));
         $kategories = $this->kategori->getAll();
+        // dd($bidang);
         return view('public/home/terlewat', [
-            'kategories' => $kategories
+            'kategories' => $kategories,
+            'bidang' => $bidang,
+            'dinas' => $dinas
         ]);
     }
 }
