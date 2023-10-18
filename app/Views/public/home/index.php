@@ -23,9 +23,9 @@
                         </div>
                     </div>
 
-                    <div class="form-container" style=" padding: 0px 300px 50px 300px; color: white;">
+                    <div class="form-container d-flex justify-content-center" style="color: white;">
                         <!-- Your form code goes here -->
-                        <form action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm" class="text-center">
+                        <form action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm" class="" style="width: 40rem;">
                             <div class="input-group" style="padding-bottom: 80px;">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" required name="pdf_upload" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".pdf">
