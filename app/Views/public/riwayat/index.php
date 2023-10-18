@@ -1,6 +1,7 @@
 <?= $this->extend('public/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
+
 <div class="content-wrapper">
     <!--  -->
     <div>
@@ -31,15 +32,26 @@
             <div class="col" style="padding-bottom: 50px;">
                 <div class="d-flex flex-row justify-content-center">
                     <div class="card-deck">
-                        <?php foreach ($generates as $generate):  ?>
+                        <?php foreach ($generates as $key => $generate): ?>
                         <div class="card">
-                            <img src="gambar4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title"><b>Perihal Surat :</b> <?= $generate['perihal']; ?></h5>
+
+                                <h5 class="card-title">
+                                    <b class="">Perihal Surat:</b>
+                                    <a href="<?php echo base_url('public/riwayat/detail/')?><?= $generate['nomor']; ?>"
+                                        class="text-dark text-decoration-none" style="text-decoration:none; ">
+                                        <?= $generate['perihal']; ?>
+                                    </a>
+
+                                </h5>
+
                                 <br>
                                 <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
                                 <br>
                                 <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
+                                <br>
+                                <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>"><button
+                                        class="btn btn-dark">Download PDF</button></a>
                                 <p class="card-text"><small
                                         class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['tanggal']))->humanize(); ?></small>
                                 </p>
@@ -52,8 +64,6 @@
         </section>
     </div>
 </div>
-
-
 
 <script>
 function performSearch() {

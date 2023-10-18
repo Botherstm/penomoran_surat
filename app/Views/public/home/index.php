@@ -7,7 +7,8 @@
     <div class="content-header" style="padding-bottom: 40px; padding-top: 30px;">
         <div class="container-fluid">
             <div class="col">
-                <div class="card" style="width: 100%; height: 800%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
+                <div class="card"
+                    style="width: 100%; height: 800%; background: #048c7f; border-radius: 27px; margin: 0 auto; ">
                     <div class="card-header border-0" style="color: white;">
                         <h3 class="card-title font-weight-bold">
                             <i class="fas fa-file mr-1"></i>
@@ -18,13 +19,6 @@
                         <i style="font-size: 9em; color: white;" class="fas fa-file-pdf"></i>
                     </div>
                     <div style="margin: 0 auto; padding-bottom: 20px; width: 75%;">
-                        <!-- <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="pdf_upload" id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
-                        </div> -->
                         <div class="preview-container" style="display: inline;">
                             <!-- Preview of the uploaded PDF will be displayed here -->
                         </div>
@@ -32,10 +26,12 @@
                     <!-- <div class="form-container" style="display: none; padding: 10%; color: white;"> -->
                     <div class="form-container" style=" padding: 0px 300px 50px 300px; color: white;">
                         <!-- Your form code goes here -->
-                        <form action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm" class="text-center">
+                        <form action="<?php echo base_url('generate/save') ?>" method="post"
+                            enctype="multipart/form-data" id="generateForm" class="text-center">
                             <div class="input-group" style="padding-bottom: 80px;">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" required name="pdf_upload" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".pdf">
+                                    <input type="file" class="custom-file-input" required name="pdf_upload"
+                                        id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept=".pdf">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>
@@ -44,15 +40,19 @@
                                 Penomoran</label>
                             <div class="form-group">
                                 <label for="nomorSurat">Dinas</label>
-                                <input type="text" value="<?= $dinas['name']; ?>" class="form-control" name="instansi" id="dinas" readonly>
+                                <input type="text" value="<?= $dinas['name']; ?>" class="form-control" name="instansi"
+                                    id="dinas" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="nomorSurat">Bidang</label>
-                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
+                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang"
+                                    id="bidang" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat" min="<?= date('Y-m-d'); ?>" required>
+                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat"
+                                    <?php if($generate != null): ?> min="<?= $generate['tanggal']; ?>" <?php endif ?>
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
@@ -60,7 +60,7 @@
                                     <select class="custom-select" required name="kategori" id="kategori">
                                         <option selected>Pilih kategori...</option>
                                         <?php foreach ($kategories as $kategori) : ?>
-                                            <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
+                                        <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -94,7 +94,8 @@
                                 <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
                             </div>
                             <div class="form-group mb-3" style="padding-top: 30px; ">
-                                <button class="btn btn-success " type="button" id="generateButton" onclick="confirmGenerate()" style="width: 250px;">Generate</button>
+                                <button class="btn btn-success " type="button" id="generateButton"
+                                    onclick="confirmGenerate()" style="width: 250px;">Generate</button>
                             </div>
                         </form>
                     </div>
@@ -105,231 +106,253 @@
     <!--  -->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
-<script>
-    <?php if (session()->getFlashdata('success')) : ?>
-        Swal.fire({
-            title: 'Success',
-            text: '<?= session()->getFlashdata('success') ?>',
-            icon: 'success',
-            timer: 3000,
-            showConfirmButton: false
-        });
-    <?php endif; ?>
-</script>
-<script>
-    document.getElementById("inputGroupFile01").addEventListener("change", function() {
-        var fileName = this.files[0].name;
-        var label = document.querySelector(".custom-file-label");
-        label.textContent = fileName;
-    });
-</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
-    document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
-        const fileInput = event.target;
-        const previewContainer = document.querySelector(".preview-container");
-        const formContainer = document.querySelector(".form-container");
+function validateForm() {
+    var fileInput = document.getElementById('inputGroupFile01');
 
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
+    if (fileInput.files.length === 0) {
+        alert("Please select a file before submitting the form.");
+        return false;
+    }
 
-            // Check if the file is a PDF (you can add more validation if needed)
-            if (file.type === "application/pdf") {
-                // Display the uploaded PDF in the preview container
-                const pdfObject = document.createElement("object");
-                pdfObject.data = URL.createObjectURL(file);
-                pdfObject.type = "application/pdf";
-                pdfObject.style.width = "100%";
-                pdfObject.style.height = "1000px"; // Adjust the height as needed
-                previewContainer.appendChild(pdfObject);
+    // If you have additional validation logic, you can include it here.
 
-                // Show the form
-                previewContainer.style.display = "block";
-                formContainer.style.display = "block";
-            } else {
-                alert("Please upload a PDF file.");
-                fileInput.value = ""; // Clear the file input
-            }
+    return true; // Form will be submitted if everything is valid.
+}
+
+<?php if (session()->getFlashdata('success')) : ?>
+Swal.fire({
+    title: 'Success',
+    text: '<?= session()->getFlashdata('success') ?>',
+    icon: 'success',
+    timer: 3000,
+    showConfirmButton: false
+});
+<?php endif; ?>
+
+
+
+document.getElementById("inputGroupFile01").addEventListener("change", function() {
+    var fileName = this.files[0].name;
+    var label = document.querySelector(".custom-file-label");
+    label.textContent = fileName;
+});
+
+document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
+    const fileInput = event.target;
+    const previewContainer = document.querySelector(".preview-container");
+    const formContainer = document.querySelector(".form-container");
+
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+
+        // Check if the file is a PDF (you can add more validation if needed)
+        if (file.type === "application/pdf") {
+            // Display the uploaded PDF in the preview container
+            const pdfObject = document.createElement("object");
+            pdfObject.data = URL.createObjectURL(file);
+            pdfObject.type = "application/pdf";
+            pdfObject.style.width = "100%";
+            pdfObject.style.height = "1000px"; // Adjust the height as needed
+            previewContainer.appendChild(pdfObject);
+
+            // Show the form
+            previewContainer.style.display = "block";
+            formContainer.style.display = "block";
+        } else {
+            alert("Please upload a PDF file.");
+            fileInput.value = ""; // Clear the file input
+        }
+    }
+});
+
+function confirmGenerate() {
+
+    const fileInput = document.getElementById('inputGroupFile01');
+    if (fileInput.files.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'File PDF belum diunggah',
+            text: 'Mohon unggah file PDF terlebih dahulu.'
+        });
+        return;
+    }
+    Swal.fire({
+        title: 'Apa Kamu yakin?',
+        text: 'Perhatikan data yang kamu inputkan !!.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#35DC5C',
+        cancelButtonColor: '#A91C1C',
+        confirmButtonText: 'Generate',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const form = document.getElementById('generateForm');
+            form.action = "<?php echo base_url('generate/save') ?>";
+            form.submit();
+        }
+    });
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var kategoriSelect = document.getElementById('kategori');
+    var perihalSelect = document.getElementById('perihal');
+    var subPerihalSelect = document.getElementById('subPerihal');
+    var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
+    var perihalGroup = document.getElementById('perihalGroup');
+    var subPerihalGroup = document.getElementById('subPerihalGroup');
+    var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
+    var nomorSuratInput = document.getElementById('nomorSurat');
+    var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
+
+    kategoriSelect.addEventListener('change', function() {
+        var selectedKategoriValue = kategoriSelect.value;
+
+        if (selectedKategoriValue !== '') {
+            // Set nilai input "Nomor Surat" dengan nilai kategori yang dipilih
+            nomorSuratInput.value = selectedKategoriValue;
+
+            // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
+            fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    // Bersihkan elemen "perihal" select sebelum mengisinya
+                    perihalSelect.innerHTML = '';
+                    // Tambahkan opsi default "Pilih perihal..."
+                    perihalSelect.appendChild(new Option('Pilih perihal...', ''));
+
+                    // Tambahkan opsi "Perihal" berdasarkan data yang diterima
+                    data.forEach(function(option) {
+                        perihalSelect.appendChild(new Option(option.name, option
+                            .kode));
+                    });
+
+                    // Sembunyikan atau tampilkan elemen "perihal" select
+                    if (data.length > 0) {
+                        perihalGroup.classList.remove('d-none');
+                    } else {
+                        perihalGroup.classList.add('d-none');
+                    }
+
+                    // Kosongkan elemen "subPerihal" select dan nomorSuratInput
+                    subPerihalSelect.innerHTML = '';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        } else {
+            // Jika tidak ada kategori yang dipilih, kosongkan input "Nomor Surat"
+            nomorSuratInput.value = '';
         }
     });
 
-    function confirmGenerate() {
-        Swal.fire({
-            title: 'Apa Kamu yakin?',
-            text: 'Perhatikan data yang kamu inputkan !!.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#35DC5C',
-            cancelButtonColor: '#A91C1C',
-            confirmButtonText: 'Generate',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
-                const form = document.getElementById('generateForm');
-                form.action = "<?php echo base_url('generate/save') ?>";
-                form.submit();
-            }
-        });
-    }
-</script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var kategoriSelect = document.getElementById('kategori');
-        var perihalSelect = document.getElementById('perihal');
-        var subPerihalSelect = document.getElementById('subPerihal');
-        var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
-        var perihalGroup = document.getElementById('perihalGroup');
-        var subPerihalGroup = document.getElementById('subPerihalGroup');
-        var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
-        var nomorSuratInput = document.getElementById('nomorSurat');
-        var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
+    perihalSelect.addEventListener('change', function() {
+        var selectedPerihalId = perihalSelect.value;
 
-        kategoriSelect.addEventListener('change', function() {
-            var selectedKategoriValue = kategoriSelect.value;
-
-            if (selectedKategoriValue !== '') {
-                // Set nilai input "Nomor Surat" dengan nilai kategori yang dipilih
-                nomorSuratInput.value = selectedKategoriValue;
-
-                // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
-                fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': csrfToken,
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-
-                        // Bersihkan elemen "perihal" select sebelum mengisinya
-                        perihalSelect.innerHTML = '';
-                        // Tambahkan opsi default "Pilih perihal..."
-                        perihalSelect.appendChild(new Option('Pilih perihal...', ''));
-
-                        // Tambahkan opsi "Perihal" berdasarkan data yang diterima
-                        data.forEach(function(option) {
-                            perihalSelect.appendChild(new Option(option.name, option
-                                .kode));
-                        });
-
-                        // Sembunyikan atau tampilkan elemen "perihal" select
-                        if (data.length > 0) {
-                            perihalGroup.classList.remove('d-none');
-                        } else {
-                            perihalGroup.classList.add('d-none');
-                        }
-
-                        // Kosongkan elemen "subPerihal" select dan nomorSuratInput
-                        subPerihalSelect.innerHTML = '';
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            } else {
-                // Jika tidak ada kategori yang dipilih, kosongkan input "Nomor Surat"
-                nomorSuratInput.value = '';
-            }
-        });
-
-
-        perihalSelect.addEventListener('change', function() {
-            var selectedPerihalId = perihalSelect.value;
-
-            // Implementasikan AJAX untuk mengisi data sub perihal berdasarkan perihal yang dipilih
-            if (selectedPerihalId !== '') {
-                fetch('get_subperihal_by_perihal/' + selectedPerihalId, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        subPerihalSelect.innerHTML = '';
-                        subPerihalSelect.appendChild(new Option('Pilih sub perihal...', ''));
-                        data.forEach(function(option) {
-                            subPerihalSelect.appendChild(new Option(option.name, option
-                                .kode));
-                        });
-
-                        subPerihalGroup.classList.remove(
-                            'd-none'); // Menampilkan elemen subPerihalGroup
-                        detailSubPerihalGroup.classList.add(
-                            'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
-                        nomorSuratInput.value =
-                            selectedPerihalId; // Mengisi nomor surat dengan kode perihal yang dipilih
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
+        // Implementasikan AJAX untuk mengisi data sub perihal berdasarkan perihal yang dipilih
+        if (selectedPerihalId !== '') {
+            fetch('get_subperihal_by_perihal/' + selectedPerihalId, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    subPerihalSelect.innerHTML = '';
+                    subPerihalSelect.appendChild(new Option('Pilih sub perihal...', ''));
+                    data.forEach(function(option) {
+                        subPerihalSelect.appendChild(new Option(option.name, option
+                            .kode));
                     });
 
-            } else {
-                subPerihalGroup.classList.add('d-none'); // Menyembunyikan elemen subPerihalGroup
-                detailSubPerihalGroup.classList.add(
-                    'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
-                nomorSuratInput.value = ''; // Menghapus nilai dari nomorSuratInput
-            }
-        });
+                    subPerihalGroup.classList.remove(
+                        'd-none'); // Menampilkan elemen subPerihalGroup
+                    detailSubPerihalGroup.classList.add(
+                        'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
+                    nomorSuratInput.value =
+                        selectedPerihalId; // Mengisi nomor surat dengan kode perihal yang dipilih
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
 
-        subPerihalSelect.addEventListener('change', function() {
-            var selectedSubPerihalId = subPerihalSelect.value;
-
-            // Implementasikan AJAX untuk mengisi data detail sub perihal berdasarkan sub perihal yang dipilih
-            if (selectedSubPerihalId !== '') {
-                fetch('get_detailsubperihal_by_subperihal/' + selectedSubPerihalId, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        detailsubPerihalSelect.innerHTML = '';
-                        detailsubPerihalSelect.appendChild(new Option(
-                            'Pilih detail sub perihal...',
-                            ''));
-                        data.forEach(function(option) {
-                            detailsubPerihalSelect.appendChild(new Option(option.name,
-                                option.kode));
-                        });
-                        detailSubPerihalGroup.classList.remove('d-none');
-                        nomorSuratInput.value =
-                            selectedSubPerihalId; // Mengisi nomor surat dengan kode detail sub perihal yang dipilih
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            } else {
-                detailSubPerihalGroup.classList.add('d-none');
-                nomorSuratInput.value = '';
-            }
-        })
+        } else {
+            subPerihalGroup.classList.add('d-none'); // Menyembunyikan elemen subPerihalGroup
+            detailSubPerihalGroup.classList.add(
+                'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
+            nomorSuratInput.value = ''; // Menghapus nilai dari nomorSuratInput
+        }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Dapatkan elemen nomorSurat setelah halaman selesai dimuat
-        var nomorSuratInput = document.getElementById('nomorSurat');
+    subPerihalSelect.addEventListener('change', function() {
+        var selectedSubPerihalId = subPerihalSelect.value;
 
-        var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
+        // Implementasikan AJAX untuk mengisi data detail sub perihal berdasarkan sub perihal yang dipilih
+        if (selectedSubPerihalId !== '') {
+            fetch('get_detailsubperihal_by_subperihal/' + selectedSubPerihalId, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    detailsubPerihalSelect.innerHTML = '';
+                    detailsubPerihalSelect.appendChild(new Option(
+                        'Pilih detail sub perihal...',
+                        ''));
+                    data.forEach(function(option) {
+                        detailsubPerihalSelect.appendChild(new Option(option.name,
+                            option.kode));
+                    });
+                    detailSubPerihalGroup.classList.remove('d-none');
+                    nomorSuratInput.value =
+                        selectedSubPerihalId; // Mengisi nomor surat dengan kode detail sub perihal yang dipilih
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        } else {
+            detailSubPerihalGroup.classList.add('d-none');
+            nomorSuratInput.value = '';
+        }
+    })
+});
 
-        detailsubPerihalSelect.addEventListener('change', function() {
-            var selectedDetailSubPerihal = detailsubPerihalSelect.value;
+document.addEventListener('DOMContentLoaded', function() {
+    // Dapatkan elemen nomorSurat setelah halaman selesai dimuat
+    var nomorSuratInput = document.getElementById('nomorSurat');
 
-            if (selectedDetailSubPerihal !== '') {
-                // Set nilai input "Nomor Surat" dengan kode detail sub perihal yang dipilih
-                nomorSuratInput.value = selectedDetailSubPerihal;
-            } else {
-                // Jika tidak ada detail sub perihal yang dipilih, kosongkan input "Nomor Surat"
-                nomorSuratInput.value = '';
-            }
-        });
+    var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
+
+    detailsubPerihalSelect.addEventListener('change', function() {
+        var selectedDetailSubPerihal = detailsubPerihalSelect.value;
+
+        if (selectedDetailSubPerihal !== '') {
+            // Set nilai input "Nomor Surat" dengan kode detail sub perihal yang dipilih
+            nomorSuratInput.value = selectedDetailSubPerihal;
+        } else {
+            // Jika tidak ada detail sub perihal yang dipilih, kosongkan input "Nomor Surat"
+            nomorSuratInput.value = '';
+        }
     });
+});
 </script>
 
 

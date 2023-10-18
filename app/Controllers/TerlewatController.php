@@ -41,6 +41,7 @@ class TerlewatController extends BaseController
     public function index($slug)
     {
         $user = $this->user->getBySlug($slug);
+        $tanggal = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'))??[];
         $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
         //  dd($generate,$user);
         $bidang = $this->bidang->getById(session()->get('bidang_id'));
@@ -51,7 +52,8 @@ class TerlewatController extends BaseController
             'kategories' => $kategories,
             'bidang' => $bidang,
             'dinas' => $dinas,
-            'generate' => $generate
+            'generate' => $generate,
+            'tanggal' => $tanggal
         ]);
     }
 
