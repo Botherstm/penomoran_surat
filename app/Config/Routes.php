@@ -10,12 +10,12 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
 
 
     // USER ROUTES----------------------------------------------
-    
+
 
     //public
     $routes->get('/', 'User\HomeController::index');
 
-    
+
     //user dashboard
     $routes->get('/user', '\UserController::index');
     $routes->get('/user/profile', 'Admin\UserController::profile');
@@ -145,4 +145,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->post('/generate/terlewat/save', 'TerlewatController::terlewat');
     $routes->get('/generate/terlewat/(:segment)', 'TerlewatController::index/$1');
 
+
+
+    $routes->get('/pengaturan', 'PengaturanController::index');
 });
