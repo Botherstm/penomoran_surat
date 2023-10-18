@@ -50,8 +50,11 @@
                                     <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
                                     <br>
                                 </a>
-                                <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
-                                    <button class="p-3 text-primary-emphasis bg-success-subtle border border-primary-subtle rounded-3">Download PDF</button>
+                                <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
+                                    <button class="p-3 text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Detail</button>
+                                </a>
+                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
+                                    <button class="p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Download PDF</button>
                                 </a>
                                 <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
                                 </p>

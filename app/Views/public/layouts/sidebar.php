@@ -54,26 +54,14 @@
                         </a>
                     </li>
 
-                    <!-- coba untuk buat view -->
-                    <!-- <li class="nav-item">
-                        <a href="<?php echo base_url('rinciansurat') ?>" class="nav-link">
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
+
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
-                                Rincian Surat Download (coba)
+                                Generate Surat Terlewat
                             </p>
                         </a>
-                    </li> -->
-
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>" class="nav-link">
-
-                            <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
-
-                                <i class="nav-icon fas fa-envelope"></i>
-                                <p>
-                                    Generate Surat Terlewat
-                                </p>
-                            </a>
                     </li>
 
                     <li class="nav-item">
