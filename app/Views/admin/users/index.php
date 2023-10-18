@@ -2,17 +2,6 @@
 
 <?= $this->section('content'); ?>
 <style>
-.table td {
-    text-align: center;
-    background-color: #C5E9DE;
-
-}
-
-
-.table>thead>tr>* {
-    background-color: #20c997;
-    text-align: center;
-}
 
 
 .btnadd {
@@ -66,99 +55,86 @@
                 </div>
             </div>
             <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="button" id="searchButton" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
+              
             </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>No.Telp</th>
-                            <?php if(session()->get('level') == 2): ?>
-                            <th>Dinas</th>
-                            <th>Level</th>
-                            <?php elseif(session()->get('level') == 1): ?>
-                            <th>Bidang</th>
-                            <?php endif ?>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($users as $user) : ?>
-                        <?php if (session()->get('level') == 2 || $user['level'] != 2) : ?>
-                        <tr>
-                            <td><?= $i++; ?></td>
-                            <td><?= $user['name']; ?></td>
-                            <td><?= $user['email']; ?></td>
-                            <td><?= $user['no_hp']; ?></td>
-                            <?php if(session()->get('level') == 2): ?>
-                            <td>
-                                <?php ?>
-                                <?php $instansiId = $user['instansi_id']; ?>
-                                <?php if (isset($dinas[$instansiId]['name'])) : ?>
-                                <?=  $dinas[$instansiId]['name'] . '<br>'; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if ($user['level']==1) : ?>
-                                <p> Admin</p>
-                                <?php elseif ($user['level']==2) : ?>
-                                <button disabled class="btn btn-outline-dark">Super Admin</button>
-                                <?php endif; ?>
-                            </td>
-                            <?php elseif(session()->get('level') == 1 ): ?>
-                            <td>
-                                <?php
-                                    $bidangNames = [];
-                                    foreach ($bidangs as $bidangId => $bidang) {
-                                        if ($bidangId == $user['bidang_id'] && $user['bidang_id'] !== null) {
-                                            $bidangNames[] = $bidang['name'];
-                                        }
-                                    }
-                                    echo implode(', ', $bidangNames);     
-                                ?>
-                            </td>
-                            <?php endif ?>
-                            <td>
-                                <div class="btn-group ">
-                                    <!-- update -->
-                                    <a class="btnr"
-                                        href="<?php echo base_url('admin/users/edit/') ?><?= $user['slug']; ?>">
-                                        <button type="button" class="btn btn-block btn-warning ">
-                                            <i class=" fas fa-pen"></i>
-                                        </button>
-                                    </a>
-
-                                    <form id="deleteForm" class="pr-3"
-                                        action="<?php echo base_url('admin/users/delete/') ?><?= $user['slug']; ?>"
-                                        method="POST">
-                                        <?= csrf_field(); ?>
-                                        <button type="button" onclick="confirmDelete('<?= $user['slug']; ?>')"
-                                            class="btn btn-block btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endif; ?>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-
         </div>
+        <div style="padding-top: 20px;" >
+                                <div class="col-sm-12">
+                             
+                                    <table id="example1"
+                                        class="table table-bordered table-striped dataTable dtr-inline collapsed"
+                                        aria-describedby="example1_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    No</th>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    Kode Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    Perihal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Tanggal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Dinas</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Bidang</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nama
+                                                    User
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nomor
+                                                    User</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <span> 1
+                                                    </span>
+                                                </td>
+                                                <td>1
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                   1
+                                                </td>
+                                                <td>
+                                                   1
+                                                </td>
+                                                <td>1
+                                                <td>
+                                                    <div class="btn-group ">
+                                                        <a class="btnr"
+                                                            href="#">
+                                                            <button type="button" class="btn btn-block btn-primary ">
+                                                                <i class=" fas fa-info"></i>
+                                                            </button>
+                                                        </a>
+                                                        <!-- update -->
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
     </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>

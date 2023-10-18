@@ -76,9 +76,9 @@
                             <div class="g-recaptcha" data-sitekey="<?= $key; ?>"></div>
                             <br>
                             <br>
-                            <div class="mb-3 rounded-1 text-center ">
-                                <button type="submit" class="btn btn-primary mx-auto border border-0"
-                                    style="background-color: rgb(8, 164, 167); ">Login</button>
+                            
+                            <div class="mb-3 rounded-1 text-center "  >
+               <button type="submit" class="btn btn-secondary btn-lg" style="width: 60%;">LOGIN</button>
                             </div>
                         </form>
                     </div>
