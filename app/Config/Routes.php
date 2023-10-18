@@ -125,7 +125,7 @@ use CodeIgniter\Router\RouteCollection;
 
 
     //riwayat
-    $routes->get('/public/riwayat/(:segment)', 'User\RiwayatController::index/$1');
+    $routes->get('/public/riwayat', 'User\RiwayatController::index');
     $routes->get('/public/riwayat/detail/(:segment)', 'User\RiwayatController::detail/$1');
 
 
