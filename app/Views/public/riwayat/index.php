@@ -32,34 +32,30 @@
                 <?php foreach ($generates as $key => $generate) : ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card" style="margin-bottom: 20px;">
-                            <div class="card-body border border-info-subtle">
+                            <div class="card-body">
+
+                                <h5 class="card-title">
+
+                                    <b class="">Perihal Surat:</b>
+
+                                    <?= $generate['perihal']; ?>
+
+                                </h5>
+                                <br>
+                                <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
+                                <br>
+                                <h5 class="card-title"><b>Tanggal Surat :</b>
+                                    <?= date('d F Y', strtotime($generate['tanggal'])); ?></h5>
+                                <br>
+                                <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
                                 <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
-                                    <h5 class="card-title">
-
-                                        <b class="">Perihal Surat:</b>
-
-                                        <?= $generate['perihal']; ?>
-
-                                    </h5>
-                                    <br>
-                                    <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
-                                    <br>
-                                    <h5 class="card-title"><b>Tanggal Surat :</b>
-                                        <?= date('d F Y', strtotime($generate['tanggal'])); ?></h5>
-                                    <br>
-                                    <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
-                                    <br>
+                                    <button class="btn btn-outline-info ">Detail</button>
                                 </a>
-                                <div class="col">
-                                    <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
-                                        <button class="p-3 text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Detail</button>
-                                    </a>
-                                    <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
-                                        <button class="p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Download PDF</button>
-                                    </a>
-                                    <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
-                                    </p>
-                                </div>
+                                <!-- Download PDF -->
+                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>" style="position: absolute; bottom: 10px; right: 10px;">
+                                    <button class="btn btn-success border border-success-subtle rounded-2">Download PDF</button>
+                                </a>
+                                <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small></p>
 
 
                             </div>

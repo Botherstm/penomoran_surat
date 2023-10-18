@@ -52,18 +52,18 @@ class RiwayatController extends BaseController
         $dinas = $this->dinas->getById($generate['instansi_id']);
         $bidang = $this->bidang->getById($generate['bidang_id']);
 
-        $options = new Options();
-        $options->set('isPhpEnabled', true);
+        // $options = new Options();
+        // $options->set('isPhpEnabled', true);
 
-        $dompdf = new Dompdf($options);
+        // $dompdf = new Dompdf($options);
 
-        $dompdf->loadHtml($generate['pdf']);
+        // $dompdf->loadHtml($generate['pdf']);
 
-        $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->setPaper('A4', 'portrait');
 
-        $dompdf->render();
+        // $dompdf->render();
 
-        $dompdf->stream();
+        // $dompdf->stream();
         
         return view('public/riwayat/detail',[
             'generate'=>$generate,
