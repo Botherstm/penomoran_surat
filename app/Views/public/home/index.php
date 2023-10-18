@@ -10,126 +10,138 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="example1"
-                                    class="table table-bordered table-striped dataTable dtr-inline collapsed"
-                                    aria-describedby="example1_info">
-                                    <thead>
-                                        <tr>
-                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
-                                                rowspan="1" colspan="1" aria-sort="ascending"
-                                                aria-label="Rendering engine: activate to sort column descending">
-                                                No</th>
-                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
-                                                rowspan="1" colspan="1" aria-sort="ascending"
-                                                aria-label="Rendering engine: activate to sort column descending">
-                                                Kode Surat</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                Perihal Surat</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                Tanggal Surat</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                Dinas</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                Bidang</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Engine version: activate to sort column ascending">Nama User
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Engine version: activate to sort column ascending">Nomor
-                                                User</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1 ?>
-                                        <?php foreach ($riwayats as $riwayat) : ?>
-                                        <tr>
-                                            <td><?= $i++; ?></td>
-                                            <td>
-                                                <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>"
-                                                    title="Klik untuk menyalin kode surat">
-                                                    <?= $riwayat['nomor']; ?>
-                                                </span>
-                                            </td>
-                                            <td><?= $riwayat['tanggal']; ?></td>
-                                            <td>
-                                                <?php $userId = $riwayat['user_id']; ?>
-                                                <?php if (isset($users[$userId]['name'])) : ?>
-                                                <?=  $users[$userId]['name'] . '<br>'; ?>
-                                                <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <?php $userId = $riwayat['user_id']; ?>
-                                                <?php if (isset($users[$userId]['no_hp'])) : ?>
-                                                <?=  $users[$userId]['no_hp'] . '<br>'; ?>
-                                                <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <?php $bidangId = $riwayat['bidang_id']; ?>
-                                                <?php if (isset($bidangs[$bidangId]['name'])) : ?>
-                                                <?=  $bidangs[$bidangId]['name'] . '<br>'; ?>
-                                                <?php endif; ?>
-                                            </td>
-                                            <td><?= $riwayat['urutan']; ?></td>
-                                            <td>
-                                                <div class="btn-group ">
-                                                    <a class="btnr"
-                                                        href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
-                                                        <button type="button" class="btn btn-block btn-primary ">
-                                                            <i class=" fas fa-info"></i>
-                                                        </button>
-                                                    </a>
-                                                    <!-- update -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Riwayat Surat</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="example1"
+                                        class="table table-bordered table-striped dataTable dtr-inline collapsed"
+                                        aria-describedby="example1_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    No</th>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    Kode Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    Perihal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Tanggal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Dinas</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Bidang</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nama
+                                                    User
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nomor
+                                                    User</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1 ?>
+                                            <?php foreach ($riwayats as $riwayat) : ?>
+                                            <tr>
+                                                <td><?= $i++; ?></td>
+                                                <td>
+                                                    <span class="copy-text"
+                                                        data-clipboard-text="<?= $riwayat['nomor']; ?>"
+                                                        title="Klik untuk menyalin kode surat">
+                                                        <?= $riwayat['nomor']; ?>
+                                                    </span>
+                                                </td>
+                                                <td><?= $riwayat['tanggal']; ?></td>
+                                                <td>
+                                                    <?php $userId = $riwayat['user_id']; ?>
+                                                    <?php if (isset($users[$userId]['name'])) : ?>
+                                                    <?=  $users[$userId]['name'] . '<br>'; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php $userId = $riwayat['user_id']; ?>
+                                                    <?php if (isset($users[$userId]['no_hp'])) : ?>
+                                                    <?=  $users[$userId]['no_hp'] . '<br>'; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php $bidangId = $riwayat['bidang_id']; ?>
+                                                    <?php if (isset($bidangs[$bidangId]['name'])) : ?>
+                                                    <?=  $bidangs[$bidangId]['name'] . '<br>'; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td><?= $riwayat['urutan']; ?></td>
+                                                <td>
+                                                    <div class="btn-group ">
+                                                        <a class="btnr"
+                                                            href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
+                                                            <button type="button" class="btn btn-block btn-primary ">
+                                                                <i class=" fas fa-info"></i>
+                                                            </button>
+                                                        </a>
+                                                        <!-- update -->
 
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th rowspan="1" colspan="1">No</th>
-                                            <th rowspan="1" colspan="1">Kode Surat</th>
-                                            <th rowspan="1" colspan="1">Perihal Surat</th>
-                                            <th rowspan="1" colspan="1">Tanggal Surat</th>
-                                            <th rowspan="1" colspan="1"> Dinas</th>
-                                            <th rowspan="1" colspan="1"> Bidang</th>
-                                            <th rowspan="1" colspan="1"> Nama User</th>
-                                            <th rowspan="1" colspan="1"> Nomor User</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th rowspan="1" colspan="1">No</th>
+                                                <th rowspan="1" colspan="1">Kode Surat</th>
+                                                <th rowspan="1" colspan="1">Perihal Surat</th>
+                                                <th rowspan="1" colspan="1">Tanggal Surat</th>
+                                                <th rowspan="1" colspan="1"> Dinas</th>
+                                                <th rowspan="1" colspan="1"> Bidang</th>
+                                                <th rowspan="1" colspan="1"> Nama User</th>
+                                                <th rowspan="1" colspan="1"> Nomor User</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5">
-                                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing
-                                    1 to 2 of 20 entries</div>
-                            </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="example1_previous">
-                                            <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
-                                                class="page-link">Previous</a>
-                                        </li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                aria-controls="example1" data-dt-idx="1" tabindex="0"
-                                                class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="example1"
-                                                data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-                                            class="page-link">Next</a></li>
-                                    </ul>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-5">
+                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                        Showing
+                                        1 to 2 of 20 entries</div>
+                                </div>
+                                <div class="col-sm-12 col-md-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item previous disabled"
+                                                id="example1_previous">
+                                                <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                                                    class="page-link">Previous</a>
+                                            </li>
+                                            <li class="paginate_button page-item active"><a href="#"
+                                                    aria-controls="example1" data-dt-idx="1" tabindex="0"
+                                                    class="page-link">1</a></li>
+                                            <li class="paginate_button page-item "><a href="#" aria-controls="example1"
+                                                    data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                            <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+                                                class="page-link">Next</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -138,49 +150,48 @@
             </div>
         </div>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-<script>
-var clipboard = new ClipboardJS('.copy-text');
-clipboard.on('success', function(e) {
-    e.clearSelection();
-    Swal.fire('Kode Surat Berhasil Di Salin !!');
-});
-clipboard.on('error', function(e) {
-    Swal.fire('gagal meyalin kode');
-});
-
-function confirmDelete(slug) {
-    Swal.fire({
-        title: 'Apa Kamu yakin?',
-        text: 'Jika dihapus data tidak bisa di kembalikan.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
-            const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url() ?>admin/users/delete/" + slug;
-            form.submit();
-        }
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+    var clipboard = new ClipboardJS('.copy-text');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        Swal.fire('Kode Surat Berhasil Di Salin !!');
     });
-}
-<?php if (session()->getFlashdata('success')) : ?>
-Swal.fire({
-    title: 'Success',
-    text: '<?= session()->getFlashdata('success') ?>',
-    icon: 'success',
-    timer: 3000,
-    showConfirmButton: false
-});
-<?php endif; ?>
-</script>
-<!-- <div class="content-wrapper">
+    clipboard.on('error', function(e) {
+        Swal.fire('gagal meyalin kode');
+    });
+
+    function confirmDelete(slug) {
+        Swal.fire({
+            title: 'Apa Kamu yakin?',
+            text: 'Jika dihapus data tidak bisa di kembalikan.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+                const form = document.getElementById('deleteForm');
+                form.action = "<?php echo base_url() ?>admin/users/delete/" + slug;
+                form.submit();
+            }
+        });
+    }
+    <?php if (session()->getFlashdata('success')) : ?>
+    Swal.fire({
+        title: 'Success',
+        text: '<?= session()->getFlashdata('success') ?>',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false
+    });
+    <?php endif; ?>
+    </script>
+    <!-- <div class="content-wrapper">
     Content Header (Page header)
     <div class="content-header" style="padding-bottom: 40px; padding-top: 30px;">
         <div class="container-fluid">
