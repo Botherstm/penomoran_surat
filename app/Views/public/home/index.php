@@ -97,6 +97,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th rowspan="1" colspan="1">No</th>
                                             <th rowspan="1" colspan="1">Kode Surat</th>
                                             <th rowspan="1" colspan="1">Perihal Surat</th>
                                             <th rowspan="1" colspan="1">Tanggal Surat</th>
