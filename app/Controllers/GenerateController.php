@@ -143,7 +143,7 @@ class GenerateController extends BaseController
             $this->urutan->update($urutan['id'], $urutanData);
             $this->generate->insert($data);
             
-            return redirect()->to('/public/riwayat/'. session()->get('slug'))->with('success', 'Berhasil Menggenerate Kode Surat.');
+            return redirect()->to('/public/riwayat/')->with('success', 'Berhasil Menggenerate Kode Surat.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
