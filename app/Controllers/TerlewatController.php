@@ -145,6 +145,12 @@ class TerlewatController extends BaseController
             $kode = $nomor ."/". $urutan_terkecil.".".$newTerlewat."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
             // dd($kode);
             
+             //slug
+            $mentahan = $nomor ."/". $urutan['urutan'] ."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
+            $slug = preg_replace('/[^a-z0-9-]/', '-', strtolower($mentahan));
+            $slug = str_replace(' ', '-', $slug);
+            $slug = preg_replace('/-+/', '-', $slug);
+
 
             //id
             $uuid = Uuid::uuid4();
@@ -158,6 +164,7 @@ class TerlewatController extends BaseController
                 'urutan' => $urutan_terkecil,
                 'terlewat' => $newTerlewat,
                 'pdf' => $newName,
+                'slug'=> $slug,
                 'perihal' => $data['name'],
                 'nomor' => $kode,
                 'tanggal' =>$this->request->getPost('tanggal'),
