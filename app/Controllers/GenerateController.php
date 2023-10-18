@@ -67,11 +67,7 @@ class GenerateController extends BaseController
             'tanggal' => 'required',
         ];
 
-        // dd($this->request->getPost(),$newName);
-            $pdf = $this->request->getFile('pdf_upload');
-            $newName = $pdf->getRandomName();
-            $pdf->move(ROOTPATH . 'public/pdf', $newName);
-       
+
         if ($this->validate($rules)) {
             $nomor = $this->request->getPost('nomor');
             $kategori = $this->kategori->getByKode($this->request->getPost('nomor')) ?? [];
@@ -133,7 +129,6 @@ class GenerateController extends BaseController
                 'instansi_id' => session()->get('instansi_id'),
                 'bidang_id' => session()->get('bidang_id'),
                 'urutan' => $urutan['urutan'],
-                'pdf' => $newName,
                 'slug'=> $slug,
                 'perihal' => $data['name'],
                 'nomor' => $kode,
