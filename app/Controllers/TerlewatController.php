@@ -144,7 +144,7 @@ class TerlewatController extends BaseController
             // dd($kode);
             
              //slug
-            $mentahan = $nomor ."/". $urutan['urutan'] ."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
+            $mentahan = $nomor ."/".  $urutan_terkecil.".".$newTerlewat."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
             $slug = preg_replace('/[^a-z0-9-]/', '-', strtolower($mentahan));
             $slug = str_replace(' ', '-', $slug);
             $slug = preg_replace('/-+/', '-', $slug);
