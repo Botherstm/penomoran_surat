@@ -19,7 +19,8 @@
                     <div class="card-footer justify-content-center">
                         <div class="row justify-content-center">
                             <div class="col-md-3">
-                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>"> <button type="submit" class="btn btn-info">Download PDF !</button></a>
+                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>"> <button type="submit"
+                                        class="btn btn-info">Download PDF !</button></a>
                             </div>
 
                         </div>
@@ -63,8 +64,14 @@
                         <tr>
                             <th>Nama User</th>
                             <td>:</td>
-                            <td><?= $generate['nomor']; ?></td>
+                            <td><?= $user['name']; ?></td>
                         </tr>
+                        <tr>
+                            <th>Nomor Hp User</th>
+                            <td>:</td>
+                            <td><?= $user['no_hp']; ?></td>
+                        </tr>
+
 
                     </table>
                     <hr>
@@ -84,8 +91,10 @@
                 </div>
                 <div class="mt-3 text-right" style="margin-right: 3%;">
                     <a href="/public/riwayat/">
-                        <button class="btn btn-outline-info" id="tombolBaru"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        <button class="btn btn-outline-info" id="tombolBaru"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                             </svg> Kembali</button>
                     </a>
                 </div>

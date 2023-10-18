@@ -51,7 +51,7 @@ class RiwayatController extends BaseController
         $tanggal = date('d F Y', strtotime($generate['tanggal']));
         $dinas = $this->dinas->getById($generate['instansi_id']);
         $bidang = $this->bidang->getById($generate['bidang_id']);
-
+        $user = $this->user->getByid($generate['user_id'])??[];
         // $options = new Options();
         // $options->set('isPhpEnabled', true);
 
@@ -66,6 +66,7 @@ class RiwayatController extends BaseController
         // $dompdf->stream();
         
         return view('public/riwayat/detail',[
+            'user'=>$user,
             'generate'=>$generate,
             'dinas'=>$dinas,
             'bidang'=>$bidang,
