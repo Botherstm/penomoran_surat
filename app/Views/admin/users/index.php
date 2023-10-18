@@ -41,9 +41,12 @@
         <div class="container-fluid ">
             <div class="row mb-4">
                 <div class="col-sm-6 px-4">
+                    <?php if(session()->get('level') == 2): ?>
                     <h1 class="m-0 font-weight-bold ">List Users</h1>
+                    <?php elseif(session()->get('level') == 1): ?>
+                    <h1 class="m-0 font-weight-bold ">List Users <?= $dinas['name']; ?></h1>
+                    <?php endif ?>
                 </div><!-- /.col -->
-
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -77,12 +80,15 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>NIP</th>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>No.Telp</th>
+                            <?php if(session()->get('level') == 2): ?>
                             <th>Dinas</th>
+                            <th>Level</th>
+                            <?php elseif(session()->get('level') == 1): ?>
                             <th>Bidang</th>
+                            <?php endif ?>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -92,22 +98,37 @@
                         <?php if (session()->get('level') == 2 || $user['level'] != 2) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td><?= $user['nip']; ?></td>
                             <td><?= $user['name']; ?></td>
                             <td><?= $user['email']; ?></td>
                             <td><?= $user['no_hp']; ?></td>
-                            <td><?= $user['instansi_id']; ?></td>
+                            <?php if(session()->get('level') == 2): ?>
+                            <td>
+                                <?php ?>
+                                <?php $instansiId = $user['instansi_id']; ?>
+                                <?php if (isset($dinas[$instansiId]['name'])) : ?>
+                                <?=  $dinas[$instansiId]['name'] . '<br>'; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($user['level']==1) : ?>
+                                <p> Admin</p>
+                                <?php elseif ($user['level']==2) : ?>
+                                <button disabled class="btn btn-outline-dark">Super Admin</button>
+                                <?php endif; ?>
+                            </td>
+                            <?php elseif(session()->get('level') == 1 ): ?>
                             <td>
                                 <?php
                                     $bidangNames = [];
                                     foreach ($bidangs as $bidangId => $bidang) {
-                                        if ($bidangId == $user['bidang_id']) {
+                                        if ($bidangId == $user['bidang_id'] && $user['bidang_id'] !== null) {
                                             $bidangNames[] = $bidang['name'];
                                         }
                                     }
                                     echo implode(', ', $bidangNames);     
                                 ?>
                             </td>
+                            <?php endif ?>
                             <td>
                                 <div class="btn-group ">
                                     <!-- update -->
@@ -117,9 +138,7 @@
                                             <i class=" fas fa-pen"></i>
                                         </button>
                                     </a>
-                                    <?php if (session()->get('name') == $user['name']) : ?>
-                                    <!-- Sembunyikan tombol delete jika user saat ini adalah pemilik data -->
-                                    <?php else : ?>
+
                                     <form id="deleteForm" class="pr-3"
                                         action="<?php echo base_url('admin/users/delete/') ?><?= $user['slug']; ?>"
                                         method="POST">
@@ -129,7 +148,7 @@
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
-                                    <?php endif; ?>
+
                                 </div>
                             </td>
                         </tr>
@@ -180,6 +199,18 @@ Swal.fire({
 <?php endif; ?>
 
 
+<?php if (session()->getFlashdata('error')) : ?>
+Swal.fire({
+    title: 'Gagal',
+    text: '<?= session()->getFlashdata('error') ?>',
+    icon: 'warning',
+    timer: 3000,
+    showConfirmButton: false
+});
+<?php endif; ?>
+
+
+
 
 
 
@@ -202,11 +233,7 @@ function performSearch() {
         }
     });
 }
-
-// Tambahkan event listener pada tombol pencarian
 document.getElementById('searchButton').addEventListener('click', performSearch);
-
-// Tambahkan event listener pada input pencarian untuk mendukung pencarian instan saat mengetik
 document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 <?= $this->endSection('content'); ?>

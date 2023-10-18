@@ -11,8 +11,7 @@
                     <div class="col-md-8 offset-md-2">
                         <form action="simple-results.html">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" id="searchInput" class="form-control float-right"
-                                    placeholder="Search">
+                                <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
                                 <div class="input-group-append">
                                     <button type="button" id="searchButton" class="btn btn-default">
                                         <i class="fas fa-search"></i>
@@ -29,62 +28,81 @@
 
     <div class="container-fluid" style="padding-top: 50px; padding-bottom: 50px;">
         <section class="content">
-            <div class="col" style="padding-bottom: 50px;">
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="card-deck">
-                        <?php foreach ($generates as $key => $generate): ?>
-                        <div class="card">
+            <div class="row">
+                <?php foreach ($generates as $key => $generate) : ?>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card" style="margin-bottom: 20px;">
                             <div class="card-body">
 
                                 <h5 class="card-title">
+
                                     <b class="">Perihal Surat:</b>
-                                    <a href="<?php echo base_url('public/riwayat/detail/')?><?= $generate['nomor']; ?>"
-                                        class="text-dark text-decoration-none" style="text-decoration:none; ">
-                                        <?= $generate['perihal']; ?>
-                                    </a>
+
+                                    <?= $generate['perihal']; ?>
 
                                 </h5>
-
                                 <br>
                                 <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
                                 <br>
+                                <h5 class="card-title"><b>Tanggal Surat :</b>
+                                    <?= date('d F Y', strtotime($generate['tanggal'])); ?></h5>
+                                <br>
                                 <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
                                 <br>
-                                <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>"><button
-                                        class="btn btn-dark">Download PDF</button></a>
-                                <p class="card-text"><small
-                                        class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['tanggal']))->humanize(); ?></small>
+                                <div class="d-flex justify-content-evenly">
+                                    <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
+                                        <button class="btn btn-outline-info ">Detail</button>
+                                    </a>
+                                    <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
+                                        <button class=" btn btn-outline-success ">Download
+                                            PDF</button>
+                                    </a>
+                                </div>
+
+                                <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
                                 </p>
+
                             </div>
                         </div>
-                        <?php endforeach ?>
                     </div>
-                </div>
+                <?php endforeach ?>
             </div>
         </section>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+
 
 <script>
-function performSearch() {
-    var searchText = document.getElementById('searchInput').value.toLowerCase();
-    var cardDeck = document.getElementById('cardDeck');
-    var cards = cardDeck.getElementsByClassName('card');
+    <?php if (session()->getFlashdata('success')) : ?>
+        Swal.fire({
+            title: 'Success',
+            text: '<?= session()->getFlashdata('success') ?>',
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    <?php endif; ?>
 
-    for (var i = 0; i < cards.length; i++) {
-        var card = cards[i];
-        var cardText = card.innerText.toLowerCase();
-        if (cardText.includes(searchText)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
+    function performSearch() {
+        var searchText = document.getElementById('searchInput').value.toLowerCase();
+        var cardDeck = document.getElementById('cardDeck');
+        var cards = cardDeck.getElementsByClassName('card');
+
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var cardText = card.innerText.toLowerCase();
+            if (cardText.includes(searchText)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
         }
     }
-}
 
-document.getElementById('searchButton').addEventListener('click', performSearch);
+    document.getElementById('searchButton').addEventListener('click', performSearch);
 
-document.getElementById('searchInput').addEventListener('input', performSearch);
+    document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
 <?= $this->endSection('content'); ?>

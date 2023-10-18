@@ -15,9 +15,12 @@ class LoginController extends BaseController
         $this->userModel = new UserModel();
     }
     public function index()
-    {
+    {   
+        $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+        // dd($siteKey);
         return view('login',[
-             'validation' => \Config\Services::validation()
+             'validation' => \Config\Services::validation(),
+             'key'=> $siteKey
         ]);
     }
 
@@ -65,7 +68,6 @@ class LoginController extends BaseController
                         'instansi_id' => $user['instansi_id'],
                         'bidang_id' => $user['bidang_id'],
                         'slug' => $user['slug'],
-                        'nip' => $user['nip'],
                         'name' => $user['name'],
                         'email' => $user['email'],
                         'no_hp' => $user['no_hp'],

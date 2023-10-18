@@ -28,23 +28,24 @@ class GenerateModel extends Model
         
         return $this->findAll();
     }
-
      public function getById($id)
     {
         return $this->where('id', $id)->first();
     }
-
     public function getBySlug($slug)
     {
         return $this->where('slug', $slug)->first();
     }
-
     public function getAllByUserId_id($user_id)
     {
-        return $this->where('user_id', $user_id)->findAll();
+        return $this->where('user_id', $user_id)
+                    ->orderBy('created_at', 'DESC')
+                    ->findAll();
     }
-
-
+    public function getAllByTanggal($tanggal)
+    {
+        return $this->where('tanggal', $tanggal)->findAll();
+    }
     public function getOneByInstansiId($instansi_id)
     {
         return $this->where('$instansi_id', $instansi_id)->first();
@@ -57,12 +58,7 @@ class GenerateModel extends Model
     }
     public function getAllByInstansi_id($instansi_id)
     {
-        return $this->where('instansi_id', $instansi_id)->findAll();
+        return $this->where('instansi_id', $instansi_id)
+         ->orderBy('created_at', 'desc')->findAll();
     }
-
-    //ambil satu
-    public function getOne(){
-        return $this->first();
-    }
-
 }

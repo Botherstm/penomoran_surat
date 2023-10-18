@@ -39,9 +39,12 @@ class GenerateController extends BaseController
     {
         session();
         if (!session()->has('user_id')) {
-            return view('login', [
-                'validation' => \Config\Services::validation()
-            ]);
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+        // dd($siteKey);
+        return view('login',[
+             'validation' => \Config\Services::validation(),
+             'key'=> $siteKey
+        ]);
         }
         $kategories = $this->kategori->getAll();
         return view(
@@ -137,11 +140,10 @@ class GenerateController extends BaseController
                 'tanggal' =>$this->request->getPost('tanggal'),
             ];
             // dd($data);
-            
             $this->urutan->update($urutan['id'], $urutanData);
             $this->generate->insert($data);
             
-            return redirect()->to('/')->with('success', 'Berhasil Menggenerate Kode Surat.');
+            return redirect()->to('/public/riwayat/')->with('success', 'Berhasil Menggenerate Kode Surat.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
@@ -209,21 +211,5 @@ class GenerateController extends BaseController
         return $this->response->setJSON($response);
     }
 
-    public function generate()
-    {
-        session();
-        if (!session()->has('user_id')) {
-            return view('login', [
-                'validation' => \Config\Services::validation()
-            ]);
-        }
-        $kategories = $this->kategori->getAll();
-        return view(
-            'generate',
-            [
-                'kategories' => $kategories
-            ]
-        );
-        return view('generate');
-    }
+    
 }

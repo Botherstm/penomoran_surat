@@ -107,14 +107,13 @@ class BidangController extends BaseController
     public function edit($slug)
     {
         $bidang = $this->bidang->getBySlug($slug);
-        $instansis = $this->dinas->get_instansi_by_id($bidang['instansi_id']);
-        $instansijson = json_encode($instansis);
-        $instansi = json_decode($instansijson);
+        $instansi = $this->dinas->getAllById($bidang['instansi_id']);
+
         // dd($instansi);
         return view('admin/bidang/edit', [
             'active' => 'bidang',
             'bidang' => $bidang,
-            'instansi' => $instansi->slug,
+            'instansi' => $instansi['slug'],
         ]);
     }
 
@@ -131,9 +130,7 @@ class BidangController extends BaseController
 
         if ($this->validate($rules)) {
             $instansiId = $this->request->getPost('instansi_id');
-            $instansis = $this->dinas->get_instansi_by_id($instansiId);
-            $instansijson = json_encode($instansis);
-            $instansi = json_decode($instansijson);
+            $instansi = $this->dinas->getAllById($instansiId);
             // dd($instansi);
             // Data pengguna yang akan disimpan
             $bidangData = [
@@ -147,7 +144,7 @@ class BidangController extends BaseController
             $this->bidang->update($id, $bidangData);
 
             // Redirect ke halaman yang sesuai dengan pesan sukses
-            return redirect()->to('/admin/dinas/bidang/'. $instansi->slug)->with('success', 'Data berhasil Di Update !');
+            return redirect()->to('/admin/dinas/bidang/'. $instansi['slug'])->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()

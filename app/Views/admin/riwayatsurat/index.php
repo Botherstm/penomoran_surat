@@ -37,6 +37,10 @@
 .halpad {
     padding: 30px 50px 10px 50px;
 }
+
+.copy-text:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-plus" viewBox="0 0 16 16"><path d="M5.5 2A.5.5 0 0 0 5 2.5v11a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V2.5a.5.5 0 0 0-.5-.5h-5zM6 1.5A.5.5 0 0 1 6.5 1h3a.5.5 0 0 1 .5.5V15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V1.5zM11 3a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1.5 6a.5.5 0 0 1 .5.5V10h1.5a.5.5 0 0 1 0 1H10v1.5a.5.5 0 0 1-1 0V11H7.5a.5.5 0 0 1 0-1H9V8.5a.5.5 0 0 1 .5-.5z"/><path fill-rule="evenodd" d="M8.5 0a.5.5 0 0 1 .5.5V3h1a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V4H7.5a.5.5 0 0 1 0-1H8V.5a.5.5 0 0 1 .5-.5z"/><path d="M6 4.5a.5.5 0 0 0-.5.5V6H4.5a.5.5 0 0 0 0 1H5v1.5a.5.5 0 0 0 1 0V7h1.5a.5.5 0 0 0 0-1H6V5.5a.5.5 0 0 0-.5-.5z"/></svg>'), auto;
+}
 </style>
 
 <div class="content-wrapper halpad">
@@ -55,9 +59,9 @@
     <!-- Main content -->
     <section class="content">
         <div class="row jarak ">
-        <div class="card-tools">
- 
-                
+            <div class="card-tools">
+
+
             </div>
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -74,37 +78,59 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>No. Surat</th>
+                            <th>Kode. Surat</th>
                             <th>Tanggal Surat</th>
                             <th>User</th>
-                            <th>Dinas</th>
+                            <th>No Hp User</th>
+                            <th>Bidang</th>
                             <th>Urutan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($riwayats as $riwayat) : ?>
                         <tr>
-                            <td>?</td>
-                            <td>?</td>
-                            <td>?</td>
-                            <td>?</td>
-                            <td>?</td>
-                            <td>?</td>
+                            <td><?= $i++; ?></td>
                             <td>
-
+                                <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>"
+                                    title="Klik untuk menyalin kode surat">
+                                    <?= $riwayat['nomor']; ?>
+                                </span>
+                            </td>
+                            <td><?= $riwayat['tanggal']; ?></td>
+                            <td>
+                                <?php $userId = $riwayat['user_id']; ?>
+                                <?php if (isset($users[$userId]['name'])) : ?>
+                                <?=  $users[$userId]['name'] . '<br>'; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php $userId = $riwayat['user_id']; ?>
+                                <?php if (isset($users[$userId]['no_hp'])) : ?>
+                                <?=  $users[$userId]['no_hp'] . '<br>'; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php $bidangId = $riwayat['bidang_id']; ?>
+                                <?php if (isset($bidangs[$bidangId]['name'])) : ?>
+                                <?=  $bidangs[$bidangId]['name'] . '<br>'; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td><?= $riwayat['urutan']; ?></td>
+                            <td>
                                 <div class="btn-group ">
-
-                                <a class="btnr"
-                                        href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
+                                    <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
                                         <button type="button" class="btn btn-block btn-primary ">
                                             <i class=" fas fa-info"></i>
                                         </button>
                                     </a>
                                     <!-- update -->
-                                    
+
                                 </div>
                             </td>
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -113,10 +139,16 @@
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 <script>
-// function showAlert() {
-//     Swal.fire('Ini adalah pesan SweetAlert2!');
-// }
+var clipboard = new ClipboardJS('.copy-text');
+clipboard.on('success', function(e) {
+    e.clearSelection();
+    Swal.fire('Kode Surat Berhasil Di Salin !!');
+});
+clipboard.on('error', function(e) {
+    Swal.fire('gagal meyalin kode');
+});
 
 function confirmDelete(slug) {
     Swal.fire({
@@ -137,8 +169,6 @@ function confirmDelete(slug) {
         }
     });
 }
-
-// Popup success message
 <?php if (session()->getFlashdata('success')) : ?>
 Swal.fire({
     title: 'Success',

@@ -2,8 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link bg-teal">
         <a href="index3.html" class="brand-link bg-teal ">
-            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja"
-                class="justify-content-center" height="40" width="65">
+            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
             <span class="brand-text font-weight-bold ">E-NOMOR</span>
         </a>
 
@@ -15,7 +14,7 @@
                 <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> -->
                 <div class="info">
-                    <a href="<?php echo base_url('admin') ?>" class="d-block"><?= session()->get('name'); ?></a>
+                    <a href="/user/profile" class="d-block"><?= session()->get('name'); ?></a>
                 </div>
             </div>
 
@@ -30,25 +29,24 @@
                         <a href="<?php echo base_url('/') ?>" class="nav-link">
                             <i class="nav-icon fa fa-home"></i>
                             <p>
-                                Home
+                                Generate Nomor Surat
                             </p>
                         </a>
                     </li>
 
                     <?php if (session()->get('level') != 0) : ?>
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
-                            <i class="nav-icon fa fa-lock"></i>
-                            <p>
-                                Admin
-                            </p>
-                        </a>
-                    </li>
+                        <li class="nav-item ">
+                            <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
+                                <i class="nav-icon fa fa-lock"></i>
+                                <p>
+                                    Admin
+                                </p>
+                            </a>
+                        </li>
                     <?php endif ?>
 
                     <li class="nav-item">
-                        <a href="<?php echo base_url('public/riwayat/') ?><?= session()->get('slug'); ?>"
-                            class="nav-link">
+                        <a href="<?php echo base_url('public/riwayat/') ?>" class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Riwayat Surat
@@ -56,19 +54,9 @@
                         </a>
                     </li>
 
-                    <!-- coba untuk buat view -->
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('/user/rinciansurat') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-envelope"></i>
-                            <p>
-                                Rincian Surat Download (coba)
-                            </p>
-                        </a>
-                    </li>
-
                     <li class="nav-item ">
-                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>"
-                            class="nav-link">
+                        <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
+
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Generate Surat Terlewat
@@ -77,7 +65,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                             <i class="nav-icon fas fa-info"></i>
                             <p>
                                 Tentang
@@ -86,9 +74,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fa-solid fa-wrench"></i>
+                            <i class="nav-icon fa fa-user"></i>
                             <p>
-                                Pengaturan
+                                Pengaturan Akun
                             </p>
                         </a>
                     </li>
