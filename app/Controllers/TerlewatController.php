@@ -118,11 +118,6 @@ class TerlewatController extends BaseController
         }
         // dd($terbesarTerlewat,$newTerlewat,$urutan_terkecil);
 
-        // dd($this->request->getPost());
-            $pdf = $this->request->getFile('pdf_upload');
-            $newName = $pdf->getRandomName();
-            $pdf->move(ROOTPATH . 'public/pdf', $newName);
-       
         if ($this->validate($rules)) {
             $nomor = $this->request->getPost('nomor');
             $kategori = $this->kategori->getByKode($this->request->getPost('nomor')) ?? [];
@@ -161,7 +156,6 @@ class TerlewatController extends BaseController
                 'bidang_id' => session()->get('bidang_id'),
                 'urutan' => $urutan_terkecil,
                 'terlewat' => $newTerlewat,
-                'pdf' => $newName,
                 'slug'=> $slug,
                 'perihal' => $data['name'],
                 'nomor' => $kode,
