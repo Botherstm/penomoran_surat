@@ -82,9 +82,17 @@
                     </li>
                     <li class="nav-item">
                         <a href="/logout" class="nav-link">
-                            <i class="nav-icon fa fa-sign-out"></i>
+                            <i class="nav-icon far fa-sign-out"></i>
                             <p>
                                 Keluar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/coba" class="nav-link">
+                            <i class="nav-icon far fa-sign-out"></i>
+                            <p>
+                                Coba
                             </p>
                         </a>
                     </li>
