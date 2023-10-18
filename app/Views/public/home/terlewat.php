@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
 <?php if (session()->getFlashdata('success')) : ?>
 Swal.fire({
@@ -158,13 +159,16 @@ document.getElementById("inputGroupFile01").addEventListener("change", function(
     var label = document.querySelector(".custom-file-label");
     label.textContent = fileName;
 });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script>
+
 document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
     const fileInput = event.target;
     const previewContainer = document.querySelector(".preview-container");
     const formContainer = document.querySelector(".form-container");
+
+    // Hapus elemen preview PDF yang ada sebelum menambahkan yang baru
+    while (previewContainer.firstChild) {
+        previewContainer.removeChild(previewContainer.firstChild);
+    }
 
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
@@ -176,7 +180,7 @@ document.getElementById("inputGroupFile01").addEventListener("change", function(
             pdfObject.data = URL.createObjectURL(file);
             pdfObject.type = "application/pdf";
             pdfObject.style.width = "100%";
-            pdfObject.style.height = "400px"; // Adjust the height as needed
+            pdfObject.style.height = "1000px"; // Adjust the height as needed
             previewContainer.appendChild(pdfObject);
 
             // Show the form
@@ -208,9 +212,7 @@ function confirmGenerate() {
         }
     });
 }
-</script>
 
-<script>
 document.addEventListener('DOMContentLoaded', function() {
     var kategoriSelect = document.getElementById('kategori');
     var perihalSelect = document.getElementById('perihal');

@@ -156,11 +156,15 @@ document.getElementById("inputGroupFile01").addEventListener("change", function(
     var label = document.querySelector(".custom-file-label");
     label.textContent = fileName;
 });
-
 document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
     const fileInput = event.target;
     const previewContainer = document.querySelector(".preview-container");
     const formContainer = document.querySelector(".form-container");
+
+    // Hapus elemen preview PDF yang ada sebelum menambahkan yang baru
+    while (previewContainer.firstChild) {
+        previewContainer.removeChild(previewContainer.firstChild);
+    }
 
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
