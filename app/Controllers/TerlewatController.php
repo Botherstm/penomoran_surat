@@ -139,8 +139,6 @@ class TerlewatController extends BaseController
             //bidang
             $bidang = $this->bidang->getById(session()->get('bidang_id'));
 
-
-
             // dd($urutan_terkecil);
             $kode = $nomor ."/". $urutan_terkecil.".".$newTerlewat."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
             // dd($kode);

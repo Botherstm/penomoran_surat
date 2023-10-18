@@ -38,7 +38,9 @@ class GenerateModel extends Model
     }
     public function getAllByUserId_id($user_id)
     {
-        return $this->where('user_id', $user_id)->findAll();
+        return $this->where('user_id', $user_id)
+                    ->orderBy('created_at', 'DESC')
+                    ->findAll();
     }
     public function getAllByTanggal($tanggal)
     {
