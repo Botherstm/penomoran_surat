@@ -351,11 +351,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Dapatkan elemen nomorSurat setelah halaman selesai dimuat
     var nomorSuratInput = document.getElementById('nomorSurat');
-
     var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
-
     detailsubPerihalSelect.addEventListener('change', function() {
         var selectedDetailSubPerihal = detailsubPerihalSelect.value;
 
