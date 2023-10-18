@@ -32,7 +32,7 @@
                 <?php foreach ($generates as $key => $generate) : ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card" style="margin-bottom: 20px;">
-                            <div class="card-body">
+                            <div class="card-body border border-info-subtle">
                                 <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
                                     <h5 class="card-title">
 
@@ -50,14 +50,17 @@
                                     <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
                                     <br>
                                 </a>
-                                <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
-                                    <button class="p-3 text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Detail</button>
-                                </a>
-                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
-                                    <button class="p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Download PDF</button>
-                                </a>
-                                <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
-                                </p>
+                                <div class="col">
+                                    <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
+                                        <button class="p-3 text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Detail</button>
+                                    </a>
+                                    <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
+                                        <button class="p-3 text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Download PDF</button>
+                                    </a>
+                                    <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
+                                    </p>
+                                </div>
+
 
                             </div>
                         </div>
