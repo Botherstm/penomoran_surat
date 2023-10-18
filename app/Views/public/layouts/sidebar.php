@@ -65,10 +65,10 @@
                     </li> -->
 
                     <li class="nav-item ">
-                        <<<<<<< HEAD <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>" class="nav-link">
-                            =======
+                        <a href="<?php echo base_url('/generate/terlewat/') ?><?= session()->get('slug'); ?>" class="nav-link">
+
                             <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
-                                >>>>>>> 98a2b90d31bb26d9b81951a69473c9896b238739
+
                                 <i class="nav-icon fas fa-envelope"></i>
                                 <p>
                                     Generate Surat Terlewat
