@@ -117,15 +117,8 @@ $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateControlle
 $routes->get('/dashboard', 'DashboardController::index');
 
 
-//user dashboard
-$routes->get('/user', 'User\UserController::beranda');
-$routes->get('/user/profile', 'User\UserController::profile');
-$routes->get('/user/rinciansurat', 'User\UserController::rinciansurat');
-$routes->get('/user/generate', 'GenerateController::generate');
-
-
 //riwayat
-$routes->get('/public/riwayat/(:segment)', 'User\RiwayatController::index/$1');
+$routes->get('/public/riwayat', 'User\RiwayatController::index');
 $routes->get('/public/riwayat/detail/(:segment)', 'User\RiwayatController::detail/$1');
 
 

@@ -24,6 +24,11 @@ class UserModel extends Model
         return $this->where('slug', $slug)->first();
     }
 
+     public function getByid($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+
     public function getByInstansiId($instansi_id)
     {
         return $this->where('instansi_id', $instansi_id)->findAll();

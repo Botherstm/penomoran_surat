@@ -26,7 +26,7 @@ class RiwayatController extends BaseController
         $dompdf = new Dompdf();
     }
 
-    public function index($slug)
+    public function index()
     {
         session();
         if (!session()->has('user_id')) {
@@ -34,9 +34,9 @@ class RiwayatController extends BaseController
                 'validation' => \Config\Services::validation()
             ]);
         }
-        $user = $this->user->getBySlug($slug);
-        $generate = $this->generate->getAllByUserId_id($user['id']);
-        // dd($generate);
+        $user = $this->user->getByid(session()->get('user_id'))??[];
+        $generate = $this->generate->getAllByUserId_id(session()->get('user_id'));
+        // dd($user);
 
         return view('public/riwayat/index',[
             'generates'=>$generate,

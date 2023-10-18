@@ -46,7 +46,11 @@
                     <?php endif ?>
 
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a href="<?php echo base_url('public/riwayat/') ?><?= session()->get('slug'); ?>" class="nav-link">
+=======
+                        <a href="<?php echo base_url('public/riwayat/') ?>" class="nav-link">
+>>>>>>> e30a9cc6dc7d42502424830b224ebea831d11268
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
                                 Riwayat Surat
