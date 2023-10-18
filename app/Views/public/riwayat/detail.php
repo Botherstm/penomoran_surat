@@ -40,6 +40,11 @@
                             <td>:</td>
                             <td> <?= $generate['nomor']; ?> </td>
                         </tr>
+                        <tr style="padding-left: 1%;">
+                            <th>Perihal Surat</th>
+                            <td>:</td>
+                            <td> <?= $generate['perihal']; ?> </td>
+                        </tr>
                         <tr>
                             <th>Dinas</th>
                             <td>:</td>
