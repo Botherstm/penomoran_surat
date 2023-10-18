@@ -27,6 +27,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
+
     <link rel="stylesheet"
         href="<?php echo base_url() ?>adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -39,7 +40,7 @@ https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/web/pdf_viewer.min.css
 
 </head>
 
-<body class="sidebar-mini layout-fixed sidebar-collapse layout-navbar-fixed">
+<body class="sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         <?= $this->include('public/layouts/navbar'); ?>
         <?= $this->include('public/layouts/sidebar'); ?>

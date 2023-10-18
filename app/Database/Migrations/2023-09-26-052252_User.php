@@ -20,12 +20,9 @@ class CreateUsersTable extends Migration
             'bidang_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                null => true
             ],
             'slug' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'nip' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],

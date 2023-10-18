@@ -3,9 +3,8 @@
     <a href="index3.html" class="brand-link bg-teal ">
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center"
             height="40" width="65">
-        <span class="brand-text font-weight-bold ">E-NOMOR</span>
+        <span class="brand-text font-weight-bold ">E-NOMOR Admin </span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -60,11 +59,20 @@
                     </ul>
                 </li>
                 <?php if(session()->get('level') == 1): ?>
+
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/bidang/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Bidang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('admin/riwayatsurat') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Riwayat Surat
                         </p>
                     </a>
                 </li>
@@ -77,32 +85,9 @@
                         </p>
                     </a>
                 </li>
-                <?php endif; ?>
-
-
-                <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/riwayatsurat/index') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-envelope"></i>
-                        <p>
-                            Riwayat Surat
-                        </p>
-                    </a>
-                </li>
-                <?php if(session()->get('level') == 2): ?>
-                <!-- <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/urutansurat') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-hashtag"></i>
-                        <p>
-                            Urutan Surat
-                        </p>
-                    </a>
-                </li> -->
-
-
-
                 <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/kategory') ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/kategori') ?>" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Kategori

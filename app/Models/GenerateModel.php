@@ -58,7 +58,7 @@ class GenerateModel extends Model
     }
     public function getAllByInstansi_id($instansi_id)
     {
-        return $this->where('instansi_id', $instansi_id)->findAll();
+        return $this->where('instansi_id', $instansi_id)
+         ->orderBy('created_at', 'desc')->findAll();
     }
-
 }

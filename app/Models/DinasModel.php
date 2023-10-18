@@ -132,7 +132,10 @@ class DinasModel extends Model
     {
         return $this->where('id', $id)->first();
     }
-
+     public function getAllById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
 
     public function getBySlug($slug)
     {
