@@ -48,15 +48,19 @@
                                     <?= date('d F Y', strtotime($generate['tanggal'])); ?></h5>
                                 <br>
                                 <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
-                                <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
-                                    <button class="btn btn-outline-info ">Detail</button>
-                                </a>
-                                <!-- Download PDF -->
-                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>" style="position: absolute; bottom: 10px; right: 10px;">
-                                    <button class="btn btn-success border border-success-subtle rounded-2">Download PDF</button>
-                                </a>
-                                <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small></p>
+                                <br>
+                                <div class="d-flex justify-content-evenly">
+                                    <a href="<?php echo base_url('public/riwayat/detail/') ?><?= $generate['slug']; ?>" class="text-dark text-decoration-none" style="text-decoration:none; ">
+                                        <button class="btn btn-outline-info ">Detail</button>
+                                    </a>
+                                    <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
+                                        <button class=" btn btn-outline-success ">Download
+                                            PDF</button>
+                                    </a>
+                                </div>
 
+                                <p class="card-text"><small class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
+                                </p>
 
                             </div>
                         </div>
