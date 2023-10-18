@@ -55,8 +55,8 @@
                         </tr>
                     </table>
                     <hr>
-                    <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="#" class="btn btn-info" id="ubahNamaBtn"><i class="icon-pencil7"></i> Ganti Nama</a>
+                    <div class="header-elements" style="margin-left:5%; padding:1%; ">
+                        <a href="#" class="btn btn-info" style="width: 150px;" id="ubahNamaBtn"><i class="icon-pencil7"></i> Ganti Nama</a>
                     </div>
                     <div id="formUbahNama" style="display: none; margin-left:6%;">
                         <form method="" action="">
@@ -71,8 +71,8 @@
                     </div>
 
 
-                    <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="#" class="btn btn-info" id="ubahEmailBtn"><i class="icon-pencil7"></i> Ganti Email</a>
+                    <div class="header-elements" style="margin-left:5%; padding:1%; ">
+                        <a href="#" class="btn btn-info" id="ubahEmailBtn" style="width: 150px;"><i class="icon-pencil7"></i> Ganti Email</a>
                     </div>
                     <div id="formUbahEmail" style="display: none; margin-left:6%;">
                         <form method="" action="">
@@ -87,8 +87,8 @@
                     </div>
 
 
-                    <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="#" class="btn btn-info" id="ubahPasswordBtn"><i class="icon-pencil7"></i> Ganti Password</a>
+                    <div class="header-elements" style="margin-left:5%; padding:1%;" >
+                        <a href="#" class="btn btn-info" id="ubahPasswordBtn" style="width: 150px;"><i class="icon-pencil7"></i> Ganti Password</a>
                     </div>
                     <div id="formUbahPassword" style="display: none; margin-left:6%;">
                         <form method="" action="">

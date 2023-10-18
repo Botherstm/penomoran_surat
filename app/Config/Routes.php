@@ -11,7 +11,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/admin', 'Admin\AdminController::index');
 $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
-
+//riwayatsurat
+$routes->get('/admin/riwayatsurat', 'Admin\RiwayatSuratController::index');
+$routes->get('/admin/pdf', 'Admin\PdfController::index');
 
 //dinas
 $routes->get('/admin/dinas', 'Admin\DinasController::index');

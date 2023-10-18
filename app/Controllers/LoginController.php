@@ -68,7 +68,6 @@ class LoginController extends BaseController
                         'instansi_id' => $user['instansi_id'],
                         'bidang_id' => $user['bidang_id'],
                         'slug' => $user['slug'],
-                        'nip' => $user['nip'],
                         'name' => $user['name'],
                         'email' => $user['email'],
                         'no_hp' => $user['no_hp'],

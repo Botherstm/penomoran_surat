@@ -53,22 +53,17 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-
+    <div class="btnadd">
+        <a href="<?php echo base_url('admin/dinas/create') ?>">
+            <button type="button" class="btn btn-success">
+                <i class="icon-jarak fas fa-plus"></i>
+                Tambah
+            </button>
+        </a>
+    </div>
     <!-- Main content -->
     <section class="content">
         <div class="row jarak ">
-            <div class="card-tools">
-
-                <div class="btnadd">
-                    <a href="<?php echo base_url('admin/dinas/create') ?>">
-                        <button type="button" class="btn btn-success">
-                            <i class="icon-jarak fas fa-plus"></i>
-                            Tambah
-                        </button>
-                    </a>
-                </div>
-            </div>
-
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
@@ -79,21 +74,20 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class=" card-body table-responsive p-10">
-            <table class="table table-bordered table-hover text-nowrap table-light">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Nama Dinas</th>
-                        <th>Aksi Urutan Surat</th>
-                        <th>Data Bidang</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1 ?>
-                    <?php foreach ($dinass as $dinas) : ?>
+            <div class=" card-body table-responsive p-10">
+                <table class="table table-bordered table-hover text-nowrap table-light">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Dinas</th>
+                            <th>Aksi Urutan Surat</th>
+                            <th>Data Bidang</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1 ?>
+                        <?php foreach ($dinass as $dinas) : ?>
                         <tr class="text-center">
                             <td><?= $i++; ?></td>
                             <td><?= $dinas['name'] ?></td>

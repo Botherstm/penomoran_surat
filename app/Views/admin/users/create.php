@@ -37,11 +37,6 @@
         <form method="POST" action="<?php echo base_url('admin/users/save') ?>">
             <?= csrf_field(); ?>
             <div class="form-group">
-                <label for="exampleFormControlInput1">NIP</label>
-                <input type="number" required name="nip" autofocus class="form-control" id="nip"
-                    placeholder="Masukkan NIP">
-            </div>
-            <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
                 <input type="text" name="name" required class="form-control" id="name" placeholder="Masukkan Nama">
             </div>
@@ -60,6 +55,14 @@
             </div>
             <?php if(session()->get('level') == 1): ?>
             <input type="name" hidden value="<?= session()->get('instansi_id') ?>" name="instansi_id">
+            <div class="form-group">
+                <label for="bidangSelect">Bidang</label>
+                <select class="form-control" id="bidangSelect" name="bidang_id">
+                    <?php foreach ($bidangs as $bidang) : ?>
+                    <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
             <?php elseif(session()->get('level') == 2): ?>
             <div class="form-group">
                 <label for="instansiSelect">Dinas</label>
@@ -69,16 +72,16 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <?php endif; ?>
-
             <div class="form-group">
-                <label for="bidangSelect">Bidang</label>
-                <select class="form-control" id="bidangSelect" name="bidang_id">
-                    <?php foreach ($bidangs as $bidang) : ?>
-                    <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
-                    <?php endforeach; ?>
+                <label for="instansiSelect">Level Admin</label>
+                <select class="form-control" id="instansiSelect" name="level">
+                    <option selected>Pilih Level Akun ...</option>
+                    <option value="2">Super Admin</option>
+                    <option value="1">Operator</option>
                 </select>
             </div>
+            <?php endif; ?>
+
             <div class="form-group">
                 <label for="Password1">Password</label>
                 <div class="input-group">
@@ -117,8 +120,18 @@
     </section>
     <!-- /.content -->
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
+<?php if (session()->getFlashdata('error')) : ?>
+Swal.fire({
+    title: 'Gagal',
+    text: '<?= session()->getFlashdata('error') ?>',
+    icon: 'warning',
+    timer: 3000,
+    showConfirmButton: false
+});
+<?php endif; ?>
+
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
 const passwordInput = document.getElementById("Password1");

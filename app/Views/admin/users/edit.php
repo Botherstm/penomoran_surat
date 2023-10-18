@@ -34,11 +34,7 @@
     <!-- Main content -->
     <section class="content">
         <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?= $user['id'] ?>">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">NIP</label>
-                <input type="number" value="<?= $user['nip'] ?>" name="nip" class="form-control"
-                    id="exampleFormControlInput1" placeholder="Masukkan NIP">
-            </div>
+
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
                 <input type="text" value="<?= $user['name'] ?>" name="name" class="form-control" id="name"
@@ -60,25 +56,38 @@
                 <input type="number" value="<?= $user['no_hp'] ?>" name="no_hp" class="form-control"
                     id="exampleFormControlInput1" placeholder="Masukan No. Telp">
             </div>
+
+            <?php if(session()->get('level') == 2): ?>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Dinas</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
-                    <option value="<?= $instansi->id_instansi ?>"><?= $instansi->ket_ukerja ?></option>
-                    <?php foreach ($instansis->data as $dinas) : ?>
-                    <option value="<?= $dinas->id_instansi ?>"><?= $dinas->ket_ukerja ?></option>
+                    <option value="<?=$instansi['id'] ?>"><?= $instansi['name'] ?></option>
+                    <?php foreach ($instansis as $dinas) : ?>
+                    <?php if ($dinas['id'] == $instansi['id']) : ?>
+                    <?php else: ?>
+                    <option value="<?= $dinas['id'] ?>"><?= $dinas['name'] ?></option>
+                    <?php endif ?>
+
                     <?php endforeach; ?>
                 </select>
             </div>
+            <?php elseif(session()->get('level') == 1): ?>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Bidang</label>
                 <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
                     <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
-                    <?php foreach ($bidangs as $bidang) : ?>
-                    <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
+                    <?php foreach ($bidangs as $bid) : ?>
+                    <?php if ($bid['id'] == $bidang['id']) : ?>
+                    <?php else: ?>
+                    <option value="<?= $bid['id'] ?>"><?= $bid['name'] ?></option>
+                    <?php endif ?>
+
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="row text-center"  style="padding-bottom: 50px;">
+            <?php endif ?>
+
+            <div class="row text-center" style="padding-bottom: 50px;">
                 <div class="col-md-6">
                     <a href="<?php echo base_url('admin/users') ?>">
                         <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
@@ -86,7 +95,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-success " style="width: 150px;">Tambah data</button>
+                    <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
                 </div>
             </div>
         </form>
