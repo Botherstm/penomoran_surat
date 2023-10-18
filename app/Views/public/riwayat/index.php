@@ -51,13 +51,14 @@
                                 <br>
                                 <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
                                 <br>
-                                <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
-                                    <button class="btn btn-dark">Download PDF</button>
-                                </a>
-                                <p class="card-text"><small
-                                        class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
-                                </p>
                             </a>
+                            <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
+                                <button class="btn btn-dark">Download PDF</button>
+                            </a>
+                            <p class="card-text"><small
+                                    class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
+                            </p>
+
                         </div>
                     </div>
                 </div>
