@@ -27,7 +27,7 @@
         <div class="container">
             <a class="navbar-brand d-flex" href="#">
                 <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng" style="width: 70px;">
-                <div class="ms-2 d-flex flex-column align-items-start">
+                <div class="ms-1 d-flex flex-column align-items-start">
                     <span>E-NOMOR</span>
                     <span class="small">KOMINFO SANTI</span>
                 </div>
@@ -38,7 +38,7 @@
 
     <!-- Form Login -->
     <div class="container">
-        <div class="row mt-5 m-auto" style="width: 15%;">
+        <div class="row mt-2 m-auto" style="width: 13%;">
             <img class="d-flex" src="<?php echo base_url() ?>img\logo_kominfosanti_buleleng.png" alt="">
         </div>
         <div class="row">
@@ -71,7 +71,7 @@
                             <br>
                             <br>
                             <div class="mb-3 rounded-1 text-center ">
-                                <button type="submit" class="btn btn-primary mx-auto border border-0" style="background-color: rgb(8, 164, 167); ">Login</button>
+                                <button type="submit" class="btn btn-primary mx-auto border border-0" style="background-color: rgb(8, 164, 167); width: 200px;">Login</button>
                             </div>
                         </form>
                     </div>
