@@ -30,7 +30,7 @@
                         <a href="<?php echo base_url('/') ?>" class="nav-link">
                             <i class="nav-icon fa fa-home"></i>
                             <p>
-                                Home
+                                Generate Nomor Surat
                             </p>
                         </a>
                     </li>

@@ -23,7 +23,7 @@
                             <!-- Preview of the uploaded PDF will be displayed here -->
                         </div>
                     </div>
-                    <!-- <div class="form-container" style="display: none; padding: 10%; color: white;"> -->
+
                     <div class="form-container" style=" padding: 0px 300px 50px 300px; color: white;">
                         <!-- Your form code goes here -->
                         <form action="<?php echo base_url('generate/save') ?>" method="post"
@@ -35,68 +35,73 @@
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>
+                            <div class="hidden-form form-group">
+                                <label
+                                    style="display: none; font-weight: bold; padding-bottom: 40px; font-size: 32px; ">Isi
+                                    Data
+                                    Penomoran</label>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Dinas</label>
+                                    <input type="text" value="<?= $dinas['name']; ?>" class="form-control"
+                                        name="instansi" id="dinas" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Bidang</label>
+                                    <input type="text" value="<?= $bidang['name']; ?>" class="form-control"
+                                        name="bidang" id="bidang" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tanggalSurat">Tanggal Surat</label>
+                                    <input type="date" name="tanggal" class="form-control" id="tanggalSurat"
+                                        <?php if($generate != null): ?> min="<?= $generate['tanggal']; ?>"
+                                        <?php endif ?> required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="kategori">Kategori</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" required name="kategori" id="kategori">
+                                            <option selected>Pilih kategori...</option>
+                                            <?php foreach ($kategories as $kategori) : ?>
+                                            <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="perihalGroup">
+                                    <label for="perihal">Perihal</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="perihal" id="perihal">
+                                            <option selected>Pilih perihal...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="subPerihalGroup">
+                                    <label for="subPerihal">Sub Perihal</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="subperihal" id="subPerihal">
+                                            <option selected>Pilih sub perihal...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="detailSubPerihalGroup">
+                                    <label for="detailsubPerihal">Detail Sub Perihal</label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
+                                            <option selected>Pilih detail sub perihal...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Nomor Tercetak</label>
+                                    <input type="text" required name="nomor" class="form-control" id="nomorSurat"
+                                        readonly>
+                                </div>
+                                <div class="form-group mb-3" style="padding-top: 30px; ">
+                                    <button class="btn btn-success " type="button" id="generateButton"
+                                        onclick="confirmGenerate()" style="width: 250px;">Generate</button>
+                                </div>
+                            </div>
 
-                            <label style="font-weight: bold; padding-bottom: 40px; font-size: 32px; ">Isi Data
-                                Penomoran</label>
-                            <div class="form-group">
-                                <label for="nomorSurat">Dinas</label>
-                                <input type="text" value="<?= $dinas['name']; ?>" class="form-control" name="instansi"
-                                    id="dinas" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Bidang</label>
-                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang"
-                                    id="bidang" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat"
-                                    <?php if($generate != null): ?> min="<?= $generate['tanggal']; ?>" <?php endif ?>
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label for="kategori">Kategori</label>
-                                <div class="input-group">
-                                    <select class="custom-select" required name="kategori" id="kategori">
-                                        <option selected>Pilih kategori...</option>
-                                        <?php foreach ($kategories as $kategori) : ?>
-                                        <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group d-none" id="perihalGroup">
-                                <label for="perihal">Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="perihal" id="perihal">
-                                        <option selected>Pilih perihal...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group d-none" id="subPerihalGroup">
-                                <label for="subPerihal">Sub Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="subperihal" id="subPerihal">
-                                        <option selected>Pilih sub perihal...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group d-none" id="detailSubPerihalGroup">
-                                <label for="detailsubPerihal">Detail Sub Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
-                                        <option selected>Pilih detail sub perihal...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Nomor Tercetak</label>
-                                <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
-                            </div>
-                            <div class="form-group mb-3" style="padding-top: 30px; ">
-                                <button class="btn btn-success " type="button" id="generateButton"
-                                    onclick="confirmGenerate()" style="width: 250px;">Generate</button>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -108,6 +113,19 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('inputGroupFile01');
+    const hiddenForm = document.querySelector('.hidden-form');
+    hiddenForm.style.display = 'none';
+    fileInput.addEventListener('change', function() {
+        if (fileInput.files.length > 0) {
+            hiddenForm.style.display = 'block';
+        } else {
+            hiddenForm.style.display = 'none';
+        }
+    });
+});
+
 function validateForm() {
     var fileInput = document.getElementById('inputGroupFile01');
 
