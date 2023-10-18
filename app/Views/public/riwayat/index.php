@@ -34,24 +34,30 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card" style="margin-bottom: 20px;">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <b class="">Perihal Surat:</b>
-                                <a href="<?php echo base_url('public/riwayat/detail/')?><?= $generate['slug']; ?>"
-                                    class="text-dark text-decoration-none" style="text-decoration:none; ">
+                            <a href="<?php echo base_url('public/riwayat/detail/')?><?= $generate['slug']; ?>"
+                                class="text-dark text-decoration-none" style="text-decoration:none; ">
+                                <h5 class="card-title">
+
+                                    <b class="">Perihal Surat:</b>
+
                                     <?= $generate['perihal']; ?>
+
+                                </h5>
+                                <br>
+                                <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
+                                <br>
+                                <h5 class="card-title"><b>Tanggal Surat :</b>
+                                    <?= date('d F Y', strtotime($generate['tanggal'])); ?></h5>
+                                <br>
+                                <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
+                                <br>
+                                <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
+                                    <button class="btn btn-dark">Download PDF</button>
                                 </a>
-                            </h5>
-                            <br>
-                            <h5 class="card-title"><b>Kode Surat :</b> <?= $generate['nomor']; ?></h5>
-                            <br>
-                            <p class="card-text"><b>User yang menggenerate : </b><?= $user['name']; ?></p>
-                            <br>
-                            <a target="_blank" href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>">
-                                <button class="btn btn-dark">Download PDF</button>
+                                <p class="card-text"><small
+                                        class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['created_at']))->humanize(); ?></small>
+                                </p>
                             </a>
-                            <p class="card-text"><small
-                                    class="text-muted"><?= (new \CodeIgniter\I18n\Time($generate['tanggal']))->humanize(); ?></small>
-                            </p>
                         </div>
                     </div>
                 </div>
