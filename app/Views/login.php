@@ -38,7 +38,7 @@
 
     <!-- Form Login -->
     <div class="container">
-        <div class="row mt-2 m-auto" style="width: 15%;">
+        <div class="row mt-5 m-auto" style="width: 15%;">
             <img class="d-flex" src="<?php echo base_url() ?>img\logo_kominfosanti_buleleng.png" alt="">
         </div>
         <div class="row">
@@ -69,10 +69,10 @@
                             </div>
                             <div class="g-recaptcha" data-sitekey="<?= $key; ?>"></div>
                             <br>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="button">Login</button>
-                            </div>
                             <br>
+                            <div class="mb-3 rounded-1 text-center ">
+                                <button type="submit" class="btn btn-primary mx-auto border border-0" style="background-color: rgb(8, 164, 167); ">Login</button>
+                            </div>
                         </form>
                     </div>
                 </div>
