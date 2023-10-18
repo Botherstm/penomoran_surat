@@ -112,7 +112,6 @@
         }(w, d, "zarazData", "script");
     })(window, document);
     </script>
-
 </head>
 
 <body class="sidebar-mini layout-fixed sidebar-collapse layout-navbar-fixed">
@@ -168,23 +167,21 @@
 
     <script src="<?php echo base_url() ?>adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/jszip/jszip.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js">
+    </script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
+    </script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/jszip/jszip.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="<?php echo base_url() ?>adminlte/dist/js/adminlte.min.js?v=3.2.0"></script>
-
-    <script src="<?php echo base_url() ?>adminlte/dist/js/demo.js"></script>
-
     <script>
     $(function() {
         $("#example1").DataTable({
