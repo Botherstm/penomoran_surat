@@ -19,7 +19,8 @@
                     <div class="card-footer justify-content-center">
                         <div class="row justify-content-center">
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-info">Download</button>
+                                <a href="<?= base_url('pdf/'); ?><?= $generate['pdf']; ?>"> <button type="submit"
+                                        class="btn btn-info">Download PDF !</button></a>
                             </div>
 
                         </div>
@@ -38,34 +39,35 @@
                         <tr style="padding-left: 1%;">
                             <th>Nomor Surat</th>
                             <td>:</td>
-                            <td> ... </td>
+                            <td> <?= $generate['nomor']; ?> </td>
                         </tr>
                         <tr>
                             <th>Dinas</th>
                             <td>:</td>
-                            <td>...</td>
+                            <td><?= $dinas['name']; ?></td>
                         </tr>
                         <tr>
                             <th>Bidang</th>
                             <td>:</td>
-                            <td>...</td>
+                            <td><?= $bidang['name']; ?></td>
                         </tr>
                         <tr>
                             <th>Tanggal Surat</th>
                             <td>:</td>
-                            <td>...</td>
+                            <td><?= $tanggal; ?></td>
                         </tr>
                         <tr>
                             <th>Nama User</th>
                             <td>:</td>
-                            <td>...</td>
+                            <td><?= $generate['nomor']; ?></td>
                         </tr>
 
                     </table>
                     <hr>
-                    <div class="header-elements" style="margin-left:5%; padding:1%">
-                        <a href="#" class="btn btn-info" id="ubahUsernameBtn"><i class="icon-pencil7"></i> Edit Surat</a>
-                    </div>
+                    <!-- <div class="header-elements" style="margin-left:5%; padding:1%">
+                        <a href="#" class="btn btn-info" id="ubahUsernameBtn"><i class="icon-pencil7"></i> Edit
+                            Surat</a>
+                    </div> -->
                     <div id="formUbahUsername" style="display: none; margin-left:6%;">
                         <form method="" action="">
                             <label for="newUsername">Edit Surat</label><br>
@@ -77,8 +79,10 @@
                     <br>
                 </div>
                 <div class="mt-3 text-right" style="margin-right: 3%;">
-                    <button class="btn btn-outline-info" id="tombolBaru"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                    <button class="btn btn-outline-info" id="tombolBaru"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                         </svg> Kembali</button>
                 </div>
             </div>

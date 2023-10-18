@@ -39,4 +39,6 @@ class UrutanSuratModel extends Model
     {
         return $this->where('instansi_id', $instansi_id)->first();
     }
+
+    
 }

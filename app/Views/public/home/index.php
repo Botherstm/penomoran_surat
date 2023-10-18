@@ -19,13 +19,6 @@
                         <i style="font-size: 9em; color: white;" class="fas fa-file-pdf"></i>
                     </div>
                     <div style="margin: 0 auto; padding-bottom: 20px; width: 75%;">
-                        <!-- <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="pdf_upload" id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
-                        </div> -->
                         <div class="preview-container" style="display: inline;">
                             <!-- Preview of the uploaded PDF will be displayed here -->
                         </div>
@@ -201,26 +194,7 @@ function confirmGenerate() {
             form.submit();
         }
     });
-
-    function confirmGenerate() {
-        Swal.fire({
-            title: 'Apa Kamu yakin?',
-            text: 'Perhatikan data yang kamu inputkan !!.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#35DC5C',
-            cancelButtonColor: '#A91C1C',
-            confirmButtonText: 'Generate',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
-                const form = document.getElementById('generateForm');
-                form.action = "<?php echo base_url('generate/save') ?>";
-                form.submit();
-            }
-        });
-    }
+}
 </script>
 
 <script>
