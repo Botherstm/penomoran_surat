@@ -14,97 +14,97 @@
             <div class="row">
                 <div class="col-12">
 
+
                     <div class="card">
-                        <div class="card">
-                            <div class="card-header col">
-                                <h3 class="card-title">Riwayat Nomor Surat</h3>
-                            </div>
-                            <div class="card-body">
-                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-outline-success m-3" data-toggle="modal" data-target="#generateModal">Generate Nomor Surat !!</button>
-                                        <div class="col-sm-12">
-                                            <table id="example1" class="table table-bordered table-striped dataTable dtr-inline collapsed" aria-describedby="example1_info">
-                                                <thead>
+                        <div class="card-header col">
+                            <h3 class="card-title">Riwayat Nomor Surat</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <button type="button" class="btn btn-outline-success m-3" data-toggle="modal" data-target="#generateModal">Generate Nomor Surat !!</button>
+                                    <div class="col-sm-12">
+                                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline collapsed" aria-describedby="example1_info">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                        No</th>
+                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                        Kode Surat</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                        Perihal Surat</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                                        Urutan Surat</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                                        Tanggal Surat</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                                        Bidang</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nama
+                                                        User
+                                                    </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nomor
+                                                        Hp
+                                                        User</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
+                                                        Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1 ?>
+                                                <?php foreach ($riwayats as $riwayat) : ?>
                                                     <tr>
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                            No</th>
-                                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                            Kode Surat</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                            Perihal Surat</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                            Urutan Surat</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                            Tanggal Surat</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                            Bidang</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nama
-                                                            User
-                                                        </th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nomor
-                                                            Hp
-                                                            User</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
-                                                            Aksi</th>
+                                                        <td><?= $i++; ?></td>
+                                                        <td>
+                                                            <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
+                                                                <?= $riwayat['nomor']; ?>
+                                                            </span>
+                                                        </td>
+                                                        <td><?= $riwayat['perihal']; ?></td>
+                                                        <td><?= $riwayat['urutan']; ?></td>
+                                                        <td><?= $riwayat['tanggal']; ?></td>
+                                                        <td>
+                                                            <?php $bidangId = $riwayat['bidang_id']; ?>
+                                                            <?php if (isset($bidangs[$bidangId]['name'])) : ?>
+                                                                <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $userId = $riwayat['user_id']; ?>
+                                                            <?php if (isset($users[$userId]['name'])) : ?>
+                                                                <?= $users[$userId]['name'] . '<br>'; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $userId = $riwayat['user_id']; ?>
+                                                            <?php if (isset($users[$userId]['no_hp'])) : ?>
+                                                                <?= $users[$userId]['no_hp'] . '<br>'; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+
+
+                                                        <td>
+                                                            <div class="btn-group ">
+                                                                <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
+                                                                    <button type="button" class="btn btn-block btn-primary ">
+                                                                        <i class=" fas fa-info"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- update -->
+
+                                                            </div>
+                                                        </td>
                                                     </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php $i = 1 ?>
-                                                    <?php foreach ($riwayats as $riwayat) : ?>
-                                                        <tr>
-                                                            <td><?= $i++; ?></td>
-                                                            <td>
-                                                                <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
-                                                                    <?= $riwayat['nomor']; ?>
-                                                                </span>
-                                                            </td>
-                                                            <td><?= $riwayat['perihal']; ?></td>
-                                                            <td><?= $riwayat['urutan']; ?></td>
-                                                            <td><?= $riwayat['tanggal']; ?></td>
-                                                            <td>
-                                                                <?php $bidangId = $riwayat['bidang_id']; ?>
-                                                                <?php if (isset($bidangs[$bidangId]['name'])) : ?>
-                                                                    <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
-                                                                <?php endif; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php $userId = $riwayat['user_id']; ?>
-                                                                <?php if (isset($users[$userId]['name'])) : ?>
-                                                                    <?= $users[$userId]['name'] . '<br>'; ?>
-                                                                <?php endif; ?>
-                                                            </td>
-                                                            <td>
-                                                                <?php $userId = $riwayat['user_id']; ?>
-                                                                <?php if (isset($users[$userId]['no_hp'])) : ?>
-                                                                    <?= $users[$userId]['no_hp'] . '<br>'; ?>
-                                                                <?php endif; ?>
-                                                            </td>
+                                                <?php endforeach ?>
+                                            </tbody>
 
-
-                                                            <td>
-                                                                <div class="btn-group ">
-                                                                    <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
-                                                                        <button type="button" class="btn btn-block btn-primary ">
-                                                                            <i class=" fas fa-info"></i>
-                                                                        </button>
-                                                                    </a>
-                                                                    <!-- update -->
-
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    <?php endforeach ?>
-                                                </tbody>
-
-                                            </table>
-                                        </div>
+                                        </table>
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">

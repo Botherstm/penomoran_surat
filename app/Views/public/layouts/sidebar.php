@@ -14,7 +14,7 @@
                 <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> -->
                 <div class="info">
-                    <a href="/user/profile" class="d-block"><?= session()->get('name'); ?></a>
+                    <?= session()->get('name'); ?>
                 </div>
             </div>
 
@@ -62,14 +62,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-info"></i>
-                            <p>
-                                Tentang
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="/user/profile" class="nav-link">
                             <i class="nav-icon fa fa-user"></i>
                             <p>
@@ -78,18 +70,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/logout" class="nav-link">
-                            <i class="nav-icon far fa-sign-out"></i>
+                        <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-info"></i>
                             <p>
-                                Keluar
+                                Tentang
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/coba" class="nav-link">
+                        <a href="/logout" class="nav-link">
                             <i class="nav-icon far fa-sign-out"></i>
                             <p>
-                                Coba
+                                Keluar
                             </p>
                         </a>
                     </li>
