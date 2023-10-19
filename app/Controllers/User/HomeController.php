@@ -11,6 +11,7 @@ use App\Models\KategoryModel;
 use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
 use App\Models\UserModel;
+use DateTime;
 
 class HomeController extends BaseController
 {
@@ -40,31 +41,34 @@ class HomeController extends BaseController
             // dd($siteKey);
             return view('login', [
                 'validation' => \Config\Services::validation(),
-                'key'=> $siteKey
+                'key' => $siteKey,
             ]);
         }
         // if (session()->get('level'==1 ) || session()->get('level'==2 )) {
         //     return redirect()->to('/admin');
         // }
         $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
-            $users = [];
-            foreach ($generate as $gen) {
-                $userId = $gen['user_id'];
-                $user = $this->user->getById($userId);
-                $users[$userId] = $user;
-            }
+        $users = [];
+        foreach ($generate as $gen) {
+            $userId = $gen['user_id'];
+            $user = $this->user->getById($userId);
+            $users[$userId] = $user;
+        }
         // dd($users);
-            $bidangs = [];
-            foreach ($generate as $gen) {
-                $bidangId = $gen['bidang_id'];
-                $bidang = $this->bidang->getById($bidangId);
-                $bidangs[$bidangId] = $bidang;
-            }
+        $bidangs = [];
+        foreach ($generate as $gen) {
+            $bidangId = $gen['bidang_id'];
+            $bidang = $this->bidang->getById($bidangId);
+            $bidangs[$bidangId] = $bidang;
+        }
         // dd($bidangs);
         $bidang = $this->bidang->getById(session()->get('bidang_id'));
         $dinas = $this->dinas->getById(session()->get('instansi_id'));
         $kategories = $this->kategori->getAll();
         $generates = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
+
+        $tanggalSaatIni = new DateTime();
+        $tanggalMaksimum = $tanggalSaatIni->modify('+5 days')->format('Y-m-d');
         return view('public/home/index', [
             'active' => 'riwayatsurat',
             'riwayats' => $generate,
@@ -74,8 +78,9 @@ class HomeController extends BaseController
             'bidang' => $bidang,
             'dinas' => $dinas,
             'generate' => $generates,
+            'tanggalmax' => $tanggalMaksimum,
         ]);
 
-   }
+    }
 
 }

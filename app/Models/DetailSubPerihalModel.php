@@ -6,26 +6,28 @@ use CodeIgniter\Model;
 
 class DetailSubPerihalModel extends Model
 {
-   
-    protected $table            = 'perihal';
-    protected $primaryKey       = 'id';
-    
+
+    protected $table = 'perihal';
+    protected $primaryKey = 'id';
+
     // Dates
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
-    protected $allowedFields    = ['id','detail_id','slug','kode','name','create_at','update_at'];
+    protected $allowedFields = ['id', 'detail_id', 'slug', 'kode', 'name', 'create_at', 'update_at'];
 
-    public function getAll(){
-        
+    public function getAll()
+    {
+
         return $this->findAll();
     }
 
     //ambil satu
-    public function getOne(){
+    public function getOne()
+    {
         return $this->first();
     }
     public function getAllBySubPerihalId($detail_id)
@@ -37,7 +39,6 @@ class DetailSubPerihalModel extends Model
     {
         return $this->where('slug', $slug)->first();
     }
-
 
     public function getSubPerihalByid($kode)
     {

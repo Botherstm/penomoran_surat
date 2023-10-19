@@ -1,6 +1,6 @@
-<?= $this->extend('public/layouts/main'); ?>
+<?=$this->extend('public/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 <style>
 .copy-text:hover {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-plus" viewBox="0 0 16 16"><path d="M5.5 2A.5.5 0 0 0 5 2.5v11a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V2.5a.5.5 0 0 0-.5-.5h-5zM6 1.5A.5.5 0 0 1 6.5 1h3a.5.5 0 0 1 .5.5V15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V1.5zM11 3a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1.5 6a.5.5 0 0 1 .5.5V10h1.5a.5.5 0 0 1 0 1H10v1.5a.5.5 0 0 1-1 0V11H7.5a.5.5 0 0 1 0-1H9V8.5a.5.5 0 0 1 .5-.5z"/><path fill-rule="evenodd" d="M8.5 0a.5.5 0 0 1 .5.5V3h1a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V4H7.5a.5.5 0 0 1 0-1H8V.5a.5.5 0 0 1 .5-.5z"/><path d="M6 4.5a.5.5 0 0 0-.5.5V6H4.5a.5.5 0 0 0 0 1H5v1.5a.5.5 0 0 0 1 0V7h1.5a.5.5 0 0 0 0-1H6V5.5a.5.5 0 0 0-.5-.5z"/></svg>'), auto;
@@ -66,37 +66,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 1 ?>
-                                            <?php foreach ($riwayats as $riwayat) : ?>
+                                            <?php $i = 1?>
+                                            <?php foreach ($riwayats as $riwayat): ?>
                                             <tr>
-                                                <td><?= $i++; ?></td>
+                                                <td><?=$i++;?></td>
                                                 <td>
                                                     <span class="copy-text"
-                                                        data-clipboard-text="<?= $riwayat['nomor']; ?>"
+                                                        data-clipboard-text="<?=$riwayat['nomor'];?>"
                                                         title="Klik untuk menyalin kode surat">
-                                                        <?= $riwayat['nomor']; ?>
+                                                        <?=$riwayat['nomor'];?>
                                                     </span>
                                                 </td>
-                                                <td><?= $riwayat['perihal']; ?></td>
-                                                <td><?= $riwayat['urutan']; ?></td>
-                                                <td><?= $riwayat['tanggal']; ?></td>
+                                                <td><?=$riwayat['perihal'];?></td>
+                                                <td><?=$riwayat['urutan'];?></td>
+                                                <td><?=$riwayat['tanggal'];?></td>
                                                 <td>
-                                                    <?php $bidangId = $riwayat['bidang_id']; ?>
-                                                    <?php if (isset($bidangs[$bidangId]['name'])) : ?>
-                                                    <?=  $bidangs[$bidangId]['name'] . '<br>'; ?>
-                                                    <?php endif; ?>
+                                                    <?php $bidangId = $riwayat['bidang_id'];?>
+                                                    <?php if (isset($bidangs[$bidangId]['name'])): ?>
+                                                    <?=$bidangs[$bidangId]['name'] . '<br>';?>
+                                                    <?php endif;?>
                                                 </td>
                                                 <td>
-                                                    <?php $userId = $riwayat['user_id']; ?>
-                                                    <?php if (isset($users[$userId]['name'])) : ?>
-                                                    <?=  $users[$userId]['name'] . '<br>'; ?>
-                                                    <?php endif; ?>
+                                                    <?php $userId = $riwayat['user_id'];?>
+                                                    <?php if (isset($users[$userId]['name'])): ?>
+                                                    <?=$users[$userId]['name'] . '<br>';?>
+                                                    <?php endif;?>
                                                 </td>
                                                 <td>
-                                                    <?php $userId = $riwayat['user_id']; ?>
-                                                    <?php if (isset($users[$userId]['no_hp'])) : ?>
-                                                    <?=  $users[$userId]['no_hp'] . '<br>'; ?>
-                                                    <?php endif; ?>
+                                                    <?php $userId = $riwayat['user_id'];?>
+                                                    <?php if (isset($users[$userId]['no_hp'])): ?>
+                                                    <?=$users[$userId]['no_hp'] . '<br>';?>
+                                                    <?php endif;?>
                                                 </td>
 
 
@@ -113,7 +113,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <?php endforeach ?>
+                                            <?php endforeach?>
                                         </tbody>
                                         <tfoot>
                                             <!-- <tr>
@@ -150,18 +150,17 @@
                             enctype="multipart/form-data" id="generateForm">
                             <div class="form-group">
                                 <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat"
-                                    <?php if ($generate != null) : ?> min="<?= $generate['tanggal']; ?>" <?php endif ?>
-                                    required>
+                                <input type="date" name="tanggal" max="<?=$tanggalmax;?>" class="form-control"
+                                    id="tanggalSurat" required>
                             </div>
                             <div class="form-group">
                                 <label for="nomorSurat">Dinas</label>
-                                <input type="name" value="<?= $dinas['name']; ?>"
-                                    class="form-control form-control-border" name="instansi" id="dinas" readonly>
+                                <input type="name" value="<?=$dinas['name'];?>" class="form-control form-control-border"
+                                    name="instansi" id="dinas" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="nomorSurat">Bidang</label>
-                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang"
+                                <input type="text" value="<?=$bidang['name'];?>" class="form-control" name="bidang"
                                     id="bidang" readonly>
                             </div>
 
@@ -169,10 +168,10 @@
                                 <label for="kategori">Kategori</label>
                                 <div class="input-group">
                                     <select class="custom-select" required name="kategori" id="kategori">
-                                        <option selected>Pilih kategori...</option>
-                                        <?php foreach ($kategories as $kategori) : ?>
-                                        <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
-                                        <?php endforeach; ?>
+                                        <option>Pilih kategori...</option>
+                                        <?php foreach ($kategories as $kategori): ?>
+                                        <option value="<?=$kategori['kode']?>"><?=$kategori['name']?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>
@@ -220,6 +219,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
 var clipboard = new ClipboardJS('.copy-text');
 clipboard.on('success', function(e) {
@@ -243,83 +243,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function validateForm() {
-    var fileInput = document.getElementById('inputGroupFile01');
 
-    if (fileInput.files.length === 0) {
-        alert("Please select a file before submitting the form.");
-        return false;
-    }
-
-    // If you have additional validation logic, you can include it here.
-
-    return true; // Form will be submitted if everything is valid.
-}
-
-<?php if (session()->getFlashdata('success')) : ?>
+<?php if (session()->getFlashdata('success')): ?>
 Swal.fire({
     title: 'Success',
-    text: '<?= session()->getFlashdata('success') ?>',
+    text: '<?=session()->getFlashdata('success')?>',
     icon: 'success',
     timer: 3000,
     showConfirmButton: false
 });
-<?php endif; ?>
+<?php endif;?>
 
-
-
-document.getElementById("inputGroupFile01").addEventListener("change", function() {
-    var fileName = this.files[0].name;
-    var label = document.querySelector(".custom-file-label");
-    label.textContent = fileName;
-});
-document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
-    const fileInput = event.target;
-    const previewContainer = document.querySelector(".preview-container");
-    const formContainer = document.querySelector(".form-container");
-
-    // Hapus elemen preview PDF yang ada sebelum menambahkan yang baru
-    while (previewContainer.firstChild) {
-        previewContainer.removeChild(previewContainer.firstChild);
-    }
-
-    if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-
-        // Check if the file is a PDF (you can add more validation if needed)
-        if (file.type === "application/pdf") {
-            // Display the uploaded PDF in the preview container
-            const pdfObject = document.createElement("object");
-            pdfObject.data = URL.createObjectURL(file);
-            pdfObject.type = "application/pdf";
-            pdfObject.style.width = "100%";
-            pdfObject.style.height = "1000px"; // Adjust the height as needed
-            previewContainer.appendChild(pdfObject);
-
-            // Show the form
-            previewContainer.style.display = "block";
-            formContainer.style.display = "block";
-        } else {
-            alert("Please upload a PDF file.");
-            fileInput.value = ""; // Clear the file input
-        }
-    }
-});
 
 function confirmGenerate() {
 
-    const fileInput = document.getElementById('inputGroupFile01');
-    if (fileInput.files.length === 0) {
-        Swal.fire({
-            icon: 'error',
-            title: 'File PDF belum diunggah',
-            text: 'Mohon unggah file PDF terlebih dahulu.'
-        });
-        return;
-    }
     Swal.fire({
         title: 'Apa Kamu yakin?',
-        text: 'Perhatikan data yang kamu inputkan !!.',
+        text: 'Perhatikan data yang di inputkan !.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#35DC5C',
@@ -346,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var subPerihalGroup = document.getElementById('subPerihalGroup');
     var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
     var nomorSuratInput = document.getElementById('nomorSurat');
-    var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
+    var csrfToken = '<?=csrf_hash()?>'; // Dapatkan token CSRF
 
     kategoriSelect.addEventListener('change', function() {
         var selectedKategoriValue = kategoriSelect.value;
@@ -356,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nomorSuratInput.value = selectedKategoriValue;
 
             // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
-            fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
+            fetch('<?=site_url('get_perihal_by_category/')?>' + selectedKategoriValue, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -499,4 +439,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>
