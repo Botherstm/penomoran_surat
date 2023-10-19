@@ -47,7 +47,7 @@
                     <div class="card-body row m-auto">
                         <form class="form" method="POST" action="<?php echo base_url('login') ?>">
                             <?= csrf_field(); ?>
-                            <div class="input-group justify-content-center mt-3 mb-3">
+                            <div class="input-group justify-content-center mt-2 mb-2">
                                 <h2>LOGIN</h2>
                             </div>
                             <div class="mb-3">
@@ -69,9 +69,8 @@
                             </div>
                             <div class="g-recaptcha" data-sitekey="<?= $key; ?>"></div>
                             <br>
-                            <br>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-primary" type="submit">Login</button>
+                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                <button class="btn btn-success text-light" type="submit">Login</button>
                             </div>
                         </form>
                     </div>
