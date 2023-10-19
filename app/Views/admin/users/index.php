@@ -58,7 +58,7 @@
               
             </div>
         </div>
-        <div class="card" style="width: 150%;" >
+        <div class="card" >
 
 
 <div class="card-body">
@@ -146,7 +146,10 @@
 
 </div>
     </section>
+
+    
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
 // function showAlert() {
