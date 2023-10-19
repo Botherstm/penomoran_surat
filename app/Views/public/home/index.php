@@ -389,7 +389,6 @@
 </script>
 
 <script>
-    << << << < HEAD
     document.addEventListener('DOMContentLoaded', function() {
                 var kategoriSelect = document.getElementById('kategori');
                 var perihalSelect = document.getElementById('perihal');
@@ -400,8 +399,7 @@
                 var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
                 var nomorSuratInput = document.getElementById('nomorSurat');
                 var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
-                ===
-                === =
+
                 document.addEventListener('DOMContentLoaded', function() {
                             var kategoriSelect = document.getElementById('kategori');
                             var perihalSelect = document.getElementById('perihal');
@@ -412,8 +410,7 @@
                             var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
                             var nomorSuratInput = document.getElementById('nomorSurat');
                             var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
-                            >>>
-                            >>> > 72278674 bc9222599d9e33c3ec349b0dae2f3a76
+
 
                             kategoriSelect.addEventListener('change', function() {
                                 var selectedKategoriValue = kategoriSelect.value;
@@ -422,8 +419,6 @@
                                     // Set nilai input "Nomor Surat" dengan nilai kategori yang dipilih
                                     nomorSuratInput.value = selectedKategoriValue;
 
-                                    <<
-                                    << << < HEAD
                                     // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
                                     fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
                                             method: 'GET',
@@ -434,8 +429,7 @@
                                         })
                                         .then(response => response.json())
                                         .then(data => {
-                                                console.log(data); ===
-                                                === =
+                                                console.log(data);
                                                 // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
                                                 fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
                                                         method: 'GET',
@@ -446,8 +440,7 @@
                                                     })
                                                     .then(response => response.json())
                                                     .then(data => {
-                                                        console.log(data); >>>
-                                                        >>> > 72278674 bc9222599d9e33c3ec349b0dae2f3a76
+                                                        console.log(data);
 
                                                         // Bersihkan elemen "perihal" select sebelum mengisinya
                                                         perihalSelect.innerHTML = '';
