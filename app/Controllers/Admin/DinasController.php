@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controllers\Admin; 
+namespace App\Controllers\Admin;
+
 use App\Controllers\BaseController;
 use App\Models\BidangModel;
 use App\Models\DinasModel;
@@ -9,11 +10,12 @@ use Ramsey\Uuid\Uuid;
 
 class DinasController extends BaseController
 {
-   
+
     protected $dinas;
     protected $bidang;
     protected $urutan;
-    public function __construct(){
+    public function __construct()
+    {
         $this->dinas = new DinasModel();
         $this->urutan = new UrutanSuratModel();
         $this->bidang = new BidangModel();
@@ -23,23 +25,22 @@ class DinasController extends BaseController
 
         if (!session()->has('user_id')) {
             $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-        // dd($siteKey);
-        return view('login',[
-             'validation' => \Config\Services::validation(),
-             'key'=> $siteKey
-        ]);
+            // dd($siteKey);
+            return view('login', [
+                'validation' => \Config\Services::validation(),
+                'key' => $siteKey,
+            ]);
         }
-    if (session()->get('level') != 2) {
-        // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
-        throw new \CodeIgniter\Exceptions\PageNotFoundException();
-    }
+        if (session()->get('level') != 2) {
+            // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
         // $result =json_decode( $this->dinas->get_data());
         // foreach ($result->data as $dinas) {
         //     $dinas[$dinas['id']] = $this->dinas->getByBidangId($dinas['id']);
         // }
         // dd($result);
 
-       
         $urutans = [];
         $dinass = $this->dinas->getAll();
         foreach ($dinass as $dinas) {
@@ -50,7 +51,6 @@ class DinasController extends BaseController
         }
         // dd($urutans);
 
-        
         foreach ($dinass as $dinas) {
             $dinasId = $dinas['id'];
             $bidangData = $this->bidang->getAllByInstansiId($dinasId);
@@ -59,15 +59,15 @@ class DinasController extends BaseController
         // dd($dinass,$bidangs);
         return view('admin/dinas/index', [
             'dinass' => $dinass,
-            'active'=>'dinas',
-            'urutans'=>$urutans
+            'active' => 'dinas',
+            'urutans' => $urutans,
         ]);
     }
 
     public function create()
     {
         return view('admin/dinas/create', [
-            'active'=>'dinas'
+            'active' => 'dinas',
         ]);
     }
 
@@ -96,16 +96,15 @@ class DinasController extends BaseController
             // dd($data);
             $this->dinas->insert($data);
 
-            return redirect()->to('/admin/dinas')->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to('/admin/dinas')->with('success', 'Data Dinas berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
-        
-    }
-   
 
-     public function edit($slug)
+    }
+
+    public function edit($slug)
     {
         $dinas = $this->dinas->getBySlug($slug);
         // dd($instansi);
@@ -115,7 +114,6 @@ class DinasController extends BaseController
         ]);
     }
 
-
     public function update($id)
     {
         // Validasi input form
@@ -124,7 +122,6 @@ class DinasController extends BaseController
             'kode' => 'required',
             'slug' => 'required',
         ];
-
 
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
@@ -152,7 +149,7 @@ class DinasController extends BaseController
         $dinas = $data['id'];
         // dd($dinas);
         if ($dinas) {
-          $this->dinas->delete($data['id']);
+            $this->dinas->delete($data['id']);
             return redirect()->to('admin/dinas')->with('success', 'data deleted successfully.');
         } else {
             return redirect()->to('admin/dinas')->with('error', 'data not found.');
