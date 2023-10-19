@@ -18,7 +18,8 @@
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
-                                <button type="button" class="btn btn-outline-primary m-3" data-toggle="modal" data-target="#generateModal">Generate Nomor Surat !!</button>
+                                <button type="button" class="btn btn-outline-success m-3" data-toggle="modal"
+                                    data-target="#generateModal">Generate Nomor Surat !!</button>
                                 <div class="col-sm-12">
                                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline collapsed" aria-describedby="example1_info">
                                         <thead>
@@ -117,31 +118,14 @@
                                                                 </a>
                                                                 <!-- update -->
 
-                                                                <<<<<<< HEAD </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                                =======
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach?>
+                                        </tbody>
+                                    
+                                    </table>
                                 </div>
-                                </td>
-                                </tr>
-                            <?php endforeach ?>
-                            >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
-                            </tbody>
-                            <tfoot>
-                                <!-- <tr>
-                                                <th rowspan="1" colspan="1">No</th>
-                                                <th rowspan="1" colspan="1">Kode Surat</th>
-                                                <th rowspan="1" colspan="1">Perihal Surat</th>
-                                                <th rowspan="1" colspan="1">Tanggal Surat</th>
-                                                <th rowspan="1" colspan="1"> Dinas</th>
-                                                <th rowspan="1" colspan="1"> Bidang</th>
-                                                <th rowspan="1" colspan="1"> Nama User</th>
-                                                <th rowspan="1" colspan="1"> Nomor User</th>
-                                                <th rowspan="1" colspan="1">Aksi</th>
-                                            </tr> -->
-                            </tfoot>
-                            </table>
                             </div>
                         </div>
                     </div>
@@ -179,24 +163,21 @@
                         <div class="form-group">
                             <label for="nomorSurat">Bidang</label>
                             <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
-                            >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
-                        </div>
+                            </div>
 
                         <div class="form-group">
                             <label for="kategori">Kategori</label>
                             <div class="input-group">
                                 <select class="custom-select" required name="kategori" id="kategori">
-                                    <<<<<<< HEAD <option selected>Pilih kategori...</option>
+                                    <option selected>Pilih kategori...</option>
                                         <?php foreach ($kategories as $kategori) : ?>
                                             <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
                                         <?php endforeach; ?>
-                                        =======
                                         <option>Pilih kategori...</option>
                                         <?php foreach ($kategories as $kategori) : ?>
                                             <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
                                         <?php endforeach; ?>
-                                        >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
-                                </select>
+                                        </select>
                             </div>
                         </div>
                         <div class="form-group d-none" id="perihalGroup">
