@@ -13,7 +13,7 @@
                 <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> -->
             <div class="info">
-                <a href="#" class="d-block"><?= session()->get('name'); ?></a>
+                <a href="#" class="d-block"><?=session()->get('name');?></a>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
                         </li>
                     </ul>
                 </li>
-                <?php if(session()->get('level') == 1): ?>
+                <?php if (session()->get('level') == 1): ?>
 
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/bidang/') ?>" class="nav-link">
@@ -76,7 +76,7 @@
                         </p>
                     </a>
                 </li>
-                <?php elseif(session()->get('level') == 2): ?>
+                <?php elseif (session()->get('level') == 2): ?>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/dinas/') ?>" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
@@ -111,7 +111,7 @@
                         </li>
                     </ul>
                 </li>
-                <?php endif; ?>
+                <?php endif;?>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
