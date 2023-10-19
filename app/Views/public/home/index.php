@@ -115,7 +115,7 @@
                                             </tr>
                                             <?php endforeach?>
                                         </tbody>
-                                    
+
                                     </table>
                                 </div>
                             </div>
@@ -244,23 +244,32 @@ Swal.fire({
 
 
 function confirmGenerate() {
+    var tanggalSurat = document.getElementById("tanggalSurat").value;
+    var kategori = document.getElementById("kategori").value;
+    if (tanggalSurat && kategori !== "Pilih kategori...") {
+        // Jika semua data diisi, aktifkan tombol "Generate"
+        document.getElementById("generateButton").removeAttribute("disabled");
+        Swal.fire({
+            title: 'Apa Kamu yakin?',
+            text: 'Perhatikan data yang di inputkan !.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#35DC5C',
+            cancelButtonColor: '#A91C1C',
+            confirmButtonText: 'Generate',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('generateForm');
+                form.action = "<?php echo base_url('generate/save') ?>";
+                form.submit();
+            }
+        });
+    } else {
+        // Jika ada data yang belum diisi, tampilkan pesan kesalahan atau tindakan lain yang sesuai
+        Swal.fire('Harap isi Semua datnya');
+    }
 
-    Swal.fire({
-        title: 'Apa Kamu yakin?',
-        text: 'Perhatikan data yang di inputkan !.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#35DC5C',
-        cancelButtonColor: '#A91C1C',
-        confirmButtonText: 'Generate',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            const form = document.getElementById('generateForm');
-            form.action = "<?php echo base_url('generate/save') ?>";
-            form.submit();
-        }
-    });
 }
 </script>
 

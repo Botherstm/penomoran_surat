@@ -5,7 +5,8 @@
 </style>
 
 <div class=" preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="120" width="195">
+    <img class="animation__shake" src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja"
+        height="120" width="195">
     <span class=" brand-text font-weight-bold ">E-NOMOR</span>
 </div>
 <!-- Navbar -->
@@ -19,7 +20,6 @@
 
 
     <ul class="navbar-nav ml-auto">
-
         <li class="nav-item d-none d-sm-inline-block font-weight-bold">
             <a href="/" class="nav-link text-light ">Home</a>
         </li>
