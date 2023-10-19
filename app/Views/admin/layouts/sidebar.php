@@ -1,11 +1,19 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
     <a href="index3.html" class="brand-link bg-teal ">
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center"
             height="40" width="65">
-        <span class="brand-text font-weight-bold ">E-NOMOR Admin </span>
+        <span class="brand-text font-weight-bold ">E-NOMOR Admin</span>
     </a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
