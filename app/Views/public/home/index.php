@@ -46,54 +46,90 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 1 ?>
-                                            <?php foreach ($riwayats as $riwayat) : ?>
-                                                <tr>
-                                                    <td><?= $i++; ?></td>
-                                                    <td>
-                                                        <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
-                                                            <?= $riwayat['nomor']; ?>
-                                                        </span>
-                                                    </td>
-                                                    <td><?= $riwayat['perihal']; ?></td>
-                                                    <td><?= $riwayat['urutan']; ?></td>
-                                                    <td><?= $riwayat['tanggal']; ?></td>
-                                                    <td>
-                                                        <?php $bidangId = $riwayat['bidang_id']; ?>
-                                                        <?php if (isset($bidangs[$bidangId]['name'])) : ?>
-                                                            <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php $userId = $riwayat['user_id']; ?>
-                                                        <?php if (isset($users[$userId]['name'])) : ?>
-                                                            <?= $users[$userId]['name'] . '<br>'; ?>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php $userId = $riwayat['user_id']; ?>
-                                                        <?php if (isset($users[$userId]['no_hp'])) : ?>
-                                                            <?= $users[$userId]['no_hp'] . '<br>'; ?>
-                                                        <?php endif; ?>
-                                                    </td>
+                                            <<<<<<< HEAD <?php $i = 1 ?> <?php foreach ($riwayats as $riwayat) : ?> <tr>
+                                                <td><?= $i++; ?></td>
+                                                <td>
+                                                    <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
+                                                        <?= $riwayat['nomor']; ?>
+                                                    </span>
+                                                </td>
+                                                <td><?= $riwayat['perihal']; ?></td>
+                                                <td><?= $riwayat['urutan']; ?></td>
+                                                <td><?= $riwayat['tanggal']; ?></td>
+                                                <td>
+                                                    <?php $bidangId = $riwayat['bidang_id']; ?>
+                                                    <?php if (isset($bidangs[$bidangId]['name'])) : ?>
+                                                        <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php $userId = $riwayat['user_id']; ?>
+                                                    <?php if (isset($users[$userId]['name'])) : ?>
+                                                        <?= $users[$userId]['name'] . '<br>'; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php $userId = $riwayat['user_id']; ?>
+                                                    <?php if (isset($users[$userId]['no_hp'])) : ?>
+                                                        <?= $users[$userId]['no_hp'] . '<br>'; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                =======
+                                                <?php $i = 1 ?>
+                                                <?php foreach ($riwayats as $riwayat) : ?>
+                                                    <tr>
+                                                        <td><?= $i++; ?></td>
+                                                        <td>
+                                                            <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
+                                                                <?= $riwayat['nomor']; ?>
+                                                            </span>
+                                                        </td>
+                                                        <td><?= $riwayat['perihal']; ?></td>
+                                                        <td><?= $riwayat['urutan']; ?></td>
+                                                        <td><?= $riwayat['tanggal']; ?></td>
+                                                        <td>
+                                                            <?php $bidangId = $riwayat['bidang_id']; ?>
+                                                            <?php if (isset($bidangs[$bidangId]['name'])) : ?>
+                                                                <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $userId = $riwayat['user_id']; ?>
+                                                            <?php if (isset($users[$userId]['name'])) : ?>
+                                                                <?= $users[$userId]['name'] . '<br>'; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $userId = $riwayat['user_id']; ?>
+                                                            <?php if (isset($users[$userId]['no_hp'])) : ?>
+                                                                <?= $users[$userId]['no_hp'] . '<br>'; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
 
 
-                                                    <td>
-                                                        <div class="btn-group ">
-                                                            <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
-                                                                <button type="button" class="btn btn-block btn-primary ">
-                                                                    <i class=" fas fa-info"></i>
-                                                                </button>
-                                                            </a>
-                                                            <!-- update -->
+                                                        <td>
+                                                            <div class="btn-group ">
+                                                                <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
+                                                                    <button type="button" class="btn btn-block btn-primary ">
+                                                                        <i class=" fas fa-info"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- update -->
 
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <!-- <tr>
+                                                                <<<<<<< HEAD </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                                =======
+                                </div>
+                                </td>
+                                </tr>
+                            <?php endforeach ?>
+                            >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
+                            </tbody>
+                            <tfoot>
+                                <!-- <tr>
                                                 <th rowspan="1" colspan="1">No</th>
                                                 <th rowspan="1" colspan="1">Kode Surat</th>
                                                 <th rowspan="1" colspan="1">Perihal Surat</th>
@@ -104,91 +140,109 @@
                                                 <th rowspan="1" colspan="1"> Nomor User</th>
                                                 <th rowspan="1" colspan="1">Aksi</th>
                                             </tr> -->
-                                        </tfoot>
-                                    </table>
-                                </div>
+                            </tfoot>
+                            </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Generate Nomor Surat</h3>
-                    </div>
-                    <div class="card-body">
-                        <form class="card-body" action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm">
-                            <div class="form-group">
-                                <label for="tanggalSurat">Tanggal Surat</label>
-                                <input type="date" name="tanggal" class="form-control" id="tanggalSurat" <?php if ($generate != null) : ?> min="<?= $generate['tanggal']; ?>" <?php endif ?> required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Dinas</label>
-                                <input type="name" value="<?= $dinas['name']; ?>" class="form-control form-control-border" name="instansi" id="dinas" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Bidang</label>
-                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
-                            </div>
+    <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Generate Nomor Surat</h3>
+                </div>
+                <div class="card-body">
+                    <form class="card-body" action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm">
+                        <div class="form-group">
+                            <label for="tanggalSurat">Tanggal Surat</label>
+                            <<<<<<< HEAD <input type="date" name="tanggal" class="form-control" id="tanggalSurat" <?php if ($generate != null) : ?> min="<?= $generate['tanggal']; ?>" <?php endif ?> required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorSurat">Dinas</label>
+                            <input type="name" value="<?= $dinas['name']; ?>" class="form-control form-control-border" name="instansi" id="dinas" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorSurat">Bidang</label>
+                            <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
+                            =======
+                            <input type="date" name="tanggal" max="<?= $tanggalmax; ?>" class="form-control" id="tanggalSurat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorSurat">Dinas</label>
+                            <input type="name" value="<?= $dinas['name']; ?>" class="form-control form-control-border" name="instansi" id="dinas" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorSurat">Bidang</label>
+                            <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
+                            >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
+                        </div>
 
-                            <div class="form-group">
-                                <label for="kategori">Kategori</label>
-                                <div class="input-group">
-                                    <select class="custom-select" required name="kategori" id="kategori">
-                                        <option selected>Pilih kategori...</option>
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <div class="input-group">
+                                <select class="custom-select" required name="kategori" id="kategori">
+                                    <<<<<<< HEAD <option selected>Pilih kategori...</option>
                                         <?php foreach ($kategories as $kategori) : ?>
                                             <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
                                         <?php endforeach; ?>
-                                    </select>
-                                </div>
+                                        =======
+                                        <option>Pilih kategori...</option>
+                                        <?php foreach ($kategories as $kategori) : ?>
+                                            <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
+                                        <?php endforeach; ?>
+                                        >>>>>>> 72278674bc9222599d9e33c3ec349b0dae2f3a76
+                                </select>
                             </div>
-                            <div class="form-group d-none" id="perihalGroup">
-                                <label for="perihal">Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="perihal" id="perihal">
-                                        <option selected>Pilih perihal...</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group d-none" id="perihalGroup">
+                            <label for="perihal">Perihal</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="perihal" id="perihal">
+                                    <option selected>Pilih perihal...</option>
+                                </select>
                             </div>
-                            <div class="form-group d-none" id="subPerihalGroup">
-                                <label for="subPerihal">Sub Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="subperihal" id="subPerihal">
-                                        <option selected>Pilih sub perihal...</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group d-none" id="subPerihalGroup">
+                            <label for="subPerihal">Sub Perihal</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="subperihal" id="subPerihal">
+                                    <option selected>Pilih sub perihal...</option>
+                                </select>
                             </div>
-                            <div class="form-group d-none" id="detailSubPerihalGroup">
-                                <label for="detailsubPerihal">Detail Sub Perihal</label>
-                                <div class="input-group">
-                                    <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
-                                        <option selected>Pilih detail sub perihal...</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group d-none" id="detailSubPerihalGroup">
+                            <label for="detailsubPerihal">Detail Sub Perihal</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
+                                    <option selected>Pilih detail sub perihal...</option>
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="nomorSurat">Nomor Tercetak</label>
-                                <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
-                            </div>
-                            <div class="form-group d-flex justify-content-between">
-                                <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-                                <button class="btn btn-success" type="button" id="generateButton" onclick="confirmGenerate()" style="width: 100px;">Generate</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorSurat">Nomor Tercetak</label>
+                            <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">
+                            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                            <button class="btn btn-success" type="button" id="generateButton" onclick="confirmGenerate()" style="width: 100px;">Generate</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
     var clipboard = new ClipboardJS('.copy-text');
     clipboard.on('success', function(e) {
@@ -199,31 +253,6 @@
         Swal.fire('gagal meyalin kode');
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const fileInput = document.getElementById('inputGroupFile01');
-        const hiddenForm = document.querySelector('.hidden-form');
-        hiddenForm.style.display = 'none';
-        fileInput.addEventListener('change', function() {
-            if (fileInput.files.length > 0) {
-                hiddenForm.style.display = 'block';
-            } else {
-                hiddenForm.style.display = 'none';
-            }
-        });
-    });
-
-    function validateForm() {
-        var fileInput = document.getElementById('inputGroupFile01');
-
-        if (fileInput.files.length === 0) {
-            alert("Please select a file before submitting the form.");
-            return false;
-        }
-
-        // If you have additional validation logic, you can include it here.
-
-        return true; // Form will be submitted if everything is valid.
-    }
 
     <?php if (session()->getFlashdata('success')) : ?>
         Swal.fire({
@@ -236,116 +265,22 @@
     <?php endif; ?>
 
 
-
-    document.getElementById("inputGroupFile01").addEventListener("change", function() {
-        var fileName = this.files[0].name;
-        var label = document.querySelector(".custom-file-label");
-        label.textContent = fileName;
-    });
-    document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
-        const fileInput = event.target;
-        const previewContainer = document.querySelector(".preview-container");
-        const formContainer = document.querySelector(".form-container");
-
-        // Hapus elemen preview PDF yang ada sebelum menambahkan yang baru
-        while (previewContainer.firstChild) {
-            previewContainer.removeChild(previewContainer.firstChild);
-        }
-
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-
-            // Check if the file is a PDF (you can add more validation if needed)
-            if (file.type === "application/pdf") {
-                // Display the uploaded PDF in the preview container
-                const pdfObject = document.createElement("object");
-                pdfObject.data = URL.createObjectURL(file);
-                pdfObject.type = "application/pdf";
-                pdfObject.style.width = "100%";
-                pdfObject.style.height = "1000px"; // Adjust the height as needed
-                previewContainer.appendChild(pdfObject);
-
-                // Show the form
-                previewContainer.style.display = "block";
-                formContainer.style.display = "block";
-            } else {
-                alert("Please upload a PDF file.");
-                fileInput.value = ""; // Clear the file input
-            }
-        }
-    });
-
     function confirmGenerate() {
 
-        const fileInput = document.getElementById('inputGroupFile01');
-        if (fileInput.files.length === 0) {
-            Swal.fire({
-                icon: 'error',
-                title: 'File PDF belum diunggah',
-                text: 'Mohon unggah file PDF terlebih dahulu.'
-            });
-        }
-
-        function validateForm() {
-            var fileInput = document.getElementById('inputGroupFile01');
-
-            if (fileInput.files.length === 0) {
-                alert("Please select a file before submitting the form.");
-                return false;
-            }
-
-            // If you have additional validation logic, you can include it here.
-
-            return true; // Form will be submitted if everything is valid.
-        }
-
-        <?php if (session()->getFlashdata('success')) : ?>
-            Swal.fire({
-                title: 'Success',
-                text: '<?= session()->getFlashdata('success') ?>',
-                icon: 'success',
-                timer: 3000,
-                showConfirmButton: false
-            });
-        <?php endif; ?>
-
-
-
-        document.getElementById("inputGroupFile01").addEventListener("change", function() {
-            var fileName = this.files[0].name;
-            var label = document.querySelector(".custom-file-label");
-            label.textContent = fileName;
-        });
-        document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
-            const fileInput = event.target;
-            const previewContainer = document.querySelector(".preview-container");
-            const formContainer = document.querySelector(".form-container");
-
-            // Hapus elemen preview PDF yang ada sebelum menambahkan yang baru
-            while (previewContainer.firstChild) {
-                previewContainer.removeChild(previewContainer.firstChild);
-            }
-
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-
-                // Check if the file is a PDF (you can add more validation if needed)
-                if (file.type === "application/pdf") {
-                    // Display the uploaded PDF in the preview container
-                    const pdfObject = document.createElement("object");
-                    pdfObject.data = URL.createObjectURL(file);
-                    pdfObject.type = "application/pdf";
-                    pdfObject.style.width = "100%";
-                    pdfObject.style.height = "1000px"; // Adjust the height as needed
-                    previewContainer.appendChild(pdfObject);
-
-                    // Show the form
-                    previewContainer.style.display = "block";
-                    formContainer.style.display = "block";
-                } else {
-                    alert("Please upload a PDF file.");
-                    fileInput.value = ""; // Clear the file input
-                }
+        Swal.fire({
+            title: 'Apa Kamu yakin?',
+            text: 'Perhatikan data yang di inputkan !.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#35DC5C',
+            cancelButtonColor: '#A91C1C',
+            confirmButtonText: 'Generate',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('generateForm');
+                form.action = "<?php echo base_url('generate/save') ?>";
+                form.submit();
             }
         });
 
@@ -358,226 +293,330 @@
                     title: 'File PDF belum diunggah',
                     text: 'Mohon unggah file PDF terlebih dahulu.'
                 });
-                return;
             }
-            Swal.fire({
-                title: 'Apa Kamu yakin?',
-                text: 'Perhatikan data yang kamu inputkan !!.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#35DC5C',
-                cancelButtonColor: '#A91C1C',
-                confirmButtonText: 'Generate',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const form = document.getElementById('generateForm');
-                    form.action = "<?php echo base_url('generate/save') ?>";
-                    form.submit();
+
+            function validateForm() {
+                var fileInput = document.getElementById('inputGroupFile01');
+
+                if (fileInput.files.length === 0) {
+                    alert("Please select a file before submitting the form.");
+                    return false;
+                }
+
+                // If you have additional validation logic, you can include it here.
+
+                return true; // Form will be submitted if everything is valid.
+            }
+
+            <?php if (session()->getFlashdata('success')) : ?>
+                Swal.fire({
+                    title: 'Success',
+                    text: '<?= session()->getFlashdata('success') ?>',
+                    icon: 'success',
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+            <?php endif; ?>
+
+
+
+            document.getElementById("inputGroupFile01").addEventListener("change", function() {
+                var fileName = this.files[0].name;
+                var label = document.querySelector(".custom-file-label");
+                label.textContent = fileName;
+            });
+            document.getElementById("inputGroupFile01").addEventListener("change", function(event) {
+                const fileInput = event.target;
+                const previewContainer = document.querySelector(".preview-container");
+                const formContainer = document.querySelector(".form-container");
+
+                // Hapus elemen preview PDF yang ada sebelum menambahkan yang baru
+                while (previewContainer.firstChild) {
+                    previewContainer.removeChild(previewContainer.firstChild);
+                }
+
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+
+                    // Check if the file is a PDF (you can add more validation if needed)
+                    if (file.type === "application/pdf") {
+                        // Display the uploaded PDF in the preview container
+                        const pdfObject = document.createElement("object");
+                        pdfObject.data = URL.createObjectURL(file);
+                        pdfObject.type = "application/pdf";
+                        pdfObject.style.width = "100%";
+                        pdfObject.style.height = "1000px"; // Adjust the height as needed
+                        previewContainer.appendChild(pdfObject);
+
+                        // Show the form
+                        previewContainer.style.display = "block";
+                        formContainer.style.display = "block";
+                    } else {
+                        alert("Please upload a PDF file.");
+                        fileInput.value = ""; // Clear the file input
+                    }
                 }
             });
-        }
+
+            function confirmGenerate() {
+
+                const fileInput = document.getElementById('inputGroupFile01');
+                if (fileInput.files.length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'File PDF belum diunggah',
+                        text: 'Mohon unggah file PDF terlebih dahulu.'
+                    });
+                    return;
+                }
+                Swal.fire({
+                    title: 'Apa Kamu yakin?',
+                    text: 'Perhatikan data yang kamu inputkan !!.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#35DC5C',
+                    cancelButtonColor: '#A91C1C',
+                    confirmButtonText: 'Generate',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const form = document.getElementById('generateForm');
+                        form.action = "<?php echo base_url('generate/save') ?>";
+                        form.submit();
+                    }
+                });
+            }
 </script>
 
 <script>
+    << << << < HEAD
     document.addEventListener('DOMContentLoaded', function() {
-        var kategoriSelect = document.getElementById('kategori');
-        var perihalSelect = document.getElementById('perihal');
-        var subPerihalSelect = document.getElementById('subPerihal');
-        var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
-        var perihalGroup = document.getElementById('perihalGroup');
-        var subPerihalGroup = document.getElementById('subPerihalGroup');
-        var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
-        var nomorSuratInput = document.getElementById('nomorSurat');
-        var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
-
-        kategoriSelect.addEventListener('change', function() {
-            var selectedKategoriValue = kategoriSelect.value;
-
-            if (selectedKategoriValue !== '') {
-                // Set nilai input "Nomor Surat" dengan nilai kategori yang dipilih
-                nomorSuratInput.value = selectedKategoriValue;
-
-                // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
-                fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': csrfToken,
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-
-                        // Bersihkan elemen "perihal" select sebelum mengisinya
-                        perihalSelect.innerHTML = '';
-                        // Tambahkan opsi default "Pilih perihal..."
-                        perihalSelect.appendChild(new Option('Pilih perihal...', ''));
-
-                        // Tambahkan opsi "Perihal" berdasarkan data yang diterima
-                        data.forEach(function(option) {
-                            perihalSelect.appendChild(new Option(option.name, option
-                                .kode));
-                        });
-
-                        // Sembunyikan atau tampilkan elemen "perihal" select
-                        if (data.length > 0) {
-                            perihalGroup.classList.remove('d-none');
-                        } else {
-                            perihalGroup.classList.add('d-none');
-                        }
-
-                        // Kosongkan elemen "subPerihal" select dan nomorSuratInput
-                        subPerihalSelect.innerHTML = '';
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            } else {
-                // Jika tidak ada kategori yang dipilih, kosongkan input "Nomor Surat"
-                nomorSuratInput.value = '';
-            }
-        });
-
-
-        perihalSelect.addEventListener('change', function() {
-            var selectedPerihalId = perihalSelect.value;
-
-            // Implementasikan AJAX untuk mengisi data sub perihal berdasarkan perihal yang dipilih
-            if (selectedPerihalId !== '') {
-                fetch('get_subperihal_by_perihal/' + selectedPerihalId, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        subPerihalSelect.innerHTML = '';
-                        subPerihalSelect.appendChild(new Option('Pilih sub perihal...', ''));
-                        data.forEach(function(option) {
-                            subPerihalSelect.appendChild(new Option(option.name, option
-                                .kode));
-                        });
-
-                        subPerihalGroup.classList.remove(
-                            'd-none'); // Menampilkan elemen subPerihalGroup
-                        detailSubPerihalGroup.classList.add(
-                            'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
-                        nomorSuratInput.value =
-                            selectedPerihalId; // Mengisi nomor surat dengan kode perihal yang dipilih
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-
-            } else {
-                subPerihalGroup.classList.add('d-none'); // Menyembunyikan elemen subPerihalGroup
-                detailSubPerihalGroup.classList.add(
-                    'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
-                nomorSuratInput.value = ''; // Menghapus nilai dari nomorSuratInput
-            }
-        });
-
-        subPerihalSelect.addEventListener('change', function() {
-            var selectedSubPerihalId = subPerihalSelect.value;
-
-
-            perihalSelect.addEventListener('change', function() {
-                var selectedPerihalId = perihalSelect.value;
-
-                // Implementasikan AJAX untuk mengisi data sub perihal berdasarkan perihal yang dipilih
-                if (selectedPerihalId !== '') {
-                    fetch('get_subperihal_by_perihal/' + selectedPerihalId, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            subPerihalSelect.innerHTML = '';
-                            subPerihalSelect.appendChild(new Option('Pilih sub perihal...',
-                                ''));
-                            data.forEach(function(option) {
-                                subPerihalSelect.appendChild(new Option(option.name,
-                                    option
-                                    .kode));
-                            });
-
-                            subPerihalGroup.classList.remove(
-                                'd-none'); // Menampilkan elemen subPerihalGroup
-                            detailSubPerihalGroup.classList.add(
-                                'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
-                            nomorSuratInput.value =
-                                selectedPerihalId; // Mengisi nomor surat dengan kode perihal yang dipilih
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-
-                } else {
-                    subPerihalGroup.classList.add(
-                        'd-none'); // Menyembunyikan elemen subPerihalGroup
-                    detailSubPerihalGroup.classList.add(
-                        'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
-                    nomorSuratInput.value = ''; // Menghapus nilai dari nomorSuratInput
-                }
-            });
-
-            document.addEventListener('DOMContentLoaded', function() {
-                // Dapatkan elemen nomorSurat setelah halaman selesai dimuat
+                var kategoriSelect = document.getElementById('kategori');
+                var perihalSelect = document.getElementById('perihal');
+                var subPerihalSelect = document.getElementById('subPerihal');
+                var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
+                var perihalGroup = document.getElementById('perihalGroup');
+                var subPerihalGroup = document.getElementById('subPerihalGroup');
+                var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
                 var nomorSuratInput = document.getElementById('nomorSurat');
+                var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
+                ===
+                === =
+                document.addEventListener('DOMContentLoaded', function() {
+                            var kategoriSelect = document.getElementById('kategori');
+                            var perihalSelect = document.getElementById('perihal');
+                            var subPerihalSelect = document.getElementById('subPerihal');
+                            var detailsubPerihalSelect = document.getElementById('detailsubPerihal');
+                            var perihalGroup = document.getElementById('perihalGroup');
+                            var subPerihalGroup = document.getElementById('subPerihalGroup');
+                            var detailSubPerihalGroup = document.getElementById('detailSubPerihalGroup');
+                            var nomorSuratInput = document.getElementById('nomorSurat');
+                            var csrfToken = '<?= csrf_hash() ?>'; // Dapatkan token CSRF
+                            >>>
+                            >>> > 72278674 bc9222599d9e33c3ec349b0dae2f3a76
 
-                // Implementasikan AJAX untuk mengisi data detail sub perihal berdasarkan sub perihal yang dipilih
-                if (selectedSubPerihalId !== '') {
-                    fetch('get_detailsubperihal_by_subperihal/' + selectedSubPerihalId, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            detailsubPerihalSelect.innerHTML = '';
-                            detailsubPerihalSelect.appendChild(new Option(
-                                'Pilih detail sub perihal...',
-                                ''));
-                            data.forEach(function(option) {
-                                detailsubPerihalSelect.appendChild(new Option(option
-                                    .name,
-                                    option.kode));
+                            kategoriSelect.addEventListener('change', function() {
+                                var selectedKategoriValue = kategoriSelect.value;
+
+                                if (selectedKategoriValue !== '') {
+                                    // Set nilai input "Nomor Surat" dengan nilai kategori yang dipilih
+                                    nomorSuratInput.value = selectedKategoriValue;
+
+                                    <<
+                                    << << < HEAD
+                                    // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
+                                    fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
+                                            method: 'GET',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': csrfToken,
+                                            },
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                                console.log(data); ===
+                                                === =
+                                                // Buat permintaan AJAX untuk mengambil data "Perihal" berdasarkan kategori yang dipilih
+                                                fetch('<?= site_url('get_perihal_by_category/') ?>' + selectedKategoriValue, {
+                                                        method: 'GET',
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                            'X-CSRF-TOKEN': csrfToken,
+                                                        },
+                                                    })
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        console.log(data); >>>
+                                                        >>> > 72278674 bc9222599d9e33c3ec349b0dae2f3a76
+
+                                                        // Bersihkan elemen "perihal" select sebelum mengisinya
+                                                        perihalSelect.innerHTML = '';
+                                                        // Tambahkan opsi default "Pilih perihal..."
+                                                        perihalSelect.appendChild(new Option('Pilih perihal...', ''));
+
+                                                        // Tambahkan opsi "Perihal" berdasarkan data yang diterima
+                                                        data.forEach(function(option) {
+                                                            perihalSelect.appendChild(new Option(option.name, option
+                                                                .kode));
+                                                        });
+
+                                                        // Sembunyikan atau tampilkan elemen "perihal" select
+                                                        if (data.length > 0) {
+                                                            perihalGroup.classList.remove('d-none');
+                                                        } else {
+                                                            perihalGroup.classList.add('d-none');
+                                                        }
+
+                                                        // Kosongkan elemen "subPerihal" select dan nomorSuratInput
+                                                        subPerihalSelect.innerHTML = '';
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                    });
+                                            } else {
+                                                // Jika tidak ada kategori yang dipilih, kosongkan input "Nomor Surat"
+                                                nomorSuratInput.value = '';
+                                            }
+                                        });
+
+
+                                perihalSelect.addEventListener('change', function() {
+                                    var selectedPerihalId = perihalSelect.value;
+
+                                    // Implementasikan AJAX untuk mengisi data sub perihal berdasarkan perihal yang dipilih
+                                    if (selectedPerihalId !== '') {
+                                        fetch('get_subperihal_by_perihal/' + selectedPerihalId, {
+                                                method: 'GET',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                },
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                console.log(data);
+                                                subPerihalSelect.innerHTML = '';
+                                                subPerihalSelect.appendChild(new Option('Pilih sub perihal...', ''));
+                                                data.forEach(function(option) {
+                                                    subPerihalSelect.appendChild(new Option(option.name, option
+                                                        .kode));
+                                                });
+
+                                                subPerihalGroup.classList.remove(
+                                                    'd-none'); // Menampilkan elemen subPerihalGroup
+                                                detailSubPerihalGroup.classList.add(
+                                                    'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
+                                                nomorSuratInput.value =
+                                                    selectedPerihalId; // Mengisi nomor surat dengan kode perihal yang dipilih
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
+                                            });
+
+                                    } else {
+                                        subPerihalGroup.classList.add('d-none'); // Menyembunyikan elemen subPerihalGroup
+                                        detailSubPerihalGroup.classList.add(
+                                            'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
+                                        nomorSuratInput.value = ''; // Menghapus nilai dari nomorSuratInput
+                                    }
+                                });
+
+                                subPerihalSelect.addEventListener('change', function() {
+                                    var selectedSubPerihalId = subPerihalSelect.value;
+
+
+                                    perihalSelect.addEventListener('change', function() {
+                                        var selectedPerihalId = perihalSelect.value;
+
+                                        // Implementasikan AJAX untuk mengisi data sub perihal berdasarkan perihal yang dipilih
+                                        if (selectedPerihalId !== '') {
+                                            fetch('get_subperihal_by_perihal/' + selectedPerihalId, {
+                                                    method: 'GET',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                    },
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data);
+                                                    subPerihalSelect.innerHTML = '';
+                                                    subPerihalSelect.appendChild(new Option('Pilih sub perihal...',
+                                                        ''));
+                                                    data.forEach(function(option) {
+                                                        subPerihalSelect.appendChild(new Option(option.name,
+                                                            option
+                                                            .kode));
+                                                    });
+
+                                                    subPerihalGroup.classList.remove(
+                                                        'd-none'); // Menampilkan elemen subPerihalGroup
+                                                    detailSubPerihalGroup.classList.add(
+                                                        'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
+                                                    nomorSuratInput.value =
+                                                        selectedPerihalId; // Mengisi nomor surat dengan kode perihal yang dipilih
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+
+                                        } else {
+                                            subPerihalGroup.classList.add(
+                                                'd-none'); // Menyembunyikan elemen subPerihalGroup
+                                            detailSubPerihalGroup.classList.add(
+                                                'd-none'); // Menyembunyikan elemen detailSubPerihalGroup
+                                            nomorSuratInput.value = ''; // Menghapus nilai dari nomorSuratInput
+                                        }
+                                    });
+
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        // Dapatkan elemen nomorSurat setelah halaman selesai dimuat
+                                        var nomorSuratInput = document.getElementById('nomorSurat');
+
+                                        // Implementasikan AJAX untuk mengisi data detail sub perihal berdasarkan sub perihal yang dipilih
+                                        if (selectedSubPerihalId !== '') {
+                                            fetch('get_detailsubperihal_by_subperihal/' + selectedSubPerihalId, {
+                                                    method: 'GET',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                    },
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data);
+                                                    detailsubPerihalSelect.innerHTML = '';
+                                                    detailsubPerihalSelect.appendChild(new Option(
+                                                        'Pilih detail sub perihal...',
+                                                        ''));
+                                                    data.forEach(function(option) {
+                                                        detailsubPerihalSelect.appendChild(new Option(option
+                                                            .name,
+                                                            option.kode));
+                                                    });
+                                                    detailSubPerihalGroup.classList.remove('d-none');
+                                                    nomorSuratInput.value =
+                                                        selectedSubPerihalId; // Mengisi nomor surat dengan kode detail sub perihal yang dipilih
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                        } else {
+                                            detailSubPerihalGroup.classList.add('d-none');
+                                            nomorSuratInput.value = '';
+                                        }
+                                    })
+                                });
+
+                                detailsubPerihalSelect.addEventListener('change', function() {
+                                    var selectedDetailSubPerihal = detailsubPerihalSelect.value;
+
+                                    if (selectedDetailSubPerihal !== '') {
+                                        // Set nilai input "Nomor Surat" dengan kode detail sub perihal yang dipilih
+                                        nomorSuratInput.value = selectedDetailSubPerihal;
+                                    } else {
+                                        // Jika tidak ada detail sub perihal yang dipilih, kosongkan input "Nomor Surat"
+                                        nomorSuratInput.value = '';
+                                    }
+                                });
                             });
-                            detailSubPerihalGroup.classList.remove('d-none');
-                            nomorSuratInput.value =
-                                selectedSubPerihalId; // Mengisi nomor surat dengan kode detail sub perihal yang dipilih
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                } else {
-                    detailSubPerihalGroup.classList.add('d-none');
-                    nomorSuratInput.value = '';
-                }
-            })
-        });
-
-        detailsubPerihalSelect.addEventListener('change', function() {
-            var selectedDetailSubPerihal = detailsubPerihalSelect.value;
-
-            if (selectedDetailSubPerihal !== '') {
-                // Set nilai input "Nomor Surat" dengan kode detail sub perihal yang dipilih
-                nomorSuratInput.value = selectedDetailSubPerihal;
-            } else {
-                // Jika tidak ada detail sub perihal yang dipilih, kosongkan input "Nomor Surat"
-                nomorSuratInput.value = '';
-            }
-        });
-    });
 </script>
 
 

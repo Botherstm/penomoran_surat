@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use setasign\Fpdi\Fpdi; // Menggunakan setasign\Fpdi\Fpdi
+use setasign\Fpdi\Fpdi;
+// Menggunakan setasign\Fpdi\Fpdi
 
 class PdfController extends BaseController
 {

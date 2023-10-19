@@ -39,19 +39,17 @@ class TerlewatController extends BaseController
         $this->detailsubperihal = new DetailSubPerihalModel();
     }
 
-
     public function index()
     {
         // $user = $this->user->getBySlug($slug);
-        $data = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'))??[];
-        if($data != null){
+        $data = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id')) ?? [];
+        if ($data != null) {
             if ($data['tanggal'] > date('Y-m-d')) {
-            $tanggal = date('Y-m-d', strtotime('-1 day', strtotime($data['tanggal'])));
-            }
-            else{
+                $tanggal = date('Y-m-d', strtotime('-1 day', strtotime($data['tanggal'])));
+            } else {
                 $tanggal = $data['tanggal'];
             }
-        }else{
+        } else {
             $tanggal = [];
         }
         $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
@@ -65,14 +63,12 @@ class TerlewatController extends BaseController
             'bidang' => $bidang,
             'dinas' => $dinas,
             'generate' => $generate,
-            'tanggal' => $tanggal
+            'tanggal' => $tanggal,
         ]);
     }
 
-
     public function save()
     {
-
 
         // Validasi input data
         $rules = [
@@ -82,13 +78,13 @@ class TerlewatController extends BaseController
             'tanggal' => 'required',
         ];
 
-                //tanggal
+        //tanggal
         $tanggal = $this->request->getPost('tanggal');
-        
+
         list($tahun, $bulan, $tanggal) = explode("-", $tanggal);
         $bulan_romawi = [
             'I', 'II', 'III', 'IV', 'V', 'VI',
-            'VII', 'VIII', 'IX', 'X', 'XI', 'XII'
+            'VII', 'VIII', 'IX', 'X', 'XI', 'XII',
         ];
         $bulan_romawi = $bulan_romawi[intval($bulan) - 1]; // -1 karena array dimulai dari 0
         $tahun_angka = intval($tahun);
@@ -104,14 +100,12 @@ class TerlewatController extends BaseController
                     $terbesarTerlewat = $terlewat;
                 }
                 $newTerlewat = sprintf('%02d', (int) $terbesarTerlewat + 1);
-            }
-            elseif ($data['terlewat'] == null){
-                if($data > 1)
-                {
-                     $urutan = $data['urutan'];
-                        if ($urutan < $urutan_terkecil) {
-                            $urutan_terkecil = $urutan;
-                        }
+            } elseif ($data['terlewat'] == null) {
+                if ($data > 1) {
+                    $urutan = $data['urutan'];
+                    if ($urutan < $urutan_terkecil) {
+                        $urutan_terkecil = $urutan;
+                    }
                     $newTerlewat = sprintf('%02d', (int) $terbesarTerlewat + 1);
                 }
             }
@@ -123,8 +117,7 @@ class TerlewatController extends BaseController
             $kategori = $this->kategori->getByKode($this->request->getPost('nomor')) ?? [];
             if ($kategori != null) {
                 $data = $kategori;
-            }
-            else{
+            } else {
                 $data = $this->perihal->getBykode($this->request->getPost('nomor'));
             }
             // dd($data);
@@ -135,20 +128,19 @@ class TerlewatController extends BaseController
             $bidang = $this->bidang->getById(session()->get('bidang_id'));
 
             // dd($urutan_terkecil);
-            $kode = $nomor ."/". $urutan_terkecil.".".$newTerlewat."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
+            $kode = $nomor . "/" . $urutan_terkecil . "." . $newTerlewat . "/" . $bidang['kode'] . "." . $dinas['kode'] . "/" . $bulan_romawi . "/" . $tahun_angka;
             // dd($kode);
-            
-             //slug
-            $mentahan = $nomor ."/".  $urutan_terkecil.".".$newTerlewat."/". $bidang['kode'] .".". $dinas['kode']."/".$bulan_romawi."/".$tahun_angka;
+
+            //slug
+            $mentahan = $nomor . "/" . $urutan_terkecil . "." . $newTerlewat . "/" . $bidang['kode'] . "." . $dinas['kode'] . "/" . $bulan_romawi . "/" . $tahun_angka;
             $slug = preg_replace('/[^a-z0-9-]/', '-', strtolower($mentahan));
             $slug = str_replace(' ', '-', $slug);
             $slug = preg_replace('/-+/', '-', $slug);
 
-
             //id
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
-            
+
             $data = [
                 'id' => $uuidString,
                 'user_id' => session()->get('user_id'),
@@ -156,14 +148,14 @@ class TerlewatController extends BaseController
                 'bidang_id' => session()->get('bidang_id'),
                 'urutan' => $urutan_terkecil,
                 'terlewat' => $newTerlewat,
-                'slug'=> $slug,
+                'slug' => $slug,
                 'perihal' => $data['name'],
                 'nomor' => $kode,
-                'tanggal' =>$this->request->getPost('tanggal'),
+                'tanggal' => $this->request->getPost('tanggal'),
             ];
             // dd($data);
             $this->generate->insert($data);
-            
+
             return redirect()->to('/public/riwayat/')->with('success', 'Berhasil Menggenerate Kode Surat.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
@@ -171,16 +163,15 @@ class TerlewatController extends BaseController
         }
     }
 
-
     public function tentang()
     {
-    
+
         return view('public/tentang', [
 
         ]);
     }
 
-   public function generatePdf()
+    public function generatePdf()
     {
         // Pastikan data yang dibutuhkan ada dalam permintaan POST
         $pdfContent = $this->request->getPost('pdfContent');
