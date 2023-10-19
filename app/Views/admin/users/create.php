@@ -1,6 +1,6 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 <style>
 .jarak {
     padding-top: 50px;
@@ -34,17 +34,12 @@
     </div>
     <!-- Main content -->
     <section class="content">
-    <div class="btnadd">               
-                        <button type="button" class="btn btn-success" data-toggle="modal"
-                                    data-target="#generateModal">
-                            <i class="icon-jarak fas fa-plus"></i>
-                            Tambah
-                        </button>
-    
+        <div class="btnadd">
 
-                </div>
+
+        </div>
         <form method="POST" action="<?php echo base_url('admin/users/save') ?>">
-            <?= csrf_field(); ?>
+            <?=csrf_field();?>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nama</label>
                 <input type="text" name="name" required class="form-control" id="name" placeholder="Masukkan Nama">
@@ -62,23 +57,23 @@
                 <input type="number" name="no_hp" required class="form-control" id="exampleFormControlInput1"
                     placeholder="Masukan No. Telp">
             </div>
-            <?php if(session()->get('level') == 1): ?>
-            <input type="name" hidden value="<?= session()->get('instansi_id') ?>" name="instansi_id">
+            <?php if (session()->get('level') == 1): ?>
+            <input type="name" hidden value="<?=session()->get('instansi_id')?>" name="instansi_id">
             <div class="form-group">
                 <label for="bidangSelect">Bidang</label>
                 <select class="form-control" id="bidangSelect" name="bidang_id">
-                    <?php foreach ($bidangs as $bidang) : ?>
-                    <option value="<?= $bidang['id'] ?>"><?= $bidang['name'] ?></option>
-                    <?php endforeach; ?>
+                    <?php foreach ($bidangs as $bidang): ?>
+                    <option value="<?=$bidang['id']?>"><?=$bidang['name']?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
-            <?php elseif(session()->get('level') == 2): ?>
+            <?php elseif (session()->get('level') == 2): ?>
             <div class="form-group">
                 <label for="instansiSelect">Dinas</label>
                 <select class="form-control" id="instansiSelect" name="instansi_id">
-                    <?php foreach ($instansis as $dinas) : ?>
-                    <option value="<?= $dinas['id'] ?>"><?= $dinas['name'] ?></option>
-                    <?php endforeach; ?>
+                    <?php foreach ($instansis as $dinas): ?>
+                    <option value="<?=$dinas['id']?>"><?=$dinas['name']?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
             <div class="form-group">
@@ -89,7 +84,7 @@
                     <option value="1">Operator</option>
                 </select>
             </div>
-            <?php endif; ?>
+            <?php endif;?>
 
             <div class="form-group">
                 <label for="Password1">Password</label>
@@ -127,6 +122,7 @@
 
         </form>
 
+<<<<<<< HEAD
 <form>
 <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel"
             aria-hidden="true">
@@ -235,30 +231,25 @@
                                 <input type="text" value="" class="form-control" name="bidang"
                                     id="bidang" readonly>
                             </div>
+=======
+>>>>>>> c39723cfe06863891e4d3b21b56fa217710b78a9
 
 
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-</form>
 
     </section>
     <!-- /.content -->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
-<?php if (session()->getFlashdata('error')) : ?>
+<?php if (session()->getFlashdata('error')): ?>
 Swal.fire({
     title: 'Gagal',
-    text: '<?= session()->getFlashdata('error') ?>',
+    text: '<?=session()->getFlashdata('error')?>',
     icon: 'warning',
     timer: 3000,
     showConfirmButton: false
 });
-<?php endif; ?>
+<?php endif;?>
 
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
@@ -343,4 +334,4 @@ function validatePassword() {
 }
 </script>
 <!-- /.content-wrapper -->
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>
