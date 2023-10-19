@@ -2,12 +2,11 @@
 
 namespace App\Controllers\Admin;
 
+use App\Controllers\BaseController;
+use App\Models\BidangModel;
 use App\Models\DinasModel;
 use App\Models\UserModel;
 use Ramsey\Uuid\Uuid;
-use setasign\Fpdi\Fpdi;
-use App\Controllers\BaseController;
-use App\Models\BidangModel;
 
 class UserController extends BaseController
 {
@@ -27,11 +26,11 @@ class UserController extends BaseController
 
         if (!session()->has('user_id')) {
             $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-        // dd($siteKey);
-        return view('login',[
-             'validation' => \Config\Services::validation(),
-             'key'=> $siteKey
-        ]);
+            // dd($siteKey);
+            return view('login', [
+                'validation' => \Config\Services::validation(),
+                'key' => $siteKey,
+            ]);
         }
 
         if (session()->get('level') == 2) {
@@ -60,20 +59,19 @@ class UserController extends BaseController
                 $bidang = $this->bidangs->getById($userId);
                 $bidangs[$userId] = $bidang;
             }
-           $dinas = $this->dinas->getById(session()->get('instansi_id'));
+            $dinas = $this->dinas->getById(session()->get('instansi_id'));
         }
 
-        // $dinass = $this->dinas->getAll();
+        $dinass = $this->dinas->getAll();
         // dd($bidangs,session()->get('instansi_id'),$users);
         return view('admin/users/index', [
             'users' => $users,
             'bidangs' => $bidangs,
             'active' => 'user',
             'dinas' => $dinas,
-            // 'dinass' => $dinass,
+            'instansis' => $dinass,
         ]);
     }
-
 
     public function create()
     {
@@ -139,7 +137,7 @@ class UserController extends BaseController
             'active' => 'user',
             'user' => $user,
             'instansi' => $instansi,
-            'instansis' =>$instansis,
+            'instansis' => $instansis,
             'bidang' => $bidang,
             'bidangs' => $bidangs,
         ]);
@@ -188,7 +186,6 @@ class UserController extends BaseController
             return redirect()->to('admin/users')->with('error', 'data not found.');
         }
     }
-
 
     public function profile()
     {

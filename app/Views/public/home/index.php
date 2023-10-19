@@ -6,185 +6,177 @@
         cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-plus" viewBox="0 0 16 16"><path d="M5.5 2A.5.5 0 0 0 5 2.5v11a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V2.5a.5.5 0 0 0-.5-.5h-5zM6 1.5A.5.5 0 0 1 6.5 1h3a.5.5 0 0 1 .5.5V15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V1.5zM11 3a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1.5 6a.5.5 0 0 1 .5.5V10h1.5a.5.5 0 0 1 0 1H10v1.5a.5.5 0 0 1-1 0V11H7.5a.5.5 0 0 1 0-1H9V8.5a.5.5 0 0 1 .5-.5z"/><path fill-rule="evenodd" d="M8.5 0a.5.5 0 0 1 .5.5V3h1a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V4H7.5a.5.5 0 0 1 0-1H8V.5a.5.5 0 0 1 .5-.5z"/><path d="M6 4.5a.5.5 0 0 0-.5.5V6H4.5a.5.5 0 0 0 0 1H5v1.5a.5.5 0 0 0 1 0V7h1.5a.5.5 0 0 0 0-1H6V5.5a.5.5 0 0 0-.5-.5z"/></svg>'), auto;
     }
 </style>
+<div class="container-fluid content-wrapper pt-5">
+    <div class="row">
+        <div class="col-12">
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-
-
-                    <div class="card">
-                        <div class="card-header col">
-                            <h3 class="card-title">Riwayat Nomor Surat</h3>
-                        </div>
-                        <div class="card-body">
-                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <div class="row">
-                                    <button type="button" class="btn btn-outline-success m-3" data-toggle="modal" data-target="#generateModal">Generate Nomor Surat !!</button>
-                                    <div class="col-sm-12">
-                                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline collapsed" aria-describedby="example1_info">
-                                            <thead>
+            <div class="card">
+                <div class="card">
+                    <div class="card-header col">
+                        <h3 class="card-title">Riwayat Nomor Surat</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <button type="button" class="btn btn-outline-success m-3" data-toggle="modal" data-target="#generateModal">Generate Nomor Surat !!</button>
+                                <div class="col-sm-12">
+                                    <table id="example1" class="table table-bordered table-striped dataTable dtr-inline collapsed" aria-describedby="example1_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                    No</th>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                    Kode Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    Perihal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                                    Urutan Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                                    Tanggal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                                    Bidang</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nama
+                                                    User
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nomor
+                                                    Hp
+                                                    User</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
+                                                    Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1 ?>
+                                            <?php foreach ($riwayats as $riwayat) : ?>
                                                 <tr>
-                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                        No</th>
-                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                        Kode Surat</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
-                                                        Perihal Surat</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                        Urutan Surat</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                        Tanggal Surat</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                                                        Bidang</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nama
-                                                        User
-                                                    </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nomor
-                                                        Hp
-                                                        User</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
-                                                        Aksi</th>
+                                                    <td><?= $i++; ?></td>
+                                                    <td>
+                                                        <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
+                                                            <?= $riwayat['nomor']; ?>
+                                                        </span>
+                                                    </td>
+                                                    <td><?= $riwayat['perihal']; ?></td>
+                                                    <td><?= $riwayat['urutan']; ?></td>
+                                                    <td><?= $riwayat['tanggal']; ?></td>
+                                                    <td>
+                                                        <?php $bidangId = $riwayat['bidang_id']; ?>
+                                                        <?php if (isset($bidangs[$bidangId]['name'])) : ?>
+                                                            <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php $userId = $riwayat['user_id']; ?>
+                                                        <?php if (isset($users[$userId]['name'])) : ?>
+                                                            <?= $users[$userId]['name'] . '<br>'; ?>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php $userId = $riwayat['user_id']; ?>
+                                                        <?php if (isset($users[$userId]['no_hp'])) : ?>
+                                                            <?= $users[$userId]['no_hp'] . '<br>'; ?>
+                                                        <?php endif; ?>
+                                                    </td>
+
+
+                                                    <td>
+                                                        <div class="btn-group ">
+                                                            <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
+                                                                <button type="button" class="btn btn-block btn-primary ">
+                                                                    <i class=" fas fa-info"></i>
+                                                                </button>
+                                                            </a>
+                                                            <!-- update -->
+
+                                                        </div>
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $i = 1 ?>
-                                                <?php foreach ($riwayats as $riwayat) : ?>
-                                                    <tr>
-                                                        <td><?= $i++; ?></td>
-                                                        <td>
-                                                            <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>" title="Klik untuk menyalin kode surat">
-                                                                <?= $riwayat['nomor']; ?>
-                                                            </span>
-                                                        </td>
-                                                        <td><?= $riwayat['perihal']; ?></td>
-                                                        <td><?= $riwayat['urutan']; ?></td>
-                                                        <td><?= $riwayat['tanggal']; ?></td>
-                                                        <td>
-                                                            <?php $bidangId = $riwayat['bidang_id']; ?>
-                                                            <?php if (isset($bidangs[$bidangId]['name'])) : ?>
-                                                                <?= $bidangs[$bidangId]['name'] . '<br>'; ?>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php $userId = $riwayat['user_id']; ?>
-                                                            <?php if (isset($users[$userId]['name'])) : ?>
-                                                                <?= $users[$userId]['name'] . '<br>'; ?>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php $userId = $riwayat['user_id']; ?>
-                                                            <?php if (isset($users[$userId]['no_hp'])) : ?>
-                                                                <?= $users[$userId]['no_hp'] . '<br>'; ?>
-                                                            <?php endif; ?>
-                                                        </td>
+                                            <?php endforeach ?>
+                                        </tbody>
 
-
-                                                        <td>
-                                                            <div class="btn-group ">
-                                                                <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
-                                                                    <button type="button" class="btn btn-block btn-primary ">
-                                                                        <i class=" fas fa-info"></i>
-                                                                    </button>
-                                                                </a>
-                                                                <!-- update -->
-
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-
-                                        </table>
-                                    </div>
+                                    </table>
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
 
                 </div>
-
-                <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Generate Nomor Surat</h3>
-                            </div>
-                            <div class="card-body">
-                                <form class="card-body" action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm">
-                                    <div class="form-group">
-                                        <label for="tanggalSurat">Tanggal Surat</label>
-                                        <input type="date" name="tanggal" max="<?= $tanggalmax; ?>" class="form-control" id="tanggalSurat" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nomorSurat">Dinas</label>
-                                        <input type="name" value="<?= $dinas['name']; ?>" class="form-control form-control-border" name="instansi" id="dinas" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nomorSurat">Bidang</label>
-                                        <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="kategori">Kategori</label>
-                                        <div class="input-group">
-                                            <select class="custom-select" required name="kategori" id="kategori">
-                                                <option>Pilih kategori...</option>
-                                                <?php foreach ($kategories as $kategori) : ?>
-                                                    <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-none" id="perihalGroup">
-                                        <label for="perihal">Perihal</label>
-                                        <div class="input-group">
-                                            <select class="custom-select" name="perihal" id="perihal">
-                                                <option selected>Pilih perihal...</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-none" id="subPerihalGroup">
-                                        <label for="subPerihal">Sub Perihal</label>
-                                        <div class="input-group">
-                                            <select class="custom-select" name="subperihal" id="subPerihal">
-                                                <option selected>Pilih sub perihal...</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group d-none" id="detailSubPerihalGroup">
-                                        <label for="detailsubPerihal">Detail Sub Perihal</label>
-                                        <div class="input-group">
-                                            <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
-                                                <option selected>Pilih detail sub perihal...</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nomorSurat">Nomor Tercetak</label>
-                                        <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
-                                    </div>
-                                    <div class="form-group d-flex justify-content-between">
-                                        <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
-                                        <button class="btn btn-success" type="button" id="generateButton" onclick="confirmGenerate()" style="width: 100px;">Generate</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Generate Nomor Surat</h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="card-body" action="<?php echo base_url('generate/save') ?>" method="post" enctype="multipart/form-data" id="generateForm">
+                            <div class="form-group">
+                                <label for="tanggalSurat">Tanggal Surat</label>
+                                <input type="date" name="tanggal" max="<?= $tanggalmax; ?>" class="form-control" id="tanggalSurat" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nomorSurat">Dinas</label>
+                                <input type="name" value="<?= $dinas['name']; ?>" class="form-control form-control-border" name="instansi" id="dinas" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="nomorSurat">Bidang</label>
+                                <input type="text" value="<?= $bidang['name']; ?>" class="form-control" name="bidang" id="bidang" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label>
+                                <div class="input-group">
+                                    <select class="custom-select" required name="kategori" id="kategori">
+                                        <option>Pilih kategori...</option>
+                                        <?php foreach ($kategories as $kategori) : ?>
+                                            <option value="<?= $kategori['kode'] ?>"><?= $kategori['name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group d-none" id="perihalGroup">
+                                <label for="perihal">Perihal</label>
+                                <div class="input-group">
+                                    <select class="custom-select" name="perihal" id="perihal">
+                                        <option selected>Pilih perihal...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group d-none" id="subPerihalGroup">
+                                <label for="subPerihal">Sub Perihal</label>
+                                <div class="input-group">
+                                    <select class="custom-select" name="subperihal" id="subPerihal">
+                                        <option selected>Pilih sub perihal...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group d-none" id="detailSubPerihalGroup">
+                                <label for="detailsubPerihal">Detail Sub Perihal</label>
+                                <div class="input-group">
+                                    <select class="custom-select" name="detailsubperihal_id" id="detailsubPerihal">
+                                        <option selected>Pilih detail sub perihal...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nomorSurat">Nomor Tercetak</label>
+                                <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">
+                                <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                                <button class="btn btn-success" type="button" id="generateButton" onclick="confirmGenerate()" style="width: 100px;">Generate</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
@@ -225,23 +217,32 @@
 
 
     function confirmGenerate() {
+        var tanggalSurat = document.getElementById("tanggalSurat").value;
+        var kategori = document.getElementById("kategori").value;
+        if (tanggalSurat && kategori !== "Pilih kategori...") {
+            // Jika semua data diisi, aktifkan tombol "Generate"
+            document.getElementById("generateButton").removeAttribute("disabled");
+            Swal.fire({
+                title: 'Apa Kamu yakin?',
+                text: 'Perhatikan data yang di inputkan !.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#35DC5C',
+                cancelButtonColor: '#A91C1C',
+                confirmButtonText: 'Generate',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById('generateForm');
+                    form.action = "<?php echo base_url('generate/save') ?>";
+                    form.submit();
+                }
+            });
+        } else {
+            // Jika ada data yang belum diisi, tampilkan pesan kesalahan atau tindakan lain yang sesuai
+            Swal.fire('Harap isi Semua datnya');
+        }
 
-        Swal.fire({
-            title: 'Apa Kamu yakin?',
-            text: 'Perhatikan data yang di inputkan !.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#35DC5C',
-            cancelButtonColor: '#A91C1C',
-            confirmButtonText: 'Generate',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const form = document.getElementById('generateForm');
-                form.action = "<?php echo base_url('generate/save') ?>";
-                form.submit();
-            }
-        });
     }
 </script>
 

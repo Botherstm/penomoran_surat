@@ -14,7 +14,7 @@
                 <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> -->
                 <div class="info">
-                    <?= session()->get('name'); ?>
+                    <a href="/user/profile" class="d-block"><?= session()->get('name'); ?></a>
                 </div>
             </div>
 
@@ -45,22 +45,7 @@
                         </li>
                     <?php endif ?>
 
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('public/riwayat/') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-envelope"></i>
-                            <p>
-                                Riwayat Surat
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-envelope"></i>
-                            <p>
-                                Surat
-                            </p>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="/user/profile" class="nav-link">
                             <i class="nav-icon fa fa-user"></i>
