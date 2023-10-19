@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
-                                <button type="button" class="btn btn-outline-primary m-3" data-toggle="modal"
+                                <button type="button" class="btn btn-outline-success m-3" data-toggle="modal"
                                     data-target="#generateModal">Generate Nomor Surat !!</button>
                                 <div class="col-sm-12">
                                     <table id="example1"
@@ -115,19 +115,7 @@
                                             </tr>
                                             <?php endforeach?>
                                         </tbody>
-                                        <tfoot>
-                                            <!-- <tr>
-                                                <th rowspan="1" colspan="1">No</th>
-                                                <th rowspan="1" colspan="1">Kode Surat</th>
-                                                <th rowspan="1" colspan="1">Perihal Surat</th>
-                                                <th rowspan="1" colspan="1">Tanggal Surat</th>
-                                                <th rowspan="1" colspan="1"> Dinas</th>
-                                                <th rowspan="1" colspan="1"> Bidang</th>
-                                                <th rowspan="1" colspan="1"> Nama User</th>
-                                                <th rowspan="1" colspan="1"> Nomor User</th>
-                                                <th rowspan="1" colspan="1">Aksi</th>
-                                            </tr> -->
-                                        </tfoot>
+                                    
                                     </table>
                                 </div>
                             </div>

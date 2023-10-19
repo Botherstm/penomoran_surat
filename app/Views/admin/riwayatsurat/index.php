@@ -2,17 +2,6 @@
 
 <?= $this->section('content'); ?>
 <style>
-.table td {
-    text-align: center;
-    background-color: #C5E9DE;
-
-}
-
-
-.table>thead>tr>* {
-    background-color: #20c997;
-    text-align: center;
-}
 
 
 .btnadd {
@@ -58,84 +47,85 @@
     </div>
     <!-- Main content -->
     <section class="content">
-        <div class="row jarak ">
-            <div class="card-tools">
+    <div style="padding-top: 20px;" >
+                                <div class="col-sm-12">
+                             
+                                    <table id="example1"
+                                        class="table table-bordered table-striped dataTable dtr-inline collapsed"
+                                        aria-describedby="example1_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    No</th>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    Kode Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    Perihal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Tanggal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Dinas</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Bidang</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nama
+                                                    User
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nomor
+                                                    User</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <span> 1
+                                                    </span>
+                                                </td>
+                                                <td>1
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                   1
+                                                </td>
+                                                <td>
+                                                   1
+                                                </td>
+                                                <td>1
+                                                <td>
+                                                    <div class="btn-group ">
+                                                        <a class="btnr"
+                                                            href="#">
+                                                            <button type="button" class="btn btn-block btn-primary ">
+                                                                <i class=" fas fa-info"></i>
+                                                            </button>
+                                                        </a>
+                                                        <!-- update -->
 
-
-            </div>
-            <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Kode. Surat</th>
-                            <th>Tanggal Surat</th>
-                            <th>User</th>
-                            <th>No Hp User</th>
-                            <th>Bidang</th>
-                            <th>Urutan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($riwayats as $riwayat) : ?>
-                        <tr>
-                            <td><?= $i++; ?></td>
-                            <td>
-                                <span class="copy-text" data-clipboard-text="<?= $riwayat['nomor']; ?>"
-                                    title="Klik untuk menyalin kode surat">
-                                    <?= $riwayat['nomor']; ?>
-                                </span>
-                            </td>
-                            <td><?= $riwayat['tanggal']; ?></td>
-                            <td>
-                                <?php $userId = $riwayat['user_id']; ?>
-                                <?php if (isset($users[$userId]['name'])) : ?>
-                                <?=  $users[$userId]['name'] . '<br>'; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php $userId = $riwayat['user_id']; ?>
-                                <?php if (isset($users[$userId]['no_hp'])) : ?>
-                                <?=  $users[$userId]['no_hp'] . '<br>'; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php $bidangId = $riwayat['bidang_id']; ?>
-                                <?php if (isset($bidangs[$bidangId]['name'])) : ?>
-                                <?=  $bidangs[$bidangId]['name'] . '<br>'; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td><?= $riwayat['urutan']; ?></td>
-                            <td>
-                                <div class="btn-group ">
-                                    <a class="btnr" href="<?php echo base_url('admin/riwayatsurat/rinciansurat') ?>">
-                                        <button type="button" class="btn btn-block btn-primary ">
-                                            <i class=" fas fa-info"></i>
-                                        </button>
-                                    </a>
-                                    <!-- update -->
-
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </td>
-                        </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
+                            </div>
+        
+        
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>

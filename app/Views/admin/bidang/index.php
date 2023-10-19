@@ -2,17 +2,6 @@
 
 <?= $this->section('content'); ?>
 <style>
-.table td {
-    text-align: center;
-    background-color: #C5E9DE;
-
-}
-
-
-.table>thead>tr>* {
-    background-color: #20c997;
-    text-align: center;
-}
 
 
 .btnadd {
@@ -79,30 +68,20 @@
             </div>
             <?php endif; ?>
 
-            <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Bidang</th>
-                            <th>Kode Bidang</th>
-                            <?php if(session()->get('level') == 2): ?>
-                            <th>Aksi</th>
-                            <?php endif; ?>
-
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div class="card" style="width: 150%;" >
+<div class="card-body">
+<table id="example1" class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>No.</th>
+<th>Nama Bidang</th>
+<th>Kode Bidang</th>
+<?php if(session()->get('level') == 2): ?>
+<th>Aksi</th>
+<?php endif; ?>
+</tr>
+</thead>
+<tbody>
                         <?php $i = 1 ?>
                         <?php foreach($bidangs as $bidang): ?>
                         <tr>
@@ -134,9 +113,11 @@
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
+</table>
+</div>
+</div>
 
-                </table>
-            </div>
+    
 
         </div>
     </section>

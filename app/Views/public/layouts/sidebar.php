@@ -58,7 +58,7 @@
                         <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>
-                                Generate Surat Terlewat
+                                Surat
                             </p>
                         </a>
                     </li>

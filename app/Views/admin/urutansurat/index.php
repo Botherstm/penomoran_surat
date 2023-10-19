@@ -117,7 +117,83 @@
             </div>
 
         </div>
+        <div style="padding-top: 20px;" >
+                                <div class="col-sm-12">
+                             
+                                    <table id="example1"
+                                        class="table table-bordered table-striped dataTable dtr-inline collapsed"
+                                        aria-describedby="example1_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    No</th>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Rendering engine: activate to sort column descending">
+                                                    Kode Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    Perihal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Tanggal Surat</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Dinas</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Platform(s): activate to sort column ascending">
+                                                    Bidang</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nama
+                                                    User
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Engine version: activate to sort column ascending">Nomor
+                                                    User</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <span> 1
+                                                    </span>
+                                                </td>
+                                                <td>1
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                   1
+                                                </td>
+                                                <td>
+                                                   1
+                                                </td>
+                                                <td>1
+                                                <td>
+                                                    <div class="btn-group ">
+                                                        <a class="btnr"
+                                                            href="#">
+                                                            <button type="button" class="btn btn-block btn-primary ">
+                                                                <i class=" fas fa-info"></i>
+                                                            </button>
+                                                        </a>
+                                                        <!-- update -->
 
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>

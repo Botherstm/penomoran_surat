@@ -2,17 +2,6 @@
 
 <?= $this->section('content'); ?>
 <style>
-.table td {
-    text-align: center;
-    background-color: #C5E9DE;
-
-}
-
-
-.table>thead>tr>* {
-    background-color: #20c997;
-    text-align: center;
-}
 
 
 .btnadd {
@@ -66,18 +55,15 @@
                 </div>
             </div>
             <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="button" id="searchButton" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
+              
             </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap">
-                    <thead>
+        </div>
+        <div class="card" style="width: 150%;" >
+
+
+<div class="card-body">
+<table id="example1" class="table table-bordered table-striped">
+<thead>
                         <tr>
                             <th>No.</th>
                             <th>Nama</th>
@@ -155,10 +141,10 @@
                         <?php endif; ?>
                         <?php endforeach; ?>
                     </tbody>
-                </table>
-            </div>
+</table>
+</div>
 
-        </div>
+</div>
     </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
