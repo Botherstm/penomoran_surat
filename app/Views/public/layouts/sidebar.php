@@ -46,22 +46,7 @@
                     </li>
                     <?php endif?>
 
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('public/riwayat/') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-envelope"></i>
-                            <p>
-                                Riwayat Surat
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('/generate/terlewat/') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-envelope"></i>
-                            <p>
-                                Surat
-                            </p>
-                        </a>
-                    </li>
+                  
                     <li class="nav-item">
                         <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                             <i class="nav-icon fas fa-info"></i>
