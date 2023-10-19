@@ -24,10 +24,10 @@
 }
 </style>
 
-<div class="content-wrapper">
+<div class="content-wrapper container-fluid" >
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container-fluid ">
+        <div>
             <div class="row mb-4">
                 <div class="col-sm-6 px-4">
                     <?php if(session()->get('level') == 2): ?>

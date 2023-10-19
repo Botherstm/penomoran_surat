@@ -3,17 +3,7 @@
 <?= $this->section('content'); ?>
 
 <style>
-    .table td {
-        text-align: center;
-        background-color: #C5E9DE;
-
-    }
-
-
-    .table>thead>tr>* {
-        background-color: #20c997;
-        text-align: center;
-    }
+   
 
 
     .btnadd {
@@ -54,8 +44,8 @@
         </div><!-- /.container-fluid -->
     </div>
     <div class="btnadd">
-        <a href="<?php echo base_url('admin/dinas/create') ?>">
-            <button type="button" class="btn btn-success">
+        <a href="#">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
                 <i class="icon-jarak fas fa-plus"></i>
                 Tambah
             </button>
@@ -64,29 +54,25 @@
     <!-- Main content -->
     <section class="content">
         <div class="row jarak ">
-            <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="button" id="searchButton" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap table-light">
-                    <thead>
+            
+            <div class="card" >
+
+
+<div class="card-body">
+<table id="example1" class="table table-bordered table-striped">
+<thead>
                         <tr>
+                    
                             <th>No.</th>
                             <th>Nama Dinas</th>
                             <th>Aksi Urutan Surat</th>
                             <th>Data Bidang</th>
                             <th>Aksi</th>
+                      
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1 ?>
+                    <?php $i = 1 ?>
                         <?php foreach ($dinass as $dinas) : ?>
                         <tr class="text-center">
                             <td><?= $i++; ?></td>
@@ -138,12 +124,48 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </tbody>
+</table>
+
+
+<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Tambah Data Dinas</h3>
+                            </div>
+                            <div class="card-body">
+                            <form action="<?php echo base_url('admin/dinas/save') ?>" method="POST" class="">
+        <?= csrf_field(); ?>
+        <div class="form-group ">
+            <label for="kategori" class="form-label input-group justify-content-center">Nama Dinas</label>
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+        </div>
+        <div class="form-group">
+            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Dinas</label>
+            <input type="name" name="kode" class="form-control " id="kodeKategori">
         </div>
 
-</div>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <a href="<?php echo base_url('admin/dinas') ?>">
+                    <button type="button" class="btn btn-danger" style="width: 80%;">Batal</button>
+                </a>
+            </div>
 
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success " style="width:80%;">Tambah data</button>
+            </div>
+        </div>
+
+    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 

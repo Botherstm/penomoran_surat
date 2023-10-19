@@ -171,10 +171,10 @@
             </div>
 
             <?php elseif(session()->get('level') == 2): ?>
-            <div class="form-group">
+       <div class="form-group">
                 <label for="instansiSelect">Dinas</label>
                 <select class="form-control" id="instansiSelect" name="instansi_id">
-                    <?php foreach ($instansis as $dinas) : ?>
+                  <!--   <?php foreach ($instansis as $dinas) : ?> -->
                     <option value="<?= $dinas['id'] ?>"><?= $dinas['name'] ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -227,12 +227,12 @@
 
                             <div class="form-group">
                                 <label for="nomorSurat">Dinas</label>
-                                <input type="name" value="<?=$dinas['name'];?>" class="form-control form-control-border"
+                                <input type="name" value="" class="form-control form-control-border"
                                     name="instansi" id="dinas" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="nomorSurat">Bidang</label>
-                                <input type="text" value="<?=$bidang['name'];?>" class="form-control" name="bidang"
+                                <input type="text" value="" class="form-control" name="bidang"
                                     id="bidang" readonly>
                             </div>
 
