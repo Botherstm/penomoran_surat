@@ -45,7 +45,7 @@
     </div>
     <div class="btnadd">
         <a href="#">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateDinas">
                 <i class="icon-jarak fas fa-plus"></i>
                 Tambah
             </button>
@@ -109,7 +109,7 @@
                             <td>
                                 <div class="btn-group">
                                     <!-- update -->
-                                    <a class="btnr" href="<?php echo base_url('admin/dinas/edit/') ?><?= $dinas['slug']; ?>">
+                                    <a class="btnr" href="<?= $dinas['slug']; ?>" data-toggle="modal" data-target="#Edit">
                                         <button type="button" class="btn btn-block btn-warning ">
                                             <i class=" fas fa-pen"></i>
                                         </button>
@@ -128,7 +128,7 @@
 </table>
 
 
-<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+<div class="modal fade" id="generateDinas" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content card card-primary">
                             <div class="card-header">
@@ -161,6 +161,52 @@
             </div>
         </div>
 
+    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Tambah Data Dinas</h3>
+                            </div>
+                            <div class="card-body">
+                   
+    <form action="<?php echo base_url('admin/dinas/update/') ?><?= $dinas['id'] ?>" method="POST" class="">
+        <?= csrf_field(); ?>
+        <div class="input-group justify-content-center mb-3">
+            <h2 class="mt-5 mb-5">Edit Data Dinas</h2>
+        </div>
+        <div class="mb-5 m-1 ">
+            <label for="dinas" class="form-label input-group justify-content-center">Kategori</label>
+            <input type="text" name="name" value="<?= $dinas['name']; ?>" class="form-control w-50 m-auto" id="name"
+                aria-describedby="emailHelp">
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden value="<?= $dinas['slug']; ?>" class="form-control" id="slug" name="slug"
+                readonly>
+        </div>
+        <div class="mb-5 m-1">
+            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Kategori</label>
+            <input type="name" name="kode" value="<?= $dinas['kode']; ?>" class="form-control w-50 m-auto"
+                id="kodeKategori">
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-6">
+                <a href="<?php echo base_url('admin/dinas') ?>">
+                    <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
+            </div>
+        </div>
     </form>
                             </div>
                         </div>
@@ -225,6 +271,28 @@
 
     document.getElementById('searchButton').addEventListener('click', performSearch);
     document.getElementById('searchInput').addEventListener('input', performSearch);
+</script>
+
+<script>
+var nameInput = document.getElementById('name');
+var slugInput = document.getElementById('slug');
+
+// Function to generate a slug from the given string
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-') // Replace spaces with dashes
+        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+        .substring(0, 50); // Limit the slug length
+}
+
+// Add an input event listener to the name input field
+nameInput.addEventListener('input', function() {
+    var nameValue = nameInput.value;
+    var slugValue = slugify(nameValue);
+    slugInput.value = slugValue;
+});
 </script>
 
 <?= $this->endSection('content'); ?>
