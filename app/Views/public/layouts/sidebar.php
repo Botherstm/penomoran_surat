@@ -2,8 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link bg-teal">
         <a href="index3.html" class="brand-link bg-teal ">
-            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja"
-                class="justify-content-center" height="40" width="65">
+            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
             <span class="brand-text font-weight-bold ">E-NOMOR</span>
         </a>
 
@@ -15,7 +14,7 @@
                 <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> -->
                 <div class="info">
-                    <a href="/user/profile" class="d-block"><?=session()->get('name');?></a>
+                    <a href="/user/profile" class="d-block"><?= session()->get('name'); ?></a>
                 </div>
             </div>
 
@@ -35,16 +34,16 @@
                         </a>
                     </li>
 
-                    <?php if (session()->get('level') != 0): ?>
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
-                            <i class="nav-icon fa fa-lock"></i>
-                            <p>
-                                Admin
-                            </p>
-                        </a>
-                    </li>
-                    <?php endif?>
+                    <?php if (session()->get('level') != 0) : ?>
+                        <li class="nav-item ">
+                            <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
+                                <i class="nav-icon fa fa-lock"></i>
+                                <p>
+                                    Admin
+                                </p>
+                            </a>
+                        </li>
+                    <?php endif ?>
 
                   
                     <li class="nav-item">
@@ -56,7 +55,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/user/profile" class="nav-link">
                             <i class="nav-icon fa fa-user"></i>
                             <p>
                                 Pengaturan Akun
@@ -65,9 +64,17 @@
                     </li>
                     <li class="nav-item">
                         <a href="/logout" class="nav-link">
-                            <i class="nav-icon fa fa-sign-out"></i>
+                            <i class="nav-icon far fa-sign-out"></i>
                             <p>
                                 Keluar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/coba" class="nav-link">
+                            <i class="nav-icon far fa-sign-out"></i>
+                            <p>
+                                Coba
                             </p>
                         </a>
                     </li>
