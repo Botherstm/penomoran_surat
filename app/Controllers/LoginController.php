@@ -71,6 +71,7 @@ class LoginController extends BaseController
                         'name' => $user['name'],
                         'email' => $user['email'],
                         'no_hp' => $user['no_hp'],
+                        'gambar' => $user['gambar'],
                         'level' => $user['level'],
                     ];
                     // dd($userData);
