@@ -69,7 +69,7 @@ class HomeController extends BaseController
         $generates = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
 
         $tanggalSaatIni = new DateTime();
-        $tanggalMaksimum = $tanggalSaatIni->modify('+5 days')->format('Y-m-d');
+        $tanggalMaksimum = $tanggalSaatIni->format('Y-m-d');
         return view('public/home/index', [
             'active' => 'riwayatsurat',
             'riwayats' => $generate,
