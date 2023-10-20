@@ -60,12 +60,19 @@ class GenerateModel extends Model
         $result = $dataurutanterkecil;
 
         if (!$result) {
-            $result = $this->where('tanggal <=', $tanggal)
+            $data = $this->where('tanggal <=', $tanggal)
                 ->where('terlewat IS NOT NULL', null, false)
                 ->orderBy('tanggal', 'DESC')
                 ->orderBy('terlewat', 'DESC')
                 ->first();
-
+            if ($data['terlewat'] == 99) {
+                $result = $this->where('tanggal', $data['tanggal'])
+                    ->where('terlewat', null)
+                    ->orderBy('urutan', 'ASC')
+                    ->first();
+            } else {
+                $result = $data;
+            }
         }
         // dd($result);
         return $result;
