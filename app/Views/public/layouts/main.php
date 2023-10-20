@@ -7,8 +7,7 @@
     <title>E-Nomor Singaraja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.css">
 
@@ -17,8 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -26,101 +24,96 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/summernote/summernote-bs4.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/fontawesome-free/css/all.min.css">
 
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <link rel="stylesheet" href="<?php echo base_url() ?>adminlte/dist/css/adminlte.min.css?v=3.2.0">
     <script nonce="2e636a55-dcda-4b1e-ae49-d89e64644cb6">
-    (function(w, d) {
-        ! function(t, u, v, w) {
-            t[v] = t[v] || {};
-            t[v].executed = [];
-            t.zaraz = {
-                deferred: [],
-                listeners: []
-            };
-            t.zaraz.q = [];
-            t.zaraz._f = function(x) {
-                return async function() {
-                    var y = Array.prototype.slice.call(arguments);
-                    t.zaraz.q.push({
-                        m: x,
-                        a: y
-                    })
-                }
-            };
-            for (const z of ["track", "set", "debug"]) t.zaraz[z] = t.zaraz._f(z);
-            t.zaraz.init = () => {
-                var A = u.getElementsByTagName(w)[0],
-                    B = u.createElement(w),
-                    C = u.getElementsByTagName("title")[0];
-                C && (t[v].t = u.getElementsByTagName("title")[0].text);
-                t[v].x = Math.random();
-                t[v].w = t.screen.width;
-                t[v].h = t.screen.height;
-                t[v].j = t.innerHeight;
-                t[v].e = t.innerWidth;
-                t[v].l = t.location.href;
-                t[v].r = u.referrer;
-                t[v].k = t.screen.colorDepth;
-                t[v].n = u.characterSet;
-                t[v].o = (new Date).getTimezoneOffset();
-                if (t.dataLayer)
-                    for (const G of Object.entries(Object.entries(dataLayer).reduce(((H, I) => ({
-                            ...H[1],
-                            ...I[1]
-                        })), {}))) zaraz.set(G[0], G[1], {
-                        scope: "page"
-                    });
-                t[v].q = [];
-                for (; t.zaraz.q.length;) {
-                    const J = t.zaraz.q.shift();
-                    t[v].q.push(J)
-                }
-                B.defer = !0;
-                for (const K of [localStorage, sessionStorage]) Object.keys(K || {}).filter((M => M.startsWith(
-                    "_zaraz_"))).forEach((L => {
-                    try {
-                        t[v]["z_" + L.slice(7)] = JSON.parse(K.getItem(L))
-                    } catch {
-                        t[v]["z_" + L.slice(7)] = K.getItem(L)
+        (function(w, d) {
+            ! function(t, u, v, w) {
+                t[v] = t[v] || {};
+                t[v].executed = [];
+                t.zaraz = {
+                    deferred: [],
+                    listeners: []
+                };
+                t.zaraz.q = [];
+                t.zaraz._f = function(x) {
+                    return async function() {
+                        var y = Array.prototype.slice.call(arguments);
+                        t.zaraz.q.push({
+                            m: x,
+                            a: y
+                        })
                     }
-                }));
-                B.referrerPolicy = "origin";
-                B.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(t[v])));
-                A.parentNode.insertBefore(B, A)
-            };
-            ["complete", "interactive"].includes(u.readyState) ? zaraz.init() : t.addEventListener(
-                "DOMContentLoaded", zaraz.init)
-        }(w, d, "zarazData", "script");
-    })(window, document);
+                };
+                for (const z of ["track", "set", "debug"]) t.zaraz[z] = t.zaraz._f(z);
+                t.zaraz.init = () => {
+                    var A = u.getElementsByTagName(w)[0],
+                        B = u.createElement(w),
+                        C = u.getElementsByTagName("title")[0];
+                    C && (t[v].t = u.getElementsByTagName("title")[0].text);
+                    t[v].x = Math.random();
+                    t[v].w = t.screen.width;
+                    t[v].h = t.screen.height;
+                    t[v].j = t.innerHeight;
+                    t[v].e = t.innerWidth;
+                    t[v].l = t.location.href;
+                    t[v].r = u.referrer;
+                    t[v].k = t.screen.colorDepth;
+                    t[v].n = u.characterSet;
+                    t[v].o = (new Date).getTimezoneOffset();
+                    if (t.dataLayer)
+                        for (const G of Object.entries(Object.entries(dataLayer).reduce(((H, I) => ({
+                                ...H[1],
+                                ...I[1]
+                            })), {}))) zaraz.set(G[0], G[1], {
+                            scope: "page"
+                        });
+                    t[v].q = [];
+                    for (; t.zaraz.q.length;) {
+                        const J = t.zaraz.q.shift();
+                        t[v].q.push(J)
+                    }
+                    B.defer = !0;
+                    for (const K of [localStorage, sessionStorage]) Object.keys(K || {}).filter((M => M.startsWith(
+                        "_zaraz_"))).forEach((L => {
+                        try {
+                            t[v]["z_" + L.slice(7)] = JSON.parse(K.getItem(L))
+                        } catch {
+                            t[v]["z_" + L.slice(7)] = K.getItem(L)
+                        }
+                    }));
+                    B.referrerPolicy = "origin";
+                    B.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(t[v])));
+                    A.parentNode.insertBefore(B, A)
+                };
+                ["complete", "interactive"].includes(u.readyState) ? zaraz.init() : t.addEventListener(
+                    "DOMContentLoaded", zaraz.init)
+            }(w, d, "zarazData", "script");
+        })(window, document);
     </script>
 
 </head>
 
 <body class="sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
-        <?=$this->include('public/layouts/navbar');?>
-        <?=$this->include('public/layouts/sidebar');?>
+        <?= $this->include('public/layouts/navbar'); ?>
+        <?= $this->include('public/layouts/sidebar'); ?>
         <!-- Main content -->
         <section class="content">
-            <?=$this->renderSection('content');?>
+            <?= $this->renderSection('content'); ?>
         </section>
-        <?=$this->include('public/layouts/footer');?>
+        <?= $this->include('public/layouts/footer'); ?>
     </div>
     <!-- Control Sidebar -->
 
@@ -132,7 +125,7 @@
     <script src="<?php echo base_url() ?>adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?php echo base_url() ?>adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -149,8 +142,7 @@
     <script src="<?php echo base_url() ?>adminlte/plugins/moment/moment.min.js"></script>
     <script src="<?php echo base_url() ?>adminlte/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script
-        src="<?php echo base_url() ?>adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
+    <script src="<?php echo base_url() ?>adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
     </script>
     <!-- Summernote -->
     <script src="<?php echo base_url() ?>adminlte/plugins/summernote/summernote-bs4.min.js"></script>
@@ -207,88 +199,52 @@
     <script src="<?php echo base_url() ?>adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script src="<?php echo base_url() ?>adminlte/dist/js/adminlte.min.js?v=3.2.0"></script>
-    <style>
-    /* Ganti warna latar belakang untuk tombol copy */
-    .button-copy {
-        background-color: #FF0000;
-        color: #fff;
-    }
 
-    /* Ganti warna latar belakang untuk tombol csv */
-    .button-csv {
-        background-color: #ff9900;
-        color: #fff;
-    }
-
-    /* Ganti warna latar belakang untuk tombol excel */
-    .button-excel {
-        background-color: #FFFF00;
-        color: #fff;
-    }
-
-    /* Ganti warna latar belakang untuk tombol pdf */
-    .button-pdf {
-        background-color: #15FF00;
-        color: #fff;
-    }
-
-    /* Ganti warna latar belakang untuk tombol print */
-    .button-print {
-        background-color: #0000FF;
-        color: #fff;
-    }
-
-    /* Ganti warna latar belakang untuk tombol colvis */
-    .button-colvis {
-        background-color: #6b00ff;
-        color: #fff;
-    }
-    </style>
     <script>
-    $(function() {
         $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": [{
-                        extend: "copy",
-                        className: "button-copy"
-                    },
-                    {
-                        extend: "csv",
-                        className: "button-csv"
-                    },
-                    {
-                        extend: "excel",
-                        className: "button-excel"
-                    },
-                    {
-                        extend: "pdf",
-                        className: "button-pdf"
-                    },
-                    {
-                        extend: "print",
-                        className: "button-print"
-                    },
-                    {
-                        extend: "colvis",
-                        className: "button-colvis"
-                    }
-                ]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
+            $(function() {
+                $("#example1").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": [{
+                            extend: "copy",
+                            className: "button-copy"
+                        },
+                        {
+                            extend: "csv",
+                            className: "button-csv"
+                        },
+                        {
+                            extend: "excel",
+                            className: "button-excel"
+                        },
+                        {
+                            extend: "pdf",
+                            className: "button-pdf"
+                        },
+                        {
+                            extend: "print",
+                            className: "button-print"
+                        },
+                        {
+                            extend: "colvis",
+                            className: "button-colvis"
+                        }
+                    ]
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            });
 
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-    });
     </script>
 
 </body>
