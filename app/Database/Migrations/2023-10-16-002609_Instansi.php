@@ -14,7 +14,7 @@ class Instansi extends Migration
                 'constraint' => 255,
                 // 'auto_increment' => true,
             ],
-             'slug' => [
+            'slug' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -23,6 +23,10 @@ class Instansi extends Migration
                 'constraint' => 255,
             ],
             'name' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'urutan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
@@ -40,6 +44,6 @@ class Instansi extends Migration
 
     public function down()
     {
-         $this->forge->dropTable('instansi');
+        $this->forge->dropTable('instansi');
     }
 }

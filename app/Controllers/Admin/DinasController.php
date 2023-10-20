@@ -41,16 +41,7 @@ class DinasController extends BaseController
         // }
         // dd($result);
 
-        $urutans = [];
         $dinass = $this->dinas->getAll();
-        foreach ($dinass as $dinas) {
-            $dinasId = $dinas['id'];
-            // dd($dinasId);
-            $urutanData = $this->urutan->getByInstansi_id($dinasId);
-            $urutans[$dinasId] = $urutanData;
-        }
-        // dd($urutans);
-
         foreach ($dinass as $dinas) {
             $dinasId = $dinas['id'];
             $bidangData = $this->bidang->getAllByInstansiId($dinasId);
@@ -60,7 +51,6 @@ class DinasController extends BaseController
         return view('admin/dinas/index', [
             'dinass' => $dinass,
             'active' => 'dinas',
-            'urutans' => $urutans,
         ]);
     }
 
@@ -78,12 +68,15 @@ class DinasController extends BaseController
             'name' => 'required',
             'kode' => 'required',
             'slug' => 'required',
+            'urutan' => 'required',
         ];
 
         if ($this->validate($rules)) {
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             $slug = $this->request->getPost('slug');
+            $urutan = $this->request->getPost('urutan');
+
             // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
@@ -92,6 +85,7 @@ class DinasController extends BaseController
                 'name' => $name,
                 'kode' => $kode,
                 'slug' => $slug,
+                'urutan' => $urutan,
             ];
             // dd($data);
             $this->dinas->insert($data);
@@ -114,21 +108,24 @@ class DinasController extends BaseController
         ]);
     }
 
-    public function update($id)
+    public function update()
     {
         // Validasi input form
         $rules = [
             'name' => 'required',
             'kode' => 'required',
             'slug' => 'required',
+            'urutan' => 'required',
         ];
-
+        $id = $this->request->getPost('id');
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
             $dinasData = [
+
                 'name' => $this->request->getPost('name'),
                 'kode' => $this->request->getPost('kode'),
                 'slug' => $this->request->getPost('slug'),
+                'urutan' => $this->request->getPost('urutan'),
             ];
             // dd($dinasData);
             // Simpan data pengguna ke dalam database

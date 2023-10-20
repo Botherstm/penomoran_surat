@@ -1,6 +1,6 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 
 <style>
 .row {
@@ -13,7 +13,7 @@
 
 
     <form action="<?php echo base_url('admin/dinas/save') ?>" method="POST" class="">
-        <?= csrf_field(); ?>
+        <?=csrf_field();?>
         <div class="input-group justify-content-center mb-3">
             <h2 class="mt-5 mb-5">Tambah Data Dinas</h2>
         </div>
@@ -22,7 +22,7 @@
             <input type="text" class="form-control w-50 m-auto " name="name" id="name" aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+            <input type="name" class="form-control" id="slug" name="slug" readonly>
         </div>
         <div class="mb-5 m-1">
             <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Dinas</label>
@@ -69,4 +69,4 @@ nameInput.addEventListener('input', function() {
 });
 </script>
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>

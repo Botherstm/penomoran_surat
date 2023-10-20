@@ -74,24 +74,8 @@
                             <tr class="text-center">
                                 <td><?=$i++;?></td>
                                 <td><?=$dinas['name']?></td>
-
                                 <td>
-                                    <?php if (!empty($urutans[$dinas['id']])): ?>
-                                    <?php foreach ($urutans[$dinas['id']] as $urutan): ?>
-                                    <?=$urutan['urutan'] . '<br>';?>
-                                    <?php endforeach;?>
-                                    <!-- Jika data urutan sudah ada, tampilkan tombol "Edit" -->
-                                    <a
-                                        href="<?php echo base_url('admin/dinas/urutansurat/edit/') ?><?=$dinas['slug'];?>">
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                    </a>
-                                    <?php else: ?>
-                                    <!-- Jika data urutan belum ada, tampilkan tombol "Tambah Data" -->
-                                    <a
-                                        href="<?php echo base_url('admin/dinas/urutansurat/create/') ?><?=$dinas['slug'];?>">
-                                        <button type="button" class="btn btn-success">Tambah Data</button>
-                                    </a>
-                                    <?php endif;?>
+                                    <?=$dinas['urutan']?>
                                 </td>
 
                                 <td>
@@ -108,12 +92,11 @@
                                 <td>
                                     <div class="btn-group">
                                         <!-- update -->
-                                        <a class="btnr"
-                                            href="<?php echo base_url('admin/dinas/edit/') ?><?=$dinas['slug'];?>">
-                                            <button type="button" class="btn btn-block btn-warning ">
-                                                <i class=" fas fa-pen"></i>
-                                            </button>
-                                        </a>
+                                        <button type="button" class="btn btn-warning"
+                                            onclick="openEditModal('<?=$dinas['id']?>', '<?=$dinas['name']?>', '<?=$dinas['kode']?>', '<?=$dinas['urutan']?>')">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+
                                         <form id="deleteForm" class="mr-3"
                                             action="<?php echo base_url('admin/dinas/delete/') ?><?=$dinas['slug'];?>"
                                             method="POST">
@@ -129,7 +112,6 @@
                             <?php endforeach;?>
                         </tbody>
                     </table>
-
 
                     <div class="modal fade" id="generateModal" tabindex="-1" role="dialog"
                         aria-labelledby="generateModalLabel" aria-hidden="true">
@@ -154,15 +136,19 @@
                                         <div class="form-group">
                                             <label for="kodeKategori"
                                                 class="form-label input-group justify-content-center">Kode Dinas</label>
-                                            <input type="name" name="kode" class="form-control " id="kodeKategori">
+                                            <input type="name" name="kode" class="form-control " id="kodedinas">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kodeKategori"
+                                                class="form-label input-group justify-content-center">Urutan Surat
+                                                Sebelumnya</label>
+                                            <input type="number" name="urutan" class="form-control " id="urutan">
                                         </div>
 
                                         <div class="row text-center">
-                                            <div class="col-md-6">
-                                                <a href="<?php echo base_url('admin/dinas') ?>">
-                                                    <button type="button" class="btn btn-danger"
-                                                        style="width: 80%;">Batal</button>
-                                                </a>
+                                            <div class="col-md-6 mr-2">
+                                                <button class="btn btn-danger" style="width:80%;" type="button"
+                                                    data-dismiss="modal">Batal</button>
                                             </div>
 
                                             <div class="col-md-6">
@@ -170,14 +156,62 @@
                                                     data</button>
                                             </div>
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- edit -->
+                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Edit Data Dinas</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="<?php echo base_url('admin/dinas/update') ?>" method="POST" class="">
+                                        <?=csrf_field();?>
+                                        <input type="hidden" name="id" id="editDinasId">
+                                        <!-- Input untuk menyimpan ID dinas yang akan diedit -->
+                                        <div class="form-group">
+                                            <label for="editName"
+                                                class="form-label input-group justify-content-center">Nama Dinas</label>
+                                            <input type="text" class="form-control" name="name" id="editName"
+                                                aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <input type="name" hidden class="form-control" id="editSlug" name="slug"
+                                                readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editKodeDinas"
+                                                class="form-label input-group justify-content-center">Kode Dinas</label>
+                                            <input type="name" name="kode" class="form-control" id="editKodeDinas">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editUrutan"
+                                                class="form-label input-group justify-content-center">Urutan Surat
+                                                Sebelumnya</label>
+                                            <input type="number" name="urutan" class="form-control" id="editUrutan">
+                                        </div>
 
+                                        <div class="row text-center">
+                                            <div class="col-md-6">
+                                                <button class="btn btn-danger" style="width: 80%;" type="button"
+                                                    data-dismiss="modal">Batal</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success" style="width: 80%;">Simpan
+                                                    Perubahan</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
                     <script>
@@ -200,12 +234,39 @@
                         var slugValue = slugify(nameValue);
                         slugInput.value = slugValue;
                     });
-                    </script>
 
-                    <script>
-                    // function showAlert() {
-                    //     Swal.fire('Ini adalah pesan SweetAlert2!');
-                    // }
+
+                    function slugifyEdit(text) {
+                        return text
+                            .toLowerCase()
+                            .trim()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/\s+/g, '-')
+                            .replace(/-+/g, '-')
+                            .substring(0, 50);
+                    }
+                    var nameInputedit = document.getElementById('editName'); // Gantilah dengan ID yang sesuai
+                    var slugInputedit = document.getElementById('editSlug'); // Gantilah dengan ID yang sesuai
+
+                    nameInputedit.addEventListener('input', function() {
+                        var nameValue = nameInputedit.value;
+                        var slugValue = slugifyEdit(nameValue);
+                        slugInputedit.value = slugValue;
+                    });
+
+
+
+                    function openEditModal(dinasId, name, kodeDinas, urutan) {
+                        // Setel nilai-nilai input di dalam form edit sesuai dengan data dinas yang akan diedit
+                        document.getElementById('editDinasId').value = dinasId;
+                        document.getElementById('editName').value = name;
+                        document.getElementById('editKodeDinas').value = kodeDinas;
+                        document.getElementById('editUrutan').value = urutan;
+                        var slugEdit = slugifyEdit(name);
+                        document.getElementById('editSlug').value = slugEdit;
+                        // Aktifkan form pop-up
+                        $('#editModal').modal('show');
+                    }
 
                     function confirmDelete(slug) {
                         Swal.fire({
@@ -237,26 +298,6 @@
                         showConfirmButton: false
                     });
                     <?php endif;?>
-
-
-
-
-                    function performSearch() {
-
-                        var searchText = document.getElementById('searchInput').value.toLowerCase();
-                        var tableRows = document.querySelectorAll('.table tbody tr');
-                        tableRows.forEach(function(row) {
-                            var rowData = row.textContent.toLowerCase();
-                            if (rowData.includes(searchText)) {
-                                row.style.display = '';
-                            } else {
-                                row.style.display = 'none';
-                            }
-                        });
-                    }
-
-                    document.getElementById('searchButton').addEventListener('click', performSearch);
-                    document.getElementById('searchInput').addEventListener('input', performSearch);
                     </script>
 
                     <?=$this->endSection('content');?>
