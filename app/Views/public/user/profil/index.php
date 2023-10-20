@@ -5,7 +5,7 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
-            <div class="" style="padding-top:1%; padding-left: 1% ">
+            <div class="" style="padding-top:1%; ">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
@@ -14,46 +14,35 @@
                             </div>
                             <table class="table table-borderless">
                                 <tr style="padding-left: 1%;">
-                                    <th>NIP</th>
+                                    <th>Nama</th>
                                     <td>:</td>
-                                    <td>2015051090</td>
+                                    <td>Budi Doremi</td>
                                 </tr>
                                 <tr>
-                                    <th>Nama Lengkap</th>
+                                    <th>Email</th>
                                     <td>:</td>
-                                    <td>nama lengkap</td>
+                                    <td>namanama@gmail.com</td>
                                 </tr>
                                 <tr>
-                                    <th>Tempat Lahir, Tanggal Lahir</th>
+                                    <th>No Telepon</th>
                                     <td>:</td>
-                                    <td>Indonesia, 2000-01-01</td>
+                                    <td>081234567890</td>
                                 </tr>
                                 <tr>
-                                    <th>Jenis Kelamin</th>
+                                    <th>Password</th>
                                     <td>:</td>
-                                    <td>Laki-laki</td>
+                                    <td>**********</td>
                                 </tr>
                                 <tr>
-                                    <th>Agama</th>
+                                    <th>Nama Instansi</th>
                                     <td>:</td>
-                                    <td>Hindu</td>
-                                </tr>
-
-                                <tr>
-                                    <th>Nomor KTP</th>
-                                    <td>:</td>
-                                    <td>12345678909876</td>
+                                    <td>Dinas Kominfo</td>
                                 </tr>
 
                                 <tr>
-                                    <th>Jabatan</th>
+                                    <th>Bidang</th>
                                     <td>:</td>
-                                    <td>Pegawai</td>
-                                </tr>
-                                <tr>
-                                    <th>Telepon</th>
-                                    <td>:</td>
-                                    <td>08123456789</td>
+                                    <td>Tata Kelola</td>
                                 </tr>
                             </table>
                             <hr>
@@ -112,7 +101,7 @@
 
                             <div class="card-body">
                                 <div class="text-center ">
-                                    <img src="" id="sample_image" style="width: 50%;" />
+                                    <img src="/img/profile.jpg" alt="" width="70%">
                                 </div>
                             </div>
 
@@ -131,14 +120,15 @@
                             </div>
                         </div>
                         <div class="mt-3 text-right" style="margin-right: 3%;">
-                            <button class="btn btn-outline-info" id="tombolBaru"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <a href="/" class="btn btn-outline-info" id="tombolBaru">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                </svg> Kembali</button>
+                                </svg> Kembali</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>.
     </div>
 
 </div>
