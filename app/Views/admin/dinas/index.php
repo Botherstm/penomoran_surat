@@ -190,12 +190,10 @@
                             </div>
                         </div>
                     </div>
-
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
                     <script>
                         var nameInput = document.getElementById('name');
                         var slugInput = document.getElementById('slug');
-
                         // Function to generate a slug from the given string
                         function slugify(text) {
                             return text.toString().toLowerCase()
