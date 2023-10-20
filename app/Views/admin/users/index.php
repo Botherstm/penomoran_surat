@@ -27,42 +27,36 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="content-header">
-                <div>
-                    <div class="row mb-4">
-                        <div class="col-sm-6 px-4">
-                            <?php if (session()->get('level') == 2) : ?>
-                                <h1 class="m-0 font-weight-bold ">List Users</h1>
-                            <?php elseif (session()->get('level') == 1) : ?>
-                                <h1 class="m-0 font-weight-bold ">List Users <?= $dinas['name']; ?></h1>
-                            <?php endif ?>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
             <!-- Main content -->
             <section class="content">
-                <div class="row jarak ">
+                <!-- <div class="row jarak ">
                     <div class="card-tools">
-
                         <div class="btnadd">
-
-                            <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal">
-                                <i class="icon-jarak fas fa-plus"></i>
-                                Tambah User
-                            </button>
-
-
-
                         </div>
                     </div>
                     <div class="card-tools">
+                    </div>
+                </div> -->
+
+                <div class="card">
+                    <div class="card-header col">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+
+                                <?php if (session()->get('level') == 2) : ?>
+                                    <h1 class="card-title">List Users</h1>
+                                <?php elseif (session()->get('level') == 1) : ?>
+                                    <h1 class="card-title">List Users <?= $dinas['name']; ?></h1>
+                                <?php endif ?>
+
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-plus"></i>
+                                    Tambah User</button>
+                            </div>
+                        </div>
 
                     </div>
-                </div>
-                <div class="card">
-
-
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
