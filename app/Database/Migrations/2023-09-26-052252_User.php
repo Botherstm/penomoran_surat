@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             'bidang_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                null => true
+                null => true,
             ],
             'slug' => [
                 'type' => 'VARCHAR',
@@ -29,6 +29,11 @@ class CreateUsersTable extends Migration
             'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+            ],
+            'gambar' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true,
             ],
             'email' => [
                 'type' => 'VARCHAR',
@@ -44,7 +49,7 @@ class CreateUsersTable extends Migration
             'level' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'default'=> 0
+                'default' => 0,
             ],
             'created_at' => [
                 'type' => 'DATETIME',

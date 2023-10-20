@@ -148,12 +148,22 @@ class UserController extends BaseController
         $rules = [
             'instansi_id' => 'required',
             'name' => 'required',
+            'slug' => 'required',
             'no_hp' => 'required|integer',
             'email' => 'required|valid_email',
         ];
 
         $validation = \Config\Services::validation(); // Mendapatkan instance validasi
 
+        $gambar = $this->request->getFile('gambar');
+
+        if (!$gambar !== null) {
+            $uuid = Uuid::uuid4();
+            $uuidString = $uuid->toString();
+
+            $namaGambar = $uuidString . $gambar->getClientName();
+            $gambar->move(ROOTPATH . 'public/img', $namaGambar);
+        }
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
             $userData = [
@@ -162,6 +172,7 @@ class UserController extends BaseController
                 'slug' => $this->request->getPost('slug'),
                 'name' => $this->request->getPost('name'),
                 'email' => $this->request->getPost('email'),
+                'gambar' => $namaGambar,
                 'no_hp' => $this->request->getPost('no_hp'),
             ];
 

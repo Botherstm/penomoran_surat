@@ -8,7 +8,7 @@ class Generate extends Migration
 {
     public function up()
     {
-         $this->forge->addField([
+        $this->forge->addField([
             'id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -33,12 +33,12 @@ class Generate extends Migration
             'slug' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                null => true
+                'null' => true,
             ],
             'terlewat' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                null => true
+                'null' => true,
             ],
             'perihal' => [
                 'type' => 'VARCHAR',
