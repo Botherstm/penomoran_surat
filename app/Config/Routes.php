@@ -6,7 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-
 //----------------ADMIN--------------------------------------------------------------------------
 $routes->get('/admin', 'Admin\AdminController::index');
 $routes->get('/admin/pdf', 'Admin\PdfController::index');
@@ -20,7 +19,7 @@ $routes->get('/admin/dinas', 'Admin\DinasController::index');
 $routes->get('/admin/dinas/create', 'Admin\DinasController::create');
 $routes->get('/admin/dinas/edit/(:segment)', 'Admin\DinasController::edit/$1');
 $routes->post('/admin/dinas/save', 'Admin\DinasController::save');
-$routes->post('/admin/dinas/update/(:segment)', 'Admin\DinasController::update/$1');
+$routes->post('/admin/dinas/update', 'Admin\DinasController::update');
 $routes->post('/admin/dinas/delete/(:segment)', 'Admin\DinasController::delete/$1');
 
 //bidang
@@ -32,7 +31,6 @@ $routes->post('/admin/bidang/save', 'Admin\BidangController::save');
 $routes->post('/admin/bidang/update/(:segment)', 'Admin\BidangController::update/$1');
 $routes->post('/admin/bidang/delete/(:segment)', 'Admin\BidangController::delete/$1');
 
-
 //user
 $routes->get('/admin/users', 'Admin\UserController::index');
 $routes->get('/admin/users/create', 'Admin\UserController::create');
@@ -41,7 +39,7 @@ $routes->post('/admin/users/save', 'Admin\UserController::save');
 $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
 $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
 
-//urutan    
+//urutan
 $routes->get('/admin/dinas/urutansurat/(:segment)', 'Admin\UrutanSuratController::index/$1');
 $routes->get('/admin/dinas/urutansurat/create/(:segment)', 'Admin\UrutanSuratController::create/$1');
 $routes->get('/admin/dinas/urutansurat/edit/(:segment)', 'Admin\UrutanSuratController::edit/$1');
@@ -57,7 +55,6 @@ $routes->post('/admin/kategori/save', 'Admin\KategoryController::save');
 $routes->post('/admin/kategori/update/(:segment)', 'Admin\KategoryController::update/$1');
 $routes->post('/admin/kategori/delete/(:segment)', 'Admin\KategoryController::delete/$1');
 
-
 //Perihal
 $routes->get('/admin/kategori/perihal/(:segment)', 'Admin\PerihalController::index/$1');
 $routes->get('/admin/kategori/perihal/create/(:segment)', 'Admin\PerihalController::create/$1');
@@ -66,7 +63,6 @@ $routes->post('admin/perihal/save', 'Admin\PerihalController::save');
 $routes->post('admin/perihal/update/(:segment)', 'Admin\PerihalController::update/$1');
 $routes->post('/admin/perihal/delete/(:segment)', 'Admin\PerihalController::delete/$1');
 
-
 //Sub Perihal
 $routes->get('/admin/kategori/perihal/subperihal/(:segment)', 'Admin\SubPerihalController::index/$1');
 $routes->get('/admin/kategori/perihal/subperihal/create/(:segment)', 'Admin\SubPerihalController::create/$1');
@@ -74,7 +70,6 @@ $routes->get('/admin/kategori/perihal/subperihal/edit/(:segment)', 'Admin\SubPer
 $routes->post('/admin/subperihal/save', 'Admin\SubPerihalController::save');
 $routes->post('/admin/subperihal/update/(:segment)', 'Admin\SubPerihalController::update/$1');
 $routes->post('/admin/subperihal/delete/(:segment)', 'Admin\SubPerihalController::delete/$1');
-
 
 //Detail Sub Perihal
 $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPerihalController::view');
@@ -92,11 +87,7 @@ $routes->post('/admin/detailsubperihal/save', 'Admin\DetailSubPerihalController:
 $routes->post('/admin/detailsubperihal/update/(:segment)', 'Admin\DetailSubPerihalController::update/$1');
 $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerihalController::delete/$1');
 
-
-
-
 //----------------PUBLIC--------------------------------------------------------------------------
-
 
 //public
 $routes->get('/', 'User\HomeController::index');
@@ -114,16 +105,12 @@ $routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateControlle
 
 //----------User--------------------------------------------
 
-
 //dashboard
 $routes->get('/dashboard', 'DashboardController::index');
-
 
 //riwayat
 $routes->get('/public/riwayat', 'User\RiwayatController::index');
 $routes->get('/public/riwayat/detail/(:segment)', 'User\RiwayatController::detail/$1');
-
-
 
 //terlewat
 $routes->post('/generate/terlewat/save', 'TerlewatController::save');
@@ -137,15 +124,12 @@ $routes->get('/generate/terlewat/get_detailsubperihal_by_subperihal/(:segment)',
 // $routes->post('/pdf/generatePdf', 'TerlewatController::generatePdf');
 $routes->get('/tentang', 'TerlewatController::tentang');
 
-
-
 //----------------LOGIN--------------------------------------------------------------------------
 
 //auth
 $routes->get('/login', 'LoginController::index');
 $routes->get('/logout', 'LoginController::logout');
 $routes->post('/login', 'LoginController::login');
-
 
 //TODO
 

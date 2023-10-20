@@ -110,7 +110,7 @@ class DinasModel extends Model
 
     protected $table = 'instansi';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'slug', 'name', 'kode', 'create_at', 'update_at'];
+    protected $allowedFields = ['id', 'slug', 'name', 'kode', 'urutan', 'create_at', 'update_at'];
 
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
