@@ -66,92 +66,10 @@ class GenerateController extends BaseController
         $tanggal = $this->request->getPost('tanggal');
 
         $tanggalsuratterakhir = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
-        // dd($tanggal,$tanggalsuratterakhir['tanggal']);
+        $tanggalTerakhirSurat = $tanggalsuratterakhir ? $tanggalsuratterakhir['tanggal'] : null;
 
         //cek apakah tanggal yang di inputkan lebih atau sama dengan tanggal terakhir di surat
-        if ($tanggal >= $tanggalsuratterakhir['tanggal']) {
-
-            if ($this->validate($rules)) {
-                $nomor = $this->request->getPost('nomor');
-                $kategori = $this->kategori->getByKode($this->request->getPost('nomor')) ?? [];
-
-                //cari nama perihal
-                if ($kategori != null) {
-                    $data = $kategori;
-                } else {
-                    $data = $this->perihal->getBykode($this->request->getPost('nomor'));
-                }
-
-                // dd($data);
-                //dinas
-                $dinas = $this->dinas->getById(session()->get('instansi_id'));
-
-                //bidang
-                $bidang = $this->bidang->getById(session()->get('bidang_id'));
-
-                //tanggal
-
-                list($tahun, $bulan, $tanggal) = explode("-", $tanggal);
-                $bulan_romawi = [
-                    'I',
-                    'II',
-                    'III',
-                    'IV',
-                    'V',
-                    'VI',
-                    'VII',
-                    'VIII',
-                    'IX',
-                    'X',
-                    'XI',
-                    'XII',
-                ];
-                $bulan_romawi = $bulan_romawi[intval($bulan) - 1]; // -1 karena array dimulai dari 0
-                $tahun_angka = intval($tahun);
-                // dd($bulan_romawi,$tahun_angka);
-
-                //urutan
-                $urutan = $this->urutan->getOneByInstansiId(session()->get('instansi_id'));
-                $urutanPlusOne = $urutan['urutan'] + 1; // Menambahkan 1 ke nilai yang ada
-                $urutanData = [
-                    'urutan' => $urutanPlusOne,
-                ];
-                // dd($urutanData);
-                $kode = $nomor . "/" . $urutan['urutan'] . "/" . $bidang['kode'] . "." . $dinas['kode'] . "/" . $bulan_romawi . "/" . $tahun_angka;
-                // dd($kode);
-
-                //slug
-                $mentahan = $nomor . "/" . $urutan['urutan'] . "/" . $bidang['kode'] . "." . $dinas['kode'] . "/" . $bulan_romawi . "/" . $tahun_angka;
-                $slug = preg_replace('/[^a-z0-9-]/', '-', strtolower($mentahan));
-                $slug = str_replace(' ', '-', $slug);
-                $slug = preg_replace('/-+/', '-', $slug);
-
-                //id
-                $uuid = Uuid::uuid4();
-                $uuidString = $uuid->toString();
-
-                $data = [
-                    'id' => $uuidString,
-                    'user_id' => session()->get('user_id'),
-                    'instansi_id' => session()->get('instansi_id'),
-                    'bidang_id' => session()->get('bidang_id'),
-                    'urutan' => $urutan['urutan'],
-                    'slug' => $slug,
-                    'perihal' => $data['name'],
-                    'nomor' => $kode,
-                    'tanggal' => $this->request->getPost('tanggal'),
-                ];
-                // dd($data);
-                $this->urutan->update($urutan['id'], $urutanData);
-                $this->generate->insert($data);
-
-                return redirect()->to('/')->with('success', 'Berhasil Menggenerate Kode Surat.');
-            } else {
-                // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
-                return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
-            }
-
-        } else {
+        if ($tanggal && $tanggalTerakhirSurat !== null && $tanggal < $tanggalTerakhirSurat) {
 
             list($tahun, $bulan, $tanggal) = explode("-", $tanggal);
             $bulan_romawi = [
@@ -176,7 +94,6 @@ class GenerateController extends BaseController
 
             // dd($datas);
             $databanyak = $this->generate->getAllByTanggal($datas['tanggal']);
-            $dataurutanterkecil = $this->generate->getOneByTanggal($datas['tanggal']);
             $terbesarTerlewat = "00";
             $urutan_terkecil = PHP_INT_MAX;
 
@@ -256,6 +173,87 @@ class GenerateController extends BaseController
                     return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
                 }
             }
+        } else {
+            if ($this->validate($rules)) {
+                $nomor = $this->request->getPost('nomor');
+                $kategori = $this->kategori->getByKode($this->request->getPost('nomor')) ?? [];
+
+                //cari nama perihal
+                if ($kategori != null) {
+                    $data = $kategori;
+                } else {
+                    $data = $this->perihal->getBykode($this->request->getPost('nomor'));
+                }
+
+                // dd($data);
+                //dinas
+                $dinas = $this->dinas->getById(session()->get('instansi_id'));
+                $urutan = $dinas['urutan'];
+                //bidang
+                $bidang = $this->bidang->getById(session()->get('bidang_id'));
+
+                //tanggal
+
+                list($tahun, $bulan, $tanggal) = explode("-", $tanggal);
+                $bulan_romawi = [
+                    'I',
+                    'II',
+                    'III',
+                    'IV',
+                    'V',
+                    'VI',
+                    'VII',
+                    'VIII',
+                    'IX',
+                    'X',
+                    'XI',
+                    'XII',
+                ];
+                $bulan_romawi = $bulan_romawi[intval($bulan) - 1]; // -1 karena array dimulai dari 0
+                $tahun_angka = intval($tahun);
+                // dd($bulan_romawi,$tahun_angka);
+
+                //urutan
+
+                $urutanPlusOne = $urutan + 1; // Menambahkan 1 ke nilai yang ada
+                $dinasUrutan = [
+                    'urutan' => $urutanPlusOne,
+                ];
+                // dd($urutanData);
+                $kode = $nomor . "/" . $urutan . "/" . $bidang['kode'] . "." . $dinas['kode'] . "/" . $bulan_romawi . "/" . $tahun_angka;
+                // dd($kode);
+
+                //slug
+                $mentahan = $nomor . "/" . $urutan . "/" . $bidang['kode'] . "." . $dinas['kode'] . "/" . $bulan_romawi . "/" . $tahun_angka;
+                $slug = preg_replace('/[^a-z0-9-]/', '-', strtolower($mentahan));
+                $slug = str_replace(' ', '-', $slug);
+                $slug = preg_replace('/-+/', '-', $slug);
+
+                //id
+                $uuid = Uuid::uuid4();
+                $uuidString = $uuid->toString();
+
+                $data = [
+                    'id' => $uuidString,
+                    'user_id' => session()->get('user_id'),
+                    'instansi_id' => session()->get('instansi_id'),
+                    'bidang_id' => session()->get('bidang_id'),
+                    'slug' => $slug,
+                    'urutan' => $urutan,
+                    'perihal' => $data['name'],
+                    'nomor' => $kode,
+                    'tanggal' => $this->request->getPost('tanggal'),
+                ];
+                // dd($dinas['id'], $dinasUrutan);
+                $this->dinas->update($dinas['id'], $dinasUrutan);
+                $this->generate->insert($data);
+
+                return redirect()->to('/')->with('success', 'Berhasil Menggenerate Kode Surat.');
+            } else {
+                // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
+                return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
+            }
+
         }
     }
 

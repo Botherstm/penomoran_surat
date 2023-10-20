@@ -52,22 +52,22 @@ class GenerateModel extends Model
     }
     public function getOneBeforeTanggal($tanggal)
     {
-        $result = $this->where('tanggal <=', $tanggal)
-            ->orderBy('tanggal', 'DESC')
-            ->orderBy('urutan', 'ASC')
-            ->first();
+
+        $data = $this->where('tanggal <=', $tanggal)
+            ->orderBy('tanggal', 'DESC')->first();
+        $dataurutanterkecil = $this->where('tanggal', $data['tanggal'])
+            ->orderBy('urutan', 'ASC')->first();
+        $result = $dataurutanterkecil;
 
         if (!$result) {
-            // Jika tidak ada data dengan terlewat yang tidak kosong, cari data dengan urutan terkecil
             $result = $this->where('tanggal <=', $tanggal)
-                ->where('terlewat IS NOT NULL', null, false) // Mencari data dengan terlewat tidak kosong
+                ->where('terlewat IS NOT NULL', null, false)
                 ->orderBy('tanggal', 'DESC')
                 ->orderBy('terlewat', 'DESC')
-                ->orderBy('urutan', 'ASC')
                 ->first();
 
         }
-
+        // dd($result);
         return $result;
     }
     public function getOneByInstansiId($instansi_id)

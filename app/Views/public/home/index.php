@@ -140,12 +140,12 @@
                             <h3 class="card-title">Generate Nomor Surat</h3>
                         </div>
                         <div class="card-body">
-                            <form class="card-body" action="<?php echo base_url('generate/save') ?>" method="post"
-                                enctype="multipart/form-data" id="generateForm">
+                            <form class="card-body text-center" action="<?php echo base_url('generate/save') ?>"
+                                method="post" enctype="multipart/form-data" id="generateForm">
                                 <div class="form-group">
                                     <label for="tanggalSurat">Tanggal Surat</label>
-                                    <input type="date" name="tanggal" max="<?=$tanggalmax;?>" class="form-control"
-                                        id="tanggalSurat" required>
+                                    <input type="date" name="tanggal" value="<?=$tanggalmax;?>" max="<?=$tanggalmax;?>"
+                                        class="form-control" id="tanggalSurat" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomorSurat">Dinas</label>
@@ -275,7 +275,7 @@ function confirmGenerate() {
         });
     } else {
         // Jika ada data yang belum diisi, tampilkan pesan kesalahan atau tindakan lain yang sesuai
-        Swal.fire('Harap isi Semua datnya');
+        Swal.fire('Harap isi Semua datanya');
     }
 
 }
