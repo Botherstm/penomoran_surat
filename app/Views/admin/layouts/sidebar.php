@@ -9,11 +9,16 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <!-- <div class="image">
-                <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div> -->
+            <?php if ((session()->get('gambar') !== null)): ?>
+            <div class="image">
+                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>" width="20px"
+                    class="img-circle elevation-2" alt="User Image">
+            </div>
+            <?php else: ?>
+            <?php endif?>
+
             <div class="info">
-                <a href="#" class="d-block"><?=session()->get('name');?></a>
+                <a class="d-block"><?=session()->get('name');?></a>
             </div>
         </div>
 

@@ -100,7 +100,8 @@
                             <div class="card-body">
                                 <?php if (!empty($user['gambar'])): ?>
                                 <div class="text-center ">
-                                    <img src="<?php echo base_url('img/') ?><?=$user['gambar'];?>" alt="" width="70%">
+                                    <img src="<?php echo base_url('userimage/') ?><?=$user['gambar'];?>" alt=""
+                                        width="70%">
                                 </div>
                                 <?php else: ?>
                                 <div class="text-center ">
@@ -115,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <form method="POST" action="<?php echo base_url('admin/user/profile/update') ?>"
+                                <form method="POST" action="<?php echo base_url('admin/profile/update') ?>"
                                     accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
                                     <div class="row">
                                         <label class="col-form-label col-md-3 text-right">Ganti Foto : </label>

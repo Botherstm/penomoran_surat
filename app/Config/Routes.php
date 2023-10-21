@@ -36,7 +36,7 @@ $routes->post('/admin/bidang/delete/(:segment)', 'Admin\BidangController::delete
 $routes->get('/admin/users', 'Admin\UserController::index');
 $routes->get('/admin/users/create', 'Admin\UserController::create');
 $routes->get('/admin/user/profile', 'Admin\UserController::profile');
-$routes->post('/admin/user/profile/update', 'Admin\UserController::updateGambar');
+$routes->post('/admin/profile/update', 'Admin\UserController::updateGambar');
 $routes->get('/admin/users/edit/(:segment)', 'Admin\UserController::edit/$1');
 $routes->post('/admin/users/save', 'Admin\UserController::save');
 $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');

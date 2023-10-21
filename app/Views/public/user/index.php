@@ -100,7 +100,8 @@
                             <div class="card-body">
                                 <?php if (!empty($user['gambar'])): ?>
                                 <div class="text-center ">
-                                    <img src="<?php echo base_url('img/') ?><?=$user['gambar'];?>" alt="" width="70%">
+                                    <img src="<?php echo base_url('userimage/') ?><?=$user['gambar'];?>" alt=""
+                                        width="70%">
                                 </div>
                                 <?php else: ?>
                                 <div class="text-center ">

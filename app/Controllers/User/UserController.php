@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\BidangModel;
 use App\Models\DinasModel;
 use App\Models\UserModel;
+use Intervention\Image\ImageManagerStatic as Image;
 use Ramsey\Uuid\Uuid;
 
 class UserController extends BaseController
@@ -32,6 +33,10 @@ class UserController extends BaseController
                 'key' => $siteKey,
             ]);
         }
+        if (session()->get('level') == 1 || session()->get('level') == 2) {
+            return redirect()->to('/admin');
+        }
+
         $user = $this->UserModel->getByid(session()->get('user_id'));
         $dinas = $this->dinas->getById($user['instansi_id']);
         $bidang = $this->bidang->getById($user['bidang_id']);
@@ -89,14 +94,31 @@ class UserController extends BaseController
         $gambar = $this->request->getFile('gambar');
 
         if (!$gambar !== null) {
+            $user = $this->UserModel->find($id);
+            $gambarLama = $user['gambar'];
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
-
             $namaGambar = $uuidString . $gambar->getClientName();
-            // $gambar->move(ROOTPATH . 'public/img', $namaGambar);
+            $gambar->move(ROOTPATH . 'public/userimage', $namaGambar);
+            $gambarPath = ROOTPATH . 'public/userimage/' . $namaGambar;
+            $image = Image::make($gambarPath);
+            $ukuran = 500;
+            $image->fit($ukuran, $ukuran);
+            $image->save($gambarPath);
+            if (!empty($gambarLama)) {
+                $gambarLamaPath = ROOTPATH . 'public/userimage/' . $gambarLama;
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+
             $userData['gambar'] = $namaGambar;
+            $user = [
+                'gambar' => $namaGambar,
+            ];
             session()->set($userData);
-            $this->UserModel->where('id', $id)->update(['gambar' => $namaGambar]);
+            $this->UserModel->update($id, $user);
+
         } else {
             return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
         }
