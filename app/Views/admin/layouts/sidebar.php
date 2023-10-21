@@ -40,8 +40,8 @@
                 </li>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/users') ?>" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                                <p>List Users</p>
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Users</p>
                     </a>
                 </li>
                 <?php if (session()->get('level') == 1): ?>

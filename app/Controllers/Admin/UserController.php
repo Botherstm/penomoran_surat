@@ -63,13 +63,16 @@ class UserController extends BaseController
         }
 
         $dinass = $this->dinas->getAll();
-        // dd($bidangs,session()->get('instansi_id'),$users);
+        // dd($bidangs,session()->get('instansi_id'),$users)
+        $instansi = $this->dinas->getAllById($user['instansi_id']);
+
         return view('admin/users/index', [
             'users' => $users,
             'bidangs' => $bidangs,
             'active' => 'user',
             'dinas' => $dinas,
             'instansis' => $dinass,
+            'instansi' => $instansi,
         ]);
     }
 
@@ -143,6 +146,11 @@ class UserController extends BaseController
         ]);
     }
 
+    public function getDinasData($instansiId)
+    {
+        $instansi = $this->dinas->getAllById($instansiId);
+        return json_encode($instansi); // Mengembalikan data dalam format JSON
+    }
     public function update($id)
     {
         $rules = [
