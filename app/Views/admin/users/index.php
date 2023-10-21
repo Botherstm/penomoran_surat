@@ -249,7 +249,7 @@
 <div class="form-group">
     <label for="exampleFormControlInput1">Nama</label>
     <input type="text" value="<?= $user['name'] ?>" name="name" class="form-control" id="name"
-        placeholder="Masukkan NIP">
+        placeholder="Masukkan Nama">
 </div>
 <div class="form-group text-center">
     <input type="name" hidden value="<?= $user['slug'] ?>" class="form-control" id="slug" name="slug"
@@ -272,14 +272,7 @@
 <div class="form-group">
     <label for="exampleFormControlSelect1">Dinas</label>
     <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
-        <option value="<?=$instansi['id'] ?>"><?= $instansi['name'] ?></option>
-        <?php foreach ($instansis as $dinas) : ?>
-        <?php if ($dinas['id'] == $instansi['id']) : ?>
-        <?php else: ?>
-        <option value="<?= $dinas['id'] ?>"><?= $dinas['name'] ?></option>
-        <?php endif ?>
-
-        <?php endforeach; ?>
+    
     </select>
 </div>
 <?php elseif(session()->get('level') == 1): ?>
@@ -300,9 +293,7 @@
 
 <div class="row text-center" style="padding-bottom: 50px;">
     <div class="col-md-6">
-        <a href="<?php echo base_url('admin/users') ?>">
-            <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
-        </a>
+    <button class="btn btn-danger" type="button" style="width: 150px;" data-dismiss="modal">Batal</button>
     </div>
 
     <div class="col-md-6">

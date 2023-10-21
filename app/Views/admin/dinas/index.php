@@ -11,6 +11,7 @@
     .btnr {
 
         padding-inline-end: 15%;
+        
 
     }
 
@@ -31,31 +32,39 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6 ">
-                    <h1 class=" font-weight-bold ">List Dinas</h1>
-                </div><!-- /.col -->
+        <div class="container-fluid">
 
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <div class="btnadd">
-        <a href="#">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
-                <i class="icon-jarak fas fa-plus"></i>
-                Tambah
-            </button>
-        </a>
-    </div>
-    <!-- Main content -->
-    <section class="content">
-        <div class="row jarak ">
+            <!-- Main content -->
+            <section class="content">
+                <!-- <div class="row jarak ">
+                    <div class="card-tools">
+                        <div class="btnadd">
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                    </div>
+                </div> -->
 
-            <div class="card">
+                <div class="card">
+                    <div class="card-header col">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
 
+                                <?php if (session()->get('level') == 2) : ?>
+                                    <h1 class="card-title">List Users</h1>
+                                <?php elseif (session()->get('level') == 1) : ?>
+                                    <h1 class="card-title">List Users <?= $dinas['name']; ?></h1>
+                                <?php endif ?>
 
-                <div class="card-body">
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-pen-nib"></i>
+                                    Tambah Dinas</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -89,26 +98,50 @@
                                         </div>
                                     </td>
 
-                                    <td>
-                                        <div class="btn-group">
+                                    <td >
+                                        <div class="btn-group mr-3" >
                                             <!-- update -->
-                                            <button type="button" class="btn btn-warning" onclick="openEditModal('<?= $dinas['id'] ?>', '<?= $dinas['name'] ?>', '<?= $dinas['kode'] ?>', '<?= $dinas['urutan'] ?>')">
+                                            <button  type="button" class="btn btn-warning " onclick="openEditModal('<?= $dinas['id'] ?>', '<?= $dinas['name'] ?>', '<?= $dinas['kode'] ?>', '<?= $dinas['urutan'] ?>')">
                                                 <i class="fas fa-pen"></i>
                                             </button>
 
-                                            <form id="deleteForm" class="mr-3" action="<?php echo base_url('admin/dinas/delete/') ?><?= $dinas['slug']; ?>" method="POST">
+                                            
+                                        </div>
+                                        <div class="btn-group" >
+                                            <!-- update -->
+                                            <form id="deleteForm" action="<?php echo base_url('admin/dinas/delete/') ?><?= $dinas['slug']; ?>" method="POST">
                                                 <?= csrf_field(); ?>
                                                 <button type="button" onclick="confirmDelete('<?= $dinas['slug']; ?>')" class="btn btn-block btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                            </form>
+                                            </form>                                  
                                         </div>
+                                      
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    </div>
 
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid ">
+            <div class="row mb-4">
+                <div class="col-sm-6 ">
+                    <h1 class=" font-weight-bold ">List Dinas</h1>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
                     <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content card card-primary">
