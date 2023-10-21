@@ -1,4 +1,4 @@
-<?=$this->extend('public/layouts/main');?>
+<?=$this->extend('admin/layouts/main');?>
 
 <?=$this->section('content');?>
 
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <form method="POST" action="<?php echo base_url('user/profile/update') ?>"
+                                <form method="POST" action="<?php echo base_url('admin/profile/update') ?>"
                                     accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
                                     <div class="row">
                                         <label class="col-form-label col-md-3 text-right">Ganti Foto : </label>

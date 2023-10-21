@@ -7,18 +7,11 @@
             height="40" width="65">
         <span class="brand-text font-weight-bold ">E-NOMOR</span>
     </a>
-    <!-- ready -->
-
-
-
-
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <?php if (!empty(session()->get('gambar'))): ?>
+            <?php if ((session()->get('gambar') !== null)): ?>
             <div class="image">
-                <img src="<?php echo base_url('img/') ?><?=session()->get('gambar');?>" width="20px"
+                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>" width="20px"
                     class="img-circle elevation-2" alt="User Image">
             </div>
             <?php else: ?>

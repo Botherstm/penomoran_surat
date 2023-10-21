@@ -2,18 +2,17 @@
 
 namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 
+use App\Controllers\BaseController;
 use App\Models\BidangModel;
 use App\Models\DetailSubPerihalModel;
+use App\Models\DinasModel;
 use App\Models\GenerateModel;
+use App\Models\KategoryModel;
+use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
 use App\Models\UrutanSuratModel;
-use Ramsey\Uuid\Uuid;
-use App\Models\DinasModel;
-use App\Models\KategoryModel;
-use setasign\Fpdi\Fpdi;
-use App\Controllers\BaseController;
-use App\Models\PerihalModel;
 use App\Models\UserModel;
+use Ramsey\Uuid\Uuid;
 
 class RiwayatSuratController extends BaseController
 {
@@ -39,24 +38,23 @@ class RiwayatSuratController extends BaseController
         $this->detailsubperihal = new DetailSubPerihalModel();
     }
 
-    public function index() 
+    public function index()
     {
 
-
         $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
-            $users = [];
-            foreach ($generate as $gen) {
-                $userId = $gen['user_id'];
-                $user = $this->user->getById($userId);
-                $users[$userId] = $user;
-            }
+        $users = [];
+        foreach ($generate as $gen) {
+            $userId = $gen['user_id'];
+            $user = $this->user->getById($userId);
+            $users[$userId] = $user;
+        }
         // dd($users);
-            $bidangs = [];
-            foreach ($generate as $gen) {
-                $bidangId = $gen['bidang_id'];
-                $bidang = $this->bidangs->getById($bidangId);
-                $bidangs[$bidangId] = $bidang;
-            }
+        $bidangs = [];
+        foreach ($generate as $gen) {
+            $bidangId = $gen['bidang_id'];
+            $bidang = $this->bidangs->getById($bidangId);
+            $bidangs[$bidangId] = $bidang;
+        }
         // dd($bidangs);
 
         return view('admin/riwayatsurat/index', [
@@ -73,7 +71,6 @@ class RiwayatSuratController extends BaseController
             'active' => 'kategory',
         ]);
     }
-
 
     public function save()
     {
@@ -97,7 +94,7 @@ class RiwayatSuratController extends BaseController
                 'kode' => $kode,
                 'slug' => $slug,
             ];
-    // dd($data);
+            // dd($data);
             $this->Kategory->insert($data);
 
             return redirect()->to('/admin/kategori')->with('success', 'Data Kategory berhasil disimpan.');
@@ -106,7 +103,6 @@ class RiwayatSuratController extends BaseController
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
-
 
     public function edit($slug)
     {
@@ -117,7 +113,6 @@ class RiwayatSuratController extends BaseController
             'kategori' => $kategoris,
         ]);
     }
-
 
     public function update($id)
     {
@@ -157,12 +152,11 @@ class RiwayatSuratController extends BaseController
         $kategori = $this->Kategory->find($data['id']);
         // dd($kategori);
         if ($kategori) {
-          $this->Kategory->delete($data['id']);
+            $this->Kategory->delete($data['id']);
             return redirect()->to('admin/kategori')->with('success', 'data deleted successfully.');
         } else {
             return redirect()->to('admin/kategori')->with('error', 'data not found.');
         }
     }
-
 
 }
