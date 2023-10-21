@@ -51,9 +51,9 @@
                             <div class="col-6 d-flex justify-content-start">
 
                                 <?php if (session()->get('level') == 2) : ?>
-                                    <h1 class="card-title">List Users</h1>
+                                    <h1 class="card-title">List Dinas</h1>
                                 <?php elseif (session()->get('level') == 1) : ?>
-                                    <h1 class="card-title">List Users <?= $dinas['name']; ?></h1>
+                                    <h1 class="card-title">List Dinas <?= $dinas['name']; ?></h1>
                                 <?php endif ?>
 
                             </div>
@@ -130,18 +130,7 @@
     </div>
 </div>
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6 ">
-                    <h1 class=" font-weight-bold ">List Dinas</h1>
-                </div><!-- /.col -->
 
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
                     <div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content card card-primary">
