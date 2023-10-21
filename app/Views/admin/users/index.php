@@ -51,7 +51,7 @@
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">
-                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-plus"></i>
+                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-user-plus"></i>
                                     Tambah User</button>
                             </div>
                         </div>
@@ -114,8 +114,8 @@
                                             <td>
                                                 <div class="btn-group ">
                                                     <!-- update -->
-                                                    <a class="btnr" href="<?php echo base_url('admin/users/edit/') ?><?= $user['slug']; ?>">
-                                                        <button type="button" class="btn btn-block btn-warning ">
+                                                    <a class="btnr" href="#<?= $user['slug']; ?>">
+                                                        <button type="button" class="btn btn-block btn-warning " data-toggle="modal" data-target="#editModal">
                                                             <i class=" fas fa-pen"></i>
                                                         </button>
                                                     </a>
@@ -237,7 +237,74 @@
     </div>
 </div>
 
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Edit Akun User</h3>
+            </div>
+            <div class="card-body">
+            <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?= $user['id'] ?>">
 
+<div class="form-group">
+    <label for="exampleFormControlInput1">Nama</label>
+    <input type="text" value="<?= $user['name'] ?>" name="name" class="form-control" id="name"
+        placeholder="Masukkan Nama">
+</div>
+<div class="form-group text-center">
+    <input type="name" hidden value="<?= $user['slug'] ?>" class="form-control" id="slug" name="slug"
+        readonly>
+</div>
+
+<div class="form-group">
+    <label for="exampleInputEmail1">Email </label>
+    <input type="email" value="<?= $user['email'] ?>" name="email" class="form-control"
+        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+</div>
+
+<div class="form-group">
+    <label for="no_telp">No Telp.</label>
+    <input type="number" value="<?= $user['no_hp'] ?>" name="no_hp" class="form-control"
+        id="exampleFormControlInput1" placeholder="Masukan No. Telp">
+</div>
+
+<?php if(session()->get('level') == 2): ?>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Dinas</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
+    
+    </select>
+</div>
+<?php elseif(session()->get('level') == 1): ?>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Bidang</label>
+    <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
+        <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
+        <?php foreach ($bidangs as $bid) : ?>
+        <?php if ($bid['id'] == $bidang['id']) : ?>
+        <?php else: ?>
+        <option value="<?= $bid['id'] ?>"><?= $bid['name'] ?></option>
+        <?php endif ?>
+
+        <?php endforeach; ?>
+    </select>
+</div>
+<?php endif ?>
+
+<div class="row text-center" style="padding-bottom: 50px;">
+    <div class="col-md-6">
+    <button class="btn btn-danger" type="button" style="width: 150px;" data-dismiss="modal">Batal</button>
+    </div>
+
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
+    </div>
+</div>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- //create -->
 <script>
@@ -400,4 +467,27 @@
     document.getElementById('searchButton').addEventListener('click', performSearch);
     document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
+
+<script>
+var nameInput = document.getElementById('name');
+var slugInput = document.getElementById('slug');
+
+// Function to generate a slug from the given string
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-') // Replace spaces with dashes
+        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+        .substring(0, 50); // Limit the slug length
+}
+
+// Add an input event listener to the name input field
+nameInput.addEventListener('input', function() {
+    var nameValue = nameInput.value;
+    var slugValue = slugify(nameValue);
+    slugInput.value = slugValue;
+});
+</script>
+
 <?= $this->endSection('content'); ?>
