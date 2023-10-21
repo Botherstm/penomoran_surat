@@ -1,85 +1,46 @@
-<?= $this->extend('admin/layouts/main'); ?>
+"<?= $this->extend('admin/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
 
-<style>
-    .table td {
-        text-align: center;
-        background-color: #C5E9DE;
-
-    }
 
 
-    .table>thead>tr>* {
-        background-color: #20c997;
-        text-align: center;
-    }
-
-
-    .btnadd {
-
-        padding-left: 17px;
-    }
-
-    .btnr {
-
-        padding-inline-end: 15%;
-
-    }
-
-    .icon-jarak {
-        padding-right: 10px;
-    }
-
-    .jarak {
-        justify-content: space-between;
-
-    }
-
-    .halpad {
-        padding: 30px 50px 10px 50px;
-    }
-</style>
-
-<div class="halpad content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container-fluid ">
-            <div class="row mb-4">
-                <div class="col-sm-6 ">
-                    <h1 class=" font-weight-bold ">List Kategori</h1>
-                </div><!-- /.col -->
+        <div class="container-fluid">
 
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- Main content -->
-    <section class="content">
-        <div class="row jarak ">
-            <div class="card-tools">
-
-                <div class="btnadd">
-                    <a href="<?php echo base_url('admin/kategori/create') ?>">
-                        <button type="button" class="btn btn-success">
-                            <i class="icon-jarak fas fa-plus"></i>
-                            Tambah
-                        </button>
-                    </a>
-                </div>
-            </div>
-
-            <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="button" id="searchButton" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
+            <!-- Main content -->
+            <section class="content">
+                <!-- <div class="row jarak ">
+                    <div class="card-tools">
+                        <div class="btnadd">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap table-light">
+                    <div class="card-tools">
+                    </div>
+                </div> -->
+
+                <div class="card">
+                    <div class="card-header col">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+
+                                <?php if (session()->get('level') == 2) : ?>
+                                    <h1 class="card-title">List Kategori</h1>
+                                <?php elseif (session()->get('level') == 1) : ?>
+                                    <h1 class="card-title">List Kategori <?= $dinas['name']; ?></h1>
+                                <?php endif ?>
+
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-pen-nib"></i>
+                                    Tambah Kategori</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body ">         
+                    <table id="example1" class="table table-bordered table-striped ">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -112,32 +73,76 @@
                                         </a>
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="btn-group ">
-                                        <!-- update -->
-                                        <a class="btnr" href="<?php echo base_url('admin/kategori/edit/') ?><?= $kategori['slug']; ?>">
-                                            <button type="button" class="btn btn-block btn-warning ">
-                                                <i class=" fas fa-pen"></i>
-                                            </button>
-                                        </a>
-                                        <form id="deleteForm" class="mr-3" action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>" method="POST">
+                                <td >
+                                        <div class="btn-group" style="padding-left: 10px;" >
+                                            <!-- update -->
+                                            <button  type="button" class="btn btn-block btn-warning " data-toggle="modal" data-target="#editModal">
+                                            <i class=" fas fa-pen"></i>
+                                        </button>
+
+                                            
+                                        </div>
+                                        <div class="btn-group" style="padding-right: 10px;" >
+                                            <!-- update -->
+                                            <form id="deleteForm" action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <button type="button" onclick="confirmDelete('<?= $kategori['slug']; ?>')" class="btn btn-block btn-danger">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                        </form>
-                                    </div>
-                                </td>
+                                             </form>                              
+                                        </div>
+                                      
+                                    </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
-                </table>
+                </table> 
+                    </div>
+
             </div>
-
+            </section>
         </div>
-
+    </div>
 </div>
 
+<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Tambah Data Kategori</h3>
+                                </div>
+                                <div class="card-body">
+                                <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
+        <?= csrf_field(); ?>
+        <div class="mb-5 m-1 ">
+            <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
+            <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+        </div>
+        <div class="mb-5 m-1">
+            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Kategori</label>
+            <input type="name" name="kode" class="form-control " id="kodeKategori">
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col-md-6">
+            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                                            </div>
+            </div>
+
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success " style="width: 80%;">Tambah data</button>
+            </div>
+        </div>
+
+    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
@@ -198,4 +203,4 @@
     document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
-<?= $this->endSection('content'); ?>
+<?= $this->endSection('content'); ?>"
