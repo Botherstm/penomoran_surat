@@ -14,14 +14,14 @@
 
     }
 
-    .icon-jarak {
-        padding-right: 10px;
-    }
+.icon-jarak {
+    padding-right: 10px;
+}
 
-    .jarak {
-        justify-content: space-between;
+.jarak {
+    justify-content: space-between;
 
-    }
+}
 
     .halpad {
         padding: 30px 50px 10px 50px;
@@ -32,24 +32,28 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid ">
+            <div class="row mb-4">
+                <div class="col-sm-6 ">
+                    <h1 class=" font-weight-bold ">List Dinas</h1>
+                </div><!-- /.col -->
 
-            <!-- Main content -->
-
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div class="btnadd">
+        <a href="#">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
+                <i class="icon-jarak fas fa-plus"></i>
+                Tambah
+            </button>
+        </a>
+    </div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row jarak ">
 
             <div class="card">
-                <div class="card-header col">
-                    <div class="row">
-                        <div class="col-6 d-flex justify-content-start">
-                            <h1 class="card-title">List Dinas</h1>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
-                                <i class="icon-jarak fas fa-plus"></i>
-                                Tambah
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -276,4 +280,4 @@
                         <?php endif; ?>
                     </script>
 
-                    <?= $this->endSection('content'); ?>
+                    <?=$this->endSection('content');?>

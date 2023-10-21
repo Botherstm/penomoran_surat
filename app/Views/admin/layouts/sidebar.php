@@ -39,29 +39,10 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Users
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('admin/users') ?>" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                    <a href="<?php echo base_url('admin/users') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-user"></i>
                                 <p>List User</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('admin/users/create') ?>" class="nav-link">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Add User</p>
-                            </a>
-                        </li>
-                    </ul>
+                    </a>
                 </li>
                 <?php if (session()->get('level') == 1): ?>
 
