@@ -93,7 +93,7 @@ class UserController extends BaseController
             $uuidString = $uuid->toString();
 
             $namaGambar = $uuidString . $gambar->getClientName();
-            $gambar->move(ROOTPATH . 'public/img', $namaGambar);
+            // $gambar->move(ROOTPATH . 'public/img', $namaGambar);
             $userData['gambar'] = $namaGambar;
             session()->set($userData);
             $this->UserModel->where('id', $id)->update(['gambar' => $namaGambar]);

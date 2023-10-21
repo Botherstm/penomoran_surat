@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
@@ -200,6 +199,79 @@ class UserController extends BaseController
 
     public function profile()
     {
-        return view('public/user/profil/index');
+
+        if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+            // dd($siteKey);
+            return view('login', [
+                'validation' => \Config\Services::validation(),
+                'key' => $siteKey,
+            ]);
+        }
+        $user = $this->UserModel->getByid(session()->get('user_id'));
+        $dinas = $this->dinas->getById($user['instansi_id']);
+        $bidang = $this->bidangs->getById($user['bidang_id']);
+        // dd($bidangs,session()->get('instansi_id'),$users);
+        // dd($user, $dinas, $bidang);
+        return view('admin/users/editadmin', [
+            'user' => $user,
+            'bidang' => $bidang,
+            'active' => 'user',
+            'dinas' => $dinas,
+
+        ]);
+    }
+
+    public function updateuser()
+    {
+        $rules = [
+            'name' => 'required',
+            'slug' => 'required',
+            'no_hp' => 'required|integer',
+            'email' => 'required|valid_email',
+        ];
+        $id = $this->request->getFile('id');
+        if ($this->validate($rules)) {
+            // Data pengguna yang akan disimpan
+            $userData = [
+                'name' => $this->request->getPost('name'),
+                'slug' => $this->request->getPost('slug'),
+                'email' => $this->request->getPost('email'),
+                'no_hp' => $this->request->getPost('no_hp'),
+            ];
+            $this->UserModel->update($id, $userData);
+            return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+        } else {
+            return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
+        }
+    }
+    public function updateGambar()
+    {
+
+        $userData = session()->get();
+
+        $id = $this->request->getPost('id');
+        $gambar = $this->request->getFile('gambar');
+        // dd();
+        if (!$gambar !== null) {
+            $uuid = Uuid::uuid4();
+            $uuidString = $uuid->toString();
+            $namaGambar = $uuidString . $gambar->getClientName();
+            // $gambar->move(ROOTPATH . 'public/img', $namaGambar);
+            // $image = Image::make(ROOTPATH . 'public/img/' . $namaGambar);
+            // $image->fit(1, 1);
+            // $image->save(ROOTPATH . 'public/img/' . $namaGambar);
+            $userData['gambar'] = $namaGambar;
+            $this->UserModel->where('id', $id)->update(['gambar' => $namaGambar]);
+
+            session()->set($userData);
+            // dd($namaGambar);
+
+        } else {
+            return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
+        }
+
+        return redirect()->to('/public/user/profile')->with('success', 'Akun Gambar Berhasil di Ganti !');
+
     }
 }
