@@ -1,212 +1,332 @@
 <?= $this->extend('admin/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
-<style>
-.table td {
-    text-align: center;
-    background-color: #C5E9DE;
 
-}
-
-
-.table>thead>tr>* {
-    background-color: #20c997;
-    text-align: center;
-}
-
-
-.btnadd {
-
-    padding-left: 17px;
-}
-
-.btnr {
-
-    padding-inline-end: 15%;
-
-}
-
-.icon-jarak {
-    padding-right: 10px;
-}
-
-.jarak {
-    justify-content: space-between;
-
-}
-
-.halpad {
-    padding: 30px 50px 10px 50px;
-}
-</style>
-
-<div class="halpad content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container-fluid ">
-            <div class="row jarak">
-                <div>
-                    <h1 class="m-0 font-weight-bold ">List Perihal </h1>
-                    <h1 class="m-0 font-weight-bold "> <?= $kategori['name']; ?></h1>
-                </div><!-- /.col -->
-                <div class="card-tools">
+        <div class="container-fluid">
 
-                    <div class="btnadd">
-                        <a href="<?php echo base_url('admin/kategori') ?>">
-                            <button type="button" class="btn btn-warning" style="border: 2px solid black;">
-                                <i class="icon-jarak fa fa-chevron-left"></i>
-                                Kembali
-                            </button>
-                        </a>
+            <!-- Main content -->
+            <section class="content">
+                <!-- <div class="row jarak ">
+                    <div class="card-tools">
+                        <div class="btnadd">
+                        </div>
                     </div>
-                </div>
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- Main content -->
-    <section class="content">
-        <div class="row jarak ">
-            <div class="card-tools">
-                <div class="btnadd">
-                    <a href="<?php echo base_url('admin/kategori/perihal/create/') ?><?= $kategori['slug']; ?>">
-                        <button type="button" class="btn btn-success">
-                            <i class="icon-jarak fas fa-plus"></i>
-                            Tambah
-                        </button>
-                    </a>
-
-                </div>
-            </div>
-            <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" id="searchInput" class="form-control float-right" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="button" id="searchButton" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
+                    <div class="card-tools">
                     </div>
+                </div> -->
+
+                <div class="card">
+                    <div class="card-header col">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+
+                                <?php if (session()->get('level') == 2) : ?>
+                                    <h1 class="card-title">List Perihal</h1>
+                                <?php elseif (session()->get('level') == 1) : ?>
+                                    <h1 class="card-title">List Perihal <?= $dinas['name']; ?></h1>
+                                <?php endif ?>
+
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-pen-nib"></i>
+                                    Tambah Perihal</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body ">
+                        <table id="example1" class="table table-bordered table-striped ">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Perihal</th>
+                                    <th>Kode</th>
+                                    <th>Data SubPerihal</th>
+                                    <th>Rincian Sub Perihal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1 ?>
+                                <?php foreach ($perihals as $perihal) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $perihal['name']; ?></td>
+                                        <td><?= $perihal['kode']; ?></td>
+                                        <td>
+                                            <?php $subPerihalCounter = 1; ?>
+                                            <?php foreach ($subPerihals[$perihal['id']] as $subPerihal) : ?>
+                                                <?= $subPerihalCounter++ . '. ' . $subPerihal['name'] . '<br>'; ?>
+                                            <?php endforeach; ?>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <a href="<?php echo base_url('admin/kategori/perihal/subperihal/') ?><?= $perihal['slug']; ?>">
+                                                    <button type="button" class="btn btn-dark">
+                                                        Lihat rincian sub perihal
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <div class="btn-group " style="padding-left: 20px;">
+                                                <button type="button" class="btn btn-block btn-warning" data-toggle="modal" data-target="#editModal">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                                <form style="padding-left: 20px;" id="deleteForm" action="<?php echo base_url('admin/perihal/delete/') ?><?= $perihal['slug']; ?>" method="POST">
+                                                    <?= csrf_field(); ?>
+                                                    <button type="button" onclick="confirmDelete('<?= $perihal['slug']; ?>')" class="btn btn-block btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-            </div>
-            <div class=" card-body table-responsive p-10">
-                <table class="table table-bordered table-hover text-nowrap table-light">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Perihal</th>
-                            <th>Kode</th>
-                            <th>Data SubPerihal</th>
-                            <th>Rincian Sub Perihal</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1 ?>
-                        <?php foreach ($perihals as $perihal) : ?>
-                        <tr>
-                            <td><?= $i++; ?></td>
-                            <td><?= $perihal['name']; ?></td>
-                            <td><?= $perihal['kode']; ?></td>
-                            <td>
-                                <?php $subPerihalCounter = 1; ?>
-                                <?php foreach ($subPerihals[$perihal['id']] as $subPerihal) : ?>
-                                <?= $subPerihalCounter++ . '. ' . $subPerihal['name'] . '<br>'; ?>
-                                <?php endforeach; ?>
-                            </td>
-                            <td>
-                                <div>
-                                    <a
-                                        href="<?php echo base_url('admin/kategori/perihal/subperihal/') ?><?= $perihal['slug']; ?>">
-                                        <button type="button" class="btn btn-dark">
-                                            Lihat rincian sub perihal
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group ">
-                                    <!-- update -->
-                                    <a class="btnr"
-                                        href="<?php echo base_url('admin/kategori/perihal/edit/') ?><?= $perihal['slug']; ?>">
-                                        <button type="button" class="btn btn-block btn-warning ">
-                                            <i class=" fas fa-pen"></i>
-                                        </button>
-                                    </a>
-                                    <form id="deleteForm" class="mr-3"
-                                        action="<?php echo base_url('admin/perihal/delete/') ?><?= $perihal['slug']; ?>"
-                                        method="POST">
-                                        <?= csrf_field(); ?>
-                                        <button type="button" onclick="confirmDelete('<?= $perihal['slug']; ?>')"
-                                            class="btn btn-block btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-
-                        </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-
+            </section>
         </div>
-
+    </div>
 </div>
 
+<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Tambah Data Perihal <?= $kategori['name']; ?></h3>
+            </div>
+            <div class="card-body">
+                <form action="<?php echo base_url('admin/perihal/save') ?>" method="POST">
+                    <?= csrf_field(); ?>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+                    <div class="mb-5 m-1 ">
+                        <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+                        <input type="text" class="form-control  " name="name" id="name" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+                    </div>
+                    <div class="mb-5 m-1">
+                        <label for="kodePerihal" class="form-label input-group justify-content-center">Kode Perihal</label>
+                        <input type="name" name="kode" class="form-control" id="kodePerihal">
+                    </div>
+
+                    <div class="row text-center">
+
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success " style="width: 80%;">Tambah data</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Data Kategori</h3>
+                </div>
+                <div class="card-body">
+                    <form action="<?php echo base_url('admin/kategori/update/') ?><?= $kategori['id'] ?>" method="POST" class="">
+                        <?= csrf_field(); ?>
+
+                        <div class="mb-5 m-1 ">
+                            <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
+                            <input type="text" name="name" value="<?= $kategori['name']; ?>" class="form-control " id="name" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" hidden value="<?= $kategori['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
+                        </div>
+                        <div class="mb-5 m-1">
+                            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Kategori</label>
+                            <input type="name" name="kode" value="<?= $kategori['kode']; ?>" class="form-control " id="kodeKategori">
+                        </div>
+
+                        <div class="row text-center">
+
+                            <div class="col-md-6 ">
+                                <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                            </div>
+
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Data Perihal</h3>
+                </div>
+                <div class="card-body">
+                <form action="<?php echo base_url('admin/perihal/update/') ?><?= $perihal['id']; ?>" method="POST" class="">
+        <?= csrf_field(); ?>
+        <div class="input-group justify-content-center mb-3">
+            <h2 class="mt-5 mb-5">Edit Perihal</h2>
+        </div>
+        <div class="mb-5 m-1 ">
+            <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+            <input type="text" class="form-control w-50 m-auto " value="<?= $perihal['name']; ?>" name="name" id="name"
+                aria-describedby="emailHelp">
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
+                value="<?= $kategori['id']; ?>" readonly>
+        </div>
+        <div class="form-group text-center">
+            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug"
+                readonly>
+        </div>
+        <div class="mb-5 m-1">
+            <label for="kodePerihal" class="form-label input-group justify-content-center">Kode Perihal</label>
+            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control "
+                id="kodePerihal">
+        </div>
+
+        <div class="row text-center">
+
+<div class="col-md-6 ">
+    <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+</div>
+
+<div class="col-md-6">
+    <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
+</div>
+</div>
+
+    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function confirmDelete(slug) {
+            Swal.fire({
+                title: 'Apa Kamu yakin?',
+                text: 'Jika dihapus data tidak bisa di kembalikan.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+                    const form = document.getElementById('deleteForm');
+                    form.action = "<?php echo base_url('admin/perihal/delete/') ?>" + slug;
+                    form.submit();
+                }
+            });
+        }
+
+        // Popup success message
+        <?php if (session()->getFlashdata('success')) : ?>
+            Swal.fire({
+                title: 'Success',
+                text: '<?= session()->getFlashdata('success') ?>',
+                icon: 'success',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        <?php endif; ?>
+
+
+
+        function performSearch() {
+
+            var searchText = document.getElementById('searchInput').value.toLowerCase();
+
+            var tableRows = document.querySelectorAll('.table tbody tr');
+
+            tableRows.forEach(function(row) {
+                var rowData = row.textContent.toLowerCase();
+                if (rowData.includes(searchText)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('searchButton').addEventListener('click', performSearch);
+
+        document.getElementById('searchInput').addEventListener('input', performSearch);
+    </script>
+
+    <script>
+        var nameInput = document.getElementById('name');
+        var slugInput = document.getElementById('slug');
+
+        // Function to generate a slug from the given string
+        function slugify(text) {
+            return text.toString().toLowerCase()
+                .trim()
+                .replace(/\s+/g, '-') // Replace spaces with dashes
+                .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+                .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+                .substring(0, 50); // Limit the slug length
+        }
+
+        // Add an input event listener to the name input field
+        nameInput.addEventListener('input', function() {
+            var nameValue = nameInput.value;
+            var slugValue = slugify(nameValue);
+            slugInput.value = slugValue;
+        });
+    </script>
+
 <script>
-function confirmDelete(slug) {
-    Swal.fire({
-        title: 'Apa Kamu yakin?',
-        text: 'Jika dihapus data tidak bisa di kembalikan.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
-            const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url('admin/perihal/delete/') ?>" + slug;
-            form.submit();
-        }
-    });
+var nameInput = document.getElementById('name');
+var slugInput = document.getElementById('slug');
+
+// Function to generate a slug from the given string
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-') // Replace spaces with dashes
+        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+        .substring(0, 50); // Limit the slug length
 }
 
-// Popup success message
-<?php if (session()->getFlashdata('success')) : ?>
-Swal.fire({
-    title: 'Success',
-    text: '<?= session()->getFlashdata('success') ?>',
-    icon: 'success',
-    timer: 3000,
-    showConfirmButton: false
+// Add an input event listener to the name input field
+nameInput.addEventListener('input', function() {
+    var nameValue = nameInput.value;
+    var slugValue = slugify(nameValue);
+    slugInput.value = slugValue;
 });
-<?php endif; ?>
-
-
-
-function performSearch() {
-
-    var searchText = document.getElementById('searchInput').value.toLowerCase();
-
-    var tableRows = document.querySelectorAll('.table tbody tr');
-
-    tableRows.forEach(function(row) {
-        var rowData = row.textContent.toLowerCase();
-        if (rowData.includes(searchText)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
-
-document.getElementById('searchButton').addEventListener('click', performSearch);
-
-document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
-<?= $this->endSection('content'); ?>
+
+    <?= $this->endSection('content'); ?>

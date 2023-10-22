@@ -2,32 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<style>
-    .btnadd {
 
-        padding-left: 17px;
-    }
-
-    .btnr {
-
-        padding-inline-end: 15%;
-        
-
-    }
-
-.icon-jarak {
-    padding-right: 10px;
-}
-
-.jarak {
-    justify-content: space-between;
-
-}
-
-    .halpad {
-        padding: 30px 50px 10px 50px;
-    }
-</style>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
