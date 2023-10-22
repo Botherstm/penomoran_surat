@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-6 d-flex justify-content-start">
 
-                                <h1 class="card-title">List Detail Sub-Perihal</h1>
+                                <h1 class="card-title">List Detail Sub-Perihal <?= $subperihal['name']; ?></h1>
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">
@@ -81,41 +81,39 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Tambah Data Perihal <?= $subperihal['name']; ?></h3>
+                <h3 class="card-title">Tambah Data Detail Sub-Perihal <?= $subperihal['name']; ?></h3>
             </div>
             <div class="card-body">
-            <form action="<?php echo base_url('admin/detailsubperihal/save') ?>" method="POST" class="">
-        <?= csrf_field(); ?>
-       
-        <div class="mb-5 m-1 ">
-            <label for="detail" class="form-label input-group justify-content-center">Detail</label>
-            <input type="text" name="name" required class="form-control  " id="name"
-                aria-describedby="emailHelp">
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                value="<?= $subperihal['id']; ?>" readonly>
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
-        </div>
-        <div class="mb-5 m-1">
-            <label for="kodeDetail" class="form-label input-group justify-content-center">Kode Detail</label>
-            <input type="name" name="kode" required class="form-control" id="kodeDetail">
-        </div>
+                <form action="<?php echo base_url('admin/detailsubperihal/save') ?>" method="POST" class="">
+                    <?= csrf_field(); ?>
 
-        <div class="row text-center">
+                    <div class="mb-5 m-1 ">
+                        <label for="detail" class="form-label input-group justify-content-center">Detail</label>
+                        <input type="text" name="name" required class="form-control  " id="name" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $subperihal['id']; ?>" readonly>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+                    </div>
+                    <div class="mb-5 m-1">
+                        <label for="kodeDetail" class="form-label input-group justify-content-center">Kode Detail</label>
+                        <input type="name" name="kode" required class="form-control" id="kodeDetail">
+                    </div>
 
-<div class="col-md-6 ">
-    <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
-</div>
+                    <div class="row text-center">
 
-<div class="col-md-6">
-    <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-</div>
-</div>
+                        <div class="col-md-6 ">
+                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                        </div>
 
-    </form>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -131,43 +129,38 @@
                 <h3 class="card-title">Edit Data Detail Subperihal <?= $detailsubperihal['name']; ?></h3>
             </div>
             <div class="card-body">
-            <form action="<?php echo base_url('admin/detailsubperihal/update/') ?><?= $detailsubperihal['id']; ?>" method="POST"
-        class="">
-        <?= csrf_field(); ?>
-        
-        <div class="mb-5 m-1 ">
-            <label for="kategori" class="form-label input-group justify-content-center">Detail</label>
-            <input type="name" name="name" value="<?= $detailsubperihal['name']; ?>" class="form-control  "
-                id="name" aria-describedby="emailHelp">
-        </div>
+                <form action="<?php echo base_url('admin/detailsubperihal/update/') ?><?= $detailsubperihal['id']; ?>" method="POST" class="">
+                    <?= csrf_field(); ?>
 
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="subperihal_id" name="subperihal_id"
-                value="<?= $subperihal['id']; ?>" readonly>
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden value="<?= $detailsubperihal['slug']; ?>" class="form-control" id="slug"
-                name="slug" readonly>
-        </div>
-        <div class="mb-5 m-1">
-            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Detail</label>
-            <input type="name" name="kode" value="<?= $detailsubperihal['kode']; ?>" class="form-control"
-                id="kodeKategori">
-        </div>
+                    <div class="mb-5 m-1 ">
+                        <label for="kategori" class="form-label input-group justify-content-center">Detail</label>
+                        <input type="name" name="name" value="<?= $detailsubperihal['name']; ?>" class="form-control  " id="name" aria-describedby="emailHelp">
+                    </div>
 
-        <div class="row text-center">
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="subperihal_id" name="subperihal_id" value="<?= $subperihal['id']; ?>" readonly>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden value="<?= $detailsubperihal['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
+                    </div>
+                    <div class="mb-5 m-1">
+                        <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Detail</label>
+                        <input type="name" name="kode" value="<?= $detailsubperihal['kode']; ?>" class="form-control" id="kodeKategori">
+                    </div>
 
-<div class="col-md-6 ">
-    <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
-</div>
+                    <div class="row text-center">
 
-<div class="col-md-6">
-    <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-</div>
-</div>
+                        <div class="col-md-6 ">
+                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                        </div>
 
-    </form>
-             
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
         </div>
     </div>
@@ -236,48 +229,48 @@
 </script>
 
 <script>
-var nameInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
+    var nameInput = document.getElementById('name');
+    var slugInput = document.getElementById('slug');
 
-// Function to generate a slug from the given string
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-') // Replace spaces with dashes
-        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
-        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
-        .substring(0, 50); // Limit the slug length
-}
+    // Function to generate a slug from the given string
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-') // Replace spaces with dashes
+            .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+            .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+            .substring(0, 50); // Limit the slug length
+    }
 
-// Add an input event listener to the name input field
-nameInput.addEventListener('input', function() {
-    var nameValue = nameInput.value;
-    var slugValue = slugify(nameValue);
-    slugInput.value = slugValue;
-});
+    // Add an input event listener to the name input field
+    nameInput.addEventListener('input', function() {
+        var nameValue = nameInput.value;
+        var slugValue = slugify(nameValue);
+        slugInput.value = slugValue;
+    });
 </script>
 
 
 <script>
-var nameInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
+    var nameInput = document.getElementById('name');
+    var slugInput = document.getElementById('slug');
 
-// Function to generate a slug from the given string
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-') // Replace spaces with dashes
-        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
-        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
-        .substring(0, 50); // Limit the slug length
-}
+    // Function to generate a slug from the given string
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-') // Replace spaces with dashes
+            .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+            .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+            .substring(0, 50); // Limit the slug length
+    }
 
-// Add an input event listener to the name input field
-nameInput.addEventListener('input', function() {
-    var nameValue = nameInput.value;
-    var slugValue = slugify(nameValue);
-    slugInput.value = slugValue;
-});
+    // Add an input event listener to the name input field
+    nameInput.addEventListener('input', function() {
+        var nameValue = nameInput.value;
+        var slugValue = slugify(nameValue);
+        slugInput.value = slugValue;
+    });
 </script>
 
 <?= $this->endSection('content'); ?>

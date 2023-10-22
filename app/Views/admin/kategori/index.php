@@ -25,11 +25,9 @@
                         <div class="row">
                             <div class="col-6 d-flex justify-content-start">
 
-                                <?php if (session()->get('level') == 2) : ?>
-                                    <h1 class="card-title">List Kategori</h1>
-                                <?php elseif (session()->get('level') == 1) : ?>
-                                    <h1 class="card-title">List Kategori <?= $dinas['name']; ?></h1>
-                                <?php endif ?>
+                            
+                                    <h1 class="card-title">List Kategori </h1>
+                             
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">

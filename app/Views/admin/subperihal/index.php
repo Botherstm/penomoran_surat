@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-6 d-flex justify-content-start">
 
-                                <h1 class="card-title">List Sub-Perihal</h1>
+                                <h1 class="card-title">List Sub-Perihal <?= $perihal['name']; ?></h1>
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">

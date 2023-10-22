@@ -23,11 +23,9 @@
                         <div class="row">
                             <div class="col-6 d-flex justify-content-start">
 
-                                <?php if (session()->get('level') == 2) : ?>
-                                    <h1 class="card-title">List Perihal</h1>
-                                <?php elseif (session()->get('level') == 1) : ?>
-                                    <h1 class="card-title">List Perihal <?= $dinas['name']; ?></h1>
-                                <?php endif ?>
+
+                                <h1 class="card-title">List Perihal <?= $kategori['name']; ?></h1>
+
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">
@@ -140,193 +138,152 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Edit Data Kategori</h3>
-                </div>
-                <div class="card-body">
-                    <form action="<?php echo base_url('admin/kategori/update/') ?><?= $kategori['id'] ?>" method="POST" class="">
-                        <?= csrf_field(); ?>
 
-                        <div class="mb-5 m-1 ">
-                            <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
-                            <input type="text" name="name" value="<?= $kategori['name']; ?>" class="form-control " id="name" aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group text-center">
-                            <input type="name" hidden value="<?= $kategori['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
-                        </div>
-                        <div class="mb-5 m-1">
-                            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Kategori</label>
-                            <input type="name" name="kode" value="<?= $kategori['kode']; ?>" class="form-control " id="kodeKategori">
-                        </div>
-
-                        <div class="row text-center">
-
-                            <div class="col-md-6 ">
-                                <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
-                            </div>
-
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Edit Data Perihal</h3>
-                </div>
-                <div class="card-body">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Edit Data Perihal <?= $perihal['name']; ?></h3>
+            </div>
+            <div class="card-body">
                 <form action="<?php echo base_url('admin/perihal/update/') ?><?= $perihal['id']; ?>" method="POST" class="">
-        <?= csrf_field(); ?>
-        <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Edit Perihal</h2>
-        </div>
-        <div class="mb-5 m-1 ">
-            <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
-            <input type="text" class="form-control w-50 m-auto " value="<?= $perihal['name']; ?>" name="name" id="name"
-                aria-describedby="emailHelp">
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                value="<?= $kategori['id']; ?>" readonly>
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug"
-                readonly>
-        </div>
-        <div class="mb-5 m-1">
-            <label for="kodePerihal" class="form-label input-group justify-content-center">Kode Perihal</label>
-            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control "
-                id="kodePerihal">
-        </div>
+                    <?= csrf_field(); ?>
 
-        <div class="row text-center">
+                    <div class="mb-5 m-1 ">
+                        <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+                        <input type="text" class="form-control " value="<?= $perihal['name']; ?>" name="name" id="name" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
+                    </div>
+                    <div class="mb-5 m-1">
+                        <label for="kodePerihal" class="form-label input-group justify-content-center">Kode Perihal</label>
+                        <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control " id="kodePerihal">
+                    </div>
 
-<div class="col-md-6 ">
-    <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
-</div>
+                    <div class="row text-center">
 
-<div class="col-md-6">
-    <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-</div>
-</div>
+                        <div class="col-md-6 ">
+                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                        </div>
 
-    </form>
-                </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
         </div>
     </div>
-    
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
-    <script>
-        function confirmDelete(slug) {
-            Swal.fire({
-                title: 'Apa Kamu yakin?',
-                text: 'Jika dihapus data tidak bisa di kembalikan.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#dc3545',
-                cancelButtonColor: '#6c757d',
-                confirmButtonText: 'Delete',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
-                    const form = document.getElementById('deleteForm');
-                    form.action = "<?php echo base_url('admin/perihal/delete/') ?>" + slug;
-                    form.submit();
-                }
-            });
-        }
-
-        // Popup success message
-        <?php if (session()->getFlashdata('success')) : ?>
-            Swal.fire({
-                title: 'Success',
-                text: '<?= session()->getFlashdata('success') ?>',
-                icon: 'success',
-                timer: 3000,
-                showConfirmButton: false
-            });
-        <?php endif; ?>
+</div>
 
 
 
-        function performSearch() {
-
-            var searchText = document.getElementById('searchInput').value.toLowerCase();
-
-            var tableRows = document.querySelectorAll('.table tbody tr');
-
-            tableRows.forEach(function(row) {
-                var rowData = row.textContent.toLowerCase();
-                if (rowData.includes(searchText)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-
-        document.getElementById('searchButton').addEventListener('click', performSearch);
-
-        document.getElementById('searchInput').addEventListener('input', performSearch);
-    </script>
-
-    <script>
-        var nameInput = document.getElementById('name');
-        var slugInput = document.getElementById('slug');
-
-        // Function to generate a slug from the given string
-        function slugify(text) {
-            return text.toString().toLowerCase()
-                .trim()
-                .replace(/\s+/g, '-') // Replace spaces with dashes
-                .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
-                .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
-                .substring(0, 50); // Limit the slug length
-        }
-
-        // Add an input event listener to the name input field
-        nameInput.addEventListener('input', function() {
-            var nameValue = nameInput.value;
-            var slugValue = slugify(nameValue);
-            slugInput.value = slugValue;
-        });
-    </script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
-var nameInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
+    function confirmDelete(slug) {
+        Swal.fire({
+            title: 'Apa Kamu yakin?',
+            text: 'Jika dihapus data tidak bisa di kembalikan.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+                const form = document.getElementById('deleteForm');
+                form.action = "<?php echo base_url('admin/perihal/delete/') ?>" + slug;
+                form.submit();
+            }
+        });
+    }
 
-// Function to generate a slug from the given string
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-') // Replace spaces with dashes
-        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
-        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
-        .substring(0, 50); // Limit the slug length
-}
+    // Popup success message
+    <?php if (session()->getFlashdata('success')) : ?>
+        Swal.fire({
+            title: 'Success',
+            text: '<?= session()->getFlashdata('success') ?>',
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    <?php endif; ?>
 
-// Add an input event listener to the name input field
-nameInput.addEventListener('input', function() {
-    var nameValue = nameInput.value;
-    var slugValue = slugify(nameValue);
-    slugInput.value = slugValue;
-});
+
+
+    function performSearch() {
+
+        var searchText = document.getElementById('searchInput').value.toLowerCase();
+
+        var tableRows = document.querySelectorAll('.table tbody tr');
+
+        tableRows.forEach(function(row) {
+            var rowData = row.textContent.toLowerCase();
+            if (rowData.includes(searchText)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    document.getElementById('searchButton').addEventListener('click', performSearch);
+
+    document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
-    <?= $this->endSection('content'); ?>
+<script>
+    var nameInput = document.getElementById('name');
+    var slugInput = document.getElementById('slug');
+
+    // Function to generate a slug from the given string
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-') // Replace spaces with dashes
+            .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+            .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+            .substring(0, 50); // Limit the slug length
+    }
+
+    // Add an input event listener to the name input field
+    nameInput.addEventListener('input', function() {
+        var nameValue = nameInput.value;
+        var slugValue = slugify(nameValue);
+        slugInput.value = slugValue;
+    });
+</script>
+
+<script>
+    var nameInput = document.getElementById('name');
+    var slugInput = document.getElementById('slug');
+
+    // Function to generate a slug from the given string
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-') // Replace spaces with dashes
+            .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+            .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+            .substring(0, 50); // Limit the slug length
+    }
+
+    // Add an input event listener to the name input field
+    nameInput.addEventListener('input', function() {
+        var nameValue = nameInput.value;
+        var slugValue = slugify(nameValue);
+        slugInput.value = slugValue;
+    });
+</script>
+
+<?= $this->endSection('content'); ?>

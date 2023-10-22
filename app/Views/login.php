@@ -38,14 +38,14 @@
 
     <!-- Form Login -->
     <div class="container">
-        <div class="row mt-2 m-auto" style="width: 13%;">
+        <div class="row mt-2 m-auto" style="width: 25%;">
             <img class="d-flex" src="<?php echo base_url() ?>img\logo_kominfosanti_buleleng.png" alt="">
         </div>
         <div class="row">
             <div class="col">
-                <div class="card row m-auto mt-1 shadow" style="width: 40%;">
+                <div class="card row m-auto mt-1 shadow " style="width: 40%;">
                     <div class="card-body row m-auto">
-                        <form class="form" method="POST" action="<?php echo base_url('login') ?>">
+                        <form class="form" method="POST" action="<?php echo base_url('login') ?> ">
                             <?= csrf_field(); ?>
                             <div class="input-group justify-content-center mt-2 mb-2">
                                 <h2>LOGIN</h2>
@@ -67,7 +67,9 @@
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
-                            <div class="g-recaptcha" data-sitekey="<?= $key; ?>"></div>
+                            <div class=" col-9 mx-auto " >
+                            <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="margin: auto;"  ></div>
+                            </div>
                             <br>
                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                 <button class="btn btn-success text-light" type="submit">Login</button>
