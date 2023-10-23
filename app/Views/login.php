@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+    .g-recaptcha {
+    max-width: 100%;
+}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +33,7 @@
         <div class="container">
             <a class="navbar-brand d-flex" href="#">
                 <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng" style="width: 70px;">
-                <div class="ms-1 d-flex flex-column align-items-start">
+                <div class="ms-1 d-flex flex-column align-items-start " style="font-weight: bold; text-shadow: 2px 2px 1px grey; padding-left: 20px; padding-top:5px; " >
                     <span>E-NOMOR</span>
                     <span class="small">KOMINFO SANTI</span>
                 </div>
@@ -37,13 +43,13 @@
     <!-- Akhir Navbar -->
 
     <!-- Form Login -->
-    <div class="container">
-        <div class="row mt-2 m-auto" style="width: 25%;">
+    <div class="container " style="max-width:100%;">
+        <div class="row mt-2 m-auto" style="width: 25%; ">
             <img class="d-flex" src="<?php echo base_url() ?>img\logo_kominfosanti_buleleng.png" alt="">
         </div>
-        <div class="row">
+        <div class="row" style="padding-bottom: 10%;" >
             <div class="col">
-                <div class="card row m-auto mt-1 shadow " style="width: 40%;">
+                <div class="card row m-auto mt-1 shadow " style="width: 40%; ">
                     <div class="card-body row m-auto">
                         <form class="form" method="POST" action="<?php echo base_url('login') ?> ">
                             <?= csrf_field(); ?>
@@ -67,7 +73,7 @@
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
-                            <div class=" col-9 mx-auto " >
+                            <div class=" col-8 mx-auto " >
                             <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="margin: auto;"  ></div>
                             </div>
                             <br>
