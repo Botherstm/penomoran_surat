@@ -24,18 +24,7 @@
                     <div class="card-header col">
                         <div class="row">
                             <div class="col-6 d-flex justify-content-start">
-
-                                <<<<<<< HEAD <?php if (session()->get('level') == 2): ?> <h1 class="card-title">List
-                                    Kategori</h1>
-                                    <?php elseif (session()->get('level') == 1): ?>
-                                    <h1 class="card-title">List Kategori <?=$dinas['name'];?></h1>
-                                    <?php endif?>
-                                    =======
-
-                                    <h1 class="card-title">List Kategori </h1>
-
-                                    >>>>>>> a6481b7de1896a2502a9e4a2b7821586c86bad02
-
+                                <h1 class="card-title">List Kategori</h1>
                             </div>
                             <div class="col-6 d-flex justify-content-end">
                                 <button type="button" class="btn btn-success mb-3" data-toggle="modal"
@@ -82,30 +71,27 @@
                                     </td>
                                     <td>
                                         <div class="btn-group " style="display: flex;">
-                                            <button type="button" class="btn btn-block btn-warning" data-toggle="modal"
-                                                data-target="#editModal">
+                                            <button type="button" class="btn btn-block btn-warning"
+                                                onclick="openEditModal('<?=$kategori['id']?>', '<?=$kategori['name']?>', '<?=$kategori['kode']?>', '<?=$kategori['slug']?>')">
                                                 <i class="fas fa-pen"></i>
                                             </button>
                                             <form style="padding-left: 10px;" id="deleteForm"
                                                 action="<?php echo base_url('admin/kategori/delete/') ?><?=$kategori['slug'];?>"
                                                 method="POST">
                                                 <?=csrf_field();?>
-                                                <button type="button"
+                                                <button type="button" data-target="editmodal"
                                                     onclick="confirmDelete('<?=$kategori['slug'];?>')"
                                                     class="btn btn-block btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                         </div>
-
                                     </td>
-
                                 </tr>
                                 <?php endforeach?>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </section>
         </div>
@@ -146,15 +132,12 @@
                             <button type="submit" class="btn btn-success " style="width: 80%;">Tambah data</button>
                         </div>
                     </div>
-
-
-
-
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -163,35 +146,29 @@
                 <h3 class="card-title">Edit Data Kategori</h3>
             </div>
             <div class="card-body">
-                <form action="<?php echo base_url('admin/kategori/update/') ?><?=$kategori['id']?>" method="POST"
-                    class="">
+                <form action="" method="POST" id="editForm">
                     <?=csrf_field();?>
 
-                    <div class="mb-5 m-1 ">
-                        <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
-                        <input type="text" name="name" value="<?=$kategori['name'];?>" class="form-control " id="name"
-                            aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden value="<?=$kategori['slug'];?>" class="form-control" id="slug"
-                            name="slug" readonly>
+                    <div class="mb-5 m-1">
+                        <label for="name" class="form-label input-group justify-content-center">Kategori</label>
+                        <input type="text" name="name" class="form-control" id="editName" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-5 m-1">
                         <label for="kodeKategori" class="form-label input-group justify-content-center">Kode
                             Kategori</label>
-                        <input type="name" name="kode" value="<?=$kategori['kode'];?>" class="form-control "
-                            id="kodeKategori">
+                        <input type="text" name="kode" class="form-control" id="editKodeKategori">
                     </div>
 
-                    <div class="row text-center">
+                    <!-- Input untuk menyimpan slug -->
+                    <input type="" name="slug" id="editSlug">
 
-                        <div class="col-md-6 ">
-                            <button class="btn btn-danger" style="width:80%;" type="button"
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" style="width: 80%;" type="button"
                                 data-dismiss="modal">Batal</button>
                         </div>
-
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
+                            <button type="submit" class="btn btn-success" style="width: 80%;">Edit Data</button>
                         </div>
                     </div>
                 </form>
@@ -200,11 +177,26 @@
     </div>
 </div>
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
 // function showAlert() {
 //     Swal.fire('Ini adalah pesan SweetAlert2!');
 // }
+function openEditModal(id, name, kode, slug) {
+    // Mengisi nilai-nilai input di dalam form edit sesuai dengan data kategori yang akan diedit
+    document.getElementById('editName').value = name;
+    document.getElementById('editKodeKategori').value = kode;
+    document.getElementById('editSlug').value = slug;
+
+    // Mengatur URL form action dengan ID kategori
+    var form = document.querySelector('#editForm');
+    form.action = `<?php echo base_url('admin/kategori/update/') ?>${id}`;
+
+    // Aktifkan form pop-up
+    $('#editModal').modal('show');
+}
 
 function confirmDelete(slug) {
     Swal.fire({
@@ -237,53 +229,6 @@ Swal.fire({
 });
 <?php endif;?>
 
-
-function performSearch() {
-
-    var searchText = document.getElementById('searchInput').value.toLowerCase();
-
-    var tableRows = document.querySelectorAll('.table tbody tr');
-
-    tableRows.forEach(function(row) {
-        var rowData = row.textContent.toLowerCase();
-        if (rowData.includes(searchText)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
-
-document.getElementById('searchButton').addEventListener('click', performSearch);
-
-document.getElementById('searchInput').addEventListener('input', performSearch);
-</script>
-
-
-<script>
-var nameInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
-
-// Function to generate a slug from the given string
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-') // Replace spaces with dashes
-        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
-        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
-        .substring(0, 50); // Limit the slug length
-}
-
-// Add an input event listener to the name input field
-nameInput.addEventListener('input', function() {
-    var nameValue = nameInput.value;
-    var slugValue = slugify(nameValue);
-    slugInput.value = slugValue;
-});
-</script>
-
-
-<script>
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
 
