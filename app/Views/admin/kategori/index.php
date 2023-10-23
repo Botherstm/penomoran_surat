@@ -1,6 +1,6 @@
-"<?=$this->extend('admin/layouts/main');?>
+"<?= $this->extend('admin/layouts/main'); ?>
 
-<?=$this->section('content');?>
+<?= $this->section('content'); ?>
 
 
 
@@ -25,11 +25,11 @@
                         <div class="row">
                             <div class="col-6 d-flex justify-content-start">
 
-                                <?php if (session()->get('level') == 2): ?>
+                                <?php if (session()->get('level') == 2) : ?>
                                 <h1 class="card-title">List Kategori</h1>
-                                <?php elseif (session()->get('level') == 1): ?>
-                                <h1 class="card-title">List Kategori <?=$dinas['name'];?></h1>
-                                <?php endif?>
+                                <?php elseif (session()->get('level') == 1) : ?>
+                                <h1 class="card-title">List Kategori <?= $dinas['name']; ?></h1>
+                                <?php endif ?>
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">
@@ -53,22 +53,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1?>
-                                <?php foreach ($kategoris as $kategori): ?>
+                                <?php $i = 1 ?>
+                                <?php foreach ($kategoris as $kategori) : ?>
                                 <tr>
-                                    <td><?=$i++;?></td>
-                                    <td><?=$kategori['name'];?></td>
-                                    <td><?=$kategori['kode'];?></td>
+                                    <td><?= $i++; ?></td>
+                                    <td><?= $kategori['name']; ?></td>
+                                    <td><?= $kategori['kode']; ?></td>
                                     <td>
-                                        <?php $PerihalCounter = 1;?>
-                                        <?php foreach ($perihals[$kategori['id']] as $perihal): ?>
-                                        <?=$PerihalCounter++ . '. ' . $perihal['name'] . '<br>';?>
-                                        <?php endforeach;?>
+                                        <?php $PerihalCounter = 1; ?>
+                                        <?php foreach ($perihals[$kategori['id']] as $perihal) : ?>
+                                        <?= $PerihalCounter++ . '. ' . $perihal['name'] . '<br>'; ?>
+                                        <?php endforeach; ?>
                                     </td>
                                     <td>
                                         <div>
                                             <a
-                                                href="<?php echo base_url('admin/kategori/perihal/') ?><?=$kategori['slug'];?>">
+                                                href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
                                                 <button type="button" class="btn btn-dark">
                                                     Lihat rincian perihal
                                                 </button>
@@ -76,26 +76,32 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="btn-group" style="display: flex;">
-                                            <button type="button" class="btn btn-block btn-warning" data-toggle="modal"
+                                        <div class="btn-group" style="padding-left: 10px;">
+                                            <!-- update -->
+                                            <button type="button" class="btn btn-block btn-warning " data-toggle="modal"
                                                 data-target="#editModal">
-                                                <i class="fas fa-pen"></i>
+                                                <i class=" fas fa-pen"></i>
                                             </button>
+
+
+                                        </div>
+                                        <div class="btn-group" style="padding-right: 10px;">
+                                            <!-- update -->
                                             <form id="deleteForm"
-                                                action="<?php echo base_url('admin/kategori/delete/') ?><?=$kategori['slug'];?>"
+                                                action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>"
                                                 method="POST">
-                                                <?=csrf_field();?>
+                                                <?= csrf_field(); ?>
                                                 <button type="button"
-                                                    onclick="confirmDelete('<?=$kategori['slug'];?>')"
+                                                    onclick="confirmDelete('<?= $kategori['slug']; ?>')"
                                                     class="btn btn-block btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                         </div>
-                                    </td>
 
+                                    </td>
                                 </tr>
-                                <?php endforeach?>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -115,7 +121,7 @@
             </div>
             <div class="card-body">
                 <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
-                    <?=csrf_field();?>
+                    <?= csrf_field(); ?>
                     <div class="mb-5 m-1 ">
                         <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
                         <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
@@ -150,9 +156,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
-// function showAlert() {
-//     Swal.fire('Ini adalah pesan SweetAlert2!');
-// }
 
 function confirmDelete(slug) {
     Swal.fire({
@@ -175,15 +178,15 @@ function confirmDelete(slug) {
 }
 
 // Popup success message
-<?php if (session()->getFlashdata('success')): ?>
+<?php if (session()->getFlashdata('success')) : ?>
 Swal.fire({
     title: 'Success',
-    text: '<?=session()->getFlashdata('success')?>',
+    text: '<?= session()->getFlashdata('success') ?>',
     icon: 'success',
     timer: 3000,
     showConfirmButton: false
 });
-<?php endif;?>
+<?php endif; ?>
 
 
 function performSearch() {
@@ -207,4 +210,4 @@ document.getElementById('searchButton').addEventListener('click', performSearch)
 document.getElementById('searchInput').addEventListener('input', performSearch);
 </script>
 
-<?=$this->endSection('content');?>"
+<?= $this->endSection('content'); ?>"
