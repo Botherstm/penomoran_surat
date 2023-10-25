@@ -7,16 +7,15 @@
     <a class="brand-link bg-teal ">
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center"
             height="40" width="65">
-        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px grey; padding-top: 10px;" >E-NOMOR</span>
+        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 10px;" >E-NOMOR</span>
     </a>
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="padding-top: 10px;">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <?php if ((session()->get('gambar') !== null)): ?>
             <div class="image">
-                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>" width="20px"
+                <img src="<?=base_url('userimage/') . session()->get('gambar');?>" width="20px"
                     class="img-circle elevation-2" alt="User Image">
             </div>
-            <?php else: ?>
             <?php endif?>
 
             <div class="info">
@@ -73,8 +72,16 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-info"></i>
+                        <p>
+                            Tentang
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item"  >
-                    <a href="/logout" class="nav-link"> 
+                    <a href="/logout" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="auto" fill="currentColor"
                             class="bi bi-box-arrow-left  " viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -82,7 +89,9 @@
                             <path fill-rule="evenodd"
                                 d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                         </svg>
-                      <p style="padding-left: 5px;" >Keluar</p>
+                        <po class="m-1" >
+                            Keluar
+                        </po>
                     </a>
                 </li>
             </ul>    
