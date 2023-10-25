@@ -1,15 +1,15 @@
-<aside class="main-sidebar sidebar-light-primary elevation-4">
+<aside class="main-sidebar sidebar-light-primary elevation-2">
     <!-- Brand Logo -->
 
     <!-- ready -->
 
-  <a href="index3.html" class="brand-link bg-teal ">
-        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center"
+  <a class="brand-link bg-teal" >
+        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" 
             height="40" width="65">
         <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px grey; padding-top: 10px;">E-NOMOR Admin</span>
     </a>
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex" >
             <?php if ((session()->get('gambar') !== null)): ?>
             <div class="image">
                 <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>"
@@ -26,11 +26,11 @@
         <!-- SidebarSearch Form -->
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <nav class="mt-2" >
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="padding-bottom: 200px;" >
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item ">
+               <li class="nav-item ">
                     <a href="<?php echo base_url('admin') ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -80,9 +80,18 @@
                         </p>
                     </a>
                 </li>
-              
+             
                 <?php endif;?>
-                <li class="nav-item ">
+          
+          
+            </ul>
+
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" >
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+
+               <li class="nav-item "  >
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
@@ -107,10 +116,10 @@
                             <path fill-rule="evenodd"
                                 d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                         </svg>
-                      <p>Keluar</p>
+                      <p style="padding-left: 5px;" >Keluar</p>
                     </a>
                 </li>
-            </ul>
+            </ul>    
         </nav>
         <!-- /.sidebar-menu -->
     </div>
