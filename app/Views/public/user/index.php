@@ -115,7 +115,7 @@
                                     <img id="image_preview" src="" alt="" style="max-width: 100%; max-height: 200px;">
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer d-flex">
                                 <form method="POST" action="<?php echo base_url('user/profile/update') ?>"
                                     accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
                                     <div class="row">
@@ -130,6 +130,18 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="btn-group">
+                                    <!-- update -->
+                                    <form id="deleteForm" action="<?php echo base_url('user/profile/delete') ?>"
+                                        method="POST">
+                                        <?=csrf_field();?>
+                                        <input type="text" hidden value="<?=$user['id'];?>" name="id">
+                                        <button type="button" onclick="confirmDelete('')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-3 text-right" style="margin-right: 3%;">
@@ -151,6 +163,25 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+function confirmDelete() {
+    Swal.fire({
+        title: 'Apa Kamu yakin?',
+        text: 'Jika dihapus Foto tidak bisa di kembalikan.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+            const form = document.getElementById('deleteForm');
+            form.action = "<?php echo base_url('user/profile/delete') ?>";
+            form.submit();
+        }
+    });
+}
 <?php if (session()->getFlashdata('success')): ?>
 Swal.fire({
     title: 'Success',

@@ -99,6 +99,7 @@ $routes->get('/', 'User\HomeController::index');
 $routes->get('/public/user/profile', 'User\UserController::index');
 // $routes->post('/user/profile/update', 'User\UserController::update');
 $routes->post('/user/profile/update', 'User\UserController::updateGambar');
+$routes->post('/user/profile/delete', 'User\UserController::deleteGambar');
 
 //generate
 // $routes->get('/', 'GenerateController::index');
