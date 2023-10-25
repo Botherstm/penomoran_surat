@@ -157,6 +157,11 @@
                                     <input type="text" value="<?=$bidang['name'];?>" class="form-control" name="bidang"
                                         id="bidang" readonly>
                                 </div>
+                                <div class="form-group">
+                                    <label for="nomorSurat">Urutan Surat</label>
+                                    <input type="text" value="<?=$urutanPlusOne;?>" class="form-control" name="urutan"
+                                        id="urutan" readonly>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>

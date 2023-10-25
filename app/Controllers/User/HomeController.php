@@ -67,6 +67,10 @@ class HomeController extends BaseController
         $dinas = $this->dinas->getById(session()->get('instansi_id'));
         $kategories = $this->kategori->getAll();
         $generates = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
+        // dd($generates['urutan']);
+        $urutan = $generates['urutan'];
+        $urutanPlusOne = $urutan + 1;
+        // dd($urutanPlusOne);
 
         $tanggalSaatIni = new DateTime();
         $tanggalMaksimum = $tanggalSaatIni->format('Y-m-d');
@@ -80,6 +84,7 @@ class HomeController extends BaseController
             'dinas' => $dinas,
             'generate' => $generates,
             'tanggalmax' => $tanggalMaksimum,
+            'urutanPlusOne' => $urutanPlusOne,
         ]);
 
     }
