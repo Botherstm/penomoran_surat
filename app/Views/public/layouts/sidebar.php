@@ -27,7 +27,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 200px;">
+            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 20em;">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
@@ -69,14 +69,6 @@
                         <i class="nav-icon fa fa-user"></i>
                         <p>
                             Pengaturan Akun
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-info"></i>
-                        <p>
-                            Tentang
                         </p>
                     </a>
                 </li>
