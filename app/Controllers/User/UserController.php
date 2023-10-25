@@ -150,6 +150,6 @@ class UserController extends BaseController
         $this->UserModel->update($id, $user);
 
         return redirect()->to('/public/user/profile')->with('success', 'data gambar berhasil dihapus');
-
     }
+
 }
