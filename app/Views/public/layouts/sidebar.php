@@ -25,7 +25,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 200px;">
+            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 25em;">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
@@ -49,11 +49,11 @@
                 <?php endif ?>
             </ul>
 
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item ">
-                    <a href="<?php echo base_url('/public/user/profile') ?>" class="nav-link">
+                <li class=" nav-item ">
+                    <a href=" <?php echo base_url('/public/user/profile') ?>" class="nav-link">
                         <i class="nav-icon fa fa-user"></i>
                         <p>
                             Pengaturan Akun
@@ -64,7 +64,7 @@
                     <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
-                            Tentang
+                            Tentang 123
                         </p>
                     </a>
                 </li>
