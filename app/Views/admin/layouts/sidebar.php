@@ -3,6 +3,8 @@
 
     <!-- ready -->
 
+    
+
   <a href="index3.html" class="brand-link bg-teal ">
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center"
             height="40" width="65">
@@ -26,8 +28,8 @@
         <!-- SidebarSearch Form -->
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="padding-bottom: 170px;">
+        <nav class="mt-2 " >
+        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false" style=" padding-bottom: 11em; " >
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item ">
@@ -84,7 +86,7 @@
                 <?php endif;?>
             </ul>   
             
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" >
+            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false"  >
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
@@ -114,7 +116,7 @@
                       <p style="padding-left: 5px;" >Keluar</p>
                     </a>
                 </li>
-            </ul>    
+            </ul>   
         </nav>
         <!-- /.sidebar-menu -->
     </div>
