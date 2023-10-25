@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex">
-                                <form method="POST" action="<?php echo base_url('user/profile/update') ?>"
+                                <form method="POST" action="<?php echo base_url('admin/profile/update') ?>"
                                     accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
                                     <div class="row">
                                         <label class="col-form-label col-md-3 text-right">Ganti Foto : </label>
@@ -132,7 +132,7 @@
                                 </form>
                                 <div class="btn-group">
                                     <!-- update -->
-                                    <form id="deleteForm" action="<?php echo base_url('user/profile/delete') ?>"
+                                    <form id="deleteForm" action="<?php echo base_url('admin/profile/delete') ?>"
                                         method="POST">
                                         <?=csrf_field();?>
                                         <input type="text" hidden value="<?=$user['id'];?>" name="id">
@@ -156,6 +156,24 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+function confirmDelete() {
+    Swal.fire({
+        title: 'Apa Kamu yakin?',
+        text: 'Jika dihapus Foto tidak bisa di kembalikan.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const form = document.getElementById('deleteForm');
+            form.action = "<?php echo base_url('admin/profile/delete') ?>";
+            form.submit();
+        }
+    });
+}
 <?php if (session()->getFlashdata('success')): ?>
 Swal.fire({
     title: 'Success',

@@ -295,4 +295,29 @@ class UserController extends BaseController
         return redirect()->to('/admin/user/profile')->with('success', 'Akun Gambar Berhasil di Ganti !');
 
     }
+    public function deleteGambar()
+    {
+
+        $userData = session()->get();
+
+        $id = $this->request->getPost('id');
+        $user = $this->UserModel->find($id);
+        $gambarLama = $user['gambar'];
+
+        if (!empty($gambarLama)) {
+            $gambarLamaPath = ROOTPATH . 'public/userimage/' . $gambarLama;
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
+
+        $userData['gambar'] = null;
+        $user = [
+            'gambar' => null,
+        ];
+        session()->set($userData);
+        $this->UserModel->update($id, $user);
+
+        return redirect()->to('/admin/user/profile')->with('success', 'data gambar berhasil dihapus');
+    }
 }

@@ -39,6 +39,7 @@ $routes->get('/admin/user/profile', 'Admin\UserController::profile');
 $routes->post('/admin/profile/update', 'Admin\UserController::updateGambar');
 $routes->get('/admin/users/edit/(:segment)', 'Admin\UserController::edit/$1');
 $routes->post('/admin/users/save', 'Admin\UserController::save');
+$routes->post('/admin/profile/delete', 'Admin\UserController::deleteGambar');
 $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
 $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
 
