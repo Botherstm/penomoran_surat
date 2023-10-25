@@ -115,8 +115,8 @@
                                     <img id="image_preview" src="" alt="" style="max-width: 100%; max-height: 200px;">
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <form method="POST" action="<?php echo base_url('admin/profile/update') ?>"
+                            <div class="card-footer d-flex">
+                                <form method="POST" action="<?php echo base_url('user/profile/update') ?>"
                                     accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
                                     <div class="row">
                                         <label class="col-form-label col-md-3 text-right">Ganti Foto : </label>
@@ -130,9 +130,21 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="btn-group">
+                                    <!-- update -->
+                                    <form id="deleteForm" action="<?php echo base_url('user/profile/delete') ?>"
+                                        method="POST">
+                                        <?=csrf_field();?>
+                                        <input type="text" hidden value="<?=$user['id'];?>" name="id">
+                                        <button type="button" onclick="confirmDelete('')"
+                                            class="btn btn-block btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
