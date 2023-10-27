@@ -1,6 +1,6 @@
-<?=$this->extend('admin/layouts/main');?>
+<?= $this->extend('admin/layouts/main'); ?>
 
-<?=$this->section('content');?>
+<?= $this->section('content'); ?>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -16,56 +16,55 @@
                                 <tr style="padding-left: 1%;">
                                     <th>Nama</th>
                                     <td>:</td>
-                                    <td><?=$user['name'];?></td>
+                                    <td><?= $user['name']; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
                                     <td>:</td>
-                                    <td><?=$user['email'];?></td>
+                                    <td><?= $user['email']; ?></td>
                                 </tr>
                                 <tr>
                                     <th>No Telepon</th>
                                     <td>:</td>
-                                    <td><?=$user['no_hp'];?></td>
+                                    <td><?= $user['no_hp']; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Nama Instansi</th>
                                     <td>:</td>
-                                    <td><?=$dinas['name'];?></td>
+                                    <td><?= $dinas['name']; ?></td>
                                 </tr>
 
                                 <tr>
                                     <th>Bidang</th>
                                     <td>:</td>
-                                    <td><?=$bidang['name'];?></td>
+                                    <td><?= $bidang['name']; ?></td>
                                 </tr>
                             </table>
-                            <div class=" mx-auto " style="padding-bottom: 10%; padding-top: 10%; " >
-                            <div class="header-elements" style="margin-left:5%; padding:1%; ">
-                                <a href="#<?= $user['slug']; ?>" class="btn btn-info" style="width: 200px;" data-toggle="modal" data-target="#editModal"><i
-                                        class="icon-pencil7"></i> Ganti Data User</a>
+                            <hr>
+                            <div class=" mx-auto " style="padding-bottom: 10%; padding-top: 10%; ">
+                                <div class="header-elements" style="margin-left:5%; padding:1%; ">
+                                    <a href="#<?= $user['slug']; ?>" class="btn btn-info" style="width: 200px;" data-toggle="modal" data-target="#editModal"><i class="icon-pencil7"></i> Ganti Data User</a>
 
+                                </div>
                             </div>
-                            </div>
 
 
-                        
+
                         </div>
                     </div>
                     <div class="col-md-6" style="padding-right: 1%;">
                         <div class="card">
 
                             <div class="card-body">
-                                <?php if (!empty($user['gambar'])): ?>
-                                <div class="text-center ">
-                                    <img src="<?php echo base_url('userimage/') ?><?=$user['gambar'];?>" alt=""
-                                        width="70%">
-                                </div>
-                                <?php else: ?>
-                                <div class="text-center ">
-                                    <img src="/img/profile.jpg" alt="" width="70%">
-                                </div>
-                                <?php endif?>
+                                <?php if (!empty($user['gambar'])) : ?>
+                                    <div class="text-center ">
+                                        <img src="<?php echo base_url('userimage/') ?><?= $user['gambar']; ?>" alt="" width="70%">
+                                    </div>
+                                <?php else : ?>
+                                    <div class="text-center ">
+                                        <img src="/img/profile.jpg" alt="" width="70%">
+                                    </div>
+                                <?php endif ?>
                             </div>
 
                             <div class="row mt-2">
@@ -74,14 +73,12 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex">
-                                <form method="POST" action="<?php echo base_url('admin/profile/update') ?>"
-                                    accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
+                                <form method="POST" action="<?php echo base_url('admin/profile/update') ?>" accept-charset="UTF-8" id="form_photo" enctype="multipart/form-data">
                                     <div class="row">
                                         <label class="col-form-label col-md-3 text-right">Ganti Foto : </label>
                                         <div class="col-md-6">
-                                            <input type="text" hidden value="<?=$user['id'];?>" name="id">
-                                            <input type="file" name="gambar" accept="image/*" required id="upload_image"
-                                                class="form-control">
+                                            <input type="text" hidden value="<?= $user['id']; ?>" name="id">
+                                            <input type="file" name="gambar" accept="image/*" required id="upload_image" class="form-control">
                                         </div>
                                         <div class="col-md-3">
                                             <button type="submit" class="btn btn-info">Submit</button>
@@ -90,12 +87,10 @@
                                 </form>
                                 <div class="btn-group">
                                     <!-- update -->
-                                    <form id="deleteForm" action="<?php echo base_url('admin/profile/delete') ?>"
-                                        method="POST">
-                                        <?=csrf_field();?>
-                                        <input type="text" hidden value="<?=$user['id'];?>" name="id">
-                                        <button type="button" onclick="confirmDelete('')"
-                                            class="btn btn-block btn-danger">
+                                    <form id="deleteForm" action="<?php echo base_url('admin/profile/delete') ?>" method="POST">
+                                        <?= csrf_field(); ?>
+                                        <input type="text" hidden value="<?= $user['id']; ?>" name="id">
+                                        <button type="button" onclick="confirmDelete('')" class="btn btn-block btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -152,17 +147,17 @@
                             <label for="exampleFormControlSelect1">Dinas</label>
                             <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
                                 <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
-                                
+
                             </select>
                         </div>
                     <?php endif ?>
 
                     <div class="form-group">
-                            <label for="exampleFormControlSelect1">Bidang</label>
-                            <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
-                                <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
-                            </select>
-                        </div>
+                        <label for="exampleFormControlSelect1">Bidang</label>
+                        <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
+                            <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -194,72 +189,72 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-function confirmDelete() {
-    Swal.fire({
-        title: 'Apa Kamu yakin?',
-        text: 'Jika dihapus Foto tidak bisa di kembalikan.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            const form = document.getElementById('deleteForm');
-            form.action = "<?php echo base_url('admin/profile/delete') ?>";
-            form.submit();
+    function confirmDelete() {
+        Swal.fire({
+            title: 'Apa Kamu yakin?',
+            text: 'Jika dihapus Foto tidak bisa di kembalikan.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('deleteForm');
+                form.action = "<?php echo base_url('admin/profile/delete') ?>";
+                form.submit();
+            }
+        });
+    }
+    <?php if (session()->getFlashdata('success')) : ?>
+        Swal.fire({
+            title: 'Success',
+            text: '<?= session()->getFlashdata('success') ?>',
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    <?php endif; ?>
+
+    document.getElementById('upload_image').addEventListener('change', function() {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('image_preview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            document.getElementById('image_preview').src = '';
         }
     });
-}
-<?php if (session()->getFlashdata('success')): ?>
-Swal.fire({
-    title: 'Success',
-    text: '<?=session()->getFlashdata('success')?>',
-    icon: 'success',
-    timer: 3000,
-    showConfirmButton: false
-});
-<?php endif;?>
-
-document.getElementById('upload_image').addEventListener('change', function() {
-    var file = this.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('image_preview').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    } else {
-        document.getElementById('image_preview').src = '';
-    }
-});
 
 
-$(document).ready(function() {
-    $("#ubahNamaBtn").click(function(e) {
-        e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
+    $(document).ready(function() {
+        $("#ubahNamaBtn").click(function(e) {
+            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
-        $("#formUbahNama").toggle();
+            $("#formUbahNama").toggle();
+        });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    $("#ubahEmailBtn").click(function(e) {
-        e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
+    $(document).ready(function() {
+        $("#ubahEmailBtn").click(function(e) {
+            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
-        $("#formUbahEmail").toggle();
+            $("#formUbahEmail").toggle();
+        });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    $("#ubahPasswordBtn").click(function(e) {
-        e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
+    $(document).ready(function() {
+        $("#ubahPasswordBtn").click(function(e) {
+            e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
-        $("#formUbahPassword").toggle();
+            $("#formUbahPassword").toggle();
+        });
     });
-});
 </script>
-<?=$this->endSection('content');?>
+<?= $this->endSection('content'); ?>

@@ -53,38 +53,62 @@ class UserController extends BaseController
 
     public function update()
     {
+        $id = $this->request->getPost('id');
+        $user = $this->UserModel->getById($id);
+        $password_lama = $this->request->getPost('password_lama');
+        $password_baru = $this->request->getPost('password');
+
         $rules = [
             'name' => 'required',
             'slug' => 'required',
             'no_hp' => 'required|integer',
             'email' => 'required|valid_email',
         ];
-        $id = $this->request->getFile('id');
 
-        $gambar = $this->request->getFile('gambar');
-
-        if (!$gambar !== null) {
-            $uuid = Uuid::uuid4();
-            $uuidString = $uuid->toString();
-
-            $namaGambar = $uuidString . $gambar->getClientName();
-            $gambar->move(ROOTPATH . 'public/img', $namaGambar);
+        // Tambahkan aturan validasi untuk password lama jika mengubah password
+        if (!empty($password_baru)) {
+            $rules['password_lama'] = 'required';
         }
+        // dd($user['password']);
+        // Lakukan validasi formulir
         if ($this->validate($rules)) {
-            // Data pengguna yang akan disimpan
-            $userData = [
-                'slug' => $this->request->getPost('slug'),
-                'name' => $this->request->getPost('name'),
-                'email' => $this->request->getPost('email'),
-                'gambar' => $namaGambar,
-                'no_hp' => $this->request->getPost('no_hp'),
-            ];
-            $this->UserModel->update($id, $userData);
-            return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+            // Periksa apakah password baru disediakan dan verifikasi password lama
+            if (!empty($password_baru)) {
+                if (password_verify($password_lama, $user['password'])) {
+                    $userData = [
+                        'slug' => $this->request->getPost('slug'),
+                        'name' => $this->request->getPost('name'),
+                        'email' => $this->request->getPost('email'),
+                        'no_hp' => $this->request->getPost('no_hp'),
+                        'password' => password_hash($password_baru, PASSWORD_DEFAULT), // Hash password baru
+                    ];
+                    $this->UserModel->update($id, $userData);
+                    return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+                } else {
+                    return redirect()->back()->with('error', 'Password lama salah');
+                }
+            } else {
+                // Jika tidak mengubah password, perbarui informasi pengguna lainnya
+                $userData = [
+                    'slug' => $this->request->getPost('slug'),
+                    'name' => $this->request->getPost('name'),
+                    'email' => $this->request->getPost('email'),
+                    'no_hp' => $this->request->getPost('no_hp'),
+                ];
+                $this->UserModel->update($id, $userData);
+                return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+            }
         } else {
-            return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
+            return redirect()->back()->withInput()->with('error', 'Email atau password tidak valid');
         }
     }
+
+
+
+
+
+
+
     public function updateGambar()
     {
 
@@ -118,13 +142,11 @@ class UserController extends BaseController
             ];
             session()->set($userData);
             $this->UserModel->update($id, $user);
-
         } else {
             return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
         }
 
         return redirect()->to('/public/user/profile')->with('success', 'Akun Gambar Berhasil di Ganti !');
-
     }
     public function deleteGambar()
     {
@@ -151,5 +173,4 @@ class UserController extends BaseController
 
         return redirect()->to('/public/user/profile')->with('success', 'data gambar berhasil dihapus');
     }
-
 }

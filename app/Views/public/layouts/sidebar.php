@@ -25,11 +25,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-<<<<<<< HEAD
-            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 20em;">
-=======
             <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 25em;">
->>>>>>> 23e98cecc152b8a2ccfab973f27317e462c404ca
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
@@ -64,9 +60,6 @@
                         </p>
                     </a>
                 </li>
-<<<<<<< HEAD
-                <li class="nav-item"  >
-=======
                 <li class="nav-item">
                     <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
@@ -76,7 +69,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
->>>>>>> 23e98cecc152b8a2ccfab973f27317e462c404ca
                     <a href="/logout" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="auto" fill="currentColor" class="bi bi-box-arrow-left  " viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
