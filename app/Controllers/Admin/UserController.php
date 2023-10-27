@@ -32,6 +32,9 @@ class UserController extends BaseController
                 'key' => $siteKey,
             ]);
         }
+        if (session()->get('level') != 1 && session()->get('level') != 2) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
 
         if (session()->get('level') == 2) {
             $users = $this->UserModel->getAllSuperAdmin();
@@ -217,6 +220,10 @@ class UserController extends BaseController
                 'key' => $siteKey,
             ]);
         }
+        if (session()->get('level') != 1 && session()->get('level') != 2) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
+
         $user = $this->UserModel->getByid(session()->get('user_id'));
         $dinas = $this->dinas->getById($user['instansi_id']);
         $bidang = $this->bidangs->getById($user['bidang_id']);
