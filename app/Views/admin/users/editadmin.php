@@ -40,58 +40,16 @@
                                     <td><?=$bidang['name'];?></td>
                                 </tr>
                             </table>
-                            <hr>
+                            <div class=" mx-auto " style="padding-bottom: 10%; padding-top: 10%; " >
                             <div class="header-elements" style="margin-left:5%; padding:1%; ">
-                                <a href="#" class="btn btn-info" style="width: 150px;" id="ubahNamaBtn"><i
-                                        class="icon-pencil7"></i> Ganti Nama</a>
+                                <a href="#<?= $user['slug']; ?>" class="btn btn-info" style="width: 200px;" data-toggle="modal" data-target="#editModal"><i
+                                        class="icon-pencil7"></i> Ganti Data User</a>
+
                             </div>
-                            <div id="formUbahNama" style="display: none; margin-left:6%;">
-                                <form method="" action="">
-                                    <label for="oldNama">Nama Lama:</label><br>
-                                    <input type="text" name="oldNama" id="oldNama" required>
-                                </form>
-                                <form method="" action="">
-                                    <label for="newNama">Nama Baru:</label><br>
-                                    <input type="text" name="newNama" id="newNama" required>
-                                </form>
-                                <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
                             </div>
 
 
-                            <div class="header-elements" style="margin-left:5%; padding:1%; ">
-                                <a href="#" class="btn btn-info" id="ubahEmailBtn" style="width: 150px;"><i
-                                        class="icon-pencil7"></i> Ganti Email</a>
-                            </div>
-                            <div id="formUbahEmail" style="display: none; margin-left:6%;">
-                                <form method="" action="">
-                                    <label for="oldEmail">Email Lama:</label><br>
-                                    <input type="text" name="oldEmail" id="oldEmail" required>
-                                </form>
-                                <form method="" action="">
-                                    <label for="newEmail">Email Baru:</label><br>
-                                    <input type="text" name="newEmail" id="newEmail" required>
-                                </form>
-                                <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
-                            </div>
-
-
-                            <div class="header-elements" style="margin-left:5%; padding:1%;">
-                                <a href="#" class="btn btn-info" id="ubahPasswordBtn" style="width: 150px;"><i
-                                        class="icon-pencil7"></i> Ganti Password</a>
-                            </div>
-                            <div id="formUbahPassword" style="display: none; margin-left:6%;">
-                                <form method="" action="">
-                                    <label for="oldPassword">Password Lama:</label><br>
-                                    <input type="text" name="oldPassword" id="oldPassword" required>
-                                </form>
-                                <form method="" action="">
-                                    <label for="newPassword">Password Baru:</label><br>
-                                    <input type="text" name="newPassword" id="newPassword" required>
-                                </form>
-                                <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
-                            </div>
-
-                            <br>
+                        
                         </div>
                     </div>
                     <div class="col-md-6" style="padding-right: 1%;">
@@ -152,6 +110,86 @@
     </div>
 
 </div>
+
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Edit Akun User</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?= $user['id'] ?>">
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Nama</label>
+                        <input type="text" value="<?= $user['name'] ?>" name="name" class="form-control" id="name" placeholder="Masukkan Nama">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden value="<?= $user['slug'] ?>" class="form-control" id="slug" name="slug" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email </label>
+                        <input type="email" value="<?= $user['email'] ?>" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="no_telp">No Telp.</label>
+                        <input type="number" value="<?= $user['no_hp'] ?>" name="no_hp" class="form-control" id="exampleFormControlInput1" placeholder="Masukan No. Telp">
+                    </div>
+
+                    <?php if (session()->get('level') == 2) : ?>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Dinas</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
+
+                            </select>
+                        </div>
+                    <?php elseif (session()->get('level') == 1) : ?>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Dinas</label>
+                            <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
+                                <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
+                                
+                            </select>
+                        </div>
+                    <?php endif ?>
+
+                    <div class="form-group">
+                            <label for="exampleFormControlSelect1">Bidang</label>
+                            <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
+                                <option value="<?= $bidang['id']; ?>"><?= $bidang['name']; ?></option>
+                            </select>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" value="<?= $user['password'] ?>" name="password" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Konfirmasi Password</label>
+                        <input type="password" value="<?= $user['password'] ?>" name="password" class="form-control" id="exampleFormControlInput1" placeholder=" ">
+                    </div>
+
+                    <div class="row text-center" style="padding-bottom: 50px;">
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" type="button" style="width: 150px;" data-dismiss="modal">Batal</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

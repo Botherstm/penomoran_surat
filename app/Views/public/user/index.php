@@ -45,51 +45,6 @@
                                 <a href="#" class="btn btn-info" style="width: 150px;" id="ubahNamaBtn"><i
                                         class="icon-pencil7"></i> Ganti Nama</a>
                             </div>
-                            <div id="formUbahNama" style="display: none; margin-left:6%;">
-                                <form method="" action="">
-                                    <label for="oldNama">Nama Lama:</label><br>
-                                    <input type="text" name="oldNama" id="oldNama" required>
-                                </form>
-                                <form method="" action="">
-                                    <label for="newNama">Nama Baru:</label><br>
-                                    <input type="text" name="newNama" id="newNama" required>
-                                </form>
-                                <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
-                            </div>
-
-
-                            <div class="header-elements" style="margin-left:5%; padding:1%; ">
-                                <a href="#" class="btn btn-info" id="ubahEmailBtn" style="width: 150px;"><i
-                                        class="icon-pencil7"></i> Ganti Email</a>
-                            </div>
-                            <div id="formUbahEmail" style="display: none; margin-left:6%;">
-                                <form method="" action="">
-                                    <label for="oldEmail">Email Lama:</label><br>
-                                    <input type="text" name="oldEmail" id="oldEmail" required>
-                                </form>
-                                <form method="" action="">
-                                    <label for="newEmail">Email Baru:</label><br>
-                                    <input type="text" name="newEmail" id="newEmail" required>
-                                </form>
-                                <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
-                            </div>
-
-
-                            <div class="header-elements" style="margin-left:5%; padding:1%;">
-                                <a href="#" class="btn btn-info" id="ubahPasswordBtn" style="width: 150px;"><i
-                                        class="icon-pencil7"></i> Ganti Password</a>
-                            </div>
-                            <div id="formUbahPassword" style="display: none; margin-left:6%;">
-                                <form method="" action="">
-                                    <label for="oldPassword">Password Lama:</label><br>
-                                    <input type="text" name="oldPassword" id="oldPassword" required>
-                                </form>
-                                <form method="" action="">
-                                    <label for="newPassword">Password Baru:</label><br>
-                                    <input type="text" name="newPassword" id="newPassword" required>
-                                </form>
-                                <button type="submit" class="btn btn-outline-info mt-1">Konfirmasi</button>
-                            </div>
 
                             <br>
                         </div>
