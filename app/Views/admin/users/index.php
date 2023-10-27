@@ -1,26 +1,6 @@
 <?= $this->extend('admin/layouts/main'); ?>
 
 <?= $this->section('content'); ?>
-<style>
-    .btnadd {
-
-        padding-left: 17px;
-    }
-
-    .btnr {
-
-        padding-inline-end: 15%;
-
-    }
-
-    .icon-jarak {
-        padding-right: 10px;
-    }
-
-    .jarak {
-        justify-content: space-between;
-    }
-</style>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
