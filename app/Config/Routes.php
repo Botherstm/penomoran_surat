@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 
 //----------------ADMIN--------------------------------------------------------------------------
 $routes->get('/admin', 'Admin\AdminController::index');
-$routes->get('/admin/pdf', 'Admin\PdfController::index');
+// $routes->get('/admin/pdf', 'Admin\PdfController::index');
 
 //riwayatsurat
 $routes->get('/admin/riwayatsurat', 'Admin\RiwayatSuratController::index');
