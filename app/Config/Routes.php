@@ -130,7 +130,8 @@ $routes->get('/generate/terlewat/get_detailsubperihal_by_subperihal/(:segment)',
 
 //tentang
 // $routes->post('/pdf/generatePdf', 'TerlewatController::generatePdf');
-$routes->get('/tentang', 'TentangController::index');
+$routes->get('/tentang', 'TentangController::user');
+$routes->get('/admin/tentang', 'TentangController::admin');
 
 //----------------LOGIN--------------------------------------------------------------------------
 

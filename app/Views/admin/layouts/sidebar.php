@@ -10,14 +10,13 @@
             Admin</span>
     </a>
     <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 10px;">
-            <?php if ((session()->get('gambar') !== null)): ?>
-            <div class="image">
-                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>"
-                    class="img-circle elevation-2" alt="User Image">
-            </div>
-            <?php else: ?>
-            <?php endif?>
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 10px;">
+            <?php if ((session()->get('gambar') !== null)) : ?>
+                <div class="image">
+                    <img src="<?php echo base_url('userimage/') ?><?= session()->get('gambar'); ?>" class="img-circle elevation-2" alt="User Image">
+                </div>
+            <?php else : ?>
+            <?php endif ?>
 
             <div class="info">
                 <a class="d-block"><?= session()->get('name'); ?></a>
@@ -28,8 +27,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2 ">
-            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false"
-                style=" padding-bottom: 16em; ">
+            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false" style=" padding-bottom: 12em; ">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
@@ -93,7 +91,7 @@
 
 
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('/tentang') ?>" class="nav-link <?= $active == 'tentang' ? 'active bg-success' : ''; ?>">
+                    <a href="<?php echo base_url('/admin/tentang') ?>" class="nav-link <?= $active == 'tentang' ? 'active bg-success' : ''; ?>">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
                             Tentang
