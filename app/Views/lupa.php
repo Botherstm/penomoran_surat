@@ -58,7 +58,10 @@
 </div>
 
 <div class="card-footer " style="justify-content: space-between; display: flex; " >
-<button type="submit" class="btn btn-danger" style=" width: 100px " >Batal</button>
+<a href="<?php echo base_url('/login') ?>"> 
+<button type="button" class="btn btn-danger" style=" width: 100px " >Batal</button>
+</a>
+
 <button type="submit" class="btn btn-primary" style=" width: 100px ">Submit</button>
 </div>
 </form>
