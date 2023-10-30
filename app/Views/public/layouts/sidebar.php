@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-light-primary elevation-4">
+<aside class="main-sidebar sidebar-light-primary elevation-4 " style="position: fixed;">
     <!-- Brand Logo -->
 
     <!-- ready -->
@@ -10,25 +10,26 @@
         <span class="brand-text font-weight-bold "
             style="text-shadow: 2px 2px 1px black; padding-top: 10px;">E-NOMOR</span>
     </a>
+    
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 10px;">
             <?php if ((session()->get('gambar') !== null)): ?>
             <div class="image">
-                <img src="<?=base_url('userimage/') . session()->get('gambar');?>" width="20px"
+                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>"
                     class="img-circle elevation-2" alt="User Image">
             </div>
+            <?php else: ?>
             <?php endif?>
 
             <div class="info">
                 <a class="d-block"><?=session()->get('name');?></a>
             </div>
         </div>
-
         <!-- SidebarSearch Form -->
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false"
+            <ul class="nav nav-pills nav-sidebar flex-column " role="menu" data-accordion="false"
                 style="padding-bottom: 25em;">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -42,16 +43,7 @@
                     </a>
                 </li>
 
-                <?php if (session()->get('level') != 0): ?>
-                <li class="nav-item ">
-                    <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
-                        <i class="nav-icon fa fa-lock"></i>
-                        <p>
-                            Admin
-                        </p>
-                    </a>
-                </li>
-                <?php endif?>
+              
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -83,9 +75,9 @@
                             <path fill-rule="evenodd"
                                 d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                         </svg>
-                        <po class="m-1">
+                        <p class="m-1">
                             Keluar
-                        </po>
+                        </p>
                     </a>
                 </li>
             </ul>

@@ -2,53 +2,68 @@
 
 <?= $this->section('content'); ?>
 
-<style>
-.row {
-    padding-left: 150px;
-    padding-right: 150px;
-}
-</style>
 
 <div class="content-wrapper">
-    <form action="<?php echo base_url('admin/perihal/update/') ?><?= $perihal['id']; ?>" method="POST" class="">
-        <?= csrf_field(); ?>
-        <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Edit Perihal</h2>
-        </div>
-        <div class="mb-5 m-1 ">
-            <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
-            <input type="text" class="form-control w-50 m-auto " value="<?= $perihal['name']; ?>" name="name" id="name"
-                aria-describedby="emailHelp">
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                value="<?= $kategori['id']; ?>" readonly>
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug"
-                readonly>
-        </div>
-        <div class="mb-5 m-1">
-            <label for="kodePerihal" class="form-label input-group justify-content-center">Kode Perihal</label>
-            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control w-50 m-auto"
-                id="kodePerihal">
-        </div>
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
 
-        <div class="row text-center">
-            <div class="col-md-6">
-                <a href="<?php echo base_url('admin/perihal/') ?><?= $kategori['slug']; ?>">
-                    <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
-                </a>
+            <!-- Main content -->
+            <!-- <div class="row jarak ">
+                    <div class="card-tools">
+                        <div class="btnadd">
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                    </div>
+                </div> -->
+
+            <div class="card card-warning">
+
+
+                <div class="card-header">
+                    <h3 class="card-title" style="font-weight: bold;">Edit Data Perihal <?= $perihal['name']; ?></h3>
+                </div>
+                <div class="card-body">
+                    <form action="<?php echo base_url('admin/perihal/update/') ?><?= $perihal['id']; ?>" method="POST" class="">
+                        <?= csrf_field(); ?>
+
+                        <div class="mb-5 m-1 ">
+                            <label for="perihal" class="form-label input-group ">Perihal</label>
+                            <input type="text" class="form-control " value="<?= $perihal['name']; ?>" name="name" id="name" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
+                        </div>
+                        <div class="mb-5 m-1">
+                            <label for="kodePerihal" class="form-label input-group ">Kode
+                                Perihal</label>
+                            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control " id="kodePerihal">
+                        </div>
+
+                        <div class="row text-center">
+                            <div class="col-md-6" style="padding-bottom: 10px;">
+                            <a href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
+                                    <button type="button" class="btn btn-danger" style="width: 30%;  ">Batal</button>
+                                </a>
+                            </div>
+                            <div class="col-md-6" style="padding-bottom: 10px;">
+                                <button type="submit" class="btn btn-success " style="width: 30%; padding-bottom: 10px;">Ubah data</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
             </div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
-            </div>
         </div>
-
-    </form>
-
-
+    </div>
 </div>
+
 
 <script>
 var nameInput = document.getElementById('name');

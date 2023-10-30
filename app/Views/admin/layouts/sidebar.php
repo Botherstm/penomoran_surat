@@ -11,7 +11,7 @@
             Admin</span>
     </a>
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 70px;">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 20px;">
             <?php if ((session()->get('gambar') !== null)): ?>
             <div class="image">
                 <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>"
@@ -30,7 +30,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2 ">
             <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false"
-                style=" padding-bottom: 11em; ">
+                style=" padding-bottom: 16em; ">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">

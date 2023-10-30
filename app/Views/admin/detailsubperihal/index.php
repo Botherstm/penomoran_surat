@@ -4,7 +4,7 @@
 
 <style>
     .fixed-button {
-        width: 150px;
+        width: 250px;
         /* Set the fixed width you want */
         position: absolute;
         /* Use absolute positioning */
@@ -12,6 +12,8 @@
         /* Adjust the right property to control the position */
         top: 10px;
         /* Adjust the top property to control the vertical position */
+
+    
     }
 </style>
 
@@ -40,7 +42,7 @@
 
                             </div>
 
-                            <div class="col-6 d-flex justify-content-end">
+                            <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em; ">
                                 <div class="fixed-button">
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
                                         <i class=" fas fa-pen-nib"></i> Tambah Detail Sub-Perihal
@@ -71,9 +73,11 @@
                                         <td><?= $detailsubperihal['kode']; ?></td>
                                         <td>
                                             <div class="btn-group " style="padding-left:80px;">
-                                                <button type="button" class="btn btn-block btn-warning" data-toggle="modal" data-target="#editModal">
-                                                    <i class="fas fa-pen"></i>
-                                                </button>
+                                            <a href="<?php echo base_url('/admin/kategori/perihal/subperihal/detailsubperihal/edit/') ?><?=$subperihal['slug'];?>">
+                                        <button type="button" class="btn btn-block btn-warning" >
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                    </a>
                                                 <form id="deleteForm" class="mr-3 " style="padding-left: 20px;" action="<?php echo base_url('admin/detailsubperihal/delete/') ?><?= $detailsubperihal['slug']; ?>" method="POST">
                                                     <?= csrf_field(); ?>
                                                     <button type="button" onclick="confirmDelete('<?= $detailsubperihal['slug']; ?>')" class="btn btn-block btn-danger">
@@ -137,52 +141,6 @@
     </div>
 </div>
 
-
-
-
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Edit Data Detail Subperihal <?= $detailsubperihal['name']; ?></h3>
-            </div>
-            <div class="card-body">
-                <form action="<?php echo base_url('admin/detailsubperihal/update/') ?><?= $detailsubperihal['id']; ?>" method="POST" class="">
-                    <?= csrf_field(); ?>
-
-                    <div class="mb-5 m-1 ">
-                        <label for="kategori" class="form-label input-group justify-content-center">Detail</label>
-                        <input type="name" name="name" value="<?= $detailsubperihal['name']; ?>" class="form-control  " id="name" aria-describedby="emailHelp">
-                    </div>
-
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="subperihal_id" name="subperihal_id" value="<?= $subperihal['id']; ?>" readonly>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden value="<?= $detailsubperihal['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
-                    </div>
-                    <div class="mb-5 m-1">
-                        <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Detail</label>
-                        <input type="name" name="kode" value="<?= $detailsubperihal['kode']; ?>" class="form-control" id="kodeKategori">
-                    </div>
-
-                    <div class="row text-center">
-
-                        <div class="col-md-6 ">
-                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
-                        </div>
-
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 
 

@@ -39,7 +39,7 @@
 
 
                             </div>
-                            <div class="col-6 d-flex justify-content-end">
+                            <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
     <div class="fixed-button">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
             <i class="icon-jarak fas fa-pen-nib"></i>  Tambah Perihal
@@ -89,10 +89,12 @@
                                     <td>
 
                                         <div class="btn-group " style="padding-left: 20px;">
-                                            <button type="button" class="btn btn-block btn-warning" data-toggle="modal"
-                                                data-target="#editModal">
+                                        <a href="<?php echo base_url('/admin/kategori/perihal/edit/') ?><?=$perihal['slug'];?>">
+                                        <button type="button" class="btn btn-block btn-warning" >
                                                 <i class="fas fa-pen"></i>
                                             </button>
+                                    </a>
+
                                             <form style="padding-left: 20px;" id="deleteForm"
                                                 action="<?php echo base_url('admin/perihal/delete/') ?><?=$perihal['slug'];?>"
                                                 method="POST">
@@ -164,55 +166,6 @@
 
 </div>
 
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Edit Data Perihal <?=$perihal['name'];?></h3>
-            </div>
-            <div class="card-body">
-                <form action="<?php echo base_url('admin/perihal/update/') ?><?=$perihal['id'];?>" method="POST"
-                    class="">
-                    <?=csrf_field();?>
-
-                    <div class="mb-5 m-1 ">
-                        <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
-                        <input type="text" class="form-control " value="<?=$perihal['name'];?>" name="name" id="name"
-                            aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                            value="<?=$kategori['id'];?>" readonly>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden value="<?=$perihal['slug'];?>" class="form-control" id="slug"
-                            name="slug" readonly>
-                    </div>
-                    <div class="mb-5 m-1">
-                        <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
-                            Perihal</label>
-                        <input type="name" value="<?=$perihal['kode'];?>" name="kode" class="form-control "
-                            id="kodePerihal">
-                    </div>
-
-                    <div class="row text-center">
-
-                        <div class="col-md-6 ">
-                            <button class="btn btn-danger" style="width:80%;" type="button"
-                                data-dismiss="modal">Batal</button>
-                        </div>
-
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
