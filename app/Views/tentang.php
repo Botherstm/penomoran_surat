@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?= $this->extend('public/layouts/main'); ?>
 
 
 <?= $this->section('content'); ?>
@@ -32,13 +32,13 @@
 
                     <div class="col-md-4" style="padding-right: 1%;">
                         <div class="card">
-                            <div class="card-header header-elements-inline " >
+                            <div class="card-header header-elements-inline ">
                                 <h5 class="card-title">Pengembang Website</h5>
                             </div>
                             <div class="card-body">
 
-                                <div class="text-center" >
-                                    <img src="/img/profile.png" alt="" width="40%" style="border-radius: 100%;" >
+                                <div class="text-center">
+                                    <img src="/img/profile.png" alt="" width="40%" style="border-radius: 100%;">
                                     <h4 style="padding-top: 10px;">James Pieter Loro</h4>
                                 </div>
 

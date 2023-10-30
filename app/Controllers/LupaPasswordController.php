@@ -32,7 +32,7 @@ class LupaPasswordController extends BaseController
         // Set email subject, sender, and recipient
         $email->setNewLine("\r\n");
         $email->setFrom('e.nomor252@gmail.com', 'E-Nomor Buleleng');
-        $email->setTo('james.pieter@undiksha.ac.id');
+        $email->setTo('yonimheswara@gmail.com');
 
         // Set email subject
         $email->setSubject('Reset password');

@@ -24,7 +24,7 @@
             <a href="/" class="nav-link text-light ">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block font-weight-bold ">
-            <a href="#" class="nav-link text-light">Contact</a>
+            <a href="/tentang" class="nav-link text-light">Contact</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
