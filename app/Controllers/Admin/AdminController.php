@@ -60,6 +60,7 @@ class AdminController extends BaseController
             'dinas' => $dinasCount,
             'generate' => $generateCount,
             'user' => $userCount,
+
         ]);
 
     }
