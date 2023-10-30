@@ -53,15 +53,13 @@
 <label for="exampleInputEmail1">Email address</label>
 <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
 </div>
-<div class="form-group " style="padding-bottom: 10px; padding-top: 30px; " >
-<label for="exampleInputEmail1">No Telp.</label>
-<input type="number" name="telp" class="form-control" id="exampleInputNumber" placeholder="Masukkan Nomor Telp">
-</div>
+
 
 </div>
 
-<div class="card-footer">
-<button type="submit" class="btn btn-primary">Submit</button>
+<div class="card-footer " style="justify-content: space-between; display: flex; " >
+<button type="submit" class="btn btn-danger" style=" width: 100px " >Batal</button>
+<button type="submit" class="btn btn-primary" style=" width: 100px ">Submit</button>
 </div>
 </form>
 </div>
