@@ -195,6 +195,59 @@ class UserController extends BaseController
             return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
         }
     }
+
+    public function updateData()
+    {
+        $id = $this->request->getPost('id');
+        $user = $this->UserModel->getById($id);
+        $password_lama = $this->request->getPost('password_lama');
+        $password_baru = $this->request->getPost('password');
+
+        $rules = [
+            'name' => 'required',
+            'slug' => 'required',
+            'no_hp' => 'required|integer',
+            'email' => 'required|valid_email',
+        ];
+
+// Tambahkan aturan validasi untuk password lama jika mengubah password
+        if (!empty($password_baru)) {
+            $rules['password_lama'] = 'required';
+        }
+// dd($user['password']);
+        // Lakukan validasi formulir
+        if ($this->validate($rules)) {
+            // Periksa apakah password baru disediakan dan verifikasi password lama
+            if (!empty($password_baru)) {
+                if (password_verify($password_lama, $user['password'])) {
+                    $userData = [
+                        'slug' => $this->request->getPost('slug'),
+                        'name' => $this->request->getPost('name'),
+                        'email' => $this->request->getPost('email'),
+                        'no_hp' => $this->request->getPost('no_hp'),
+                        'password' => password_hash($password_baru, PASSWORD_DEFAULT), // Hash password baru
+                    ];
+                    $this->UserModel->update($id, $userData);
+                    return redirect()->to('/admin/user/profile')->with('success', 'Akun berhasil Di Update !');
+                } else {
+                    return redirect()->back()->with('error', 'Password lama salah');
+                }
+            } else {
+                // Jika tidak mengubah password, perbarui informasi pengguna lainnya
+                $userData = [
+                    'slug' => $this->request->getPost('slug'),
+                    'name' => $this->request->getPost('name'),
+                    'email' => $this->request->getPost('email'),
+                    'no_hp' => $this->request->getPost('no_hp'),
+                ];
+                $this->UserModel->update($id, $userData);
+                return redirect()->to('/admin/user/profile')->with('success', 'Akun berhasil Di Update !');
+            }
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Periksa Data yang Anda Inputkan!!');
+        }
+
+    }
     public function delete($slug)
     {
         // Cari data album berdasarkan ID
