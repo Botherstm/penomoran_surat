@@ -1,6 +1,6 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 <div class="wrapper">
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -30,7 +30,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3><?= $user; ?></h3>
+                                <h3><?=$user;?></h3>
 
                                 <p>User</p>
                             </div>
@@ -50,7 +50,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3><?= $dinas; ?></h3>
+                                <h3><?=$dinas;?></h3>
 
                                 <p>Dinas</p>
                             </div>
@@ -74,7 +74,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3><?= $generate; ?></h3>
+                                <h3><?=$generate;?></h3>
 
                                 <p>Kategori</p>
                             </div>
@@ -96,7 +96,7 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3><?= $generate; ?></h3>
+                                <h3><?=$generate;?></h3>
 
                                 <p>Nomor Surat</p>
                             </div>
@@ -128,4 +128,4 @@
 </div>
 
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>

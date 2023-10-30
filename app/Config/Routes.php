@@ -139,8 +139,8 @@ $routes->get('/admin/tentang', 'TentangController::admin');
 $routes->get('/login', 'LoginController::index');
 $routes->get('/logout', 'LoginController::logout');
 $routes->post('/login', 'LoginController::login');
-$routes->get('/lupa', 'LoginController::lupa');
-$routes->get('/resetpassword', 'LupaPasswordController::sendEmail');
+$routes->get('/lupa', 'LupaPasswordController::index');
+$routes->post('/resetpassword', 'LupaPasswordController::lupaPassword');
 
 //TODO
 

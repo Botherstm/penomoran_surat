@@ -95,9 +95,4 @@ class LoginController extends BaseController
         return redirect()->to('/');
     }
 
-    public function lupa()
-    {
-        return view('/lupa');
-    }
-
 }
