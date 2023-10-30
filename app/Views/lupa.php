@@ -39,54 +39,35 @@
     <!-- Akhir Navbar -->
 
     <!-- Form Login -->
-    <div class="container" style="padding-bottom: 10%;" >
-        <div class="row mt-2 m-auto" style="width: 25%;">
-            <img class="d-flex" src="<?php echo base_url() ?>img\logo_kominfosanti_buleleng.png" alt="">
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="card row m-auto mt-1 shadow" style="width: 40%; padding-bottom: 5%;">
-                    <div class="card-body row m-auto">
-                        <form class="form" method="POST" action="<?php echo base_url('login') ?>">
-                            <?=csrf_field();?>
-                            <div class="input-group justify-content-center mt-2 mb-2">
-                                <h2>LOGIN</h2>
-                            </div>
-                            <div class="mb-3">
-                                <div class="input-group">
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" required placeholder="Email" style="opacity: 0.7;">
-                                    <i class="input-group-text bi bi-person-fill"></i>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <div class="input-group">
-                                    <input type="password"
-                                        class="form-control <?=($validation->hasError('password')) ? 'is-invalid' : '';?>"
-                                        required id="exampleInputPassword1" placeholder="Password" name="password"
-                                        style="opacity: 0.7;">
-                                    <?php if ($validation->hasError('password')): ?>
-                                    <div class="invalid-feedback">
-                                        <?=$validation->getError('password');?>
-                                    </div>
-                                    <?php endif;?>
-                                    <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
-                                </div>
-                            </div >
-                            <div class="g-recaptcha col-10 mx-auto mb-3" data-sitekey="<?=$key;?>" ></div>
-                            <br>
-                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                <button class="btn btn-success text-light" type="submit">Login</button>
-                            </div>
-                        </form>
+   <div class="container" style="padding-top: 5%; width: 50%; " >
+   <div class="card "  >
+<div class="card-header " style="background-color: #007bff ;  ">
+<h3 class="card-title  " style=" color: white;  display: flex;
+    justify-content: center;  ">Lupa Password</h3>
+</div>
 
-                        <a href="<?php echo base_url('lupa/') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<form id="quickForm">
+<div class="card-body">
+<div class="form-group">
+<label for="exampleInputEmail1">Email address</label>
+<input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+</div>
+<div class="form-group " style="padding-bottom: 10px; padding-top: 30px; " >
+<label for="exampleInputEmail1">No Telp.</label>
+<input type="number" name="telp" class="form-control" id="exampleInputNumber" placeholder="Masukkan Nomor Telp">
+</div>
+
+</div>
+
+<div class="card-footer">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+</div>
+
+
+   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
     <?php if (session()->getFlashdata('error')): ?>

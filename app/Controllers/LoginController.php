@@ -94,4 +94,10 @@ class LoginController extends BaseController
         session()->remove(['user_id', 'instansi_id', 'bidang_id', 'slug', 'nip', 'name', 'email', 'no_hp', 'level']);
         return redirect()->to('/');
     }
+
+    public function lupa()
+    {
+        return view('/lupa');
+    }
+
 }
