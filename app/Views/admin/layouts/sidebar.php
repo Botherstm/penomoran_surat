@@ -5,7 +5,7 @@
 
 
 
-    <a href="index3.html" class="brand-link bg-teal ">
+    <a class="brand-link bg-teal ">
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
         <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px grey; padding-top: 10px;">E-NOMOR
             Admin</span>
@@ -90,14 +90,6 @@
                with font-awesome or any other icon font library -->
 
 
-                <li class="nav-item ">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-info"></i>
-                        <p>
-                            Tentang
-                        </p>
-                    </a>
-                </li>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/user/profile') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'user') ? 'active' : ''; ?>">
                         <i class="nav-icon fa fa-user"></i>
