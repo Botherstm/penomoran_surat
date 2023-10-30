@@ -92,6 +92,15 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+    <?php if (session()->getFlashdata('success')): ?>
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: '<?php echo session()->getFlashdata('success'); ?>',
+    });
+    </script>
+    <?php endif;?>
     <?php if (session()->getFlashdata('error')): ?>
     <script>
     Swal.fire({

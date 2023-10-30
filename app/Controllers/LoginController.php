@@ -77,7 +77,7 @@ class LoginController extends BaseController
                     // dd($userData);
                     session()->set($userData);
 
-                    return redirect()->to('/');
+                    return redirect()->to(base_url('/'));
                 } else {
                     return redirect()->back()->withInput()->with('error', 'Invalid email or password');
                 }
@@ -92,7 +92,7 @@ class LoginController extends BaseController
     {
         // Hapus data pengguna dari session
         session()->remove(['user_id', 'instansi_id', 'bidang_id', 'slug', 'nip', 'name', 'email', 'no_hp', 'level']);
-        return redirect()->to('/');
+        return redirect()->to(base_url('/'));
     }
 
 }

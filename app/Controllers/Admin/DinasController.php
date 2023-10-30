@@ -90,7 +90,7 @@ class DinasController extends BaseController
             // dd($data);
             $this->dinas->insert($data);
 
-            return redirect()->to('/admin/dinas')->with('success', 'Data Dinas berhasil disimpan.');
+            return redirect()->to(base_url('/admin/dinas'))->with('success', 'Data Dinas berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
@@ -132,7 +132,7 @@ class DinasController extends BaseController
             $this->dinas->update($id, $dinasData);
 
             // Redirect ke halaman yang sesuai dengan pesan sukses
-            return redirect()->to('/admin/dinas')->with('success', 'Data berhasil Di Update !');
+            return redirect()->to(base_url('/admin/dinas'))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()
@@ -147,9 +147,9 @@ class DinasController extends BaseController
         // dd($dinas);
         if ($dinas) {
             $this->dinas->delete($data['id']);
-            return redirect()->to('admin/dinas')->with('success', 'data deleted successfully.');
+            return redirect()->to(base_url('admin/dinas'))->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/dinas')->with('error', 'data not found.');
+            return redirect()->to(base_url('admin/dinas'))->with('error', 'data not found.');
         }
     }
 }

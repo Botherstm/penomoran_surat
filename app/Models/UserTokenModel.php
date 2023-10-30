@@ -12,7 +12,10 @@ class UserTokenModel extends Model
 
     protected $protectFields = true;
     protected $allowedFields = ['id', 'email', 'token', 'created_at'];
-
+    public function getBytoken($token)
+    {
+        return $this->where('token', $token)->first();
+    }
     // Dates
 
 }

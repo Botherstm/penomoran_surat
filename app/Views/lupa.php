@@ -48,7 +48,7 @@
             </div>
 
 
-            <form id="quickForm" method="post" action="<?=base_url('resetpassword');?>">
+            <form id="quickForm" method="post" action="<?=base_url('lupa');?>">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
@@ -73,6 +73,15 @@
         icon: 'error',
         title: 'Oops...',
         text: '<?php echo session()->getFlashdata('error'); ?>',
+    });
+    </script>
+    <?php endif;?>
+    <?php if (session()->getFlashdata('success')): ?>
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: '<?php echo session()->getFlashdata('success'); ?>',
     });
     </script>
     <?php endif;?>
