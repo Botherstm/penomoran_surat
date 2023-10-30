@@ -63,43 +63,26 @@
                             </p>
                         </a>
                     </li>
-                    <?php if (session()->get('level') != 0) : ?> <li class="nav-item ">
-                            <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
-                                <i class="nav-icon fa fa-lock"></i>
-                                <p>
-                                    Admin
-                                </p>
-                            </a>
-                        </li>
-                    <?php endif ?>
-            </ul>
+                <?php elseif (session()->get('level') == 2) : ?>
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url('admin/dinas/') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'dinas') ? 'active' : ''; ?>">
+                            <i class="nav-icon fas fa-city"></i>
+                            <p>
+                                Dinas
+                            </p>
+                        </a>
+                    </li>
+                    <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url('admin/kategori') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'kategori') ? 'active' : ''; ?>">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Kategori
+                            </p>
+                        </a>
+                    </li>
 
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                <li class=" nav-item ">
-                    <a href=" <?php echo base_url('/public/user/profile') ?>" class="nav-link">
-
-                    <?php elseif (session()->get('level') == 2) : ?>
-                <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/dinas/') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'dinas') ? 'active' : ''; ?>">
-                        <i class="nav-icon fas fa-city"></i>
-                        <p>
-                            Dinas
-                        </p>
-                    </a>
-                </li>
-                <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
-                <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/kategori') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'kategori') ? 'active' : ''; ?>">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kategori
-                        </p>
-                    </a>
-                </li>
-
-            <?php endif; ?>
+                <?php endif; ?>
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
@@ -117,7 +100,6 @@
                 </li>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/user/profile') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'user') ? 'active' : ''; ?>">
-
                         <i class="nav-icon fa fa-user"></i>
                         <p>
                             Pengaturan Akun
@@ -128,7 +110,7 @@
                     <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
-                            Tentang
+                            Tentang 123
                         </p>
                     </a>
                 </li>
@@ -138,12 +120,7 @@
                             <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
                             <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                         </svg>
-                        <<<<<<< HEAD <po class="m-1">
-                            Keluar
-                            </po>
-                            =======
-                            <p style="padding-left: 5px;">Keluar</p>
-                            >>>>>>> 93550512a31b5f86a3ecaba856a2f0a251dda4f1
+                        <p style="padding-left: 5px;">Keluar</p>
                     </a>
                 </li>
             </ul>
