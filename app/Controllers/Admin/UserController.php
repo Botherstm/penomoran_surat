@@ -126,7 +126,7 @@ class UserController extends BaseController
             ];
             // dd($userData);
             $this->UserModel->insert($userData);
-            return redirect()->to('/admin/users')->with('success', 'Akun berhasil terdaftar.');
+            return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil terdaftar.');
         } else {
             return redirect()->back()->with('error', 'Data Sudah Terdaftar');
         }
@@ -191,7 +191,7 @@ class UserController extends BaseController
             // dd($userData);
 
             $this->UserModel->update($id, $userData);
-            return redirect()->to('/admin/users')->with('success', 'Akun berhasil Di Update !');
+            return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil Di Update !');
         } else {
             return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
         }
@@ -229,7 +229,7 @@ class UserController extends BaseController
                         'password' => password_hash($password_baru, PASSWORD_DEFAULT), // Hash password baru
                     ];
                     $this->UserModel->update($id, $userData);
-                    return redirect()->to('/admin/user/profile')->with('success', 'Akun berhasil Di Update !');
+                    return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun berhasil Di Update !');
                 } else {
                     return redirect()->back()->with('error', 'Password lama salah');
                 }
@@ -242,7 +242,7 @@ class UserController extends BaseController
                     'no_hp' => $this->request->getPost('no_hp'),
                 ];
                 $this->UserModel->update($id, $userData);
-                return redirect()->to('/admin/user/profile')->with('success', 'Akun berhasil Di Update !');
+                return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun berhasil Di Update !');
             }
         } else {
             return redirect()->back()->withInput()->with('error', 'Periksa Data yang Anda Inputkan!!');
@@ -256,9 +256,9 @@ class UserController extends BaseController
         // dd($user);
         if ($user) {
             $this->UserModel->delete($data['id']);
-            return redirect()->to('admin/users')->with('success', 'data deleted successfully.');
+            return redirect()->to(base_url('admin/users'))->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/users')->with('error', 'data not found.');
+            return redirect()->to(base_url('admin/users'))->with('error', 'data not found.');
         }
     }
 
@@ -309,7 +309,7 @@ class UserController extends BaseController
                 'no_hp' => $this->request->getPost('no_hp'),
             ];
             $this->UserModel->update($id, $userData);
-            return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+            return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
         } else {
             return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
         }
@@ -351,7 +351,7 @@ class UserController extends BaseController
             return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
         }
 
-        return redirect()->to('/admin/user/profile')->with('success', 'Akun Gambar Berhasil di Ganti !');
+        return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun Gambar Berhasil di Ganti !');
     }
     public function deleteGambar()
     {
@@ -376,6 +376,6 @@ class UserController extends BaseController
         session()->set($userData);
         $this->UserModel->update($id, $user);
 
-        return redirect()->to('/admin/user/profile')->with('success', 'data gambar berhasil dihapus');
+        return redirect()->to(base_url('/admin/user/profile'))->with('success', 'data gambar berhasil dihapus');
     }
 }

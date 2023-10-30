@@ -34,7 +34,7 @@ class UserController extends BaseController
             ]);
         }
         if (session()->get('level') == 1 || session()->get('level') == 2) {
-            return redirect()->to('/admin');
+            return redirect()->to(base_url('/admin'));
         }
 
         $user = $this->UserModel->getByid(session()->get('user_id'));
@@ -83,7 +83,7 @@ class UserController extends BaseController
                         'password' => password_hash($password_baru, PASSWORD_DEFAULT), // Hash password baru
                     ];
                     $this->UserModel->update($id, $userData);
-                    return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+                    return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
                 } else {
                     return redirect()->back()->with('error', 'Password lama salah');
                 }
@@ -96,18 +96,12 @@ class UserController extends BaseController
                     'no_hp' => $this->request->getPost('no_hp'),
                 ];
                 $this->UserModel->update($id, $userData);
-                return redirect()->to('/public/user/profile')->with('success', 'Akun berhasil Di Update !');
+                return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
             }
         } else {
             return redirect()->back()->withInput()->with('error', 'Email atau password tidak valid');
         }
     }
-
-
-
-
-
-
 
     public function updateGambar()
     {
@@ -146,7 +140,7 @@ class UserController extends BaseController
             return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
         }
 
-        return redirect()->to('/public/user/profile')->with('success', 'Akun Gambar Berhasil di Ganti !');
+        return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun Gambar Berhasil di Ganti !');
     }
     public function deleteGambar()
     {
@@ -171,6 +165,6 @@ class UserController extends BaseController
         session()->set($userData);
         $this->UserModel->update($id, $user);
 
-        return redirect()->to('/public/user/profile')->with('success', 'data gambar berhasil dihapus');
+        return redirect()->to(base_url('/public/user/profile'))->with('success', 'data gambar berhasil dihapus');
     }
 }
