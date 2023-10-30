@@ -45,7 +45,7 @@ class HomeController extends BaseController
             ]);
         }
         if (session()->get('level') == 1 || session()->get('level') == 2) {
-            return redirect()->to('/admin');
+            return redirect()->to(base_url('/admin'));
         }
 
         $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));

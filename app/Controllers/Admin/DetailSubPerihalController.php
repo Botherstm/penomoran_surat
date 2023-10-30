@@ -2,7 +2,6 @@
 
 namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 use App\Controllers\BaseController;
-
 use App\Models\DetailSubPerihalModel;
 use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
@@ -14,7 +13,8 @@ class DetailSubPerihalController extends BaseController
     protected $perihal;
     protected $subperihal;
     protected $detailsubperihal;
-    public function __construct(){
+    public function __construct()
+    {
         $this->perihal = new PerihalModel();
         $this->subperihal = new SubPerihalModel();
         $this->detailsubperihal = new DetailSubPerihalModel;
@@ -30,16 +30,15 @@ class DetailSubPerihalController extends BaseController
         $detailsubperihal = $this->detailsubperihal->getAllBySubPerihalId($subperihal['id']);
         $perihal = $this->perihal->getById($subperihal['detail_id']);
         // dd($detailsubperihal);
-        return view('admin/detailsubperihal/index',[
-            'active'=>'detailsubperihal',
-            'perihal'=>$perihal,
-            'subperihal'=>$subperihal,
-            'detailsubperihals'=>$detailsubperihal,
+        return view('admin/detailsubperihal/index', [
+            'active' => 'detailsubperihal',
+            'perihal' => $perihal,
+            'subperihal' => $subperihal,
+            'detailsubperihals' => $detailsubperihal,
         ],
         );
-        
-    }
 
+    }
 
     public function create($slug)
     {
@@ -51,7 +50,7 @@ class DetailSubPerihalController extends BaseController
         }
         return view('admin/detailsubperihal/create', [
             'active' => 'detailsubperihal',
-            'subperihal'=>$subperihal,
+            'subperihal' => $subperihal,
         ]);
     }
 
@@ -84,15 +83,13 @@ class DetailSubPerihalController extends BaseController
 
             $this->detailsubperihal->insert($data);
 
-         
-            return redirect()->to('/admin/kategori/perihal/subperihal/detailsubperihal/'.$subperihal['slug'])->with('success', 'Data detail berhasil disimpan.');
+            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/detailsubperihal/' . $subperihal['slug']))->with('success', 'Data detail berhasil disimpan.');
         } else {
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
 
-
-     public function edit($slug)
+    public function edit($slug)
     {
         $detailsubperihal = $this->detailsubperihal->getBySlug($slug);
         $subperihal = $this->subperihal->getById($detailsubperihal['detail_id']);
@@ -126,10 +123,10 @@ class DetailSubPerihalController extends BaseController
             ];
             // dd($detailsubperihalData, $data);
             $this->detailsubperihal->update($id, $detailsubperihalData);
-            return redirect()->to('/admin/kategori/perihal/subperihal/detailsubperihal/'. $data['slug'])->with('success', 'Data berhasil Di Update !');
+            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/detailsubperihal/' . $data['slug']))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()->with('error','periksa apakah data sudah terisi dengan benar');
+            return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
 
@@ -140,10 +137,10 @@ class DetailSubPerihalController extends BaseController
         $subperihal = $this->subperihal->getById($detailsubperihal['detail_id']);
         // dd($subperihal);
         if ($detailsubperihal) {
-          $this->detailsubperihal->delete($data['id']);
-            return redirect()->to('admin/kategori/perihal/subperihal/detailsubperihal/'. $subperihal['slug'])->with('success', 'data deleted successfully.');
+            $this->detailsubperihal->delete($data['id']);
+            return redirect()->to(base_url('admin/kategori/perihal/subperihal/detailsubperihal/' . $subperihal['slug']))->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/kategori/perihal/subperihal/detailsubperihal'. $subperihal['slug'])->with('error', 'data not found.');
+            return redirect()->to(base_url('admin/kategori/perihal/subperihal/detailsubperihal' . $subperihal['slug']))->with('error', 'data not found.');
         }
     }
 }

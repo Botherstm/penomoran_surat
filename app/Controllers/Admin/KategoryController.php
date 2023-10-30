@@ -2,35 +2,33 @@
 
 namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 
-use App\Models\BidangModel;
-use Ramsey\Uuid\Uuid;
-use App\Models\DinasModel;
-use App\Models\KategoryModel;
-use setasign\Fpdi\Fpdi;
 use App\Controllers\BaseController;
+use App\Models\KategoryModel;
 use App\Models\PerihalModel;
+use Ramsey\Uuid\Uuid;
 
 class KategoryController extends BaseController
 {
     protected $Kategory;
     protected $perihal;
-    public function __construct(){
+    public function __construct()
+    {
         $this->Kategory = new KategoryModel();
         $this->perihal = new PerihalModel();
     }
 
-    public function index() 
-    {    
+    public function index()
+    {
         if (!session()->has('user_id')) {
             $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-        // dd($siteKey);
-            return view('login',[
+            // dd($siteKey);
+            return view('login', [
                 'validation' => \Config\Services::validation(),
-                'key'=> $siteKey
+                'key' => $siteKey,
             ]);
         }
         if (session()->get('level') != 2) {
-        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
         }
         $kategoris = $this->Kategory->getAll();
 
@@ -40,7 +38,7 @@ class KategoryController extends BaseController
             $perihalData = $this->perihal->getByKategori_id($kategoriId);
             $perihals[$kategoriId] = $perihalData;
         }
-            // dd($perihals);
+        // dd($perihals);
         return view('admin/kategori/index', [
             'active' => 'kategory',
             'kategoris' => $kategoris,
@@ -54,9 +52,6 @@ class KategoryController extends BaseController
             'active' => 'kategory',
         ]);
     }
-
-    
-
 
     public function save()
     {
@@ -80,16 +75,15 @@ class KategoryController extends BaseController
                 'kode' => $kode,
                 'slug' => $slug,
             ];
-    // dd($data);
+            // dd($data);
             $this->Kategory->insert($data);
 
-            return redirect()->to('/admin/kategori')->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to(base_url('/admin/kategori'))->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
-
 
     public function edit($slug)
     {
@@ -100,7 +94,6 @@ class KategoryController extends BaseController
             'kategori' => $kategoris,
         ]);
     }
-
 
     public function update($id)
     {
@@ -125,7 +118,7 @@ class KategoryController extends BaseController
             $this->Kategory->update($id, $kategoriData);
 
             // Redirect ke halaman yang sesuai dengan pesan sukses
-            return redirect()->to('/admin/kategori')->with('success', 'Data berhasil Di Update !');
+            return redirect()->to(base_url('/admin/kategori'))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()
@@ -140,12 +133,10 @@ class KategoryController extends BaseController
         $kategori = $this->Kategory->find($data['id']);
         // dd($kategori);
         if ($kategori) {
-          $this->Kategory->delete($data['id']);
-            return redirect()->to('admin/kategori')->with('success', 'data deleted successfully.');
+            $this->Kategory->delete($data['id']);
+            return redirect()->to(base_url('admin/kategori'))->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/kategori')->with('error', 'data not found.');
+            return redirect()->to(base_url('admin/kategori'))->with('error', 'data not found.');
         }
     }
-
-
 }

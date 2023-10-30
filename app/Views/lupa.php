@@ -29,7 +29,8 @@
             <a class="navbar-brand d-flex" href="#">
                 <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng"
                     style="width: 70px;">
-                <div class="ms-1 d-flex flex-column align-items-start" style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; " >
+                <div class="ms-1 d-flex flex-column align-items-start"
+                    style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
                     <span>E-NOMOR</span>
                     <span class="small">KOMINFO SANTI</span>
                 </div>
@@ -39,25 +40,23 @@
     <!-- Akhir Navbar -->
 
     <!-- Form Login -->
-   <div class="container" style="padding-top: 5%; width: 50%; " >
-   <div class="card "  >
-<div class="card-header " style="background-color: #007bff ;  ">
-<h3 class="card-title  " style=" color: white;  display: flex;
+    <div class="container" style="padding-top: 5%; width: 50%; ">
+        <div class="card ">
+            <div class="card-header " style="background-color: #007bff ;  ">
+                <h3 class="card-title  " style=" color: white;  display: flex;
     justify-content: center;  ">Lupa Password</h3>
-</div>
+            </div>
 
 
-<form id="quickForm">
-<div class="card-body">
-<div class="form-group">
-<label for="exampleInputEmail1">Email address</label>
-<input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-</div>
-
-
-</div>
-
-<div class="card-footer " style="justify-content: space-between; display: flex; " >
+            <form id="quickForm" method="post" action="<?=base_url('lupa');?>">
+                <div class="card-body my-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kirim Email</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="card-footer " style="justify-content: space-between; display: flex; " >
 <a href="<?php echo base_url('/login') ?>"> 
 <button type="button" class="btn btn-danger" style=" width: 100px " >Batal</button>
 </a>
@@ -66,6 +65,13 @@
 </div>
 </form>
 </div>
+            </form>
+        </div>
+
+
+</div>
+
+
 
 
    </div>
@@ -77,6 +83,15 @@
         icon: 'error',
         title: 'Oops...',
         text: '<?php echo session()->getFlashdata('error'); ?>',
+    });
+    </script>
+    <?php endif;?>
+    <?php if (session()->getFlashdata('success')): ?>
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: '<?php echo session()->getFlashdata('success'); ?>',
     });
     </script>
     <?php endif;?>
