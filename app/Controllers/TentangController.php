@@ -6,8 +6,13 @@ use App\Controllers\BaseController;
 
 class TentangController extends BaseController
 {
-    public function index()
+    public function user()
     {
         return view('tentang', ['active' => 'tentang']);
+    }
+
+    public function admin()
+    {
+        return view('admin/tentang', ['active' => 'tentang']);
     }
 }

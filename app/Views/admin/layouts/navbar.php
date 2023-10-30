@@ -5,8 +5,7 @@
 </style>
 
 <div class=" preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja"
-        height="120" width="195">
+    <img class="animation__shake" src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="120" width="195">
     <span class=" brand-text font-weight-bold ">E-NOMOR</span>
 </div>
 <!-- Navbar -->
@@ -24,7 +23,7 @@
             <a href="/" class="nav-link text-light ">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block font-weight-bold ">
-            <a href="#" class="nav-link text-light">Contact</a>
+            <a href="/tentang" class="nav-link text-light">Contact</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">

@@ -8,16 +8,15 @@
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
         <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 10px;">E-NOMOR</span>
     </a>
-    
+
     <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 10px;">
-            <?php if ((session()->get('gambar') !== null)): ?>
-            <div class="image">
-                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>"
-                    class="img-circle elevation-2" alt="User Image">
-            </div>
-            <?php else: ?>
-            <?php endif?>
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 10px;">
+            <?php if ((session()->get('gambar') !== null)) : ?>
+                <div class="image">
+                    <img src="<?php echo base_url('userimage/') ?><?= session()->get('gambar'); ?>" class="img-circle elevation-2" alt="User Image">
+                </div>
+            <?php else : ?>
+            <?php endif ?>
 
             <div class="info">
                 <a class="d-block"><?= session()->get('name'); ?></a>
@@ -27,12 +26,11 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column " role="menu" data-accordion="false"
-                style="padding-bottom: 25em;">
+            <ul class="nav nav-pills nav-sidebar flex-column " role="menu" data-accordion="false" style="padding-bottom: 20em;">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="<?php echo base_url('/') ?>" class="nav-link <?= $active == 'home' ? 'active bg-info' : ''; ?>">
+                    <a href="<?php echo base_url('/') ?>" class="nav-link <?= $active == 'home' ? 'active bg-success' : ''; ?>">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Surat
@@ -40,14 +38,14 @@
                     </a>
                 </li>
 
-              
+
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class=" nav-item ">
-                    <a href=" <?php echo base_url('/public/user/profile') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'public' && current_url(true)->getSegment(2) == 'user') ? 'active  bg-purple' : ''; ?>">
+                    <a href=" <?php echo base_url('/public/user/profile') ?>" class="nav-link <?= (current_url(true)->getSegment(1) == 'public' && current_url(true)->getSegment(2) == 'user') ? 'active  bg-success' : ''; ?>">
                         <i class="nav-icon fa fa-user"></i>
                         <p>
                             Pengaturan Akun
@@ -55,10 +53,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('/tentang') ?>" class="nav-link ">
+                    <a href="<?php echo base_url('/tentang') ?>" class="nav-link <?= $active == 'tentang' ? 'active bg-success' : ''; ?>">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
-                            Tentang 123
+                            Tentang
                         </p>
                     </a>
                 </li>
