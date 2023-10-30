@@ -39,7 +39,7 @@
                             <div class="col-6 d-flex justify-content-start">
 
                                 <?php if (session()->get('level') == 2) : ?>
-                                    <h1 class="card-title">List Bidang</h1>
+                                    <h1 class="card-title">List Bidang <?= $instansi['name']; ?> </h1>
                                 <?php elseif (session()->get('level') == 1) : ?>
                                     <h1 class="card-title">List Bidang <?= $instansi['name']; ?></h1>
                                 <?php endif ?>
@@ -82,11 +82,11 @@
                                             <td>
                                                 <div class="btn-group " style="margin-left: 25%;">
                                                     <!-- update -->
-                                                    <a href="#<?= $bidang['slug']; ?>">
-                                                        <button type="button" class="btn btn-block btn-warning " data-toggle="modal" data-target="#editModal">
-                                                            <i class=" fas fa-pen"></i>
-                                                        </button>
-                                                    </a>
+                                                    <a href="<?php echo base_url('/admin/dinas/bidang/edit/') ?><?=$bidang['slug'];?>">
+                                        <button type="button" class="btn btn-block btn-warning" >
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                    </a>
                                                 </div>
 
                                                 <div class="btn-group ">
@@ -105,6 +105,16 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="card-header col">
+                        <div class="col-6 d-flex justify-content-start">
+                            <a href="<?php echo base_url('admin/dinas') ?>">
+                            <button type="button" class="btn btn-warning mb-3" style="width: 150px;">
+                                <i class="fas fa-arrow-left" style="padding-right: 10px;"></i>  Kembali
+                            </button>
+                            </a>
+                        </div>
+                        </div>
 
                 </div>
             </section>

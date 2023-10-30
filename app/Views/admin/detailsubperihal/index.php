@@ -73,7 +73,7 @@
                                         <td><?= $detailsubperihal['kode']; ?></td>
                                         <td>
                                             <div class="btn-group " style="padding-left:80px;">
-                                            <a href="<?php echo base_url('/admin/kategori/perihal/subperihal/detailsubperihal/edit/') ?><?=$subperihal['slug'];?>">
+                                            <a href="<?php echo base_url('/admin/kategori/perihal/subperihal/detailsubperihal/edit/') ?><?=$detailsubperihal['slug'];?>">
                                         <button type="button" class="btn btn-block btn-warning" >
                                                 <i class="fas fa-pen"></i>
                                             </button>
@@ -92,6 +92,16 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="card-header col">
+                        <div class="col-6 d-flex justify-content-start">
+                            <a href="<?php echo base_url('admin/kategori/perihal/subperihal/') ?><?= $perihal['slug']; ?>">
+                            <button type="button" class="btn btn-warning mb-3" style="width: 150px;">
+                                <i class="fas fa-arrow-left" style="padding-right: 10px;"></i>  Kembali
+                            </button>
+                            </a>
+                        </div>
+                        </div>
 
                 </div>
             </section>
