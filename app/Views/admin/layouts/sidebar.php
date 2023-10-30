@@ -1,5 +1,4 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4" style="position: fixed;">
-    <!-- Brand Logo -->
 
     <!-- ready -->
 
@@ -35,16 +34,18 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin') ?>" class="nav-link <?=$active == 'admin' ? 'active' : '';?>">
+                    <a href="<?php echo base_url('admin') ?>"
+                        class="nav-link <?=$active == 'admin' ? 'active bg-purple' : '';?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Beranda
                         </p>
                     </a>
+
                 </li>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/users') ?>"
-                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'users') ? 'active' : '';?>">
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'users') ? 'active  bg-purple' : '';?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Users</p>
                     </a>
@@ -53,7 +54,7 @@
 
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/bidang/') ?>"
-                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'bidang') ? 'active' : '';?> ">
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'bidang') ? 'active  bg-purple' : '';?> ">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Bidang
@@ -62,7 +63,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/riwayatsurat') ?>"
-                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'riwayatsurat') ? 'active' : '';?>">
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'riwayatsurat') ? 'active  bg-purple' : '';?>">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Riwayat Surat
@@ -72,7 +73,7 @@
                 <?php elseif (session()->get('level') == 2): ?>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/dinas/') ?>"
-                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'dinas') ? 'active' : '';?>">
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'dinas') ? 'active  bg-purple' : '';?>">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Dinas
@@ -82,7 +83,7 @@
                 <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/kategori') ?>"
-                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'kategori') ? 'active' : '';?>">
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'kategori') ? 'active  bg-purple' : '';?>">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Kategori
@@ -109,7 +110,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="<?php echo base_url('admin/user/profile') ?>"
-                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'user') ? 'active' : '';?>">
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'user') ? 'active  bg-purple' : '';?>">
                         <i class="nav-icon fa fa-user"></i>
                         <p>
                             Pengaturan Akun
