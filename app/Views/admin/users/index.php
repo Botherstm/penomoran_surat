@@ -2,6 +2,19 @@
 
 <?= $this->section('content'); ?>
 
+<style>
+    .fixed-button {
+        width: 150px;
+        /* Set the fixed width you want */
+        position: absolute;
+        /* Use absolute positioning */
+        right: 0;
+        /* Adjust the right property to control the position */
+        top: 10px;
+        /* Adjust the top property to control the vertical position */
+    }
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -23,8 +36,11 @@
 
                             </div>
                             <div class="col-6 d-flex justify-content-end">
-                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-user-plus"></i>
-                                    Tambah User</button>
+                                <div class="fixed-button">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
+                                        <i class=" fas fa-pen-nib"></i> Tambah User
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -84,9 +100,9 @@
                                                 </td>
                                             <?php endif ?>
                                             <td>
-                                                <div class="btn-group ">
+                                                <div class="btn-group d-flex mx-2" style="justify-content: space-between; " >
                                                     <!-- update -->
-                                                    <a class="btnr" href="#<?= $user['slug']; ?>">
+                                                    <a  href="#<?= $user['slug']; ?>">
                                                         <button type="button" class="btn btn-block btn-warning " data-toggle="modal" data-target="#editModal">
                                                             <i class=" fas fa-pen"></i>
                                                         </button>

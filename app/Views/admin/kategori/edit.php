@@ -2,12 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<style>
-.row {
-    padding-left: 150px;
-    padding-right: 150px;
-}
-</style>
+
 
 <div class="content-wrapper">
 
