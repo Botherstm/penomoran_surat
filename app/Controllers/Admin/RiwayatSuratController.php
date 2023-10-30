@@ -12,7 +12,6 @@ use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
 use App\Models\UrutanSuratModel;
 use App\Models\UserModel;
-use Ramsey\Uuid\Uuid;
 
 class RiwayatSuratController extends BaseController
 {
@@ -40,6 +39,9 @@ class RiwayatSuratController extends BaseController
 
     public function index()
     {
+        if (session()->get('level') == 2) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
 
         $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
         $users = [];
@@ -63,100 +65,6 @@ class RiwayatSuratController extends BaseController
             'users' => $users,
             'bidangs' => $bidangs,
         ]);
-    }
-
-    public function create()
-    {
-        return view('admin/kategori/create', [
-            'active' => 'kategory',
-        ]);
-    }
-
-    public function save()
-    {
-        // Validasi input data
-        $rules = [
-            'name' => 'required',
-            'kode' => 'required',
-            'slug' => 'required',
-        ];
-
-        if ($this->validate($rules)) {
-            $name = $this->request->getPost('name');
-            $kode = $this->request->getPost('kode');
-            $slug = $this->request->getPost('slug');
-            // Data valid, simpan ke dalam database
-            $uuid = Uuid::uuid4();
-            $uuidString = $uuid->toString();
-            $data = [
-                'id' => $uuidString,
-                'name' => $name,
-                'kode' => $kode,
-                'slug' => $slug,
-            ];
-            // dd($data);
-            $this->Kategory->insert($data);
-
-            return redirect()->to('/admin/kategori')->with('success', 'Data Kategory berhasil disimpan.');
-        } else {
-            // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
-            return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
-        }
-    }
-
-    public function edit($slug)
-    {
-        $kategoris = $this->Kategory->getBySlug($slug);
-        // dd($instansi);
-        return view('admin/kategori/edit', [
-            'active' => 'user',
-            'kategori' => $kategoris,
-        ]);
-    }
-
-    public function update($id)
-    {
-        // Validasi input form
-        $rules = [
-            'name' => 'required',
-            'kode' => 'required',
-            'slug' => 'required',
-        ];
-
-        $validation = \Config\Services::validation(); // Mendapatkan instance validasi
-
-        if ($this->validate($rules)) {
-            // Data pengguna yang akan disimpan
-            $kategoriData = [
-                'name' => $this->request->getPost('name'),
-                'kode' => $this->request->getPost('kode'),
-                'slug' => $this->request->getPost('slug'),
-            ];
-            // dd($kategoriData);
-            // Simpan data pengguna ke dalam database
-            $this->Kategory->update($id, $kategoriData);
-
-            // Redirect ke halaman yang sesuai dengan pesan sukses
-            return redirect()->to('/admin/kategori')->with('success', 'Data berhasil Di Update !');
-        } else {
-            // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()
-                ->with('validationErrors', 'periksa apakah data sudah terisi dengan benar');
-        }
-    }
-
-    public function delete($slug)
-    {
-        // Cari data album berdasarkan ID
-        $data = $this->Kategory->getBySlug($slug);
-        $kategori = $this->Kategory->find($data['id']);
-        // dd($kategori);
-        if ($kategori) {
-            $this->Kategory->delete($data['id']);
-            return redirect()->to('admin/kategori')->with('success', 'data deleted successfully.');
-        } else {
-            return redirect()->to('admin/kategori')->with('error', 'data not found.');
-        }
     }
 
 }
