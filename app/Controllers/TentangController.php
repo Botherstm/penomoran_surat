@@ -8,6 +8,6 @@ class TentangController extends BaseController
 {
     public function index()
     {
-        return view('tentang');
+        return view('tentang', ['active' => 'tentang']);
     }
 }

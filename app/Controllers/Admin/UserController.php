@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
@@ -210,11 +211,11 @@ class UserController extends BaseController
             'email' => 'required|valid_email',
         ];
 
-// Tambahkan aturan validasi untuk password lama jika mengubah password
+        // Tambahkan aturan validasi untuk password lama jika mengubah password
         if (!empty($password_baru)) {
             $rules['password_lama'] = 'required';
         }
-// dd($user['password']);
+        // dd($user['password']);
         // Lakukan validasi formulir
         if ($this->validate($rules)) {
             // Periksa apakah password baru disediakan dan verifikasi password lama
@@ -246,7 +247,6 @@ class UserController extends BaseController
         } else {
             return redirect()->back()->withInput()->with('error', 'Periksa Data yang Anda Inputkan!!');
         }
-
     }
     public function delete($slug)
     {
@@ -347,13 +347,11 @@ class UserController extends BaseController
             ];
             session()->set($userData);
             $this->UserModel->update($id, $user);
-
         } else {
             return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
         }
 
         return redirect()->to('/admin/user/profile')->with('success', 'Akun Gambar Berhasil di Ganti !');
-
     }
     public function deleteGambar()
     {
