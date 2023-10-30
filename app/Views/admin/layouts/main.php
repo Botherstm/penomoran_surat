@@ -113,7 +113,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-navbar-fixed">
+<body class="sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         <?=$this->include('admin/layouts/navbar');?>
         <?=$this->include('admin/layouts/sidebar');?>
