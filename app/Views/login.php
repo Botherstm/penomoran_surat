@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative">
         <div class="container">
             <a class="navbar-brand d-flex" href="#">
-                <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng"
+                <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng"
                     style="width: 70px;">
                 <div class="ms-1 d-flex flex-column align-items-start"
                     style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
@@ -42,7 +42,7 @@
     <!-- Form Login -->
     <div class="container" style="padding-bottom: 10%;">
         <div class="row mt-2 m-auto" style="width: 25%;">
-            <img class="d-flex" src="<?php echo base_url() ?>img\logo_kominfosanti_buleleng.png" alt="">
+            <img class="d-flex" src="<?php echo base_url('img\logo_kominfosanti_buleleng.png') ?>" alt="">
         </div>
         <div class="row">
             <div class="col">
