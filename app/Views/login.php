@@ -29,7 +29,8 @@
             <a class="navbar-brand d-flex" href="#">
                 <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng"
                     style="width: 70px;">
-                <div class="ms-1 d-flex flex-column align-items-start" style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; " >
+                <div class="ms-1 d-flex flex-column align-items-start"
+                    style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
                     <span>E-NOMOR</span>
                     <span class="small">KOMINFO SANTI</span>
                 </div>
@@ -72,17 +73,19 @@
                                     <?php endif;?>
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
-                            </div >
-                            <div class="g-recaptcha col-10 mx-auto mb-3" data-sitekey="<?=$key;?>" ></div>
+                            </div>
+                            <div class="g-recaptcha col-10 mx-auto mb-3" data-sitekey="<?=$key;?>"></div>
                             <br>
                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                 <button class="btn btn-success text-light" type="submit">Login</button>
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
