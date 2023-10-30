@@ -31,36 +31,28 @@
                     </div>
 
                     <div class="col-md-4" style="padding-right: 1%;">
-                        <div class="card">
-                            <div class="card-header header-elements-inline ">
-                                <h5 class="card-title">Pengembang Website</h5>
-                            </div>
-                            <div class="card-body">
-
-                                <div class="text-center">
-                                    <img src="/img/profile.png" alt="" width="40%" style="border-radius: 100%;">
-                                    <h4 style="padding-top: 10px;">James Pieter Loro</h4>
-                                </div>
-
-                                <hr><br><br>
-
-                                <div class="text-center ">
-                                    <img src="/img/Yanyon.jpeg" alt="" width="40%" style="border-radius: 100%;">
-                                    <h4 style="padding-top: 10px;">I Wayan Yoni Maheswara</h4>
-                                </div>
-
-                                <hr><br><br>
-
-                                <div class="text-center ">
-                                    <img src="/img/yasoda.jpeg" alt="" width="40%" style="border-radius: 100%;">
-                                    <h4 style="padding-top: 10px;">I Gede Arya Yasoda Putra</h4>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Pengembang Website</h5>
+        </div>
+        <div class="card-body" style="max-height: 450px; overflow-y: auto;">
+            <div class="text-center">
+                <img src="/img/james.jpg" alt="" width="40%" style="border-radius: 100%;">
+                <h4 style="padding-top: 10px;">James Pieter Loro</h4>
+            </div>
+            <hr>
+            <div class="text-center">
+                <img src="/img/Yanyon.jpeg" alt="" width="40%" style="border-radius: 100%;">
+                <h4 style="padding-top: 10px;">I Wayan Yoni Maheswara</h4>
+            </div>
+            <hr>
+            <div class="text-center">
+                <img src="/img/yasoda.jpeg" alt="" width="40%" style="border-radius: 100%;">
+                <h4 style="padding-top: 10px;">I Gede Arya Yasoda Putra</h4>
+            </div>
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </div>
