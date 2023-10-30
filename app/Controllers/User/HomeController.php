@@ -75,7 +75,7 @@ class HomeController extends BaseController
         $tanggalSaatIni = new DateTime();
         $tanggalMaksimum = $tanggalSaatIni->format('Y-m-d');
         return view('public/home/index', [
-            'active' => 'riwayatsurat',
+            'active' => 'home',
             'riwayats' => $generate,
             'users' => $users,
             'bidangs' => $bidangs,
