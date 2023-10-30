@@ -10,7 +10,6 @@
     </a>
     
     <div class="sidebar">
-<<<<<<< HEAD
     <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 10px;">
             <?php if ((session()->get('gambar') !== null)): ?>
             <div class="image">
@@ -19,14 +18,6 @@
             </div>
             <?php else: ?>
             <?php endif?>
-=======
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <?php if ((session()->get('gambar') !== null)) : ?>
-                <div class="image">
-                    <img src="<?= base_url('userimage/') . session()->get('gambar'); ?>" width="20px" class="img-circle elevation-2" alt="User Image">
-                </div>
-            <?php endif ?>
->>>>>>> 2d815a2ab8383dca401d2cd21921bfcbeaa1bbfd
 
             <div class="info">
                 <a class="d-block"><?= session()->get('name'); ?></a>
@@ -36,12 +27,8 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-<<<<<<< HEAD
             <ul class="nav nav-pills nav-sidebar flex-column " role="menu" data-accordion="false"
                 style="padding-bottom: 25em;">
-=======
-            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false" style="padding-bottom: 25em;">
->>>>>>> 2d815a2ab8383dca401d2cd21921bfcbeaa1bbfd
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
@@ -53,20 +40,7 @@
                     </a>
                 </li>
 
-<<<<<<< HEAD
               
-=======
-                <?php if (session()->get('level') != 0) : ?>
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('admin') ?>" target="_blank" class="nav-link">
-                            <i class="nav-icon fa fa-lock"></i>
-                            <p>
-                                Admin
-                            </p>
-                        </a>
-                    </li>
-                <?php endif ?>
->>>>>>> 2d815a2ab8383dca401d2cd21921bfcbeaa1bbfd
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
