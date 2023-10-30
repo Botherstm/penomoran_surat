@@ -163,13 +163,6 @@ class TerlewatController extends BaseController
         }
     }
 
-    public function tentang()
-    {
-
-        return view('public/tentang', [
-
-        ]);
-    }
 
     public function generatePdf()
     {
@@ -193,5 +186,4 @@ class TerlewatController extends BaseController
             ->setHeader('Content-Disposition', 'inline; filename="generated.pdf"')
             ->setBody($pdfData);
     }
-
 }
