@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-light-primary elevation-4" style="position: fixed;">
+<aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
 
     <!-- ready -->
@@ -11,7 +11,7 @@
             Admin</span>
     </a>
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="padding-top: 70px;">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex ">
             <?php if ((session()->get('gambar') !== null)) : ?>
                 <div class="image">
                     <img src="<?php echo base_url('userimage/') ?><?= session()->get('gambar'); ?>" class="img-circle elevation-2" alt="User Image">
@@ -102,7 +102,7 @@
                     <a href="<?php echo base_url('/tentang') ?>" class="nav-link">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
-                            Tentang 123
+                            Tentang
                         </p>
                     </a>
                 </li>
