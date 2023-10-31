@@ -169,7 +169,7 @@
 <!-- edit -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
+        <div class="modal-content card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Edit Data Dinas</h3>
             </div>
