@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-                <div class="card card-warning mx-auto">
+                <div class="card card-warning" style=" margin: 0px 250px 0px 250px; " >
 
 
 <div class="card-header">
@@ -78,7 +78,7 @@
 </div>
 <?php endif ?>
 
-<div class="row text-center" style="padding-bottom: 50px;">
+<div class="row text-center" style="padding-bottom: 30px; padding-top: 20px;">
     <div class="col-md-6">
         <a href="<?php echo base_url('admin/users') ?>">
             <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
