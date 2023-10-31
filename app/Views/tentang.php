@@ -14,7 +14,7 @@
                             <div class="card-header header-elements-inline">
                                 <h5 class="card-title">Tentang Aplikasi</h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <div class=" text-center">
                                     <img class="" src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 100%; max-height: 200px;">
                                 </div>
@@ -35,7 +35,7 @@
         <div class="card-header header-elements-inline">
             <h5 class="card-title">Pengembang Website</h5>
         </div>
-        <div class="card-body" style="max-height: 450px; overflow-y: auto;">
+        <div class="card-body" style="max-height: 500px; overflow-y: auto;">
             <div class="text-center">
                 <img src="/img/james.jpg" alt="" width="40%" style="border-radius: 100%;">
                 <h4 style="padding-top: 10px;">James Pieter Loro</h4>
