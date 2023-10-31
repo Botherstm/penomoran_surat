@@ -21,7 +21,6 @@ class PerihalModel extends Model
     // Validation
     public function getAll()
     {
-
         return $this->findAll();
     }
     public function getById($id)
@@ -35,7 +34,7 @@ class PerihalModel extends Model
 
     public function getByKategori_id($detail_id)
     {
-        return $this->where('detail_id', $detail_id)->findAll();
+        return $this->where('detail_id', $detail_id)->orderBy('kode', 'ASC')->findAll();
     }
 
     public function getBykode($kode)
