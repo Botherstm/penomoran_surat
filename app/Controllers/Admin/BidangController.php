@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Admin; // Sesuaikan namespace dengan struktur folder
 
+use App\Controllers\BaseController;
 use App\Models\BidangModel;
 use App\Models\DinasModel;
-use App\Controllers\BaseController;
 use App\Models\KategoryModel;
 use Ramsey\Uuid\Uuid;
 
@@ -20,89 +20,95 @@ class BidangController extends BaseController
         $this->dinas = new DinasModel();
         $this->kategori = new KategoryModel();
     }
-    public function index($ket_uorg)
+    public function index($slug)
     {
-    //     if (session()->get('level') != 2 && session()->get('level') != 3) {
-    //     // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
-    //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
-    // }
+        if (session()->get('level') != 1 && session()->get('level') != 2) {
+            // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
 
-    $instansis = $this->dinas->getByKet_org($ket_uorg);
-    $instansijson = json_encode($instansis);
-    $instansi = json_decode($instansijson);
-    $bidangs = $this->bidang->getAllByInstansiId($instansi->id_instansi);
-    return view('admin/bidang/index', [
-        'bidangs' => $bidangs,
-        'active' => 'bidang',
-        'instansi' => $instansi,
+        $instansi = $this->dinas->getBySlug($slug);
+        $bidangs = $this->bidang->getAllByInstansiId($instansi['id']);
+        return view('admin/bidang/index', [
+            'bidangs' => $bidangs,
+            'active' => 'bidang',
+            'instansi' => $instansi,
         ]);
     }
 
-    
-    public function create($ket_uorg)
+    public function view1()
     {
-        $instansis = $this->dinas->getByKet_org($ket_uorg);
-        $instansijson = json_encode($instansis);
-        $instansi = json_decode($instansijson);
+        if (session()->get('level') != 1 && session()->get('level') != 2) {
+            // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
+        $instansi = $this->dinas->getById(session()->get('instansi_id'));
+
+        $bidangs = $this->bidang->getAllByInstansiId(session()->get('instansi_id'));
+        return view('admin/bidang/index', [
+            'bidangs' => $bidangs,
+            'active' => 'bidang',
+            'instansi' => $instansi,
+        ]);
+    }
+
+    public function create($slug)
+    {
+        $instansi = $this->dinas->getBySlug($slug);
         return view('admin/bidang/create', [
             'active' => 'bidang',
             'instansi' => $instansi,
         ]);
     }
 
-
     public function save()
     {
         // Validasi input data
         $validationRules = [
-            'instansi_ket_uorg' => 'required',
+            'instansi_id' => 'required',
             'kode' => 'required',
             'name' => 'required',
             'slug' => 'required',
         ];
-        
+
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
-        
+
         // Ambil data dari input form
         $name = $this->request->getPost('name');
-        $instansi_ket_uorg = $this->request->getPost('instansi_ket_uorg');
+        $instansi_id = $this->request->getPost('instansi_id');
         $kode = $this->request->getPost('kode');
         $slug = $this->request->getPost('slug');
 
         //perubahan data
         $uuid = Uuid::uuid4();
         $uuidString = $uuid->toString();
-        $instansis = $this->dinas->getByKet_org($instansi_ket_uorg);
-        $instansijson = json_encode($instansis);
-        $instansi = json_decode($instansijson);
-        // Simpan data ke dalam database
+
         $data = [
-            'id'=>$uuidString,
-            'instansi_id' => $instansi->id_instansi,
+            'id' => $uuidString,
+            'instansi_id' => $instansi_id,
             'kode' => $kode,
             'name' => $name,
-            'slug' => $slug
+            'slug' => $slug,
         ];
-        // dd($data);
-        $this->bidang->insert($data);
-    
-        return redirect()->to('/admin/dinas/bidang/'.$instansi_ket_uorg)->with('success', 'Data Bidang berhasil disimpan');
-    }
 
+        $this->bidang->insert($data);
+        $instansi = $this->dinas->getById($instansi_id);
+        // dd($instansi['slug']);
+        return redirect()->to(base_url('/admin/dinas/bidang/' . $instansi['slug']))->with('success', 'Data Bidang berhasil disimpan');
+    }
 
     public function edit($slug)
     {
         $bidang = $this->bidang->getBySlug($slug);
-        $instansis = $this->dinas->get_instansi_by_id($bidang['instansi_id']);
-        $instansijson = json_encode($instansis);
-        $instansi = json_decode($instansijson);
+        $instansi = $this->dinas->getAllById($bidang['instansi_id']);
+
         // dd($instansi);
         return view('admin/bidang/edit', [
             'active' => 'bidang',
             'bidang' => $bidang,
-            'instansi' => $instansi->ket_uorg,
+            'instansi' => $instansi['slug'],
         ]);
     }
 
@@ -116,12 +122,9 @@ class BidangController extends BaseController
             'slug' => 'required',
         ];
 
-
         if ($this->validate($rules)) {
             $instansiId = $this->request->getPost('instansi_id');
-            $instansis = $this->dinas->get_instansi_by_id($instansiId);
-            $instansijson = json_encode($instansis);
-            $instansi = json_decode($instansijson);
+            $instansi = $this->dinas->getAllById($instansiId);
             // dd($instansi);
             // Data pengguna yang akan disimpan
             $bidangData = [
@@ -135,12 +138,11 @@ class BidangController extends BaseController
             $this->bidang->update($id, $bidangData);
 
             // Redirect ke halaman yang sesuai dengan pesan sukses
-            return redirect()->to('/admin/dinas/bidang/'. $instansi->ket_uorg)->with('success', 'Data berhasil Di Update !');
+            return redirect()->to(base_url('/admin/dinas/bidang/' . $instansi['slug']))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()
-                ->withInput()
-                ->with('error','periksa apakah data sudah terisi dengan benar');
+                ->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
     }
 
@@ -153,10 +155,10 @@ class BidangController extends BaseController
         $instansi = json_decode($instansijson);
         // dd($bidang);
         if ($bidang) {
-          $this->bidang->delete($data['id']);
-            return redirect()->to('admin/dinas/bidang/'. $instansi->ket_uorg)->with('success', 'data deleted successfully.');
+            $this->bidang->delete($data['id']);
+            return redirect()->to(base_url('admin/dinas/bidang/' . $instansi->slug))->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to('admin/dinas/bidang/'. $instansi->ket_uorg)->with('error', 'data not found.');
+            return redirect()->to(base_url('admin/dinas/bidang/' . $instansi->slug))->with('error', 'data not found.');
         }
     }
 }

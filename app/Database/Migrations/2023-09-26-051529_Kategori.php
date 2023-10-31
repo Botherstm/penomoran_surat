@@ -14,11 +14,11 @@ class Kategory extends Migration
                 'constraint' => 255,
                 // 'auto_increment' => true,
             ],
-            'bidang_id' => [
+            'name' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255, 
+                'constraint' => 255,
             ],
-            'nama' => [
+            'slug' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],

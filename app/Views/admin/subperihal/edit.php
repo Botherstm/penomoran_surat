@@ -2,22 +2,34 @@
 
 <?= $this->section('content'); ?>
 
-<style>
-.row {
-    padding-left: 150px;
-    padding-right: 150px;
-}
-</style>
-
 <div class="content-wrapper">
-    <form action="<?php echo base_url('admin/subperihal/update/') ?><?= $subperihal['id']; ?>" method="POST" class="">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+
+            <!-- Main content -->
+                <!-- <div class="row jarak ">
+                    <div class="card-tools">
+                        <div class="btnadd">
+                        </div>
+                    </div>
+                    <div class="card-tools">
+                    </div>
+                </div> -->
+
+                <div class="card card-warning">
+
+
+<div class="card-header">
+                <h3 class="card-title" style="font-weight: bold;" >Edit Data Sub-Perihal <?=$subperihal['name'];?></h3>
+            </div>
+            <div class="card-body">
+            <form action="<?php echo base_url('admin/subperihal/update/') ?><?= $subperihal['id']; ?>" method="POST" class="">
         <?= csrf_field(); ?>
-        <div class="input-group justify-content-center mb-3">
-            <h2 class="mt-5 mb-5">Edit Sub Perihal <?= $subperihal['name']; ?></h2>
-        </div>
+      
         <div class="mb-5 m-1 ">
-            <label for="kategori" class="form-label input-group justify-content-center">Sub Perihal</label>
-            <input type="text" class="form-control w-50 m-auto " value="<?= $subperihal['name']; ?>" name="name"
+            <label for="kategori" class="form-label input-group ">Sub Perihal</label>
+            <input type="text" class="form-control  " value="<?= $subperihal['name']; ?>" name="name"
                 id="name" aria-describedby="emailHelp">
         </div>
         <div class="form-group text-center">
@@ -29,25 +41,31 @@
                 readonly>
         </div>
         <div class="mb-5 m-1">
-            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode Sub Perihal</label>
-            <input type="name" value="<?= $subperihal['kode']; ?>" name="kode" class="form-control w-50 m-auto"
+            <label for="kodeKategori" class="form-label input-group">Kode Sub Perihal</label>
+            <input type="name" value="<?= $subperihal['kode']; ?>" name="kode" class="form-control "
                 id="kodeKategori">
         </div>
         <div class="row text-center">
-            <div class="col-md-6">
-                <a href="<?php echo base_url('admin/subperihal/') ?><?= $perihal['slug']; ?>">
-                    <button type="button" class="btn btn-danger" style="width: 25%;">Batal</button>
+            <div class="col-md-6" style="padding-bottom: 10px;" >
+                <a href="<?php echo base_url('admin/kategori/perihal/subperihal/') ?><?= $perihal['slug']; ?>">
+                    <button type="button" class="btn btn-danger" style="width: 30%;  ">Batal</button>
                 </a>
             </div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 25%;">Ubah data</button>
+            <div class="col-md-6" style="padding-bottom: 10px;">
+                <button type="submit" class="btn btn-success " style="width: 30%; padding-bottom: 10px;">Ubah data</button>
             </div>
         </div>
 
     </form>
-
-
+            
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+
+
+
 
 
 <script>

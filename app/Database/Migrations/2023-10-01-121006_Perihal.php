@@ -13,10 +13,13 @@ class Perihal extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'kategori_id' => [
+            'detail_id' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true,
+            ],
+            'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => 225, 
             ],
             'kode' => [
                 'type' => 'VARCHAR',

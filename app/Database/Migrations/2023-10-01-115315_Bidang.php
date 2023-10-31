@@ -18,6 +18,10 @@ class Bidang extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255, 
             ],
+             'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'kode' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
