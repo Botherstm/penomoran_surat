@@ -33,7 +33,6 @@
                                     <td>:</td>
                                     <td><?= $dinas['name']; ?></td>
                                 </tr>
-
                             </table>
                             <hr>
                             <div class=" mx-auto " style="padding-bottom: 10%; padding-top: 10%; ">
