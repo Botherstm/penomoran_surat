@@ -4,7 +4,7 @@
 
 
 
-    <a href="index3.html" class="brand-link bg-teal ">
+    <a class="brand-link bg-teal ">
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
         <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px grey; padding-top: 10px;">E-NOMOR
             Admin</span>
@@ -14,7 +14,7 @@
     <?php if (session()->get('gambar') !== null) : ?>
         <div class="image" style="margin-right: 10px;">
             <img src="<?php echo base_url('userimage/') ?><?= session()->get('gambar'); ?>"
-                class="img-circle elevation-2" alt="User Image" style="width: 50px;"> <!-- Sesuaikan nilai width -->
+                class="img-circle elevation-2" alt="User Image" style="width: 45px;"> <!-- Sesuaikan nilai width -->
         </div>
     <?php else : ?>
     <?php endif ?>

@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning">
+            <div class="card card-warning" style="margin: 0px 250px 0px 250px;" >
 
 
                 <div class="card-header">
@@ -50,12 +50,12 @@
 
             <div class="col-md-6">
                 <a href="<?php echo base_url('admin/dinas/bidang/') ?><?= $instansi ?>">
-                    <button type="button" class="btn btn-danger" style="width: 30%;">Batal</button>
+                    <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                 </a>
             </div>
 
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 30%;">Edit Data</button>
+                <button type="submit" class="btn btn-success " style="width: 150px;">Edit Data</button>
             </div>
         </div>
 
