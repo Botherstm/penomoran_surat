@@ -1,6 +1,6 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 
 
 
@@ -23,45 +23,46 @@
 
 
                 <div class="card-header">
-                    <h3 class="card-title" style="font-weight: bold;">Edit Data Perihal <?= $detailsubperihal['name']; ?></h3>
+                    <h3 class="card-title" style="font-weight: bold;">Edit Data DetailPerihal
+                        <?=$detailsubperihal['name'];?></h3>
                 </div>
                 <div class="card-body">
-                <form action="<?php echo base_url('admin/detailsubperihal/update/') ?><?= $detailsubperihal['id']; ?>" method="POST"
-        class="">
-        <?= csrf_field(); ?>
-        <div class="mb-5 m-1 ">
-            <label for="kategori" class="form-label input-group ">Detail</label>
-            <input type="name" name="name" value="<?= $detailsubperihal['name']; ?>" class="form-control "
-                id="name" aria-describedby="emailHelp">
-        </div>
+                    <form action="<?=base_url('admin/detailsubperihal/update/')?><?=$detailsubperihal['id'];?>"
+                        method="POST" class="">
+                        <?=csrf_field();?>
+                        <div class="mb-5 m-1 ">
+                            <label for="kategori" class="form-label input-group ">Detail</label>
+                            <input type="name" name="name" value="<?=$detailsubperihal['name'];?>" class="form-control "
+                                id="name" aria-describedby="emailHelp">
+                        </div>
 
-        <div class="form-group text-center">
-            <input type="name" hidden class="form-control" id="subperihal_id" name="subperihal_id"
-                value="<?= $subperihal['id']; ?>" readonly>
-        </div>
-        <div class="form-group text-center">
-            <input type="name" hidden value="<?= $detailsubperihal['slug']; ?>" class="form-control" id="slug"
-                name="slug" readonly>
-        </div>
-        <div class="mb-5 m-1">
-            <label for="kodeKategori" class="form-label input-group ">Kode Detail</label>
-            <input type="name" name="kode" value="<?= $detailsubperihal['kode']; ?>" class="form-control "
-                id="kodeKategori">
-        </div>
+                        <div class="form-group text-center">
+                            <input type="name" class="form-control" id="detail_id" name="detail_id"
+                                value="<?=$subperihal['id'];?>" readonly>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" value="<?=$detailsubperihal['slug'];?>" class="form-control" id="slug"
+                                name="slug" readonly>
+                        </div>
+                        <div class="mb-5 m-1">
+                            <label for="kodeKategori" class="form-label input-group ">Kode Detail</label>
+                            <input type="name" name="kode" value="<?=$detailsubperihal['kode'];?>" class="form-control "
+                                id="kodeKategori">
+                        </div>
 
-        <div class="row text-center">
-            <div class="col-md-6">
-                <a
-                    href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/') ?><?= $subperihal['slug']; ?>">
-                    <button type="button" class="btn btn-danger" style="width: 30%;">Batal</button>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-success " style="width: 30%;">Ubah data</button>
-            </div>
-        </div>
+                        <div class="row text-center">
+                            <div class="col-md-6">
+                                <a
+                                    href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/') ?><?=$subperihal['slug'];?>">
+                                    <button type="button" class="btn btn-danger" style="width: 30%;">Batal</button>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success " style="width: 30%;">Ubah data</button>
+                            </div>
+                        </div>
 
-    </form>
+                    </form>
 
                 </div>
             </div>
@@ -92,4 +93,4 @@ nameInput.addEventListener('input', function() {
 });
 </script>
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>

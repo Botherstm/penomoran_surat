@@ -103,6 +103,8 @@ class DetailSubPerihalController extends BaseController
 
     public function update($id)
     {
+
+        // dd($id);
         // Validasi input form
         $rules = [
             'detail_id' => 'required',
@@ -123,7 +125,7 @@ class DetailSubPerihalController extends BaseController
             ];
             // dd($detailsubperihalData, $data);
             $this->detailsubperihal->update($id, $detailsubperihalData);
-            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/detailsubperihal/' . $data['slug']))->with('success', 'Data berhasil Di Update !');
+            return redirect()->to(base_url('admin/kategori/perihal/subperihal/detailsubperihal/' . $data['slug']))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');

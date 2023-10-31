@@ -32,7 +32,7 @@ class DetailSubPerihalModel extends Model
     }
     public function getAllBySubPerihalId($detail_id)
     {
-        return $this->where('detail_id', $detail_id)->findAll();
+        return $this->where('detail_id', $detail_id)->orderBy('kode', 'ASC')->findAll();
     }
 
     public function getBySlug($slug)
