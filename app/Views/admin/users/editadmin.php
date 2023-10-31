@@ -34,11 +34,13 @@
                                     <td><?=$dinas['name'];?></td>
                                 </tr>
 
+                                <?php if ($user['level'] == 1): ?>
                                 <tr>
                                     <th>Bidang</th>
                                     <td>:</td>
                                     <td><?=$bidang['name'];?></td>
                                 </tr>
+                                <?php endif;?>
                             </table>
                             <hr>
                             <div class=" mx-auto " style="padding-bottom: 10%; padding-top: 10%; ">
