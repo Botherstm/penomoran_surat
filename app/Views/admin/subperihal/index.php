@@ -138,6 +138,50 @@
 </div>
 
 
+<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Tambah Data Perihal <?= $kategori['name']; ?></h3>
+            </div>
+            <div class="card-body">
+                <form action="<?php echo base_url('admin/subperihal/save') ?>" method="POST">
+                    <?= csrf_field(); ?>
+
+                    <div class="mb-5 m-1 ">
+                        <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+                        <input type="text" class="form-control  " name="name" id="name" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+                    </div>
+                    <div class="mb-5 m-1">
+                        <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
+                            Perihal</label>
+                        <input type="name" name="kode" class="form-control" id="kodePerihal">
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success " style="width: 80%;">Tambah data</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
 // function showAlert() {
