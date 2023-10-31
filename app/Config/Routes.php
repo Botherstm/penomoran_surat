@@ -81,7 +81,7 @@ $routes->get('/admin/detailsubperihal/listdetailsubperihal', 'Admin\DetailSubPer
 $routes->get('/admin/detailsubperihal/(:segment)', 'Admin\DetailSubPerihalController::index/$1');
 $routes->get('/admin/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
 $routes->post('admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
-$routes->post('admin/detailsubperihal/update', 'Admin\DetailSubPerihalController::save');
+$routes->post('admin/detailsubperihal/update/(:segment)', 'Admin\DetailSubPerihalController::update/$1');
 $routes->post('admin/detailsubperihal/delete', 'Admin\DetailSubPerihalController::save');
 
 //kategori
@@ -89,7 +89,6 @@ $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/(:segment)', '
 $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/create/(:segment)', 'Admin\DetailSubPerihalController::create/$1');
 $routes->get('/admin/kategori/perihal/subperihal/detailsubperihal/edit/(:segment)', 'Admin\DetailSubPerihalController::edit/$1');
 $routes->post('/admin/detailsubperihal/save', 'Admin\DetailSubPerihalController::save');
-$routes->post('/admin/detailsubperihal/update/(:segment)', 'Admin\DetailSubPerihalController::update/$1');
 $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerihalController::delete/$1');
 
 //----------------PUBLIC--------------------------------------------------------------------------
