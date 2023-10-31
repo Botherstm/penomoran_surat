@@ -42,7 +42,7 @@
     <!-- Form Login -->
     <div class="container" style="padding-bottom: 10%;">
         <div class="row mt-2 m-auto" style="width: 25%;">
-            <img class="d-flex" src="<?php echo base_url('img\logo_kominfosanti_buleleng.png') ?>" alt="">
+            <img class="d-flex" src="<?php echo base_url('img\logo.png') ?>" alt="">
         </div>
         <div class="row">
             <div class="col">
@@ -81,7 +81,7 @@
                             </div>
                         </form>
 
-                        <a href="<?php echo base_url('lupa/') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
+                        <a href="<?php echo base_url('lupa') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
 
                     </div>
 

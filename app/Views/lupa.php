@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative">
         <div class="container">
             <a class="navbar-brand d-flex" href="#">
-                <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng"
+                <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng"
                     style="width: 70px;">
                 <div class="ms-1 d-flex flex-column align-items-start"
                     style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
@@ -46,9 +46,7 @@
                 <h3 class="card-title  " style=" color: white;  display: flex;
     justify-content: center;  ">Lupa Password</h3>
             </div>
-
-
-            <form id="quickForm" method="post" action="<?=base_url('lupa');?>">
+            <form method="post" action="<?=base_url('lupapw');?>">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
@@ -57,7 +55,8 @@
                     </div>
                 </div>
                 <div class="card-footer " style="justify-content: space-between; display: flex; ">
-                    <button type="submit" class="btn btn-danger" style=" width: 100px ">Batal</button>
+                    <a href="<?=base_url('login');?>"><button type="button" class="btn btn-danger"
+                            style=" width: 100px ">Batal</button></a>
                     <button type="submit" class="btn btn-primary" style=" width: 100px ">Submit</button>
                 </div>
             </form>

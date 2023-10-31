@@ -26,10 +26,23 @@ class LupaPasswordController extends BaseController
 
     }
 
-    public function LupaPassword()
+    public function lupapw()
     {
+        $config = [
+            'protocol' => 'smtp',
+            'SMTPCrypto' => 'ssl',
+            'SMTPHost' => 'smtp.googlemail.com',
+            'SMTPUser' => 'e.nomor252@gmail.com',
+            'SMTPPass' => 'jtaq zepq nmiy iluu',
+            'SMTPPort' => 465,
+            'mailType' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n",
+        ];
+
         $userEmail = $this->request->getPost('email');
         $user = $this->userModel->where('email', $userEmail)->first();
+        // dd($user);
         $userToken = $this->userToken->where('email', $userEmail)->first();
         if ($user) {
             // dd($user);
@@ -41,17 +54,7 @@ class LupaPasswordController extends BaseController
                     // dd($user);
                     return redirect()->back()->with('error', 'kami sudah mengirimkan verivikasi silahkan cek Email Anda');
                 } else {
-                    $config = [
-                        'protocol' => 'smtp',
-                        'SMTPCrypto' => 'ssl',
-                        'SMTPHost' => 'smtp.googlemail.com',
-                        'SMTPUser' => 'e.nomor252@gmail.com',
-                        'SMTPPass' => 'jtaq zepq nmiy iluu',
-                        'SMTPPort' => 465,
-                        'mailType' => 'html',
-                        'charset' => 'utf-8',
-                        'newline' => "\r\n",
-                    ];
+
                     $token = base64_encode(random_bytes(32));
                     $uuid = Uuid::uuid4();
                     $uuidString = $uuid->toString();
@@ -61,7 +64,7 @@ class LupaPasswordController extends BaseController
                     $email->setNewLine("\r\n");
 
                     $email->setFrom('e.nomor252@gmail.com', 'E-Nomor Buleleng');
-                    // dd($userEmail);
+// dd($userEmail);
                     $email->setTo($userEmail);
                     $email->setSubject('Reset password');
                     $email->setMessage('<p style="text-align:center;">Click the button below to reset your password:</p><p style="text-align:center;">Your email: ' . $userEmail . '</p><p style="text-align:center;"><a href="' . base_url('resetpassword?&email=' . $userEmail . '&token=' . urlencode($token)) . '"><button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; text-align: center; display: inline-block; font-size: 16px; margin: 10px auto; cursor: pointer;">Reset Password</button></a></p>');
@@ -79,11 +82,43 @@ class LupaPasswordController extends BaseController
                         return redirect()->back()->with('success', 'Email Berhasil dikirim');
 
                     } else {
-                        return redirect()->back()->with('error', 'email tidak terdaftar');
+                        return redirect()->back()->with('error', 'tidak dapat mengrim email');
 
                     }
 
                 }
+
+            }
+
+            $token = base64_encode(random_bytes(32));
+            $uuid = Uuid::uuid4();
+            $uuidString = $uuid->toString();
+
+            $email = \Config\Services::email();
+            $email->initialize($config);
+            $email->setNewLine("\r\n");
+
+            $email->setFrom('e.nomor252@gmail.com', 'E-Nomor Buleleng');
+            // dd($userEmail);
+            $email->setTo($userEmail);
+            $email->setSubject('Reset password');
+            $email->setMessage('<p style="text-align:center;">Click the button below to reset your password:</p><p style="text-align:center;">Your email: ' . $userEmail . '</p><p style="text-align:center;"><a href="' . base_url('resetpassword?&email=' . $userEmail . '&token=' . urlencode($token)) . '"><button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; text-align: center; display: inline-block; font-size: 16px; margin: 10px auto; cursor: pointer;">Reset Password</button></a></p>');
+
+            $user_token = [
+                'id' => $uuidString,
+                'email' => $userEmail,
+                'token' => $token,
+                'created_at' => Time::now(),
+            ];
+
+            if ($email->send()) {
+                $this->userToken->insert($user_token);
+
+                return redirect()->back()->with('success', 'Email Berhasil dikirim');
+
+            } else {
+                return redirect()->back()->with('error', 'tidak dapat mengrim email');
+
             }
 
         } else {

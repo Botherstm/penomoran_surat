@@ -140,7 +140,7 @@ $routes->get('/login', 'LoginController::index');
 $routes->get('/logout', 'LoginController::logout');
 $routes->post('/login', 'LoginController::login');
 $routes->get('/lupa', 'LupaPasswordController::index');
-$routes->post('/lupa', 'LupaPasswordController::lupaPassword');
+$routes->post('/lupapw', 'LupaPasswordController::lupapw');
 $routes->get('/resetpassword', 'LupaPasswordController::resetPassword');
 $routes->post('/resetpassworduser', 'LupaPasswordController::gantiPassword');
 
