@@ -41,7 +41,7 @@
     <!-- Form Login -->
     <div class="container" style="padding-bottom: 10%;">
         <div class="row mt-2 m-auto" style="width: 25%;">
-            <img class="d-flex" src="<?php echo base_url('img\logo.png') ?>" alt="">
+            <img class="d-flex" src="<?php echo base_url('img\logo_kominfosanti_buleleng.png') ?>" alt="">
         </div>
         <div class="row">
             <div class="col">
@@ -58,7 +58,7 @@
                                     <i class="input-group-text bi bi-person-fill"></i>
                                 </div>
                             </div>
-                            <div class="mb-1" style="padding-bottom: 5%;">
+                            <div class="mb-2" style="padding-bottom: 10%;">
                                 <div class="input-group">
                                     <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
                                     <?php if ($validation->hasError('password')) : ?>
@@ -71,12 +71,12 @@
                             </div>
                             <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
                             <br>
-                            <div class="d-grid gap-2 col-6 mx-auto mb-1">
+                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                 <button class="btn btn-success text-light" type="submit">Login</button>
                             </div>
                         </form>
 
-                        <a href="<?php echo base_url('lupa') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
+                        <a href="<?php echo base_url('lupa/') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
 
                     </div>
 
