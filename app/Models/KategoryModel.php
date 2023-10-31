@@ -8,18 +8,18 @@ class KategoryModel extends Model
 {
     protected $table = 'kategori';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id','bidang_id','slug', 'name','kode','create_at','update_at'];
-   
+    protected $allowedFields = ['id', 'bidang_id', 'slug', 'name', 'kode', 'create_at', 'update_at'];
+
     // public function saveToken($email, $token)
     // {
     //     $this->where('email', $email)->set(['token' => $token])->update();s
     // }
 
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
     //relasi
     public function dinas()
@@ -28,16 +28,16 @@ class KategoryModel extends Model
     }
 
     //cari semua
-    public function getAll(){
-        
-        return $this->findAll();
+    public function getAll()
+    {
+
+        return $this->orderBy('kode', 'ASC')->findAll();
     }
 
-     public function getById($id)
+    public function getById($id)
     {
         return $this->where('id', $id)->first();
     }
-
 
     public function getBySlug($slug)
     {
@@ -49,7 +49,8 @@ class KategoryModel extends Model
     }
 
     //ambil satu
-    public function getOne(){
+    public function getOne()
+    {
         return $this->first();
     }
 
