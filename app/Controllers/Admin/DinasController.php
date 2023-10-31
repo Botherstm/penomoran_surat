@@ -5,7 +5,6 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\BidangModel;
 use App\Models\DinasModel;
-use App\Models\UrutanSuratModel;
 use Ramsey\Uuid\Uuid;
 
 class DinasController extends BaseController
@@ -13,11 +12,9 @@ class DinasController extends BaseController
 
     protected $dinas;
     protected $bidang;
-    protected $urutan;
     public function __construct()
     {
         $this->dinas = new DinasModel();
-        $this->urutan = new UrutanSuratModel();
         $this->bidang = new BidangModel();
     }
     public function index()
