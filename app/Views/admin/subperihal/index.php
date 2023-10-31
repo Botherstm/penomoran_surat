@@ -138,25 +138,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Tambah Data Perihal <?= $kategori['name']; ?></h3>
+                <h3 class="card-title">Tambah Data Perihal <?= $perihal['name']; ?></h3>
             </div>
             <div class="card-body">
                 <form action="<?php echo base_url('admin/subperihal/save') ?>" method="POST">
                     <?= csrf_field(); ?>
 
                     <div class="mb-5 m-1 ">
-                        <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+                        <label for="subperihal" class="form-label input-group justify-content-center">SubPerihal</label>
                         <input type="text" class="form-control  " name="name" id="name" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
+                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $perihal['id']; ?>" readonly>
                     </div>
                     <div class="form-group text-center">
                         <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
                     </div>
                     <div class="mb-5 m-1">
                         <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
-                            Perihal</label>
+                            Sub-Perihal</label>
                         <input type="name" name="kode" class="form-control" id="kodePerihal">
                     </div>
                     <div class="row text-center">
