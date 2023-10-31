@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="" style="padding-top:1%; ">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8"  >
                         <div class="card">
                             <div class="card-header header-elements-inline">
                                 <h5 class="card-title">Tentang Aplikasi</h5>
