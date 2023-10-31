@@ -101,9 +101,9 @@
                                                 </td>
                                             <?php endif ?>
                                             <td>
-                                                <div class="btn-group d-flex mx-2" style="justify-content: space-between; " >
+                                                <div class="btn-group d-flex mx-2" style="justify-content: space-between;" >
                                                     <!-- update -->
-                                                    <a  href="#<?= $user['slug']; ?>">
+                                                    <a  href="#<?= $user['slug']; ?>" style="padding-right: 10px;" >
                                                         <button type="button" class="btn btn-block btn-warning " data-toggle="modal" data-target="#editModal">
                                                             <i class=" fas fa-pen"></i>
                                                         </button>
@@ -180,6 +180,7 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="instansiSelect">Level Admin</label>
                             <select class="form-control" id="instansiSelect" name="level">

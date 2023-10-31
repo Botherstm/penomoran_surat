@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +52,7 @@
                     <div class="card-body row m-auto">
                         <form class="form" method="POST" action="<?php echo base_url('login') ?>">
                             <?=csrf_field();?>
-                            <div class="input-group justify-content-center mt-2 mb-2">
+                            <div class="input-group justify-content-center my-4">
                                 <h2>LOGIN</h2>
                             </div>
                             <div class="mb-3">
@@ -60,7 +62,7 @@
                                     <i class="input-group-text bi bi-person-fill"></i>
                                 </div>
                             </div>
-                            <div class="mb-2">
+                            <div class="mb-2" style="padding-bottom: 10%;" >
                                 <div class="input-group">
                                     <input type="password"
                                         class="form-control <?=($validation->hasError('password')) ? 'is-invalid' : '';?>"
@@ -74,7 +76,7 @@
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
-                            <div class="g-recaptcha col-10 mx-auto mb-3" data-sitekey="<?=$key;?>"></div>
+                            <div class="g-recaptcha " data-sitekey="<?=$key;?>" style="width: 100%; max-width: 300px; margin: 0 auto;" ></div>
                             <br>
                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                 <button class="btn btn-success text-light" type="submit">Login</button>

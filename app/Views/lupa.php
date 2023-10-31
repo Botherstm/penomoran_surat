@@ -19,13 +19,25 @@
     .navbar {
         background-color: rgba(32, 201, 151, 255);
     }
+
+    .slide-up {
+        transform: translateY(0);
+        /* Kondisi awal */
+        transition: transform 0.5s ease-in-out;
+        /* Waktu animasi dan jenis transisi */
+    }
+
+    .slide-up.active {
+        transform: translateY(100%);
+        /* Kondisi akhir (tersembunyi di atas) */
+    }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative ">
+        <div class="container ">
             <a class="navbar-brand d-flex" href="#">
                 <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng"
                     style="width: 70px;">
@@ -40,27 +52,37 @@
     <!-- Akhir Navbar -->
 
     <!-- Form Login -->
-    <div class="container" style="padding-top: 5%; width: 50%; ">
+    <div class="container slide-up active" style="padding-top: 5%; width: 50%; ">
         <div class="card ">
-            <div class="card-header " style="background-color: #007bff ;  ">
+            <div class="card-header "
+                style="background-color: #007bff ;   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); ">
                 <h3 class="card-title  " style=" color: white;  display: flex;
     justify-content: center;  ">Lupa Password</h3>
             </div>
+
             <form method="post" action="<?=base_url('lupapw');?>">
                 <div class="card-body">
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Kirim Email</label>
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                             placeholder="Enter email">
                     </div>
                 </div>
+
                 <div class="card-footer " style="justify-content: space-between; display: flex; ">
                     <a href="<?=base_url('login');?>"><button type="button" class="btn btn-danger"
                             style=" width: 100px ">Batal</button></a>
                     <button type="submit" class="btn btn-primary" style=" width: 100px ">Submit</button>
                 </div>
+
             </form>
         </div>
+
+
+    </div>
+
+
 
 
     </div>
@@ -122,6 +144,16 @@
         }
     });
     </script>
+
+    <script>
+    // Untuk mengaktifkan animasi saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function() {
+        const slideUpElement = document.querySelector(".slide-up");
+        // Hilangkan kelas "active" untuk memulai animasi
+        slideUpElement.classList.remove("active");
+    });
+    </script>
+
 </body>
 
 </html>
