@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,16 +13,15 @@
     <!-- reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy">
     </script>
-
-
 </head>
 
+
 <body>
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-
                 <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:50%; margin-top: 50px;">
                     <?php if (session('errors')) : ?>
                         <div class="alert alert-danger">
@@ -35,7 +32,7 @@
                     <?php endif; ?>
 
                     <!-- Logo Aplikasi -->
-                    <div class="col-md-4 ">
+                    <div class="col-md-4 mt-2">
                         <div class="card p-3  bg-success bg-gradient text-white">
                             <div class="card-body ">
                                 <div class=" text-center">
@@ -58,7 +55,7 @@
 
 
                     <!-- Form Login -->
-                    <div class="col-md-4 ">
+                    <div class="col-md-4 mt-2">
                         <div class="card shadow-lg p-3 .bg-light.bg-gradient">
                             <div class="card-body">
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
@@ -66,21 +63,21 @@
                                     <div class="input-group justify-content-center my-4">
                                         <h2>LOGIN</h2>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 ">
                                         <div class="input-group">
-                                            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Email" style="opacity: 0.7;">
-                                            <i class="input-group-text bi bi-person-fill"></i>
+                                            <input type="email" class="shadow form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Email" style="opacity: 0.7;">
+                                            <i class="shadow input-group-text bi bi-person-fill"></i>
                                         </div>
                                     </div>
                                     <div class="mb-2" style="padding-bottom: 10%;">
-                                        <div class="input-group">
-                                            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
+                                        <div class=" input-group ">
+                                            <input type="password" class="shadow form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
                                             <?php if ($validation->hasError('password')) : ?>
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('password'); ?>
                                                 </div>
                                             <?php endif; ?>
-                                            <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
+                                            <span class="shadow input-group-text bi bi-eye-slash" id="showPassword"></span>
                                         </div>
                                     </div>
                                     <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
