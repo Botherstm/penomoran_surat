@@ -53,7 +53,7 @@
 
     <!-- Form Login -->
     <div class="container slide-up active" style="padding-top: 5%; width: 50%; ">
-        <div class="card ">
+        <div class="card  " >
             <div class="card-header "
                 style="background-color: #007bff ;   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); ">
                 <h3 class="card-title  " style=" color: white;  display: flex;
@@ -63,7 +63,7 @@
             <form method="post" action="<?=base_url('lupapw');?>">
                 <div class="card-body">
 
-                    <div class="form-group">
+                    <div class="form-group" style=" padding-top: 5%; padding-bottom: 5%; " >
                         <label for="exampleInputEmail1">Kirim Email</label>
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                             placeholder="Enter email">
