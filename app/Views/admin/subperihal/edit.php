@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning " style="margin: 0px 250px 0px 250px;">
+            <div class="card card-success " >
                 <?php if (session('errors')): ?>
                 <div class="alert alert-danger">
                     <ul>
