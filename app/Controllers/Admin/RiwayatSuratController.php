@@ -10,14 +10,12 @@ use App\Models\GenerateModel;
 use App\Models\KategoryModel;
 use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
-use App\Models\UrutanSuratModel;
 use App\Models\UserModel;
 
 class RiwayatSuratController extends BaseController
 {
     protected $user;
     protected $generate;
-    protected $urutan;
     protected $bidangs;
     protected $dinas;
     protected $perihal;
@@ -28,7 +26,6 @@ class RiwayatSuratController extends BaseController
     {
         $this->user = new UserModel();
         $this->generate = new GenerateModel();
-        $this->urutan = new UrutanSuratModel();
         $this->bidangs = new BidangModel();
         $this->dinas = new DinasModel();
         $this->kategori = new KategoryModel();
