@@ -67,14 +67,15 @@
 
 
                     <!-- Form Login -->
-                    <div class="col-md-4 mt-2">
-                        <div class="card shadow-lg p-3 .bg-light.bg-gradient" style="height: 100%;">
-                            <div class="card-body">
-                            <form id="quickForm" method="post" action="<?=base_url('gantipassworduser');?>">
+                  <!-- Form Login -->
+<div class="col-md-4 mt-2">
+    <div class="card shadow-lg p-3 .bg-light.bg-gradient" style="height: 100%;">
+        <div class="card-body">
+            <form id="quickForm" method="post" action="<?=base_url('gantipassworduser');?>">
                 <div class="card-body">
-                <div class="input-group justify-content-center my-4">
-                                        <h2>Reset Password</h2>
-                                    </div>
+                    <div class="input-group justify-content-center my-4">
+                        <h2>Reset Password</h2>
+                    </div>
                     <input type="hidden" name="email" value="<?=$email;?>">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password Baru</label>
@@ -88,16 +89,19 @@
                         <small id="passwordHelp" class="form-text text-danger"></small>
                     </div>
                 </div>
-                <div class="card-footer" style="justify-content: space-between; display: flex;">
-                    <a href="<?=base_url('login');?>"><button type="button" class="btn btn-danger"
-                            style="width: 100px">Batal</button></a>
+                <!-- Tombol Batal dan Submit di bawah -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 60%;; ">
+                    <a href="<?=base_url('login');?>">
+                        <button type="button" class="btn btn-danger" style="width: 100px">Batal</button>
+                    </a>
                     <button type="submit" class="btn btn-primary" style="width: 100px">Submit</button>
                 </div>
+                <!-- Akhir Tombol Batal dan Submit -->
             </form>
+        </div>
+    </div>
+</div>
 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -1,13 +1,7 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 
-<style>
-.row {
-    padding-left: 150px;
-    padding-right: 150px;
-}
-</style>
 
 <div class="content-wrapper ">
     <!-- Content Header (Page header) -->
@@ -41,7 +35,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo base_url('admin/dinas/update') ?>" method="POST" class="">
-                        <?= csrf_field(); ?>
+                        <?=csrf_field();?>
                         <input type="hidden" name="id" id="editDinasId">
                         <!-- Input untuk menyimpan ID dinas yang akan diedit -->
                         <div class="form-group">
@@ -65,15 +59,14 @@
                         </div>
 
                         <div class="row text-center" style="padding-bottom: 50px;">
-                            <div class="col-md-6 d-flex" style="justify-content: start;" >
-                                <a href="<?php echo base_url('admin/dinas/edit/') ?><?=$dinas['slug'];?>">
+                            <div class="col-md-6 d-flex justify-content-start"  >
+                                <a href="<?=base_url('admin/dinas');?>">
                                     <button class="btn btn-danger" type="button" style="width: 150px;"
                                         data-dismiss="modal">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6 d-flex" style="justify-content: end;" >
-                                <button type="submit" class="btn btn-success " style="width: 150px;">Tambah
-                                    data</button>
+                            <div class="col-md-6 d-flex justify-content-end" >
+                                <button type="submit" class="btn btn-success" style="width: 150px;">Tambah data</button>
                             </div>
                         </div>
                     </form>
@@ -118,4 +111,4 @@ nameInput.addEventListener('input', function() {
 });
 </script>
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>

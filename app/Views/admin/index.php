@@ -99,7 +99,6 @@
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3><?=$kategori;?></h3>
-
                                 <p>Kategori</p>
                             </div>
                             <div class="icon">
