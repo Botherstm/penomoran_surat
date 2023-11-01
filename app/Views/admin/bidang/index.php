@@ -49,9 +49,12 @@
                             </div>
                             <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
                                 <div class="fixed-button">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
+                                    <a href="<?php echo base_url('admin/dinas/bidang/create') ?>">
+                                    <button type="button" class="btn btn-success">
                                         <i class=" fas fa-pen-nib"></i> Tambah Bidang
                                     </button>
+                                    </a>
+                                   
                                 </div>
                             </div>
 
@@ -164,48 +167,6 @@
 
 
 <!-- edit -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Edit Data Bidang <?= $instansi['name']; ?></h3>
-            </div>
-            <div class="card-body">
-                <form action="<?php echo base_url('admin/bidang/update/') ?><?= $bidang['id']; ?>" method="POST" class="">
-                    <?= csrf_field(); ?>
-                    <div class="mb-5 m-1 ">
-                        <label for="bidang" class="form-label input-group justify-content-center">Nama Bidang</label>
-                        <input type="text" name="name" value="<?= $bidang['name']; ?>" class="form-control" id="name" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden value="<?= $bidang['instansi_id']; ?>" class="form-control" id="instansi_id" name="instansi_id" readonly>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden value="<?= $bidang['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
-                    </div>
-                    <div class="mb-5 m-1">
-                        <label for="kodeBidang" class="form-label input-group justify-content-center">Kode
-                            Bidang</label>
-                        <input type="name" name="kode" value="<?= $bidang['kode']; ?>" class="form-control" id="kodeBidang">
-                    </div>
-
-                    <div class="row text-center">
-
-                        <div class="col-md-6 ">
-                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
-                        </div>
-
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-success " style="width: 80%;">Edit Data</button>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
     // function showAlert() {

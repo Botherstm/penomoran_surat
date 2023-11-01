@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-success" style=" margin: 0px 250px 0px 250px; ">
+            <div class="card card-success" >
 
 
                 <div class="card-header">
@@ -104,8 +104,10 @@
                             cocok.</div>
                         <div class="row text-center" style="padding-bottom: 50px;">
                             <div class="col-md-6">
-                                <button class="btn btn-danger" type="button" style="width: 150px;"
+                             <a href="<?=base_url('admin/users');?>">
+                             <button class="btn btn-danger" type="button" style="width: 150px;"
                                     data-dismiss="modal">Batal</button>
+                             </a>
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Tambah

@@ -44,10 +44,13 @@
 
                             <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em; ">
                                 <div class="fixed-button">
+                                    <a href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/create') ?>">
                                     <button type="button" class="btn btn-success" data-toggle="modal"
                                         data-target="#generateModal">
                                         <i class=" fas fa-pen-nib"></i> Tambah Detail Sub-Perihal
                                     </button>
+                                    </a>
+                                   
                                 </div>
                             </div>
 

@@ -1,13 +1,6 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
-
-<style>
-.row {
-    padding-left: 150px;
-    padding-right: 150px;
-}
-</style>
+<?=$this->section('content');?>
 
 <div class="content-wrapper ">
     <!-- Content Header (Page header) -->
@@ -28,33 +21,28 @@
 
 
                 <div class="card-header">
-                    <h3 class="card-title" style="font-weight: bold;">Buat Dinas</h3>
+                    <h3 class="card-title" style="font-weight: bold;">Buat Bidang</h3>
                 </div>
                 <div class="card-body">
-                <form action="<?php echo base_url('admin/dinas/update') ?>" method="POST" class="">
+                <form action="<?php echo base_url('admin/bidang/save') ?>" method="POST" class="">
                     <?= csrf_field(); ?>
-                    <input type="hidden" name="id" id="editDinasId">
-                    <!-- Input untuk menyimpan ID dinas yang akan diedit -->
                     <div class="form-group">
-                        <label for="editName" class="form-label input-group justify-content-center">Nama Dinas</label>
-                        <input type="text" class="form-control" name="name" id="editName" aria-describedby="emailHelp">
+                        <label for="bidang" class="form-label input-group justify-content-center">Nama Bidang</label>
+                        <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="editSlug" name="slug" readonly>
+                        <input type="name" hidden class="form-control" id="instansi_id" name="instansi_id" value="<?= $instansi['id']; ?>" readonly>
                     </div>
-                    <div class="form-group">
-                        <label for="editKodeDinas" class="form-label input-group justify-content-center">Kode Dinas</label>
-                        <input type="name" name="kode" class="form-control" id="editKodeDinas">
+                    <div class="form-group text-center">
+                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
                     </div>
-                    <div class="form-group">
-                        <label for="editUrutan" class="form-label input-group justify-content-center">Urutan Surat
-                            Sebelumnya</label>
-                        <input type="number" name="urutan" class="form-control" id="editUrutan">
+                    <div class="mb-5 m-1 ">
+                        <label for="bidang" class="form-label input-group justify-content-center">Kode Bidang</label>
+                        <input type="name" class="form-control " name="kode" id="kode" aria-describedby="emailHelp">
                     </div>
-
                     <div class="row text-center" style="padding-bottom: 50px;">
                             <div class="col-md-6">
-                             <a href="<?php echo base_url('admin/dinas/edit/') ?><?=$instansi['slug'];?>">
+                             <a href="<?=base_url('admin/dinas/bidang/');?><?=$instansi['slug'];?>">
                              <button class="btn btn-danger" type="button" style="width: 150px;"
                                     data-dismiss="modal">Batal</button>
                              </a>
@@ -64,6 +52,7 @@
                                     data</button>
                             </div>
                         </div>
+
                 </form>
                 </div>
             </div>
@@ -72,9 +61,7 @@
 </div>
 
 
-
-
-
+<!-- /.content-wrapper -->
 <script>
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
@@ -96,5 +83,4 @@ nameInput.addEventListener('input', function() {
     slugInput.value = slugValue;
 });
 </script>
-
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>

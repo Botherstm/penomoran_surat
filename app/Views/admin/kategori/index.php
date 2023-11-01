@@ -42,8 +42,12 @@
                             </div>
 
                             <div class="col-6 d-flex justify-content-end">
-                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#generateModal"><i class="icon-jarak fas fa-pen-nib"></i>
+
+                            <a href="<?php echo base_url('admin/kategori') ?>">
+                            <button type="button" class="btn btn-success mb-3" ><i class="icon-jarak fas fa-pen-nib"></i>
                                     Tambah Kategori</button>
+                                    </a>
+                                
                                     
                             </div>
                          
