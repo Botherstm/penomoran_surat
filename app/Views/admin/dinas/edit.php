@@ -66,7 +66,7 @@
 
                         <div class="row text-center" style="padding-bottom: 50px;">
                             <div class="col-md-6 d-flex" style="justify-content: start;" >
-                                <a href="<?php echo base_url('admin/dinas/edit/') ?><?=$instansi['slug'];?>">
+                                <a href="<?php echo base_url('admin/dinas/edit/') ?><?=$dinas['slug'];?>">
                                     <button class="btn btn-danger" type="button" style="width: 150px;"
                                         data-dismiss="modal">Batal</button>
                                 </a>
