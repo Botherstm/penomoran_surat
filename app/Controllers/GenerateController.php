@@ -11,13 +11,11 @@ use App\Models\GenerateModel;
 use App\Models\KategoryModel;
 use App\Models\PerihalModel;
 use App\Models\SubPerihalModel;
-use App\Models\UrutanSuratModel;
 use Ramsey\Uuid\Uuid;
 
 class GenerateController extends BaseController
 {
     protected $generate;
-    protected $urutan;
     protected $bidang;
     protected $dinas;
     protected $perihal;
@@ -27,7 +25,6 @@ class GenerateController extends BaseController
     public function __construct()
     {
         $this->generate = new GenerateModel();
-        $this->urutan = new UrutanSuratModel();
         $this->bidang = new BidangModel();
         $this->dinas = new DinasModel();
         $this->kategori = new KategoryModel();

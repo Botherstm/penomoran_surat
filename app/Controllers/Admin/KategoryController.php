@@ -66,6 +66,10 @@ class KategoryController extends BaseController
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             $slug = $this->request->getPost('slug');
+            if ($this->perihal->where('kode', $kode)->first()) {
+                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+            }
+
             // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();

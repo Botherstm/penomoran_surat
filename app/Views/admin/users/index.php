@@ -36,12 +36,20 @@
                                 <?php endif?>
 
                             </div>
-                            <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
+                            <!-- <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
                                 <div class="fixed-button">
                                     <button type="button" class="btn btn-success" data-toggle="modal"
                                         data-target="#generateModal">
                                         <i class=" fas fa-pen-nib"></i> Tambah User
                                     </button>
+                                </div>
+                            </div> -->
+                            <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
+                                <div class="fixed-button">
+                                    <a href="<?=base_url('admin/users/create');?>"> <button type="button"
+                                            class="btn btn-success">
+                                            <i class=" fas fa-pen-nib"></i> Tambah User
+                                        </button></a>
                                 </div>
                             </div>
                         </div>
