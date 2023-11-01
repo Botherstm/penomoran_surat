@@ -15,52 +15,32 @@
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy">
     </script>
 
-    <style>
-    .navbar {
-        background-color: rgba(32, 201, 151, 255);
-    }
 
-    .slide-up {
-        transform: translateY(0);
-        /* Kondisi awal */
-        transition: transform 0.5s ease-in-out;
-        /* Waktu animasi dan jenis transisi */
-    }
-
-    .slide-up.active {
-        transform: translateY(100%);
-        /* Kondisi akhir (tersembunyi di atas) */
-    }
-    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative ">
-        <div class="container ">
-            <a class="navbar-brand d-flex" href="#">
-                <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng"
-                    style="width: 70px;">
-                <div class="ms-1 d-flex flex-column align-items-start"
-                    style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
-                    <span>E-NOMOR</span>
-                    <span class="small">KOMINFO SANTI</span>
-                </div>
-            </a>
-        </div>
-    </nav>
-    <!-- Akhir Navbar -->
+    <div class="content-wrapper">
+        
+                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 40%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 49%; ">
 
-    <!-- Form Login -->
-    <div class="container slide-up active" style="padding-top: 5%; width: 50%; ">
-        <div class="card  ">
-            <div class="card-header "
-                style="background-color: #007bff ;   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); ">
-                <h3 class="card-title  " style=" color: white;  display: flex;
-    justify-content: center;  ">Lupa Password</h3>
-            </div>
+                                </div>
+                                <hr>
+                                <div class=" text-center">
+                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo optio commodi eveniet!</p>
+                                </div>
+                            </div>
 
-            <form method="post" action="<?=base_url('lupapw');?>">
+                        </div>
+                    </div>
+
+
+                    <!-- Form Login -->
+                    <div class="col-md-4 mt-2">
+                        <div class="card shadow-lg p-3 .bg-light.bg-gradient">
+                            <div class="card-body">
+                            <form method="post" action="<?=base_url('lupapw');?>">
                 <div class="card-body">
 
                     <div class="form-group" style=" padding-top: 5%; padding-bottom: 5%; ">
@@ -77,14 +57,16 @@
                 </div>
 
             </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-
-
-    </div>
-
-
-
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
@@ -145,14 +127,7 @@
     });
     </script>
 
-    <script>
-    // Untuk mengaktifkan animasi saat halaman dimuat
-    document.addEventListener("DOMContentLoaded", function() {
-        const slideUpElement = document.querySelector(".slide-up");
-        // Hilangkan kelas "active" untuk memulai animasi
-        slideUpElement.classList.remove("active");
-    });
-    </script>
+   
 
 </body>
 
