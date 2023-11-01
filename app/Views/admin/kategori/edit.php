@@ -27,7 +27,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-success" >
+            <div class="card card-success">
 
 
                 <div class="card-header">
@@ -37,23 +37,26 @@
                     <form action="" method="POST" id="editForm">
                         <?=csrf_field();?>
 
-                    <div class="mb-5 m-1">
-                        <label for="name" class="form-label input-group ">Kategori</label>
-                        <input type="text" name="name" class="form-control" id="editName" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-5 m-1">
-                        <label for="kodeKategori" class="form-label input-group ">Kode
-                            Kategori</label>
-                        <input type="text" name="kode" class="form-control" id="editKodeKategori">
-                    </div>
+                        <div class="mb-5 m-1">
+                            <label for="name" class="form-label input-group ">Kategori</label>
+                            <input type="text" name="name" value="<?=$kategori['name'];?>" class="form-control"
+                                id="name" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-5 m-1">
+                            <label for="kodeKategori" class="form-label input-group ">Kode
+                                Kategori</label>
+                            <input type="text" name="kode" value="<?=$kategori['kode'];?>" class="form-control"
+                                id="editKodeKategori">
+                        </div>
 
-                    <!-- Input untuk menyimpan slug -->
-                    <input type="hidden" name="slug" id="editSlug">
+                        <div class="form-group text-center">
+                            <input type="hidden" class="form-control" value="<?=$kategori['slug'];?>" id="slug"
+                                name="slug" readonly>
+                        </div>
 
-                    <div class="row text-center">
+                        <div class="row text-center">
                             <div class="col-md-6" style="padding-bottom: 10px;">
-                                <a
-                                    href="<?php echo base_url('admin/kategori') ?>">
+                                <a href="<?php echo base_url('admin/kategori') ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;  ">Batal</button>
                                 </a>
                             </div>
@@ -101,6 +104,7 @@ nameInput.addEventListener('input', function() {
     slugInput.value = slugValue;
 });
 </script>
+
 
 
 <?=$this->endSection('content');?>

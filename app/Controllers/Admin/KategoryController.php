@@ -92,7 +92,7 @@ class KategoryController extends BaseController
     public function edit($slug)
     {
         $kategoris = $this->Kategory->getBySlug($slug);
-        // dd($instansi);
+        // dd($kategoris);
         return view('admin/kategori/edit', [
             'active' => 'user',
             'kategori' => $kategoris,
@@ -107,8 +107,6 @@ class KategoryController extends BaseController
             'kode' => 'required',
             'slug' => 'required',
         ];
-
-        $validation = \Config\Services::validation(); // Mendapatkan instance validasi
 
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
@@ -125,8 +123,7 @@ class KategoryController extends BaseController
             return redirect()->to(base_url('/admin/kategori'))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()
-                ->with('validationErrors', 'periksa apakah data sudah terisi dengan benar');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
 
