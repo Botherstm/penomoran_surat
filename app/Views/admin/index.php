@@ -49,6 +49,51 @@
                     <!-- ./col -->
                     <?php if (session()->get('level') == 1): ?>
                     <!-- ./col -->
+                    <div class="row ">
+                        <div class="col-lg-6 col-7">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3><?=$generate;?></h3>
+
+                                    <p>Nomor Surat</p>
+                                </div>
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                                        class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                                    </svg>
+                                </div>
+                                <a href="/admin/riwayatsurat" class="small-box-footer">Selengkapnya <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+
+                        <!-- ./col -->
+                    </div>
+                    <?php elseif (session()->get('level') == 2): ?>
+                    <div class="col-lg-6 col-7">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3><?=$dinas;?></h3>
+                                <p>Dinas</p>
+                            </div>
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                                    class="bi bi-window-split" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z" />
+                                    <path
+                                        d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2Zm12 1a1 1 0 0 1 1 1v2H1V3a1 1 0 0 1 1-1h12ZM1 13V6h6.5v8H2a1 1 0 0 1-1-1Zm7.5 1V6H15v7a1 1 0 0 1-1 1H8.5Z" />
+                                </svg>
+                            </div>
+                            <a href="/admin/dinas" class="small-box-footer">Selengkapnya <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
                     <div class="col-lg-6 col-7">
                         <!-- small box -->
                         <div class="small-box bg-warning">
@@ -70,58 +115,11 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <?php elseif (session()->get('level') == 2): ?>
-                    <div class="col-lg-6 col-7">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3><?=$dinas;?></h3>
-
-                                <p>Dinas</p>
-                            </div>
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
-                                    class="bi bi-window-split" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z" />
-                                    <path
-                                        d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2Zm12 1a1 1 0 0 1 1 1v2H1V3a1 1 0 0 1 1-1h12ZM1 13V6h6.5v8H2a1 1 0 0 1-1-1Zm7.5 1V6H15v7a1 1 0 0 1-1 1H8.5Z" />
-                                </svg>
-                            </div>
-                            <a href="/admin/dinas" class="small-box-footer">Selengkapnya <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <?php endif;?>
-
                 </div>
+                <?php endif;?>
 
-                <div class="row ">
 
 
-                    <div class="col-lg-6 col-7">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3><?=$generate;?></h3>
-
-                                <p>Nomor Surat</p>
-                            </div>
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
-                                    class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
-                                </svg>
-                            </div>
-                            <a href="/admin/riwayatsurat" class="small-box-footer">Selengkapnya <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-
-                    <!-- ./col -->
-                </div>
             </div>
             <!-- /.row -->
             <!-- Main row -->
