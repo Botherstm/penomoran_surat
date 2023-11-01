@@ -1,13 +1,22 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-
+            <?php if (session('errors')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach (session('errors') as $error): ?>
+                    <li><?=esc($error)?></li>
+                    <?php endforeach;?>
+                </ul>
+                <button id="dismissError" class="btn btn-primary">Ok</button>
+            </div>
+            <?php endif;?>
             <!-- Main content -->
             <!-- <div class="row jarak ">
                     <div class="card-tools">
@@ -25,8 +34,8 @@
                     <h3 class="card-title" style="font-weight: bold;">Edit Data Kategori</h3>
                 </div>
                 <div class="card-body">
-                <form action="" method="POST" id="editForm">
-                    <?= csrf_field(); ?>
+                    <form action="" method="POST" id="editForm">
+                        <?=csrf_field();?>
 
                     <div class="mb-5 m-1">
                         <label for="name" class="form-label input-group ">Kategori</label>
@@ -53,7 +62,7 @@
                                     style="width: 150px; padding-bottom: 10px;">Ubah data</button>
                             </div>
                         </div>
-                </form>
+                    </form>
 
                 </div>
             </div>
@@ -61,7 +70,16 @@
     </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
 
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
+});
+</script>
 <script>
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
@@ -85,4 +103,4 @@ nameInput.addEventListener('input', function() {
 </script>
 
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>

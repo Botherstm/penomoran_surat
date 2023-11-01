@@ -16,6 +16,16 @@
                     <div class="card-tools">
                     </div>
                 </div> -->
+                <?php if (session('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session('errors') as $error): ?>
+                        <li><?=esc($error)?></li>
+                        <?php endforeach;?>
+                    </ul>
+                      <button id="dismissError" class="btn btn-primary">Ok</button>
+                </div>
+                <?php endif;?>
 
             <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
 
@@ -26,7 +36,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
-                        <?= csrf_field(); ?>
+                        <?=csrf_field();?>
                         <div class="mb-5 m-1 ">
                             <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
                             <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
@@ -57,7 +67,16 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dismissButton = document.getElementById("dismissError");
+        const errorAlert = document.querySelector(".alert.alert-danger");
 
+        dismissButton.addEventListener("click", function() {
+            errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+        });
+    });
+</script>
 <script>
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
