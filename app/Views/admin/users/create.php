@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-success" >
+            <div class="card card-success">
 
 
                 <div class="card-header">
@@ -78,36 +78,12 @@
                             </select>
                         </div>
                         <?php endif;?>
-
-                        <div class="form-group">
-                            <label for="Password1">Password</label>
-                            <div class="input-group">
-                                <input type="password" name="password" class="form-control" required id="Password1"
-                                    placeholder="Password">
-                                <span class="input-group-text" id="togglePassword">
-                                    <i class="fas fa-eye-slash"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="InputPassword2">Confirm Password</label>
-                            <div class="input-group">
-                                <input type="password" name="confirm_password" class="form-control" id="InputPassword2"
-                                    placeholder="Confirm Password">
-                                <span class="input-group-text" id="toggleConfirmPassword">
-                                    <i class="fas fa-eye-slash"></i>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="text-danger" id="passwordMatchError" style="display: none;">Password tidak
-                            cocok.</div>
                         <div class="row text-center" style="padding-bottom: 50px;">
                             <div class="col-md-6">
-                             <a href="<?=base_url('admin/users');?>">
-                             <button class="btn btn-danger" type="button" style="width: 150px;"
-                                    data-dismiss="modal">Batal</button>
-                             </a>
+                                <a href="<?=base_url('admin/users');?>">
+                                    <button class="btn btn-danger" type="button" style="width: 150px;"
+                                        data-dismiss="modal">Batal</button>
+                                </a>
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Tambah

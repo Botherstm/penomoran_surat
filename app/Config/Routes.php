@@ -43,6 +43,7 @@ $routes->post('/admin/users/save', 'Admin\UserController::save');
 $routes->post('/admin/profile/delete', 'Admin\UserController::deleteGambar');
 $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1');
 $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
+$routes->post('/admin/users/resetPassword/(:segment)', 'Admin\UserController::resetPassword/$1');
 
 //urutan
 $routes->get('/admin/dinas/urutansurat/(:segment)', 'Admin\UrutanSuratController::index/$1');
@@ -142,6 +143,7 @@ $routes->get('/lupa', 'LupaPasswordController::index');
 $routes->post('/lupapw', 'LupaPasswordController::lupapw');
 $routes->get('/resetpassword', 'LupaPasswordController::resetPassword');
 $routes->post('/resetpassworduser', 'LupaPasswordController::gantiPassword');
+$routes->post('/gantipassworduser', 'LupaPasswordController::ubahPassword');
 
 //TODO
 

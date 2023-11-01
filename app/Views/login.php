@@ -48,7 +48,7 @@
                 <div class="card row m-auto mt-1 shadow" style="width: 40%; padding-bottom: 5%;">
                     <div class="card-body row m-auto">
                         <form class="form" method="POST" action="<?php echo base_url('login') ?>">
-                            <?= csrf_field(); ?>
+                            <?=csrf_field();?>
                             <div class="input-group justify-content-center my-4">
                                 <h2>LOGIN</h2>
                             </div>
@@ -60,16 +60,16 @@
                             </div>
                             <div class="mb-1" style="padding-bottom: 5%;">
                                 <div class="input-group">
-                                    <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
-                                    <?php if ($validation->hasError('password')) : ?>
+                                    <input type="password" class="form-control <?=($validation->hasError('password')) ? 'is-invalid' : '';?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
+                                    <?php if ($validation->hasError('password')): ?>
                                         <div class="invalid-feedback">
-                                            <?= $validation->getError('password'); ?>
+                                            <?=$validation->getError('password');?>
                                         </div>
-                                    <?php endif; ?>
+                                    <?php endif;?>
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
-                            <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
+                            <div class="g-recaptcha " data-sitekey="<?=$key;?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
                             <br>
                             <div class="d-grid gap-2 col-6 mx-auto mb-1">
                                 <button class="btn btn-success text-light" type="submit">Login</button>
@@ -87,7 +87,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
-    <?php if (session()->getFlashdata('success')) : ?>
+    <?php if (session()->getFlashdata('success')): ?>
         <script>
             Swal.fire({
                 icon: 'success',
@@ -95,8 +95,8 @@
                 text: '<?php echo session()->getFlashdata('success'); ?>',
             });
         </script>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('error')) : ?>
+    <?php endif;?>
+    <?php if (session()->getFlashdata('error')): ?>
         <script>
             Swal.fire({
                 icon: 'error',
@@ -104,7 +104,7 @@
                 text: '<?php echo session()->getFlashdata('error'); ?>',
             });
         </script>
-    <?php endif; ?>
+    <?php endif;?>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.querySelector("form");

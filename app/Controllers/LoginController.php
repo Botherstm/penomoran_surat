@@ -49,35 +49,41 @@ class LoginController extends BaseController
         $recaptchaResult = json_decode($recaptchaResult);
 
         if (!$recaptchaResult->success) {
+
             // ReCAPTCHA tidak berhasil, tampilkan pesan kesalahan
             return redirect()->back()->withInput()->with('error', 'Silakan verifikasi reCAPTCHA terlebih dahulu.');
         } else {
             session();
             $email = $this->request->getPost('email');
             $password = (string) $this->request->getPost('password');
-            $recaptcha = $this->request->getPost('h-captcha');
-
             // Cari pengguna berdasarkan email
             $user = $this->userModel->where('email', $email)->first();
 
             if ($user) {
                 // Periksa apakah password sesuai
                 if (password_verify($password, $user['password'])) {
-                    $userData = [
-                        'user_id' => $user['id'],
-                        'instansi_id' => $user['instansi_id'],
-                        'bidang_id' => $user['bidang_id'],
-                        'slug' => $user['slug'],
-                        'name' => $user['name'],
-                        'email' => $user['email'],
-                        'no_hp' => $user['no_hp'],
-                        'gambar' => $user['gambar'],
-                        'level' => $user['level'],
-                    ];
-                    // dd($userData);
-                    session()->set($userData);
+                    if ($password == "112233445566778899") {
+                        return view("gantiPassword", [
+                            'email' => $email,
+                        ]);
+                    } else {
+                        $userData = [
+                            'user_id' => $user['id'],
+                            'instansi_id' => $user['instansi_id'],
+                            'bidang_id' => $user['bidang_id'],
+                            'slug' => $user['slug'],
+                            'name' => $user['name'],
+                            'email' => $user['email'],
+                            'no_hp' => $user['no_hp'],
+                            'gambar' => $user['gambar'],
+                            'level' => $user['level'],
+                        ];
+                        // dd($userData);
+                        session()->set($userData);
 
-                    return redirect()->to(base_url('/'));
+                        return redirect()->to(base_url('/'));
+
+                    }
                 } else {
                     return redirect()->back()->withInput()->with('error', 'Invalid email or password');
                 }
