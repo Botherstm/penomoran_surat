@@ -25,6 +25,7 @@
                         <li><?=esc($error)?></li>
                         <?php endforeach;?>
                     </ul>
+                      <button id="dismissError" class="btn btn-primary">Ok</button>
                 </div>
                 <?php endif;?>
 
@@ -94,5 +95,15 @@ nameInput.addEventListener('input', function() {
     var slugValue = slugify(nameValue);
     slugInput.value = slugValue;
 });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dismissButton = document.getElementById("dismissError");
+        const errorAlert = document.querySelector(".alert.alert-danger");
+
+        dismissButton.addEventListener("click", function() {
+            errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+        });
+    });
 </script>
 <?=$this->endSection('content');?>
