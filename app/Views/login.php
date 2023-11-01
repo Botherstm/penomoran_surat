@@ -63,7 +63,7 @@
 
                     <!-- Form Login -->
                     <div class="col-md-4 mt-2">
-                        <div class="card shadow-lg p-3 .bg-light.bg-gradient">
+                        <div class="card shadow-lg p-3 .bg-light.bg-gradient"  >
                             <div class="card-body">
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
                                     <?= csrf_field(); ?>
