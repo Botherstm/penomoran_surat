@@ -407,7 +407,7 @@ class UserController extends BaseController
         $data = $this->UserModel->getBySlug($slug);
         $user = $this->UserModel->getByid($data['id']);
         // dd($user);
-        $password = '112233445566778899';
+        $password = $_ENV['passwordBawaan'];
 
         if ($user) {
             $userData = [
