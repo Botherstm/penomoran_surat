@@ -85,7 +85,8 @@ class UserController extends BaseController
                     $this->UserModel->update($id, $userData);
                     return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
                 } else {
-                    return redirect()->back()->with('error', 'Password lama salah');
+                    return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
                 }
             } else {
                 // Jika tidak mengubah password, perbarui informasi pengguna lainnya
@@ -99,7 +100,8 @@ class UserController extends BaseController
                 return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
             }
         } else {
-            return redirect()->back()->withInput()->with('error', 'Email atau password tidak valid');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 

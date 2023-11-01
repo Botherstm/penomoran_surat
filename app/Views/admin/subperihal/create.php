@@ -6,7 +6,15 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-
+            <?php if (session('errors')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach (session('errors') as $error): ?>
+                    <li><?=esc($error)?></li>
+                    <?php endforeach;?>
+                </ul>
+            </div>
+            <?php endif;?>
             <!-- Main content -->
             <!-- <div class="row jarak ">
                     <div class="card-tools">
@@ -17,7 +25,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;" >
+            <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
 
 
                 <div class="card-header">
@@ -25,27 +33,29 @@
                         <?=$perihal['name'];?></h3>
                 </div>
                 <div class="card-body">
-                <form action="<?php echo base_url('admin/subperihal/save') ?>" method="POST">
-                    <?= csrf_field(); ?>
+                    <form action="<?php echo base_url('admin/subperihal/save') ?>" method="POST">
+                        <?= csrf_field(); ?>
 
-                    <div class="mb-5 m-1 ">
-                        <label for="subperihal" class="form-label input-group justify-content-center">SubPerihal</label>
-                        <input type="text" class="form-control  " name="name" id="name" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                            value="<?= $perihal['id']; ?>" readonly>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
-                    </div>
-                    <div class="mb-5 m-1">
-                        <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
-                            Sub-Perihal</label>
-                        <input type="name" name="kode" class="form-control" id="kodePerihal">
-                    </div>
-                    
-                    <div class="row text-center">
+                        <div class="mb-5 m-1 ">
+                            <label for="subperihal"
+                                class="form-label input-group justify-content-center">SubPerihal</label>
+                            <input type="text" class="form-control  " name="name" id="name"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
+                                value="<?= $perihal['id']; ?>" readonly>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+                        </div>
+                        <div class="mb-5 m-1">
+                            <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
+                                Sub-Perihal</label>
+                            <input type="name" name="kode" class="form-control" id="kodePerihal">
+                        </div>
+
+                        <div class="row text-center">
                             <div class="col-md-6">
                                 <a
                                     href="<?php echo base_url('admin/kategori/perihal/subperihal/') ?><?=$perihal['slug'];?>">
@@ -57,7 +67,7 @@
                             </div>
                         </div>
 
-                </form>
+                    </form>
 
                 </div>
             </div>

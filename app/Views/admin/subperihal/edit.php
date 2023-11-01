@@ -17,8 +17,16 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning " style="margin: 0px 250px 0px 250px;" >
-
+            <div class="card card-warning " style="margin: 0px 250px 0px 250px;">
+                <?php if (session('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session('errors') as $error): ?>
+                        <li><?=esc($error)?></li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                <?php endif;?>
 
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">Edit Data Sub-Perihal <?=$subperihal['name'];?>

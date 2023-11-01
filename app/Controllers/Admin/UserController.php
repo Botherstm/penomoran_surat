@@ -137,12 +137,13 @@ class UserController extends BaseController
                 'level' => $level,
                 'password' => password_hash($password, PASSWORD_DEFAULT),
             ];
-            $pasnjangpassword = strlen($password);
+
             // dd($userData, $pasnjangpassword);
             $this->UserModel->insert($userData);
             return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil terdaftar.');
         } else {
-            return redirect()->back()->with('error', 'Data Sudah Terdaftar');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 
@@ -207,7 +208,7 @@ class UserController extends BaseController
             $this->UserModel->update($id, $userData);
             return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil Di Update !');
         } else {
-            return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
 
@@ -225,12 +226,10 @@ class UserController extends BaseController
             'email' => 'required|valid_email',
         ];
 
-        // Tambahkan aturan validasi untuk password lama jika mengubah password
         if (!empty($password_baru)) {
             $rules['password_lama'] = 'required';
         }
-        // dd($user['password']);
-        // Lakukan validasi formulir
+
         if ($this->validate($rules)) {
             // Periksa apakah password baru disediakan dan verifikasi password lama
             if (!empty($password_baru)) {
@@ -242,10 +241,8 @@ class UserController extends BaseController
                         'no_hp' => $this->request->getPost('no_hp'),
                         'password' => password_hash($password_baru, PASSWORD_DEFAULT), // Hash password baru
                     ];
-                    $this->UserModel->update($id, $userData);
-                    return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun berhasil Di Update !');
                 } else {
-                    return redirect()->back()->with('error', 'Password lama salah');
+                    return redirect()->back()->withInput()->with('error', 'Password lama tidak sesuai.');
                 }
             } else {
                 // Jika tidak mengubah password, perbarui informasi pengguna lainnya
@@ -255,13 +252,15 @@ class UserController extends BaseController
                     'email' => $this->request->getPost('email'),
                     'no_hp' => $this->request->getPost('no_hp'),
                 ];
-                $this->UserModel->update($id, $userData);
-                return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun berhasil Di Update !');
             }
+
+            $this->UserModel->update($id, $userData);
+            return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun berhasil Di Update !');
         } else {
-            return redirect()->back()->withInput()->with('error', 'Periksa Data yang Anda Inputkan!!');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
+
     public function delete($slug)
     {
         // Cari data album berdasarkan ID
@@ -323,49 +322,59 @@ class UserController extends BaseController
                 'no_hp' => $this->request->getPost('no_hp'),
             ];
             $this->UserModel->update($id, $userData);
-            return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
+            return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun berhasil Di Update !');
         } else {
-            return redirect()->back()->with('error', 'ada kesalahan periksa kembali data!');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
     public function updateGambar()
     {
+        $rules = [
+            'gambar' => 'uploaded[gambar]|max_size[gambar,10240]|mime_in[gambar,image/jpeg,image/png,image/gif]',
+        ];
 
         $userData = session()->get();
 
         $id = $this->request->getPost('id');
         $gambar = $this->request->getFile('gambar');
         // dd();
-        if (!$gambar !== null) {
-            $user = $this->UserModel->find($id);
-            $gambarLama = $user['gambar'];
-            $uuid = Uuid::uuid4();
-            $uuidString = $uuid->toString();
-            $namaGambar = $uuidString . $gambar->getClientName();
-            $gambar->move(ROOTPATH . 'public/userimage', $namaGambar);
-            $gambarPath = ROOTPATH . 'public/userimage/' . $namaGambar;
-            $image = Image::make($gambarPath);
-            $ukuran = 500;
-            $image->fit($ukuran, $ukuran);
-            $image->save($gambarPath);
-            if (!empty($gambarLama)) {
-                $gambarLamaPath = ROOTPATH . 'public/userimage/' . $gambarLama;
-                if (file_exists($gambarLamaPath)) {
-                    unlink($gambarLamaPath);
+        if ($this->validate($rules)) {
+            if (!$gambar !== null) {
+                $user = $this->UserModel->find($id);
+                $gambarLama = $user['gambar'];
+                $uuid = Uuid::uuid4();
+                $uuidString = $uuid->toString();
+                $namaGambar = $uuidString . $gambar->getClientName();
+                $gambar->move(ROOTPATH . 'public/userimage', $namaGambar);
+                $gambarPath = ROOTPATH . 'public/userimage/' . $namaGambar;
+                $image = Image::make($gambarPath);
+                $ukuran = 500;
+                $image->fit($ukuran, $ukuran);
+                $image->save($gambarPath);
+                if (!empty($gambarLama)) {
+                    $gambarLamaPath = ROOTPATH . 'public/userimage/' . $gambarLama;
+                    if (file_exists($gambarLamaPath)) {
+                        unlink($gambarLamaPath);
+                    }
                 }
-            }
 
-            $userData['gambar'] = $namaGambar;
-            $user = [
-                'gambar' => $namaGambar,
-            ];
-            session()->set($userData);
-            $this->UserModel->update($id, $user);
+                $userData['gambar'] = $namaGambar;
+                $user = [
+                    'gambar' => $namaGambar,
+                ];
+                session()->set($userData);
+                $this->UserModel->update($id, $user);
+                return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun Gambar Berhasil di Ganti !');
+
+            } else {
+                return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
+            }
         } else {
-            return redirect()->back()->with('error', 'pastikan gambar anda tidak melebihi 10 mb');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
 
-        return redirect()->to(base_url('/admin/user/profile'))->with('success', 'Akun Gambar Berhasil di Ganti !');
     }
     public function deleteGambar()
     {

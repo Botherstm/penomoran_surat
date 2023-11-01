@@ -18,7 +18,15 @@
                 </div> -->
 
             <div class="card card-success">
-
+                <?php if (session('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session('errors') as $error): ?>
+                        <li><?=esc($error)?></li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                <?php endif;?>
 
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">create User</h3>

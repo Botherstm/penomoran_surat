@@ -51,7 +51,7 @@ class LoginController extends BaseController
         if (!$recaptchaResult->success) {
 
             // ReCAPTCHA tidak berhasil, tampilkan pesan kesalahan
-            return redirect()->back()->withInput()->with('error', 'Silakan verifikasi reCAPTCHA terlebih dahulu.');
+            return redirect()->back()->withInput()->with('errors', 'Silakan verifikasi reCAPTCHA terlebih dahulu.');
         } else {
             session();
             $email = $this->request->getPost('email');
@@ -85,10 +85,10 @@ class LoginController extends BaseController
 
                     }
                 } else {
-                    return redirect()->back()->withInput()->with('error', 'Invalid email or password');
+                    return redirect()->back()->withInput()->with('errors', 'Invalid email or password');
                 }
             } else {
-                return redirect()->back()->withInput()->with('error', 'Invalid email or password');
+                return redirect()->back()->withInput()->with('errors', 'Invalid email or password');
             }
         }
 

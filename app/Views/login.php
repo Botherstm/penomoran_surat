@@ -47,6 +47,13 @@
             <img class="d-flex" src="<?php echo base_url('img\logo_kominfosanti_buleleng.png') ?>" alt="">
         </div>
         <div class="row">
+            <?php if (session('errors')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <li><?=esc(session('errors'))?></li>
+                </ul>
+            </div>
+            <?php endif;?>
             <div class="col">
                 <div class="card row m-auto mt-1 shadow" style="width: 40%; padding-bottom: 5%;">
                     <div class="card-body row m-auto">
@@ -64,15 +71,8 @@
                             </div>
                             <div class="mb-1" style="padding-bottom: 5%;">
                                 <div class="input-group">
-                                    <input type="password"
-                                        class="form-control <?=($validation->hasError('password')) ? 'is-invalid' : '';?>"
-                                        required id="exampleInputPassword1" placeholder="Password" name="password"
-                                        style="opacity: 0.7;">
-                                    <?php if ($validation->hasError('password')): ?>
-                                    <div class="invalid-feedback">
-                                        <?=$validation->getError('password');?>
-                                    </div>
-                                    <?php endif;?>
+                                    <input type="password" class="form-control" required id="exampleInputPassword1"
+                                        placeholder="Password" name="password" style="opacity: 0.7;">
                                     <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
                                 </div>
                             </div>
@@ -104,33 +104,7 @@
     });
     </script>
     <?php endif;?>
-    <?php if (session()->getFlashdata('error')): ?>
-    <script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: '<?php echo session()->getFlashdata('error'); ?>',
-    });
-    </script>
-    <?php endif;?>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.querySelector("form");
-        const submitButton = form.querySelector("button");
-        const recaptcha = document.querySelector(".g-recaptcha");
 
-        // Nonaktifkan tombol "Login" saat halaman dimuat
-        submitButton.disabled = false;
-
-        recaptcha.addEventListener("change", function() {
-            const recaptchaResponse = grecaptcha.getResponse();
-            // Aktifkan tombol "Login" jika reCAPTCHA diverifikasi
-            if (recaptchaResponse.length > 0) {
-                submitButton.disabled = false;
-            }
-        });
-    });
-    </script>
 
     <script>
     function showAlert() {
@@ -151,6 +125,7 @@
         }
     });
     </script>
+
 </body>
 
 </html>
