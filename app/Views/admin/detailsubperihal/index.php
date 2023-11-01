@@ -32,7 +32,16 @@
                     <div class="card-tools">
                     </div>
                 </div> -->
-
+                <?php if (session('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session('errors') as $error): ?>
+                        <li><?=esc($error)?></li>
+                        <?php endforeach;?>
+                    </ul>
+                    <button id="dismissError" class="btn btn-primary">Ok</button>
+                </div>
+                <?php endif;?>
                 <div class="card">
                     <div class="card-header col">
                         <div class="row">
@@ -44,13 +53,14 @@
 
                             <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em; ">
                                 <div class="fixed-button">
-                                    <a href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/create') ?>">
-                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                        data-target="#generateModal">
-                                        <i class=" fas fa-pen-nib"></i> Tambah Detail Sub-Perihal
-                                    </button>
+                                    <a
+                                        href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/create') ?>">
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#generateModal">
+                                            <i class=" fas fa-pen-nib"></i> Tambah Detail Sub-Perihal
+                                        </button>
                                     </a>
-                                   
+
                                 </div>
                             </div>
 
@@ -167,7 +177,16 @@
 </div>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
 
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
+});
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
