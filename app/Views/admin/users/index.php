@@ -36,12 +36,20 @@
                                 <?php endif?>
 
                             </div>
-                            <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
+                            <!-- <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
                                 <div class="fixed-button">
                                     <button type="button" class="btn btn-success" data-toggle="modal"
                                         data-target="#generateModal">
                                         <i class=" fas fa-pen-nib"></i> Tambah User
                                     </button>
+                                </div>
+                            </div> -->
+                            <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
+                                <div class="fixed-button">
+                                    <a href="<?=base_url('admin/users/create');?>"> <button type="button"
+                                            class="btn btn-success">
+                                            <i class=" fas fa-pen-nib"></i> Tambah User
+                                        </button></a>
                                 </div>
                             </div>
                         </div>
@@ -110,6 +118,16 @@ echo implode(', ', $bidangNames);
                                                     <i class=" fas fa-pen"></i>
                                                 </button>
                                             </a>
+                                            <form id="resetPasswordForm" class="pr-3"
+                                                action="<?php echo base_url('admin/users/resetPassword/') ?><?=$user['slug'];?>"
+                                                method="POST">
+                                                <?=csrf_field();?>
+                                                <button type="button"
+                                                    onclick="confirmUpdatePassword('<?=$user['slug'];?>')"
+                                                    class="btn btn-block btn-primary">
+                                                    <i class="fas fa-lock"></i>
+                                                </button>
+                                            </form>
                                             <form id="deleteForm" class="pr-3"
                                                 action="<?php echo base_url('admin/users/delete/') ?><?=$user['slug'];?>"
                                                 method="POST">
@@ -119,6 +137,7 @@ echo implode(', ', $bidangNames);
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
+
 
                                         </div>
                                     </td>
@@ -417,6 +436,26 @@ function confirmDelete(slug) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
             const form = document.getElementById('deleteForm');
             form.action = "<?php echo base_url('admin/users/delete/') ?>" + slug;
+            form.submit();
+        }
+    });
+}
+
+function confirmUpdatePassword(slug) {
+    Swal.fire({
+        title: 'Apa Kamu yakin?',
+        text: 'jika yakin cofirm',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Reset Password',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
+            const form = document.getElementById('resetPasswordForm');
+            form.action = "<?php echo base_url('admin/users/resetPassword/') ?>" + slug;
             form.submit();
         }
     });

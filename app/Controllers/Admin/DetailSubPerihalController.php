@@ -70,6 +70,11 @@ class DetailSubPerihalController extends BaseController
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             // Data valid, simpan ke dalam database
+            if ($this->detailsubperihal->where('kode', $kode)->first()) {
+                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+
+            }
+
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
             $subperihal = $this->subperihal->getByid($detail_id);

@@ -26,6 +26,13 @@
             <div class="container-fluid">
 
                 <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:50%; margin-top: 50px;">
+                    <?php if (session('errors')) : ?>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <li><?= esc(session('errors')) ?></li>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
 
                     <!-- Logo Aplikasi -->
                     <div class="col-md-4 ">
@@ -82,9 +89,6 @@
                                         <button class="btn btn-success text-light" type="submit">Login</button>
                                     </div>
                                 </form>
-
-                                <a href="<?php echo base_url('lupa/') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
-
                             </div>
 
                         </div>
@@ -106,33 +110,7 @@
             });
         </script>
     <?php endif; ?>
-    <?php if (session()->getFlashdata('error')) : ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: '<?php echo session()->getFlashdata('error'); ?>',
-            });
-        </script>
-    <?php endif; ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.querySelector("form");
-            const submitButton = form.querySelector("button");
-            const recaptcha = document.querySelector(".g-recaptcha");
 
-            // Nonaktifkan tombol "Login" saat halaman dimuat
-            submitButton.disabled = false;
-
-            recaptcha.addEventListener("change", function() {
-                const recaptchaResponse = grecaptcha.getResponse();
-                // Aktifkan tombol "Login" jika reCAPTCHA diverifikasi
-                if (recaptchaResponse.length > 0) {
-                    submitButton.disabled = false;
-                }
-            });
-        });
-    </script>
 
     <script>
         function showAlert() {
@@ -153,6 +131,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

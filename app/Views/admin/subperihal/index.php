@@ -43,10 +43,12 @@
 
                             <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
                                 <div class="fixed-button">
-                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                        data-target="#generateModal">
+                                    <a href="<?php echo base_url('admin/kategori/perihal/subperihal/create') ?>">
+                                    <button type="button" class="btn btn-success" >
                                         <i class="icon-jarak fas fa-pen-nib"></i> Tambah Sub-Perihal
                                     </button>
+                                    </a>
+                                   
                                 </div>
                             </div>
 
@@ -138,7 +140,8 @@
 </div>
 
 
-<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content card card-primary">
             <div class="card-header">
@@ -153,7 +156,8 @@
                         <input type="text" class="form-control  " name="name" id="name" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $perihal['id']; ?>" readonly>
+                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
+                            value="<?= $perihal['id']; ?>" readonly>
                     </div>
                     <div class="form-group text-center">
                         <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
@@ -165,7 +169,8 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-md-6">
-                            <button class="btn btn-danger" style="width:80%;" type="button" data-dismiss="modal">Batal</button>
+                            <button class="btn btn-danger" style="width:80%;" type="button"
+                                data-dismiss="modal">Batal</button>
                         </div>
 
                         <div class="col-md-6">

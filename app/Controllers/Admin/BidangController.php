@@ -63,40 +63,42 @@ class BidangController extends BaseController
 
     public function save()
     {
-        // Validasi input data
-        $validationRules = [
+
+        $rules = [
             'instansi_id' => 'required',
             'kode' => 'required',
             'name' => 'required',
             'slug' => 'required',
         ];
 
-        if (!$this->validate($validationRules)) {
-            return redirect()->back()->withInput()->with('error', 'periksa apakah data sudah terisi dengan benar');
+        if ($this->validate($rules)) {
+
+            $name = $this->request->getPost('name');
+            $instansi_id = $this->request->getPost('instansi_id');
+            $kode = $this->request->getPost('kode');
+            $slug = $this->request->getPost('slug');
+
+            $uuid = Uuid::uuid4();
+            $uuidString = $uuid->toString();
+
+            $data = [
+                'id' => $uuidString,
+                'instansi_id' => $instansi_id,
+                'kode' => $kode,
+                'name' => $name,
+                'slug' => $slug,
+            ];
+
+            $this->bidang->insert($data);
+            $instansi = $this->dinas->getById($instansi_id);
+            // dd($instansi['slug']);
+            return redirect()->to(base_url('/admin/dinas/bidang/' . $instansi['slug']))->with('success', 'Data Bidang berhasil disimpan');
+
+        } else {
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
 
-        // Ambil data dari input form
-        $name = $this->request->getPost('name');
-        $instansi_id = $this->request->getPost('instansi_id');
-        $kode = $this->request->getPost('kode');
-        $slug = $this->request->getPost('slug');
-
-        //perubahan data
-        $uuid = Uuid::uuid4();
-        $uuidString = $uuid->toString();
-
-        $data = [
-            'id' => $uuidString,
-            'instansi_id' => $instansi_id,
-            'kode' => $kode,
-            'name' => $name,
-            'slug' => $slug,
-        ];
-
-        $this->bidang->insert($data);
-        $instansi = $this->dinas->getById($instansi_id);
-        // dd($instansi['slug']);
-        return redirect()->to(base_url('/admin/dinas/bidang/' . $instansi['slug']))->with('success', 'Data Bidang berhasil disimpan');
     }
 
     public function edit($slug)
@@ -141,8 +143,8 @@ class BidangController extends BaseController
             return redirect()->to(base_url('/admin/dinas/bidang/' . $instansi['slug']))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()
-                ->with('error', 'periksa apakah data sudah terisi dengan benar');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 
@@ -158,7 +160,8 @@ class BidangController extends BaseController
             $this->bidang->delete($data['id']);
             return redirect()->to(base_url('admin/dinas/bidang/' . $instansi->slug))->with('success', 'data deleted successfully.');
         } else {
-            return redirect()->to(base_url('admin/dinas/bidang/' . $instansi->slug))->with('error', 'data not found.');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 }

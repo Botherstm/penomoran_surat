@@ -47,9 +47,12 @@
 
                             <div class="col-6 d-flex justify-content-end" style="padding-bottom: 4em;">
                                 <div class="fixed-button">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#generateModal">
+                                    <a href="<?=base_url('admin/dinas/create');?>">
+                                    <button type="button" class="btn btn-success" >
                                         <i class=" fas fa-pen-nib"></i> Tambah Dinas
                                     </button>
+                                    </a>
+                                   
                                 </div>
                             </div>
 
@@ -94,9 +97,13 @@
                                         <td>
                                             <div class="btn-group mr-3">
                                                 <!-- update -->
-                                                <button type="button" class="btn btn-warning " onclick="openEditModal('<?= $dinas['id'] ?>', '<?= $dinas['name'] ?>', '<?= $dinas['kode'] ?>', '<?= $dinas['urutan'] ?>')">
+
+                                                <a href="">
+                                                <button type="button" class="btn btn-warning " >
                                                     <i class="fas fa-pen"></i>
                                                 </button>
+                                                </a>
+                                             
 
 
                                             </div>

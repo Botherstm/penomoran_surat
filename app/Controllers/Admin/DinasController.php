@@ -65,7 +65,7 @@ class DinasController extends BaseController
             'name' => 'required',
             'kode' => 'required',
             'slug' => 'required',
-            'urutan' => 'required',
+            'urutan' => 'required|integer',
         ];
 
         if ($this->validate($rules)) {
@@ -89,8 +89,7 @@ class DinasController extends BaseController
 
             return redirect()->to(base_url('/admin/dinas'))->with('success', 'Data Dinas berhasil disimpan.');
         } else {
-            // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
-            return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
 
     }
@@ -132,8 +131,8 @@ class DinasController extends BaseController
             return redirect()->to(base_url('/admin/dinas'))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()
-                ->with('validationErrors', 'periksa apakah data sudah terisi dengan benar');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 
