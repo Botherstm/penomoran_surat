@@ -91,10 +91,12 @@
                                         </td>
                                         <td>
                                             <div class="btn-group " style="display: flex;">
-                                                <button type="button" class="btn btn-block btn-warning"
-                                                    onclick="openEditModal('<?= $kategori['id'] ?>', '<?= $kategori['name'] ?>', '<?= $kategori['kode'] ?>', '<?= $kategori['slug'] ?>')">
+                                            <a href="<?php echo base_url('admin/kategori/edit/') ?><?= $kategori['slug']; ?>">
+                                            <button type="button" class="btn btn-block btn-warning">
                                                     <i class="fas fa-pen"></i>
                                                 </button>
+                                            </a>    
+                                           
                                                 <form style="padding-left: 10px;" id="deleteForm"
                                                     action="<?php echo base_url('admin/kategori/delete/') ?><?= $kategori['slug']; ?>"
                                                     method="POST">
