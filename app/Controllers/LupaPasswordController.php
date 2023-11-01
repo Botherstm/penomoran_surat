@@ -22,7 +22,7 @@ class LupaPasswordController extends BaseController
     }
     public function index()
     {
-        return view('/lupa');
+        return view('/gakdipakai/lupa');
 
     }
 
@@ -139,7 +139,7 @@ class LupaPasswordController extends BaseController
             if ($userToken) {
 
                 // dd($userToken);
-                return view('resetPassword', [
+                return view('/gakdipakai/resetPassword', [
                     'userToken' => $userToken,
                 ]);
             } else {
