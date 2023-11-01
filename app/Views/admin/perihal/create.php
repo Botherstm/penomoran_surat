@@ -55,13 +55,13 @@
                             <input type="name" name="kode" class="form-control" id="kodePerihal">
                         </div>
                         <div class="row text-center" style="padding-bottom: 50px;">
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: start;">
                                 <a href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
                                     <button class="btn btn-danger" type="button" style="width: 150px;"
                                         data-dismiss="modal">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: end;">
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Tambah
                                     data</button>
                             </div>

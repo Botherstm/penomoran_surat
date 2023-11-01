@@ -55,12 +55,12 @@
                         </div>
 
                         <div class="row text-center">
-                            <div class="col-md-6" style="padding-bottom: 10px;">
+                            <div class="col-md-6 d-flex" style="justify-content: start;">
                                 <a href="<?php echo base_url('admin/kategori') ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;  ">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6" style="padding-bottom: 10px;">
+                            <div class="col-md-6 d-flex" style="justify-content: end;">
                                 <button type="submit" class="btn btn-success "
                                     style="width: 150px; padding-bottom: 10px;">Ubah data</button>
                             </div>
