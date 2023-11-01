@@ -41,7 +41,7 @@
     <!-- Form Login -->
     <div class="container" style="padding-bottom: 10%;">
         <div class="row mt-2 m-auto" style="width: 25%;">
-            <img class="d-flex" src="<?php echo base_url('img\logo.png') ?>" alt="">
+            <img class="d-flex" src="<?php echo base_url('img\logo_kominfosanti_buleleng.png') ?>" alt="">
         </div>
         <div class="row">
             <div class="col">

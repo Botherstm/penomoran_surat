@@ -152,7 +152,7 @@
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
+        <div class="modal-content card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Edit Data Kategori</h3>
             </div>
@@ -171,7 +171,7 @@
                     </div>
 
                     <!-- Input untuk menyimpan slug -->
-                    <input type="" name="slug" id="editSlug">
+                    <input type="hidden" name="slug" id="editSlug">
 
                     <div class="row text-center">
                         <div class="col-md-6">
