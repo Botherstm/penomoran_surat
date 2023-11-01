@@ -20,29 +20,57 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative">
-        <div class="container">
-            <a class="navbar-brand d-flex" href="#">
-                <img src="<?php echo base_url() ?>img/logo-kabupaten-buleleng.png" alt="Pemkab Buleleng"
-                    style="width: 70px;">
-                <div class="ms-1 d-flex flex-column align-items-start"
-                    style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
-                    <span>E-NOMOR</span>
-                    <span class="small">KOMINFO SANTI</span>
-                </div>
-            </a>
-        </div>
-    </nav>
+
     <!-- Akhir Navbar -->
 
     <!-- Form Login -->
-    <div class="container" style="padding-top: 5%; width: 50%;">
-        <div class="card">
-            <div class="card-header" style="background-color: #007bff;">
-                <h3 class="card-title" style="color: white; display: flex; justify-content: center;">Ganti Password</h3>
-            </div>
-            <form id="quickForm" method="post" action="<?=base_url('gantipassworduser');?>">
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row d-flex justify-content-center w-auto p-3 "
+                    style="margin: auto; height:50%; margin-top: 50px;">
+                    <?php if (session('errors')) : ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li><?= esc(session('errors')) ?></li>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- Logo Aplikasi -->
+                    <div class="col-md-4 mt-2">
+                        <div class="card p-3  bg-success bg-gradient text-white">
+                            <div class="card-body ">
+                                <div class=" text-center">
+                                    <div class="ms-1 d-flex flex-column"
+                                        style=" text-shadow: 2px 2px 1px grey; font-weight: bold; ">
+                                        <span class="fs-6">E-NOMOR</span>
+                                        <span class="fs-6">KOMINFO SANTI</span>
+                                    </div>
+                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>"
+                                        alt="Pemkab Buleleng" style="max-width: 40%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 49%; ">
+
+                                </div>
+                                <hr>
+                                <div class=" text-center">
+                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis
+                                        provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo
+                                        optio commodi eveniet!</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- Form Login -->
+                    <div class="col-md-4 mt-2">
+                        <div class="card shadow-lg p-3 .bg-light.bg-gradient">
+                            <div class="card-body">
+                            <form id="quickForm" method="post" action="<?=base_url('gantipassworduser');?>">
                 <div class="card-body">
                     <input type="hidden" name="email" value="<?=$email;?>">
                     <div class="form-group">
@@ -63,6 +91,11 @@
                     <button type="submit" class="btn btn-primary" style="width: 100px">Submit</button>
                 </div>
             </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
