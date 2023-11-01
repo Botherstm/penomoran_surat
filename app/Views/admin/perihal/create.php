@@ -26,7 +26,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
+            <div class="card card-success" >
 
 
                 <div class="card-header">
@@ -38,7 +38,7 @@
                         <?= csrf_field(); ?>
 
                         <div class="mb-5 m-1 ">
-                            <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
+                            <label for="perihal" class="form-label input-group ">Perihal</label>
                             <input type="text" class="form-control  " name="name" id="name"
                                 aria-describedby="emailHelp">
                         </div>
@@ -50,7 +50,7 @@
                             <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
                         </div>
                         <div class="mb-5 m-1">
-                            <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
+                            <label for="kodePerihal" class="form-label input-group ">Kode
                                 Perihal</label>
                             <input type="name" name="kode" class="form-control" id="kodePerihal">
                         </div>

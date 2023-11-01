@@ -28,7 +28,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
+            <div class="card card-success">
 
 
                 <div class="card-header">
@@ -46,11 +46,11 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <input type="name" class="form-control" id="detail_id" name="detail_id"
+                            <input type="hidden" class="form-control" id="detail_id" name="detail_id"
                                 value="<?=$subperihal['id'];?>" readonly>
                         </div>
                         <div class="form-group text-center">
-                            <input type="name" value="<?=$detailsubperihal['slug'];?>" class="form-control" id="slug"
+                            <input type="hidden" value="<?=$detailsubperihal['slug'];?>" class="form-control" id="slug"
                                 name="slug" readonly>
                         </div>
                         <div class="mb-5 m-1">
@@ -60,13 +60,13 @@
                         </div>
 
                         <div class="row text-center">
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex " style="justify-content: start;">
                                 <a
                                     href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/') ?><?=$subperihal['slug'];?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: end;">
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
                             </div>
                         </div>
