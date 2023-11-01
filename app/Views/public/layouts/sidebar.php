@@ -13,7 +13,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="padding-top: 10px; align-items: center;">
             <?php if (session()->get('gambar') !== null) : ?>
                 <div class="image" style="margin-right: 10px;">
-                    <img src="<?php echo base_url('userimage/') ?><?= session()->get('gambar'); ?>" class="img-circle elevation-2" alt="User Image" style="width:  45px;"> <!-- Sesuaikan nilai width -->
+                    <img src="<?php echo base_url('userimage/') ?><?= session()->get('gambar'); ?>" class="img-circle elevation-2" alt="User Image" style="width: 50px;"> <!-- Sesuaikan nilai width -->
                 </div>
             <?php else : ?>
             <?php endif ?>

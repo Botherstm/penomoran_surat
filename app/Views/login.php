@@ -16,74 +16,84 @@
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy">
     </script>
 
-    <style>
-        .navbar {
-            background-color: rgba(32, 201, 151, 255);
-        }
-    </style>
+
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow position-relative">
-        <div class="container">
-            <a class="navbar-brand d-flex" href="#">
-                <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="width: 70px;">
-                <div class="ms-1 d-flex flex-column align-items-start" style="padding-left: 15px; padding-top: 5px; text-shadow: 2px 2px 1px grey; font-weight: bold; ">
-                    <span>E-NOMOR</span>
-                    <span class="small">KOMINFO SANTI</span>
-                </div>
-            </a>
-        </div>
-    </nav>
-    <!-- Akhir Navbar -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
 
-    <!-- Form Login -->
-    <div class="container" style="padding-bottom: 10%;">
-        <div class="row mt-2 m-auto" style="width: 25%;">
-            <img class="d-flex" src="<?php echo base_url('img\logo_kominfosanti_buleleng.png') ?>" alt="">
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="card row m-auto mt-1 shadow" style="width: 40%; padding-bottom: 5%;">
-                    <div class="card-body row m-auto">
-                        <form class="form" method="POST" action="<?php echo base_url('login') ?>">
-                            <?= csrf_field(); ?>
-                            <div class="input-group justify-content-center my-4">
-                                <h2>LOGIN</h2>
-                            </div>
-                            <div class="mb-3">
-                                <div class="input-group">
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Email" style="opacity: 0.7;">
-                                    <i class="input-group-text bi bi-person-fill"></i>
+                <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:50%; margin-top: 50px;">
+
+                    <!-- Logo Aplikasi -->
+                    <div class="col-md-4 ">
+                        <div class="card p-3  bg-success bg-gradient text-white">
+                            <div class="card-body ">
+                                <div class=" text-center">
+                                    <div class="ms-1 d-flex flex-column" style=" text-shadow: 2px 2px 1px grey; font-weight: bold; ">
+                                        <span class="fs-6">E-NOMOR</span>
+                                        <span class="fs-6">KOMINFO SANTI</span>
+                                    </div>
+                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 40%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 49%; ">
+
+                                </div>
+                                <hr>
+                                <div class=" text-center">
+                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo optio commodi eveniet!</p>
                                 </div>
                             </div>
-                            <div class="mb-2" style="padding-bottom: 10%;">
-                                <div class="input-group">
-                                    <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
-                                    <?php if ($validation->hasError('password')) : ?>
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('password'); ?>
+
+                        </div>
+                    </div>
+
+
+                    <!-- Form Login -->
+                    <div class="col-md-4 ">
+                        <div class="card shadow-lg p-3 .bg-light.bg-gradient">
+                            <div class="card-body">
+                                <form class="form" method="POST" action="<?php echo base_url('login') ?>">
+                                    <?= csrf_field(); ?>
+                                    <div class="input-group justify-content-center my-4">
+                                        <h2>LOGIN</h2>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Email" style="opacity: 0.7;">
+                                            <i class="input-group-text bi bi-person-fill"></i>
                                         </div>
-                                    <?php endif; ?>
-                                    <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
-                                </div>
-                            </div>
-                            <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
-                            <br>
-                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                <button class="btn btn-success text-light" type="submit">Login</button>
-                            </div>
-                        </form>
+                                    </div>
+                                    <div class="mb-2" style="padding-bottom: 10%;">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" required id="exampleInputPassword1" placeholder="Password" name="password" style="opacity: 0.7;">
+                                            <?php if ($validation->hasError('password')) : ?>
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('password'); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                            <span class="input-group-text bi bi-eye-slash" id="showPassword"></span>
+                                        </div>
+                                    </div>
+                                    <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
+                                    <br>
+                                    <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                        <button class="btn btn-success text-light" type="submit">Login</button>
+                                    </div>
+                                </form>
 
-                        <a href="<?php echo base_url('lupa/') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
+                                <a href="<?php echo base_url('lupa/') ?>" class="text-center d-block mx-auto">Lupa Password?</a>
 
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
+
             </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
