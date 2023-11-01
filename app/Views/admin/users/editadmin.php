@@ -10,15 +10,15 @@
             <li><?=esc($error)?></li>
             <?php endforeach;?>
         </ul>
+        <button id="dismissError" class="btn btn-success">Ok</button>
     </div>
     <?php endif;?>
     <?php if (session('error')): ?>
     <div class="alert alert-danger">
         <ul>
-
             <li><?=esc(session('error'))?></li>
-
         </ul>
+        <button id="dismissError" class="btn btn-success">Ok</button>
     </div>
     <?php endif;?>
     <div class="content-header">
@@ -336,6 +336,16 @@ $(document).ready(function() {
         e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
         $("#formUbahNama").toggle();
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
+
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
     });
 });
 </script>
