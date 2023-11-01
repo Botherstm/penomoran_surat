@@ -184,4 +184,24 @@ class LupaPasswordController extends BaseController
         }
     }
 
+    public function ubahPassword()
+    {
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        $user = $this->userModel->where('email', $email)->first();
+        if ($user) {
+            // Hash password baru
+            $userData = [
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+            ];
+            $this->userModel->update($user['id'], $userData);
+
+            // Redirect ke halaman login atau halaman lain yang sesuai
+            return redirect()->to(base_url('/login'))->with('success', 'Password berhasil diperbarui Silahkan Login');
+
+        } else {
+            return redirect()->to(base_url('/login'))->with('error', 'Email tidak terdaftar');
+        }
+    }
+
 }

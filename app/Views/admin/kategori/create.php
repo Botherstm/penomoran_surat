@@ -1,6 +1,6 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;" >
+            <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
 
 
                 <div class="card-header">
@@ -25,39 +25,33 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                <form action="<?php echo base_url('admin/perihal/save') ?>" method="POST">
-                    <?= csrf_field(); ?>
-
-                    <div class="mb-5 m-1 ">
-                        <label for="perihal" class="form-label input-group justify-content-center">Perihal</label>
-                        <input type="text" class="form-control  " name="name" id="name" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
-                    </div>
-                    <div class="mb-5 m-1">
-                        <label for="kodePerihal" class="form-label input-group justify-content-center">Kode
-                            Perihal</label>
-                        <input type="name" name="kode" class="form-control" id="kodePerihal">
-                    </div>
-                    <div class="row text-center" style="padding-bottom: 50px;">
-                            <div class="col-md-6">
-                             <a href="<?php echo base_url('admin/kategori') ?>">
-                             <button class="btn btn-danger" type="button" style="width: 150px;"
-                                    data-dismiss="modal">Batal</button>
-                             </a>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-success " style="width: 150px;">Tambah
-                                    data</button>
-                            </div>
+                    <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
+                        <?= csrf_field(); ?>
+                        <div class="mb-5 m-1 ">
+                            <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
+                            <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
+                        </div>
+                        <div class="mb-5 m-1">
+                            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode
+                                Kategori</label>
+                            <input type="name" name="kode" class="form-control " id="kodeKategori">
                         </div>
 
-                </form>
+                        <div class="row text-center">
 
+                            <div class="col-md-6">
+                                <button class="btn btn-danger" style="width:80%;" type="button"
+                                    data-dismiss="modal">Batal</button>
+                            </div>
+
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success " style="width: 80%;">Tambah data</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -86,4 +80,5 @@ nameInput.addEventListener('input', function() {
 });
 </script>
 
-<?= $this->endSection('content'); ?>
+
+<?=$this->endSection('content');?>

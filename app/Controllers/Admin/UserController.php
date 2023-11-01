@@ -82,6 +82,19 @@ class UserController extends BaseController
 
     public function create()
     {
+
+        if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+            // dd($siteKey);
+            return view('login', [
+                'validation' => \Config\Services::validation(),
+                'key' => $siteKey,
+            ]);
+        }
+        if (session()->get('level') != 1 && session()->get('level') != 2) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
+
         $instansis = $this->dinas->getAll();
         $bidangs = $this->bidangs->getAllByInstansiId(session()->get('instansi_id'));
         $users = $this->UserModel->getAll();
@@ -102,7 +115,6 @@ class UserController extends BaseController
             'slug' => 'required|is_unique[users.slug]',
             'name' => 'required|is_unique[users.name]',
             'email' => 'required|valid_email|is_unique[users.email]',
-            'password' => 'required|min_length[6]',
         ];
 
         if (session()->get('level') == 2) {
@@ -112,6 +124,7 @@ class UserController extends BaseController
         }
         $uuid = Uuid::uuid4();
         $uuidString = $uuid->toString();
+        $password = '112233445566778899';
         if ($this->validate($rules)) {
             $userData = [
                 'id' => $uuidString,
@@ -122,9 +135,10 @@ class UserController extends BaseController
                 'email' => $this->request->getPost('email'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'level' => $level,
-                'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'password' => password_hash($password, PASSWORD_DEFAULT),
             ];
-            // dd($userData);
+            $pasnjangpassword = strlen($password);
+            // dd($userData, $pasnjangpassword);
             $this->UserModel->insert($userData);
             return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil terdaftar.');
         } else {
@@ -377,5 +391,24 @@ class UserController extends BaseController
         $this->UserModel->update($id, $user);
 
         return redirect()->to(base_url('/admin/user/profile'))->with('success', 'data gambar berhasil dihapus');
+    }
+
+    public function resetPassword($slug)
+    {
+        $data = $this->UserModel->getBySlug($slug);
+        $user = $this->UserModel->getByid($data['id']);
+        // dd($user);
+        $password = '112233445566778899';
+
+        if ($user) {
+            $userData = [
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+            ];
+            $this->UserModel->update($user['id'], $userData);
+
+            return redirect()->to(base_url('admin/users'))->with('success', 'Password Berhasil di Reset');
+        } else {
+            return redirect()->to(base_url('admin/users'))->with('error', 'data not found.');
+        }
     }
 }
