@@ -40,7 +40,7 @@
 
                     <!-- Logo Aplikasi -->
                     <div class="col-md-4 mt-2">
-                        <div class="card p-3  bg-success bg-gradient text-white">
+                        <div class="card p-3  bg-success bg-gradient text-white" style="height: 100%;">
                             <div class="card-body ">
                                 <div class=" text-center">
                                     <div class="ms-1 d-flex flex-column"
@@ -68,10 +68,13 @@
 
                     <!-- Form Login -->
                     <div class="col-md-4 mt-2">
-                        <div class="card shadow-lg p-3 .bg-light.bg-gradient">
+                        <div class="card shadow-lg p-3 .bg-light.bg-gradient" style="height: 100%;">
                             <div class="card-body">
                             <form id="quickForm" method="post" action="<?=base_url('gantipassworduser');?>">
                 <div class="card-body">
+                <div class="input-group justify-content-center my-4">
+                                        <h2>Reset Password</h2>
+                                    </div>
                     <input type="hidden" name="email" value="<?=$email;?>">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password Baru</label>

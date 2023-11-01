@@ -54,13 +54,13 @@
                             <input type="name" class="form-control " name="kode" id="kode" aria-describedby="emailHelp">
                         </div>
                         <div class="row text-center" style="padding-bottom: 50px;">
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: start;" >
                                 <a href="<?=base_url('admin/dinas/bidang/');?><?=$instansi['slug'];?>">
                                     <button class="btn btn-danger" type="button" style="width: 150px;"
                                         data-dismiss="modal">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: end;" >
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Tambah
                                     data</button>
                             </div>

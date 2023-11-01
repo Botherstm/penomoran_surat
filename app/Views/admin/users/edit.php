@@ -26,7 +26,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style=" margin: 0px 250px 0px 250px; ">
+            <div class="card card-success" >
 
 
                 <div class="card-header">
@@ -88,13 +88,13 @@
                         <?php endif ?>
 
                         <div class="row text-center" style="padding-bottom: 30px; padding-top: 20px;">
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: start;" >
                                 <a href="<?php echo base_url('admin/users') ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                                 </a>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: end;">
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
                             </div>
                         </div>
