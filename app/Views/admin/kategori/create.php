@@ -1,3 +1,7 @@
+<?= $this->extend('admin/layouts/main'); ?>
+
+<?= $this->section('content'); ?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -81,3 +85,5 @@ nameInput.addEventListener('input', function() {
     slugInput.value = slugValue;
 });
 </script>
+
+<?= $this->endSection('content'); ?>
