@@ -444,7 +444,7 @@ function confirmDelete(slug) {
 function confirmUpdatePassword(slug) {
     Swal.fire({
         title: 'Apa Kamu yakin?',
-        text: 'jika yakin cofirm',
+        text: 'jika kamu mereset password user akan memasukan ulang password',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#dc3545',
