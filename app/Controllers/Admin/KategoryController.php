@@ -129,7 +129,6 @@ class KategoryController extends BaseController
 
     public function delete($slug)
     {
-        // Cari data album berdasarkan ID
         $data = $this->Kategory->getBySlug($slug);
         $kategori = $this->Kategory->find($data['id']);
         // dd($kategori);

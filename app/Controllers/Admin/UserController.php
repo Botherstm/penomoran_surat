@@ -124,7 +124,7 @@ class UserController extends BaseController
         }
         $uuid = Uuid::uuid4();
         $uuidString = $uuid->toString();
-        $password = '112233445566778899';
+        $password = $_ENV['passwordBawaan'];
         if ($this->validate($rules)) {
             $userData = [
                 'id' => $uuidString,
