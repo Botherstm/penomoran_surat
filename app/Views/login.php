@@ -22,7 +22,7 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:50%; margin-top: 50px;">
+                <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:50%; margin-top: 30px;">
                     <?php if (session('errors')) : ?>
                         <div class="alert alert-danger">
                             <ul>
@@ -32,24 +32,32 @@
                     <?php endif; ?>
 
                     <!-- Logo Aplikasi -->
-                    <div class="col-md-4 mt-2">
-                        <div class="card p-3  bg-success bg-gradient text-white shadow-lg" style="height: 100%; --bs-bg-opacity: .9;">
+                    <div class="col-md-5 mt-2">
+                        <div class="card p-3 shadow-lg bg-success bg-gradient text-white " style="height: 100%; --bs-bg-opacity: .9;">
                             <div class="card-body ">
                                 <div class=" text-center">
-                                    <div class="ms-1 d-flex flex-column" style=" text-shadow: 2px 2px 1px grey; font-weight: bold; ">
-                                        <span class="fs-6">E-NOMOR</span>
-                                        <span class="fs-6">KOMINFO SANTI</span>
-                                    </div>
-                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 40%; ">
-                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 49%; ">
+
+                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 25%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 30%; ">
 
                                 </div>
                                 <hr>
-                                <div class=" text-center">
-                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                        Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis
-                                        provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo
-                                        optio commodi eveniet!</p>
+                                <div class=" text-center ">
+                                    <h5><small>VISI PEMBANGUNAN KABUPATEN BULELENG</small></h5>
+                                    <p class="fs-7"><small>“TERWUJUDNYA MASYARAKAT BULELENG YANG MANDIRI SEJAHTERA DAN BERDAYA SAING BERLANDASKAN TRI HITA KARANA”</small></p>
+                                </div>
+                                <div>
+                                    <h5 class=" text-center "><small>MISI PEMBANGUNAN KABUPATEN BULELENG</small></h5>
+                                    <small>
+                                        <ol>
+                                            <li>Memantapkan Pembangunan Ekonomi untuk Mewujudkan Pertumbuhan Ekonomi yang Inklusif;</li>
+                                            <li>Pengembangan Ekonomi Kerakyatan yang Berbasis pada Produk Unggulan Daerah;</li>
+                                            <li>Meningkatkan Kualitas Sumber Daya Manusia yang Profesional, Berbudaya dan Berintegritas; </li>
+                                            <li>Memantapkan Partisipasi Pemangku Kepentingan Dalam Pembangunan;</li>
+                                            <li>Meningkatkan Kuantitas dan Kualitas Infrastruktur Daerah untuk Pemenuhan Pelayanan Publik;</li>
+                                            <li>Mewujudkan Pembangunan Buleleng yang Berbudaya dan Berkelanjutan (Sustainable Development).</li>
+                                        </ol>
+                                    </small>
                                 </div>
                             </div>
 
@@ -63,7 +71,14 @@
                             <div class="card-body">
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
                                     <?= csrf_field(); ?>
-                                    <div class="input-group justify-content-center my-4">
+                                    <div class="text-center mb-4">
+                                        <div class="ms-1 d-flex flex-column" style=" text-shadow: 2px 2px 1px grey; font-weight: bold; ">
+                                            <span class="fs-4">E-NOMOR</span>
+                                            <span class="fs-4">KOMINFO SANTI</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="input-group justify-content-center my-4 mt-5">
                                         <h2>LOGIN</h2>
                                     </div>
                                     <div class="mb-3 ">
