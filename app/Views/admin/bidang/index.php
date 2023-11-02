@@ -94,7 +94,7 @@
                                             </a>
                                         </div>
 
-                                        <div >
+                                        <div>
                                             <!-- update -->
                                             <form id="deleteForm" class="ml-3"
                                                 action="<?php echo base_url('admin/bidang/delete/') ?><?=$bidang['slug'];?>"
@@ -113,7 +113,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    <?php if (session()->get('level') == 2): ?>
                     <div class="card-header col">
                         <div class="col-6 d-flex justify-content-start">
                             <a href="<?php echo base_url('admin/dinas') ?>">
@@ -123,7 +123,7 @@
                             </a>
                         </div>
                     </div>
-
+                    <?php endif?>
                 </div>
             </section>
         </div>
