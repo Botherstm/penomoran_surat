@@ -83,7 +83,7 @@
                                     <div class="g-recaptcha " data-sitekey="<?= $key; ?>" style="width: 100%; max-width: 300px; margin: 0 auto;"></div>
                                     <br>
                                     <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                        <button class="btn btn-success text-light" type="submit">Login</button>
+                                        <button class="shadow text-light btn btn-success" type="submit">Login</button>
                                     </div>
                                 </form>
                             </div>
