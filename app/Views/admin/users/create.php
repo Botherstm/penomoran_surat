@@ -6,7 +6,16 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-
+ <?php if (session('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session('errors') as $error): ?>
+                        <li><?=esc($error)?></li>
+                        <?php endforeach;?>
+                    </ul>
+                      <button id="dismissError" class="btn btn-primary">Ok</button>
+                </div>
+                <?php endif;?>
             <!-- Main content -->
             <!-- <div class="row jarak ">
                     <div class="card-tools">
@@ -25,6 +34,7 @@
                         <li><?=esc($error)?></li>
                         <?php endforeach;?>
                     </ul>
+                    <button id="dismissError" class="btn btn-primary">Ok</button>
                 </div>
                 <?php endif;?>
 
@@ -87,13 +97,13 @@
                         </div>
                         <?php endif;?>
                         <div class="row text-center" style="padding-bottom: 50px;">
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: start;" >
                                 <a href="<?=base_url('admin/users');?>">
                                     <button class="btn btn-danger" type="button" style="width: 150px;"
                                         data-dismiss="modal">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: end;" >
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Tambah
                                     data</button>
                             </div>
@@ -105,7 +115,26 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dismissButton = document.getElementById("dismissError");
+        const errorAlert = document.querySelector(".alert.alert-danger");
 
+        dismissButton.addEventListener("click", function() {
+            errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+        });
+    });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
+
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
+});
+</script>
 <!-- /.content-wrapper -->
 <script>
 var nameInput = document.getElementById('name');

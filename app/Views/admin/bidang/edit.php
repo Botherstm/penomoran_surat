@@ -17,7 +17,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
+            <div class="card card-warning" >
                 <?php if (session('errors')): ?>
                 <div class="alert alert-danger">
                     <ul>
@@ -25,6 +25,7 @@
                         <li><?=esc($error)?></li>
                         <?php endforeach;?>
                     </ul>
+                    <button id="dismissError" class="btn btn-primary">Ok</button>
                 </div>
                 <?php endif;?>
 
@@ -57,13 +58,13 @@
 
                         <div class="row text-center">
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: start;" >
                                 <a href="<?php echo base_url('admin/dinas/bidang/') ?><?= $instansi ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                                 </a>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-flex" style="justify-content: end;" >
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Edit Data</button>
                             </div>
                         </div>
@@ -120,6 +121,15 @@
 
 
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
 
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
+});
+</script>
 
 <?= $this->endSection('content'); ?>

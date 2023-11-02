@@ -62,7 +62,7 @@ class LoginController extends BaseController
             if ($user) {
                 // Periksa apakah password sesuai
                 if (password_verify($password, $user['password'])) {
-                    if ($password == "112233445566778899") {
+                    if ($password == $_ENV['passwordBawaan']) {
                         return view("gantiPassword", [
                             'email' => $email,
                         ]);

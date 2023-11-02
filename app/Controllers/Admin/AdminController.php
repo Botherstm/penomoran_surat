@@ -53,13 +53,16 @@ class AdminController extends BaseController
         $generateCount = count($generate);
         $user = $this->user->getByInstansiId(session()->get('instansi_id'));
         $userCount = count($user);
+        $kategori = $this->kategori->getAll();
+        $kategoriCount = count($kategori);
 
-        // dd($generateCount);
+        // dd($kategoriCount);
         return view('admin/index', [
             'active' => 'admin',
             'dinas' => $dinasCount,
             'generate' => $generateCount,
             'user' => $userCount,
+            'kategori' => $kategoriCount,
 
         ]);
 

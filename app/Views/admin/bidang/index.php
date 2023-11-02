@@ -94,7 +94,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="btn-group ">
+                                        <div >
                                             <!-- update -->
                                             <form id="deleteForm" class="ml-3"
                                                 action="<?php echo base_url('admin/bidang/delete/') ?><?=$bidang['slug'];?>"

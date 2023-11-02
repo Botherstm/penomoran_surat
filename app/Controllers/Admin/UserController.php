@@ -124,7 +124,7 @@ class UserController extends BaseController
         }
         $uuid = Uuid::uuid4();
         $uuidString = $uuid->toString();
-        $password = '112233445566778899';
+        $password = $_ENV['passwordBawaan'];
         if ($this->validate($rules)) {
             $userData = [
                 'id' => $uuidString,
@@ -380,11 +380,9 @@ class UserController extends BaseController
     {
 
         $userData = session()->get();
-
         $id = $this->request->getPost('id');
         $user = $this->UserModel->find($id);
         $gambarLama = $user['gambar'];
-
         if (!empty($gambarLama)) {
             $gambarLamaPath = ROOTPATH . 'public/userimage/' . $gambarLama;
             if (file_exists($gambarLamaPath)) {
@@ -407,7 +405,7 @@ class UserController extends BaseController
         $data = $this->UserModel->getBySlug($slug);
         $user = $this->UserModel->getByid($data['id']);
         // dd($user);
-        $password = '112233445566778899';
+        $password = $_ENV['passwordBawaan'];
 
         if ($user) {
             $userData = [
@@ -417,7 +415,7 @@ class UserController extends BaseController
 
             return redirect()->to(base_url('admin/users'))->with('success', 'Password Berhasil di Reset');
         } else {
-            return redirect()->to(base_url('admin/users'))->with('error', 'data not found.');
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
 }

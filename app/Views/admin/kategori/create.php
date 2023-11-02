@@ -16,8 +16,18 @@
                     <div class="card-tools">
                     </div>
                 </div> -->
+                <?php if (session('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session('errors') as $error): ?>
+                        <li><?=esc($error)?></li>
+                        <?php endforeach;?>
+                    </ul>
+                      <button id="dismissError" class="btn btn-primary">Ok</button>
+                </div>
+                <?php endif;?>
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;">
+            <div class="card card-success">
 
 
                 <div class="card-header">
@@ -26,29 +36,30 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
-                        <?= csrf_field(); ?>
+                        <?=csrf_field();?>
                         <div class="mb-5 m-1 ">
-                            <label for="kategori" class="form-label input-group justify-content-center">Kategori</label>
+                            <label for="kategori" class="form-label input-group ">Kategori</label>
                             <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group text-center">
                             <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
                         </div>
                         <div class="mb-5 m-1">
-                            <label for="kodeKategori" class="form-label input-group justify-content-center">Kode
+                            <label for="kodeKategori" class="form-label input-group ">Kode
                                 Kategori</label>
                             <input type="name" name="kode" class="form-control " id="kodeKategori">
                         </div>
 
                         <div class="row text-center">
-
-                            <div class="col-md-6">
-                                <button class="btn btn-danger" style="width:80%;" type="button"
-                                    data-dismiss="modal">Batal</button>
+                            <div class="col-md-6 d-flex" style="justify-content: start;">
+                                <a
+                                    href="<?php echo base_url('admin/kategori') ?>">
+                                    <button type="button" class="btn btn-danger" style="width: 150px;  ">Batal</button>
+                                </a>
                             </div>
-
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-success " style="width: 80%;">Tambah data</button>
+                            <div class="col-md-6 d-flex" style="justify-content: end;">
+                                <button type="submit" class="btn btn-success "
+                                    style="width: 150px; padding-bottom: 10px;">Ubah data</button>
                             </div>
                         </div>
                     </form>
@@ -57,7 +68,16 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dismissButton = document.getElementById("dismissError");
+        const errorAlert = document.querySelector(".alert.alert-danger");
 
+        dismissButton.addEventListener("click", function() {
+            errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+        });
+    });
+</script>
 <script>
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');

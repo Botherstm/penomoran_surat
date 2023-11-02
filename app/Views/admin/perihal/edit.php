@@ -7,7 +7,16 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-
+            <?php if (session('errors')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach (session('errors') as $error): ?>
+                    <li><?=esc($error)?></li>
+                    <?php endforeach;?>
+                </ul>
+                <button id="dismissError" class="btn btn-primary">Ok</button>
+            </div>
+            <?php endif;?>
             <!-- Main content -->
             <!-- <div class="row jarak ">
                     <div class="card-tools">
@@ -18,40 +27,46 @@
                     </div>
                 </div> -->
 
-            <div class="card card-warning" style="margin: 0px 250px 0px 250px;" >
+            <div class="card card-success">
 
 
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">Edit Data Perihal <?= $perihal['name']; ?></h3>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo base_url('admin/perihal/update/') ?><?= $perihal['id']; ?>" method="POST" class="">
+                    <form action="<?php echo base_url('admin/perihal/update/') ?><?= $perihal['id']; ?>" method="POST"
+                        class="">
                         <?= csrf_field(); ?>
 
                         <div class="mb-5 m-1 ">
                             <label for="perihal" class="form-label input-group ">Perihal</label>
-                            <input type="text" class="form-control " value="<?= $perihal['name']; ?>" name="name" id="name" aria-describedby="emailHelp">
+                            <input type="text" class="form-control " value="<?= $perihal['name']; ?>" name="name"
+                                id="name" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group text-center">
-                            <input type="name" hidden class="form-control" id="detail_id" name="detail_id" value="<?= $kategori['id']; ?>" readonly>
+                            <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
+                                value="<?= $kategori['id']; ?>" readonly>
                         </div>
                         <div class="form-group text-center">
-                            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug" name="slug" readonly>
+                            <input type="name" hidden value="<?= $perihal['slug']; ?>" class="form-control" id="slug"
+                                name="slug" readonly>
                         </div>
                         <div class="mb-5 m-1">
                             <label for="kodePerihal" class="form-label input-group ">Kode
                                 Perihal</label>
-                            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control " id="kodePerihal">
+                            <input type="name" value="<?= $perihal['kode']; ?>" name="kode" class="form-control "
+                                id="kodePerihal">
                         </div>
 
                         <div class="row text-center">
-                            <div class="col-md-6" style="padding-bottom: 10px;">
-                            <a href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
+                            <div class="col-md-6 d-flex" style="justify-content: start;">
+                                <a href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;  ">Batal</button>
                                 </a>
                             </div>
-                            <div class="col-md-6" style="padding-bottom: 10px;">
-                                <button type="submit" class="btn btn-success " style="width: 150px; padding-bottom: 10px;">Ubah data</button>
+                            <div class="col-md-6 d-flex" style="justify-content: end;">
+                                <button type="submit" class="btn btn-success "
+                                    style="width: 150px; padding-bottom: 10px;">Ubah data</button>
                             </div>
                         </div>
 
@@ -64,7 +79,16 @@
     </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
 
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
+});
+</script>
 <script>
 var nameInput = document.getElementById('name');
 var slugInput = document.getElementById('slug');
