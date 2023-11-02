@@ -68,8 +68,4 @@ class AdminController extends BaseController
 
     }
 
-    public function user()
-    {
-        return view('public/index');
-    }
 }
