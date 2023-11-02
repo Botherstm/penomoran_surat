@@ -22,7 +22,7 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:50%; margin-top: 30px;">
+                <div class="row d-flex justify-content-center w-auto p-3 " style="margin: auto; height:5%; margin-top: 1%;">
                     <?php if (session('errors')) : ?>
                         <div class="alert alert-danger">
                             <ul>
@@ -32,22 +32,22 @@
                     <?php endif; ?>
 
                     <!-- Logo Aplikasi -->
-                    <div class="col-md-5 mt-2">
-                        <div class="card p-3 shadow-lg bg-success bg-gradient text-white " style="height: 100%; --bs-bg-opacity: .9;">
+                    <div class="col-md-5">
+                        <div class="card shadow-lg bg-success bg-gradient text-white " style="height: 100%; --bs-bg-opacity: .9;">
                             <div class="card-body ">
                                 <div class=" text-center">
 
-                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 25%; ">
-                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 30%; ">
+                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 20%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 25%; ">
 
                                 </div>
                                 <hr>
                                 <div class=" text-center ">
-                                    <h5><small>VISI PEMBANGUNAN KABUPATEN BULELENG</small></h5>
+                                    <h6><small>VISI PEMBANGUNAN KABUPATEN BULELENG</small></h6>
                                     <p class="fs-7"><small>“TERWUJUDNYA MASYARAKAT BULELENG YANG MANDIRI SEJAHTERA DAN BERDAYA SAING BERLANDASKAN TRI HITA KARANA”</small></p>
                                 </div>
                                 <div>
-                                    <h5 class=" text-center "><small>MISI PEMBANGUNAN KABUPATEN BULELENG</small></h5>
+                                    <h6 class=" text-center "><small>MISI PEMBANGUNAN KABUPATEN BULELENG</small></h6>
                                     <small>
                                         <ol>
                                             <li>Memantapkan Pembangunan Ekonomi untuk Mewujudkan Pertumbuhan Ekonomi yang Inklusif;</li>
@@ -72,7 +72,7 @@
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
                                     <?= csrf_field(); ?>
                                     <div class="text-center mb-4">
-                                        <div class="ms-1 d-flex flex-column" style=" text-shadow: 5px 5px 3px grey; font-weight: bold; ">
+                                        <div class="ms-1 d-flex flex-column" style=" font-weight: bold; ">
                                             <span class="fs-4">E-NOMOR</span>
                                             <span class="fs-4">KOMINFO SANTI</span>
                                         </div>
