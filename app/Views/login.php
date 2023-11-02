@@ -72,7 +72,7 @@
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
                                     <?= csrf_field(); ?>
                                     <div class="text-center mb-4">
-                                        <div class="ms-1 d-flex flex-column" style=" text-shadow: 2px 2px 1px grey; font-weight: bold; ">
+                                        <div class="ms-1 d-flex flex-column" style=" text-shadow: 5px 5px 3px grey; font-weight: bold; ">
                                             <span class="fs-4">E-NOMOR</span>
                                             <span class="fs-4">KOMINFO SANTI</span>
                                         </div>
