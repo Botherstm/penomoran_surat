@@ -50,25 +50,20 @@
                                     <div class="col-md-8">
 
                                         <h5 class="card-text" style="font-weight: bold;">James Pieter Loro</h5>
-                                        <div class="row">
-                                            <div>
-
-                                                <a href="" style="padding-right: 10px;">
-                                                    <i class="fab fa-instagram" style="color: #E4405F;"></i>
-                                                </a>
-
-                                            </div>
-                                            <div>
-                                                <a href="" style="padding-right: 10px;">
-                                                    <i class="fab fa-facebook" style="color: #0052f7;"></i>
-                                                </a>
-                                            </div>
-                                        </div>
                                         <ul class="card-text">
                                             <li>BackEnd</li>
-
-
                                         </ul>
+                                        <div >
+    <a href="">
+        <i class="fab fa-instagram" style="font-size: 2em; color: #E4405F; margin-right: 30px;"></i>
+    </a>
+    <a href="">
+        <i class="fab fa-facebook" style="font-size: 2em; color: #0052f7; margin-right: 30px;"></i>
+    </a>
+    <a href="">
+        <i class="fab fa-github" style="font-size: 2em; color: black;"></i>
+    </a>
+</div>
 
                                     </div>
                                 </div>

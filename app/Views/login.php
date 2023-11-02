@@ -38,7 +38,7 @@
                                 <div class=" text-center">
 
                                     <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 20%; ">
-                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 20%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 25%; ">
 
                                 </div>
                                 <hr>
