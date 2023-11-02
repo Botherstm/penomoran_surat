@@ -1,7 +1,7 @@
-<?= $this->extend('admin/layouts/main'); ?>
+<?=$this->extend('admin/layouts/main');?>
 
 
-<?= $this->section('content'); ?>
+<?=$this->section('content');?>
 
 
 <div class="content-wrapper">
@@ -9,20 +9,27 @@
         <div class="container-fluid">
             <div class="" style="padding-top:1%; ">
                 <div class="row">
-                    <div class="col-md-8"  >
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header header-elements-inline">
                                 <h5 class="card-title">Tentang Aplikasi</h5>
                             </div>
                             <div class="card-body">
                                 <div class=" text-center">
-                                    <img class="" src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 100%; max-height: 200px;">
+                                    <img class="" src="/img/logo_kominfosanti_buleleng.png" alt=""
+                                        style="max-width: 100%; max-height: 200px;">
                                 </div>
                                 <hr>
                                 <div class=" text-center">
-                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo optio commodi eveniet!</p>
+                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis
+                                        provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo
+                                        optio commodi eveniet!</p>
 
-                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo optio commodi eveniet!</p>
+                                    <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis
+                                        provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo
+                                        optio commodi eveniet!</p>
 
                                 </div>
                             </div>
@@ -38,7 +45,7 @@
                             <div class="card-body">
 
                                 <div class="text-center">
-                                    <img src="/img/profile.png" alt="" width="40%" style="border-radius: 100%;">
+                                    <img src="/img/james.jpg" alt="" width="40%" style="border-radius: 100%;">
                                     <h4 style="padding-top: 10px;">James Pieter Loro</h4>
                                 </div>
 
@@ -69,4 +76,4 @@
 
 </div>
 
-<?= $this->endSection('content'); ?>
+<?=$this->endSection('content');?>
