@@ -17,7 +17,7 @@
 </head>
 
 
-<body>
+<body style="height: 100vh; display: flex; justify-content: center; align-items: center;">
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
