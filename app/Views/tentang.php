@@ -6,6 +6,13 @@
 
 <style>
     /* Tambahkan CSS berikut */
+    .content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
     .card-wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -61,7 +68,6 @@
                             <div class=" text-center">
                                 <img class="" src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 100%; max-height: 200px;">
                             </div>
-                            <hr>
                             <div class=" text-center">
                                 <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                     Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis
