@@ -26,7 +26,7 @@
                         <li><?=esc($error)?></li>
                         <?php endforeach;?>
                     </ul>
-                    <button id="dismissError" class="btn btn-primary">Ok</button>
+                    <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
                 </div>
                 <?php endif;?>
 

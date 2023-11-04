@@ -17,7 +17,7 @@
 </head>
 
 
-<body>
+<body style="height: 100vh; display: flex; justify-content: center; align-items: center;">
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -30,7 +30,7 @@
                         <ul>
                             <li><?=esc(session('errors'))?></li>
                         </ul>
-                        <button id="dismissError" class="btn btn-primary">Ok</button>
+                        <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
                     </div>
                     <?php endif;?>
 
@@ -41,9 +41,8 @@
                             <div class="card-body ">
                                 <div class=" text-center">
 
-                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>"
-                                        alt="Pemkab Buleleng" style="max-width: 20%; ">
-                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 20%; ">
+                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 20%; ">
+                                    <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 25%; ">
 
                                 </div>
                                 <hr>

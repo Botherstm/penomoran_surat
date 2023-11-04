@@ -4,12 +4,16 @@
 
 
 
-    <a class="brand-link bg-teal ">
-        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center"
-            height="40" width="65">
-        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px grey; padding-top: 10px;">E-NOMOR
-            Admin</span>
-    </a>
+    <a class="brand-link bg-teal">
+    <div class="row align-items-center">
+        <div class="col-auto">
+            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="40" width="65">
+        </div>
+        <div class="col">
+            <span class="brand-text font-weight-bold" style="text-shadow: 2px 2px 1px grey; padding-top: 10px;">E-NOMOR Admin</span>
+        </div>
+    </div>
+</a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="padding-top: 10px; align-items: center;">
             <?php if (session()->get('gambar') !== null): ?>
