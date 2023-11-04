@@ -25,6 +25,7 @@
                         <li><?=esc($error)?></li>
                         <?php endforeach;?>
                     </ul>
+                    <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
                 </div>
                 <?php endif;?>
 
@@ -77,7 +78,16 @@
 </div>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
 
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
+});
+</script>
 
 
 <script>

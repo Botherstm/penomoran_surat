@@ -4,9 +4,13 @@
     <!-- ready -->
 
 
-    <a class="brand-link bg-teal ">
-        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65">
-        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 10px;">E-NOMOR</span>
+    <a class="brand-link bg-teal " >
+        <div class="row"  >
+        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65" >
+        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 10px;" >E-NOMOR</span>
+        </div>
+    
+        
     </a>
 
     <div class="sidebar">
