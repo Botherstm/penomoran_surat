@@ -49,26 +49,12 @@
                                     </div>
                                     <div class="col-md-8">
 
-                                        <h5 class="card-text" style="font-weight: bold;">James Pieter Loro</h5>
-                                        <div class="row">
-                                            <div>
-
-                                                <a href="" style="padding-right: 10px;">
-                                                    <i class="fab fa-instagram" style="color: #E4405F;"></i>
-                                                </a>
-
-                                            </div>
-                                            <div>
-                                                <a href="" style="padding-right: 10px;">
-                                                    <i class="fab fa-facebook" style="color: #0052f7;"></i>
-                                                </a>
-                                            </div>
+                                        <h5 style="font-weight: bold;">James Pieter Loro</h5>
+                                        <p>Back End</p>
+                                        <div>
+                                            <a href=""><i class="fa-brands fa-instagram fa-2xl" style="color: #fc034e;"></i></a>
+                                            <a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a>
                                         </div>
-                                        <ul class="card-text">
-                                            <li>BackEnd</li>
-
-
-                                        </ul>
 
                                     </div>
                                 </div>
@@ -81,8 +67,12 @@
                                     </div>
                                     <div class="col-md-8">
 
-                                        <h5 class="card-title" style="font-weight: bold;">I Wayan Yoni Maheswara</h5>
-
+                                        <h5 style="font-weight: bold;">I Wayan Yoni Maheswara</h5>
+                                        <p>Front End</p>
+                                        <div>
+                                            <a href=""><i class="fa-brands fa-instagram fa-2xl" style="color: #fc034e;"></i></a>
+                                            <a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -94,9 +84,12 @@
                                     </div>
                                     <div class="col-md-8">
 
-                                        <h5 class="card-title" style="font-weight: bold;">I Gede Arya Yasoda Putra</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                        <h5 style="font-weight: bold;">I Gede Arya Yasoda Putra</h5>
+                                        <p>Front End</p>
+                                        <div>
+                                            <a href=""><i class="fa-brands fa-instagram fa-2xl" style="color: #fc034e;"></i></a>
+                                            <a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                                        </div>
 
                                     </div>
                                 </div>
