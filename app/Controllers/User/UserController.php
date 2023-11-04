@@ -65,7 +65,6 @@ class UserController extends BaseController
             'email' => 'required|valid_email',
         ];
 
-        // Tambahkan aturan validasi untuk password lama jika mengubah password
         if (!empty($password_baru)) {
             $rules['password_lama'] = 'required';
         }
@@ -85,7 +84,7 @@ class UserController extends BaseController
                     $this->UserModel->update($id, $userData);
                     return redirect()->to(base_url('/public/user/profile'))->with('success', 'Akun berhasil Di Update !');
                 } else {
-                    return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+                    return redirect()->back()->withInput()->with('error', 'password sebelumnya salah');
 
                 }
             } else {
