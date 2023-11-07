@@ -73,7 +73,7 @@ class PerihalController extends BaseController
             if ($this->perihal->where('kode', $kode)->first()) {
                 return redirect()->back()->with('error', 'Data Sudah terdaftar');
             }
-             if ($this->perihal->where('slug', $slug)->first()) {
+            if ($this->perihal->where('slug', $slug)->first()) {
                 return redirect()->back()->with('error', 'Data Sudah terdaftar');
             }
 
@@ -91,8 +91,9 @@ class PerihalController extends BaseController
             $kategori = $this->Kategory->getById($detail_id);
             return redirect()->to(base_url('/admin/kategori/perihal/' . $kategori['slug']))->with('success', 'Data Kategory berhasil disimpan.');
         } else {
-            // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 
