@@ -73,6 +73,9 @@ class PerihalController extends BaseController
             if ($this->perihal->where('kode', $kode)->first()) {
                 return redirect()->back()->with('error', 'Data Sudah terdaftar');
             }
+             if ($this->perihal->where('slug', $slug)->first()) {
+                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+            }
 
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
