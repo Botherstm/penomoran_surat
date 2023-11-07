@@ -62,19 +62,57 @@ class HomeController extends BaseController
             $bidang = $this->bidang->getById($bidangId);
             $bidangs[$bidangId] = $bidang;
         }
+
+        return view('public/home/index', [
+            'active' => 'home',
+            'riwayats' => $generate,
+            'users' => $users,
+            'bidangs' => $bidangs,
+
+        ]);
+
+    }
+    public function create()
+    {
+        if (!session()->has('user_id')) {
+            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
+            // dd($siteKey);
+            return view('login', [
+                'validation' => \Config\Services::validation(),
+                'key' => $siteKey,
+            ]);
+        }
+        if (session()->get('level') == 1 || session()->get('level') == 2) {
+            return redirect()->to(base_url('/admin'));
+        }
+
+        $generate = $this->generate->getAllByInstansi_id(session()->get('instansi_id'));
+        $users = [];
+        foreach ($generate as $gen) {
+            $userId = $gen['user_id'];
+            $user = $this->user->getById($userId);
+            $users[$userId] = $user;
+        }
+        // dd($users);
+        $bidangs = [];
+        foreach ($generate as $gen) {
+            $bidangId = $gen['bidang_id'];
+            $bidang = $this->bidang->getById($bidangId);
+            $bidangs[$bidangId] = $bidang;
+        }
         // dd($bidangs);
         $bidang = $this->bidang->getById(session()->get('bidang_id'));
         $dinas = $this->dinas->getById(session()->get('instansi_id'));
         $kategories = $this->kategori->getAll();
         $generates = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
         // dd($generates['urutan']);
-        $urutan = $generates['urutan'];
-        $urutanPlusOne = $urutan + 1;
+        $urutan = $dinas['urutan'];
+
         // dd($urutanPlusOne);
 
         $tanggalSaatIni = new DateTime();
         $tanggalMaksimum = $tanggalSaatIni->format('Y-m-d');
-        return view('public/home/index', [
+        return view('public/home/create', [
             'active' => 'home',
             'riwayats' => $generate,
             'users' => $users,
@@ -84,9 +122,24 @@ class HomeController extends BaseController
             'dinas' => $dinas,
             'generate' => $generates,
             'tanggalmax' => $tanggalMaksimum,
-            'urutanPlusOne' => $urutanPlusOne,
+            'urutanPlusOne' => $urutan,
         ]);
+    }
 
+    public function DataTerahir()
+    {
+        // Query database to get the latest data
+        $generate = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
+        $tanggalterakhir = $generate['tanggal'];
+
+        // Modify your logic here to fetch the previous data
+        $data = $this->generate->getOneBeforeTanggal($tanggalterakhir);
+
+        $urutansebelumnya = $data ? $data['urutan'] : null;
+
+        $response = ['urutanSebelumnya' => $urutansebelumnya];
+
+        return $this->response->setJSON($response);
     }
 
 }

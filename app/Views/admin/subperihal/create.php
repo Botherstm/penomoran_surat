@@ -13,7 +13,15 @@
                     <li><?=esc($error)?></li>
                     <?php endforeach;?>
                 </ul>
-                <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
+                <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
+            </div>
+            <?php endif;?>
+            <?php if (session('error')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <li><?=(session('error'))?></li>
+                </ul>
+                <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
             </div>
             <?php endif;?>
             <!-- Main content -->
@@ -38,8 +46,7 @@
                         <?= csrf_field(); ?>
 
                         <div class="mb-5 m-1 ">
-                            <label for="subperihal"
-                                class="form-label input-group ">Sub-Perihal</label>
+                            <label for="subperihal" class="form-label input-group ">Sub-Perihal</label>
                             <input type="text" class="form-control  " name="name" id="name"
                                 aria-describedby="emailHelp">
                         </div>

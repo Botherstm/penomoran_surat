@@ -148,7 +148,8 @@ class GenerateController extends BaseController
                     //id
                     $uuid = Uuid::uuid4();
                     $uuidString = $uuid->toString();
-
+                    $tanggalyangdipakai = $this->generate->getByUrutan($urutan_terkecil);
+                    // dd($tanggalyangdipakai['tanggal']);
                     $data = [
                         'id' => $uuidString,
                         'user_id' => session()->get('user_id'),
@@ -159,7 +160,7 @@ class GenerateController extends BaseController
                         'slug' => $slug,
                         'perihal' => $data['name'],
                         'nomor' => $kode,
-                        'tanggal' => $this->request->getPost('tanggal'),
+                        'tanggal' => $tanggalyangdipakai['tanggal'],
                     ];
                     // dd($data);
                     $this->generate->insert($data);

@@ -25,10 +25,17 @@
                         <li><?=esc($error)?></li>
                         <?php endforeach;?>
                     </ul>
-                    <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
+                    <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
                 </div>
                 <?php endif;?>
-
+                <?php if (session('error')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <li><?=(session('error'))?></li>
+                    </ul>
+                    <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
+                </div>
+                <?php endif;?>
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">Buat Data DetailPerihal
                         <?=$subperihal['name'];?></h3>
@@ -55,7 +62,7 @@
                             <input type="name" name="kode" required class="form-control" id="kodeDetail">
                         </div>
 
-                        <div class="row text-center "  >
+                        <div class="row text-center ">
                             <div class="col-md-6 d-flex " style="justify-content: start;">
                                 <a
                                     href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/') ?><?=$subperihal['slug'];?>">
