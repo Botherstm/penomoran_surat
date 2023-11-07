@@ -122,24 +122,35 @@ class HomeController extends BaseController
             'dinas' => $dinas,
             'generate' => $generates,
             'tanggalmax' => $tanggalMaksimum,
-            'urutanPlusOne' => $urutan,
+            'urutan' => $urutan,
         ]);
     }
 
-    public function DataTerahir()
+    public function DataTerahir($tanggal)
     {
-        // Query database to get the latest data
-        $generate = $this->generate->getOneLatestByInstansiId(session()->get('instansi_id'));
-        $tanggalterakhir = $generate['tanggal'];
+        $dinas = $this->dinas->getById(session()->get('instansi_id'));
 
-        // Modify your logic here to fetch the previous data
-        $data = $this->generate->getOneBeforeTanggal($tanggalterakhir);
+        list($tahun, $bulan, $tanggal) = explode("-", $tanggal);
+        $date = $tahun . "-" . $bulan . "-" . $tanggal;
+        $datas = $this->generate->getOneBeforeTanggal($date);
+        if ($datas['tanggal'] > $tanggal) {
+            // If data is found before or on the selected date, return that data
+            $response[] = [
+                'urutanSebelumnya' => $datas['urutan'],
+            ];
 
-        $urutansebelumnya = $data ? $data['urutan'] : null;
+            return $this->response->setJSON($response);
 
-        $response = ['urutanSebelumnya' => $urutansebelumnya];
+        } else {
+            // If no data is found, return a default value
 
-        return $this->response->setJSON($response);
+            $response[] = [
+                'urutanSebelumnya' => $dinas['urutan'],
+            ];
+
+            return $this->response->setJSON($response);
+        }
+
     }
 
 }

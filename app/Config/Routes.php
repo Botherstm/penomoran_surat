@@ -97,7 +97,7 @@ $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerih
 //public
 $routes->get('/', 'User\HomeController::index');
 $routes->get('/public/home/create', 'User\HomeController::create');
-$routes->get('/public/home/data', 'User\HomeController::DataTerahir');
+$routes->get('/generate/data/(:any)', 'User\HomeController::DataTerahir/$1');
 
 //user dashboard
 $routes->get('/public/user/profile', 'User\UserController::index');

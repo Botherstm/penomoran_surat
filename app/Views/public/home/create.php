@@ -36,9 +36,9 @@
                     <form class="card-body text-center" action="<? base_url('generate/save') ?>" method="post"
                         enctype="multipart/form-data" id="generateForm">
                         <div class="form-group">
-                            <label for="tanggalSurat">Tanggal Surat</label>
-                            <input type="date" name="tanggal" value="<?=$tanggalmax;?>" max="<?=$tanggalmax;?>"
-                                class="form-control" id="tanggalSurat" required>
+                            <label for="tanggal">Tanggal Surat</label>
+                            <input type="date" name="tanggal" max="<?=$tanggalmax;?>" class="form-control" id="tanggal"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="nomorSurat">Dinas</label>
@@ -51,9 +51,9 @@
                                 id="bidang" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="nomorSurat">Urutan Surat</label>
-                            <input type="text" value="<?=$urutanPlusOne;?>" class="form-control" name="urutan"
-                                id="urutan" readonly>
+                            <label for="urutan">Urutan Surat</label>
+                            <input type="text" class="form-control" value="<?=$urutan;?>" name="urutan" id="urutan"
+                                readonly>
                         </div>
 
                         <div class="form-group">
@@ -96,7 +96,8 @@
                             <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
                         </div>
                         <div class="form-group d-flex justify-content-between">
-                            <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                            <a href="<?=base_url('/');?>"><button class="btn btn-danger" type="button"
+                                    data-dismiss="modal">Batal</button></a>
                             <button class="btn btn-success" type="button" id="generateButton"
                                 onclick="confirmGenerate()" style="width: 100px;">Generate</button>
                         </div>
@@ -110,7 +111,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+<script src="https: //cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 var clipboard = new ClipboardJS('.copy-text');
 clipboard.on('success', function(e) {
@@ -337,4 +338,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Dapatkan elemen "urutan" dan "tanggalSurat" setelah halaman selesai dimuat
+    var urutan = document.getElementById('urutan');
+    var tanggalSuratInput = document.getElementById('tanggal');
+
+    tanggalSuratInput.addEventListener('change', function() {
+        var selectedDate = tanggalSuratInput.value; // Dapatkan tanggal yang dipilih
+
+        if (selectedDate) {
+            // Lakukan permintaan AJAX untuk mengambil data urutan berdasarkan tanggal yang dipilih
+            fetch('/generate/data/' + selectedDate)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Di sini, Anda dapat memproses data yang diterima sesuai kebutuhan
+                    console.log('Data urutan yang diterima:', data[0].urutanSebelumnya);
+
+                    // Misalnya, Anda dapat mengisinya ke elemen "urutan" seperti ini:
+                    urutan.value = data[0].urutanSebelumnya;
+
+                })
+
+        }
+    });
+});
+</script>
+
+
 <?=$this->endSection('content');?>
