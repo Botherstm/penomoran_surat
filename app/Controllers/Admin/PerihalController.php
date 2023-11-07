@@ -139,9 +139,8 @@ class PerihalController extends BaseController
             return redirect()->to(base_url('/admin/kategori/perihal/' . $data['slug']))->with('success', 'Data berhasil Di Update !');
         } else {
             // Jika validasi gagal, kembali ke formulir pendaftaran dengan pesan kesalahan dan input sebelumnya
-            return redirect()->back()
-                ->withInput()
-                ->with('validationErrors', $validation->getErrors());
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+
         }
     }
 
