@@ -91,8 +91,8 @@
                                     <div class="card-wrapper">
                                         <div class="col ">
                                             <img src="<?php echo base_url('/img/james.jpg') ?>" style="border-radius: 100%;" class="profile-img" id="profile-img-james">
-                                            <h5 class="card-text" style="font-weight: bold; text-align: center; " id="profile-name-james" >James Pieter Loro</h5>
-                            
+                                            <h5 class="card-text" style="font-weight: bold; text-align: center; " id="profile-name-james">James Pieter Loro</h5>
+
                                         </div>
                                     </div>
                                     <div class="profile-info " id="profile-info-james">
@@ -119,7 +119,7 @@
                                     <div class="card-wrapper">
                                         <div class="col">
                                             <img src="<?php echo base_url('/img/yanyon.jpeg') ?>" style="border-radius: 100%;" class="profile-img" id="profile-img-yanyon">
-                                            <h5 class="card-text" style="font-weight: bold; display: flex; text-align: center; font-size: medium ; " id="profile-name-yanyon" >I Wayan Yoni Maheswara</h5>
+                                            <h5 class="card-text" style="font-weight: bold; display: flex; text-align: center; font-size: medium ; " id="profile-name-yanyon">I Wayan Yoni Maheswara</h5>
                                         </div>
                                     </div>
                                     <div class="profile-info " id="profile-info-yanyon">
@@ -140,30 +140,42 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <hr>
                                 <div class="row g-0" style="display: flex; justify-content: center; ">
                                     <div class="card-wrapper">
                                         <div class="col">
                                             <img src="<?php echo base_url('/img/yasoda.jpeg') ?>" style="border-radius: 100%;" class="profile-img" id="profile-img-yasoda">
-                                            <h5 class="card-text" style="font-weight: bold; display: flex; text-align: center;  " id="profile-name-yasoda" >Yasoda</h5>
+                                            <h5 class="card-text" style="font-weight: bold; display: flex; text-align: center;  " id="profile-name-yasoda">Yasoda</h5>
                                         </div>
                                     </div>
-                                    <div class="profile-info " id="profile-info-yasoda">
-                                        <h5 class="card-text" style="font-weight: bold; padding-left: 40px;">Yasoda</h5>
-                                        <ul class="card-text">
-                                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos cum unde repudiandae asperiores sint exercitationem, saepe possimus aspernatur dolores corporis laboriosam sapiente incidunt sunt quam, nobis cupiditate temporibus nam illum.</li>
-                                        </ul>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="">
-                                                <i class="fab fa-instagram" style="font-size: 2em; color: #E4405F; margin-right: 30px;"></i>
-                                            </a>
-                                            <a href="">
-                                                <i class="fab fa-facebook" style="font-size: 2em; color: #0052f7; margin-right: 30px;"></i>
-                                            </a>
-                                            <a href="">
-                                                <i class="fab fa-github" style="font-size: 2em; color: black;"></i>
-                                            </a>
+                                    <div class="col-md-8">
+
+                                        <h5 style="font-weight: bold;">I Gede Arya Yasoda Putra</h5>
+                                        <p>Front End</p>
+                                        <div>
+                                            <a href=""><i class="fa-brands fa-instagram fa-2xl" style="color: #fc034e;"></i></a>
+                                            <a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                                        </div>
+
+
+                                        <div class="profile-info " id="profile-info-yasoda">
+                                            <h5 class="card-text" style="font-weight: bold; padding-left: 40px;">Yasoda</h5>
+                                            <ul class="card-text">
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos cum unde repudiandae asperiores sint exercitationem, saepe possimus aspernatur dolores corporis laboriosam sapiente incidunt sunt quam, nobis cupiditate temporibus nam illum.</li>
+                                            </ul>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="">
+                                                    <i class="fab fa-instagram" style="font-size: 2em; color: #E4405F; margin-right: 30px;"></i>
+                                                </a>
+                                                <a href="">
+                                                    <i class="fab fa-facebook" style="font-size: 2em; color: #0052f7; margin-right: 30px;"></i>
+                                                </a>
+                                                <a href="">
+                                                    <i class="fab fa-github" style="font-size: 2em; color: black;"></i>
+                                                </a>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -173,49 +185,48 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // JavaScript untuk menambahkan fungsi klik pada gambar profil
-        function setupProfileImageToggle(profileImgId, profileInfoId, profileNameId) {
-            const profileImg = document.getElementById(profileImgId);
-            const profileInfo = document.getElementById(profileInfoId);
-            const profileName = document.getElementById(profileNameId);
+        <script>
+            // JavaScript untuk menambahkan fungsi klik pada gambar profil
+            function setupProfileImageToggle(profileImgId, profileInfoId, profileNameId) {
+                const profileImg = document.getElementById(profileImgId);
+                const profileInfo = document.getElementById(profileInfoId);
+                const profileName = document.getElementById(profileNameId);
 
-            let isTextVisible = true;
-            let isInfoVisible = false;
+                let isTextVisible = true;
+                let isInfoVisible = false;
 
-            profileImg.addEventListener("click", () => {
-                if (!isInfoVisible) {
-                    // Tampilkan keterangan dengan animasi slide
-                    profileInfo.style.display = "block";
-                    profileInfo.style.width = "300px";
-                    profileInfo.style.opacity = "1";
-                    profileImg.style.width = "100px";
-                    profileImg.style.height = "100px";
-                    profileImg.style.marginTop = "20px";
-                    profileName.style.display = "none";
-                } else {
-                    // Sembunyikan keterangan dengan animasi slide
-                    profileInfo.style.width = "0";
-                    profileInfo.style.opacity = "0";
-                    setTimeout(() => {
-                        profileInfo.style.display = "none";
-                    }, 500); // Waktu animasi (0.5 detik)
-                    profileImg.style.width = "150px"; // Kembalikan ukuran gambar ke semula
-                    profileImg.style.height = "150px";
-                    profileName.style.display = "block";
-                }
+                profileImg.addEventListener("click", () => {
+                    if (!isInfoVisible) {
+                        // Tampilkan keterangan dengan animasi slide
+                        profileInfo.style.display = "block";
+                        profileInfo.style.width = "300px";
+                        profileInfo.style.opacity = "1";
+                        profileImg.style.width = "100px";
+                        profileImg.style.height = "100px";
+                        profileImg.style.marginTop = "20px";
+                        profileName.style.display = "none";
+                    } else {
+                        // Sembunyikan keterangan dengan animasi slide
+                        profileInfo.style.width = "0";
+                        profileInfo.style.opacity = "0";
+                        setTimeout(() => {
+                            profileInfo.style.display = "none";
+                        }, 500); // Waktu animasi (0.5 detik)
+                        profileImg.style.width = "150px"; // Kembalikan ukuran gambar ke semula
+                        profileImg.style.height = "150px";
+                        profileName.style.display = "block";
+                    }
 
-                isInfoVisible = !isInfoVisible;
-                isTextVisible = !isTextVisible;
-            });
-        }
+                    isInfoVisible = !isInfoVisible;
+                    isTextVisible = !isTextVisible;
+                });
+            }
 
-        setupProfileImageToggle("profile-img-james", "profile-info-james", "profile-name-james");
-        setupProfileImageToggle("profile-img-yanyon", "profile-info-yanyon", "profile-name-yanyon");
-        setupProfileImageToggle("profile-img-yasoda", "profile-info-yasoda", "profile-name-yasoda");
-    </script>
+            setupProfileImageToggle("profile-img-james", "profile-info-james", "profile-name-james");
+            setupProfileImageToggle("profile-img-yanyon", "profile-info-yanyon", "profile-name-yanyon");
+            setupProfileImageToggle("profile-img-yasoda", "profile-info-yasoda", "profile-name-yasoda");
+        </script>
 
 </body>
 

@@ -77,6 +77,9 @@ class SubPerihalController extends BaseController
             if ($this->subperihal->where('kode', $kode)->first()) {
                 return redirect()->back()->with('error', 'Data Sudah terdaftar');
             }
+             if ($this->subperihal->where('slug', $slug)->first()) {
+                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+            }
 
             // Data valid, simpan ke dalam database
             $uuid = Uuid::uuid4();

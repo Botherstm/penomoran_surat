@@ -27,7 +27,7 @@
             <div class="container-fluid ">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-lg-6 col-7">
+                    <div class="col-lg-4 col-7">
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
@@ -50,7 +50,7 @@
                     <?php if (session()->get('level') == 1) : ?>
                     <!-- ./col -->
 
-                    <div class="col-lg-6 col-7">
+                    <div class="col-lg-4 col-7">
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
@@ -74,7 +74,7 @@
                     <!-- ./col -->
 
                     <?php elseif (session()->get('level') == 2) : ?>
-                    <div class="col-lg-6 col-7">
+                    <div class="col-lg-4 col-7">
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
@@ -94,7 +94,7 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-7">
+                    <div class="col-lg-4 col-7">
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">

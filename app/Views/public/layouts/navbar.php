@@ -1,13 +1,10 @@
-<!-- Preloader -->
-<style>
-
-
-</style>
-
-<div class=" preloader flex-column justify-content-center align-items-center">
+<!-- Preloader <div class=" preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="120" width="195">
     <span class=" brand-text font-weight-bold ">E-NOMOR</span>
-</div>
+</div> -->
+
+
+
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-light navbar-teal ">
     <!-- Left navbar links -->

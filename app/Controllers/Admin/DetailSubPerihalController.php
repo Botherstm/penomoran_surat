@@ -74,6 +74,10 @@ class DetailSubPerihalController extends BaseController
                 return redirect()->back()->with('error', 'Data Sudah terdaftar');
 
             }
+            if ($this->detailsubperihal->where('slug', $slug)->first()) {
+                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+
+            }
 
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();

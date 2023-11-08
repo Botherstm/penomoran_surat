@@ -96,9 +96,11 @@ $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerih
 
 //public
 $routes->get('/', 'User\HomeController::index');
+$routes->get('/public/home/create', 'User\HomeController::create');
+$routes->get('/generate/data/(:any)', 'User\HomeController::DataTerahir/$1');
 
 //user dashboard
-$routes->get('/public/user/profile', 'User\GenerateController::index');
+$routes->get('/public/user/profile', 'User\UserController::index');
 // $routes->post('/user/profile/update', 'User\UserController::update');
 $routes->post('/user/profile/update', 'User\UserController::update');
 $routes->post('/user/profile/updategambar', 'User\UserController::updateGambar');
@@ -107,9 +109,9 @@ $routes->post('/user/profile/delete', 'User\UserController::deleteGambar');
 //generate
 // $routes->get('/', 'GenerateController::index');
 $routes->post('/generate/save', 'GenerateController::save');
-$routes->get('get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
-$routes->get('get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
-$routes->get('get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
+$routes->get('/get_perihal_by_category/(:segment)', 'GenerateController::getPerihalByCategory/$1');
+$routes->get('/public/home/get_subperihal_by_perihal/(:segment)', 'GenerateController::getSubPerihalByPerihal/$1');
+$routes->get('/public/home/get_detailsubperihal_by_subperihal/(:segment)', 'GenerateController::getdetailSubPerihalByPerihal/$1');
 
 //----------User--------------------------------------------
 

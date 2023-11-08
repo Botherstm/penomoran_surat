@@ -13,7 +13,15 @@
                     <li><?=esc($error)?></li>
                     <?php endforeach;?>
                 </ul>
-                <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
+                <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
+            </div>
+            <?php endif;?>
+            <?php if (session('error')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <li><?=(session('error'))?></li>
+                </ul>
+                <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
             </div>
             <?php endif;?>
             <!-- Main content -->
@@ -26,7 +34,7 @@
                     </div>
                 </div> -->
 
-            <div class="card card-success" >
+            <div class="card card-success">
 
 
                 <div class="card-header">
@@ -35,7 +43,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo base_url('admin/perihal/save') ?>" method="POST">
-                        <?= csrf_field(); ?>
+                        <?=csrf_field();?>
 
                         <div class="mb-5 m-1 ">
                             <label for="perihal" class="form-label input-group ">Perihal</label>
@@ -44,7 +52,7 @@
                         </div>
                         <div class="form-group text-center">
                             <input type="name" hidden class="form-control" id="detail_id" name="detail_id"
-                                value="<?= $kategori['id']; ?>" readonly>
+                                value="<?=$kategori['id'];?>" readonly>
                         </div>
                         <div class="form-group text-center">
                             <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
@@ -56,7 +64,7 @@
                         </div>
                         <div class="row text-center" style="padding-bottom: 50px;">
                             <div class="col-md-6 d-flex" style="justify-content: start;">
-                                <a href="<?php echo base_url('admin/kategori/perihal/') ?><?= $kategori['slug']; ?>">
+                                <a href="<?php echo base_url('admin/kategori/perihal/') ?><?=$kategori['slug'];?>">
                                     <button class="btn btn-danger" type="button" style="width: 150px;"
                                         data-dismiss="modal">Batal</button>
                                 </a>
@@ -106,4 +114,4 @@ nameInput.addEventListener('input', function() {
 });
 </script>
 
-<?= $this->endSection('content'); ?>"
+<?=$this->endSection('content');?>"

@@ -36,6 +36,10 @@ class GenerateModel extends Model
     {
         return $this->where('slug', $slug)->first();
     }
+    public function getByUrutan($urutan)
+    {
+        return $this->where('urutan', $urutan)->first();
+    }
     public function getAllByUserId_id($user_id)
     {
         return $this->where('user_id', $user_id)
