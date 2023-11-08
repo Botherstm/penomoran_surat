@@ -72,6 +72,11 @@
                                                 aria-label="Engine version: activate to sort column ascending">Nomor
                                                 Hp
                                                 User</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Engine version: activate to sort column ascending">
+                                                Dibuat Pada</th>
+
 
                                         </tr>
                                     </thead>
@@ -88,7 +93,8 @@
                                             </td>
                                             <td><?=$riwayat['perihal'];?></td>
                                             <td><?=$riwayat['urutan'];?></td>
-                                            <td><?=$riwayat['tanggal'];?></td>
+                                            <td><?=date('d F Y', strtotime($riwayat['tanggal']));?></td>
+                                            <!-- <td><?=$riwayat['tanggal'];?></td> -->
                                             <td>
                                                 <?php $bidangId = $riwayat['bidang_id'];?>
                                                 <?php if (isset($bidangs[$bidangId]['name'])): ?>
@@ -107,7 +113,7 @@
                                                 <?=$users[$userId]['no_hp'] . '<br>';?>
                                                 <?php endif;?>
                                             </td>
-
+                                            <td><?=date('d F Y, H:i', strtotime($riwayat['created_at']));?></td>
                                         </tr>
                                         <?php endforeach?>
                                     </tbody>
