@@ -1,6 +1,6 @@
-<?=$this->extend('admin/layouts/main');?>
+<?= $this->extend('admin/layouts/main'); ?>
 
-<?=$this->section('content');?>
+<?= $this->section('content'); ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,16 +16,16 @@
                     <div class="card-tools">
                     </div>
                 </div> -->
-                <?php if (session('errors')): ?>
+            <?php if (session('errors')) : ?>
                 <div class="alert alert-danger">
                     <ul>
-                        <?php foreach (session('errors') as $error): ?>
-                        <li><?=esc($error)?></li>
-                        <?php endforeach;?>
+                        <?php foreach (session('errors') as $error) : ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach; ?>
                     </ul>
-                    <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
+                    <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
                 </div>
-                <?php endif;?>
+            <?php endif; ?>
 
             <div class="card card-success">
 
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo base_url('admin/kategori/save') ?>" method="POST" class="">
-                        <?=csrf_field();?>
+                        <?= csrf_field(); ?>
                         <div class="mb-5 m-1 ">
                             <label for="kategori" class="form-label input-group ">Kategori</label>
                             <input type="text" class="form-control " name="name" id="name" aria-describedby="emailHelp">
@@ -52,14 +52,12 @@
 
                         <div class="row text-center">
                             <div class="col-md-6 d-flex" style="justify-content: start;">
-                                <a
-                                    href="<?php echo base_url('admin/kategori') ?>">
+                                <a href="<?php echo base_url('admin/kategori') ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;  ">Batal</button>
                                 </a>
                             </div>
                             <div class="col-md-6 d-flex" style="justify-content: end;">
-                                <button type="submit" class="btn btn-success "
-                                    style="width: 150px; padding-bottom: 10px;">Ubah data</button>
+                                <button type="submit" class="btn btn-success " style="width: 150px; padding-bottom: 10px;">Tambah data</button>
                             </div>
                         </div>
                     </form>
@@ -79,26 +77,26 @@
     });
 </script>
 <script>
-var nameInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
+    var nameInput = document.getElementById('name');
+    var slugInput = document.getElementById('slug');
 
-// Function to generate a slug from the given string
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-') // Replace spaces with dashes
-        .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
-        .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
-        .substring(0, 50); // Limit the slug length
-}
+    // Function to generate a slug from the given string
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-') // Replace spaces with dashes
+            .replace(/[^\w\-]+/g, '') // Remove non-word characters (except dashes)
+            .replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
+            .substring(0, 50); // Limit the slug length
+    }
 
-// Add an input event listener to the name input field
-nameInput.addEventListener('input', function() {
-    var nameValue = nameInput.value;
-    var slugValue = slugify(nameValue);
-    slugInput.value = slugValue;
-});
+    // Add an input event listener to the name input field
+    nameInput.addEventListener('input', function() {
+        var nameValue = nameInput.value;
+        var slugValue = slugify(nameValue);
+        slugInput.value = slugValue;
+    });
 </script>
 
 
-<?=$this->endSection('content');?>
+<?= $this->endSection('content'); ?>

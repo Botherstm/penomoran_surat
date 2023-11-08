@@ -67,7 +67,9 @@
                                 </a>
                             </div>
                             <div class="col-md-6 d-flex" style="justify-content: end;">
+                                <a href="<?php echo base_url('admin/kategori/perihal/subperihal/detailsubperihal/') ?><?=$subperihal['slug'];?>">
                                 <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
+                                </a>
                             </div>
                         </div>
 

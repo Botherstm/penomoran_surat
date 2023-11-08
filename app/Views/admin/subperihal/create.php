@@ -64,7 +64,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6 d-flex" style="justify-content: end;">
-                                <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
+                                <button type="submit" class="btn btn-success " style="width: 150px;">Tambah data</button>
                             </div>
                         </div>
 

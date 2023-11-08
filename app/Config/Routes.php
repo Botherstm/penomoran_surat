@@ -98,7 +98,7 @@ $routes->post('/admin/detailsubperihal/delete/(:segment)', 'Admin\DetailSubPerih
 $routes->get('/', 'User\HomeController::index');
 
 //user dashboard
-$routes->get('/public/user/profile', 'User\UserController::index');
+$routes->get('/public/user/profile', 'User\GenerateController::index');
 // $routes->post('/user/profile/update', 'User\UserController::update');
 $routes->post('/user/profile/update', 'User\UserController::update');
 $routes->post('/user/profile/updategambar', 'User\UserController::updateGambar');

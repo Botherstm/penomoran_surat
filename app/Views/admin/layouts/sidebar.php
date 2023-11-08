@@ -9,8 +9,8 @@
         <div class="col-auto">
             <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="40" width="65">
         </div>
-        <div class="col">
-            <span class="brand-text font-weight-bold" style="text-shadow: 2px 2px 1px grey; padding-top: 10px;">E-NOMOR Admin</span>
+        <div class="col-auto">
+            <span class="brand-text font-weight-bold" style="text-shadow: 2px 2px 1px grey; padding-top: 10px; " >E-NOMOR Admin</span>
         </div>
     </div>
 </a>

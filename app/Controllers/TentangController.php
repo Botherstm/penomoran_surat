@@ -11,6 +11,7 @@ class TentangController extends BaseController
         return view('tentang', ['active' => 'tentang']);
     }
 
+
     public function admin()
     {
         return view('admin/tentang', ['active' => 'tentang']);
