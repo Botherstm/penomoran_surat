@@ -4,16 +4,19 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\DefaultPasswordModel;
+use App\Models\UserModel;
 use Ramsey\Uuid\Uuid;
 
 class DefaultController extends BaseController
 {
    
       protected $default_password;
+    protected $user;
 
     public function __construct()
     {
         $this->default_password = new DefaultPasswordModel();
+        $this->user = new UserModel;
     }
 
    
@@ -26,23 +29,35 @@ class DefaultController extends BaseController
             'active' => 'defaultpassword',
         ]);
     }
-
-        public function update()
+    public function update()
     {
         $rules = [
             'password' => 'required',
         ];
+        $default = $this->default_password->getOne();
         $id = $this->request->getPost('id');
-        // dd($id);
+        $password = $this->request->getPost('password');
+
         if ($this->validate($rules)) {
-            // Data pengguna yang akan disimpan
-            $Data = [
-                'password_default' => $this->request->getPost('password'),
+            // Data default password yang akan disimpan
+            $defaultData = [
+                'password_default' => $password,
             ];
-            $this->default_password->update($id, $Data);
+            $this->default_password->update($id, $defaultData);
+
+            // Perbarui password pengguna yang memiliki password default yang sama
+            $usersDenganPasswordDefaultSama = $this->user->getUsersByDefaultPassword($default['password_default']);
+            foreach ($usersDenganPasswordDefaultSama as $user) {
+                $dataPengguna = [
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                ];
+                $this->user->update($user['id'], $dataPengguna);
+            }
+
             return redirect()->back()->with('success', 'Password Default berhasil Di Update !');
         } else {
             return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
+
 }

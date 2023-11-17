@@ -15,14 +15,14 @@ class UserController extends BaseController
     protected $dinas;
     protected $bidangs;
     protected $UserModel;
-      protected $default_password;
+    protected $default;
 
     public function __construct()
     {
         $this->UserModel = new UserModel();
         $this->dinas = new DinasModel();
         $this->bidangs = new BidangModel();
-        $this->default_password = new DefaultPasswordModel();
+        $this->default = new DefaultPasswordModel();
     }
 
     public function index()
@@ -117,7 +117,8 @@ class UserController extends BaseController
         }
         $uuid = Uuid::uuid4();
         $uuidString = $uuid->toString();
-        $password = $_ENV['passwordBawaan'];
+        $passworddefault = $this->default->getOne();
+        $password = $passworddefault['password_default'];
         if ($this->validate($rules)) {
             $userData = [
                 'id' => $uuidString,
@@ -128,7 +129,7 @@ class UserController extends BaseController
                 'email' => $this->request->getPost('email'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'level' => $level,
-                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'password' => password_hash($password['password_default'], PASSWORD_DEFAULT),
             ];
 
             // dd($userData, $pasnjangpassword);
@@ -398,7 +399,8 @@ class UserController extends BaseController
         $data = $this->UserModel->getBySlug($slug);
         $user = $this->UserModel->getByid($data['id']);
         // dd($user);
-        $password = $_ENV['passwordBawaan'];
+        $passworddefault = $this->default->getOne();
+        $password = $passworddefault['password_default'];
 
         if ($user) {
             $userData = [

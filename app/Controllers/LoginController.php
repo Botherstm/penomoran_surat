@@ -4,15 +4,18 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\DefaultPasswordModel;
 
 class LoginController extends BaseController
 {
 
     protected $userModel;
+      protected $default_password;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->default_password = new DefaultPasswordModel();
     }
     public function index()
     {
@@ -73,8 +76,9 @@ class LoginController extends BaseController
             $user = $this->userModel->where('email', $email)->first();
 
             if ($user && password_verify($password, $user['password'])) {
+                  $default = $this->default_password->getOne();
                 // Periksa apakah password sesuai
-                    if ($password == $_ENV['passwordBawaan']) {
+                    if ($password == $default['password_default']) {
                         return view("gantiPassword", [
                             'email' => $email,
                         ]);

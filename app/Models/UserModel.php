@@ -43,4 +43,9 @@ class UserModel extends Model
         return $this->where('instansi_id', $instansi_id)->findAll();
     }
 
+    public function getUsersByDefaultPassword($defaultPassword)
+    {
+        return $this->where('password', $defaultPassword)->findAll();
+    }
+
 }
