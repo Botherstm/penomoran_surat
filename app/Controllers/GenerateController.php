@@ -36,12 +36,7 @@ class GenerateController extends BaseController
     {
         session();
         if (!session()->has('user_id')) {
-            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-            // dd($siteKey);
-            return view('login', [
-                'validation' => \Config\Services::validation(),
-                'key' => $siteKey,
-            ]);
+            return redirect()->to(base_url('/login'));
         }
         $kategories = $this->kategori->getAll();
         return view(

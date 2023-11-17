@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\BidangModel;
+use App\Models\DefaultPasswordModel;
 use App\Models\DinasModel;
 use App\Models\UserModel;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -14,24 +15,21 @@ class UserController extends BaseController
     protected $dinas;
     protected $bidangs;
     protected $UserModel;
+      protected $default_password;
 
     public function __construct()
     {
         $this->UserModel = new UserModel();
         $this->dinas = new DinasModel();
         $this->bidangs = new BidangModel();
+        $this->default_password = new DefaultPasswordModel();
     }
 
     public function index()
     {
 
         if (!session()->has('user_id')) {
-            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-            // dd($siteKey);
-            return view('login', [
-                'validation' => \Config\Services::validation(),
-                'key' => $siteKey,
-            ]);
+            return redirect()->to(base_url('/login'));
         }
         if (session()->get('level') != 1 && session()->get('level') != 2) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException();
@@ -84,12 +82,7 @@ class UserController extends BaseController
     {
 
         if (!session()->has('user_id')) {
-            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-            // dd($siteKey);
-            return view('login', [
-                'validation' => \Config\Services::validation(),
-                'key' => $siteKey,
-            ]);
+            return redirect()->to(base_url('/login'));
         }
         if (session()->get('level') != 1 && session()->get('level') != 2) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException();
@@ -184,7 +177,7 @@ class UserController extends BaseController
 
         $gambar = $this->request->getFile('gambar');
 
-        if (!$gambar !== null) {
+        if ($gambar) {
             $uuid = Uuid::uuid4();
             $uuidString = $uuid->toString();
 
@@ -199,7 +192,7 @@ class UserController extends BaseController
                 'slug' => $this->request->getPost('slug'),
                 'name' => $this->request->getPost('name'),
                 'email' => $this->request->getPost('email'),
-                'gambar' => $namaGambar,
+                'gambar' => $namaGambar??null,
                 'no_hp' => $this->request->getPost('no_hp'),
             ];
 
@@ -418,4 +411,8 @@ class UserController extends BaseController
             return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
         }
     }
+
+
+
+
 }

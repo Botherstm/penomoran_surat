@@ -26,14 +26,14 @@
                     </div>
                 </div> -->
 
-            <div class="card card-success" >
+            <div class="card card-success">
 
 
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">Edit User</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?= $user['id'] ?>">
+                    <form method="POST" action="<?= base_url('admin/users/update/') ?><?= $user['id'] ?>">
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nama</label>
@@ -88,7 +88,7 @@
                         <?php endif ?>
 
                         <div class="row text-center" style="padding-bottom: 30px; padding-top: 20px;">
-                            <div class="col-md-6 d-flex" style="justify-content: start;" >
+                            <div class="col-md-6 d-flex" style="justify-content: start;">
                                 <a href="<?php echo base_url('admin/users') ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                                 </a>

@@ -45,6 +45,9 @@ $routes->post('/admin/users/update/(:segment)', 'Admin\UserController::update/$1
 $routes->post('/admin/users/delete/(:segment)', 'Admin\UserController::delete/$1');
 $routes->post('/admin/users/resetPassword/(:segment)', 'Admin\UserController::resetPassword/$1');
 
+$routes->get('/admin/defaultPassword', 'Admin\DefaultController::index');
+$routes->post('/admin/defaultPassword/update', 'Admin\DefaultController::update');
+
 //urutan
 $routes->get('/admin/dinas/urutansurat/(:segment)', 'Admin\UrutanSuratController::index/$1');
 $routes->get('/admin/dinas/urutansurat/create/(:segment)', 'Admin\UrutanSuratController::create/$1');

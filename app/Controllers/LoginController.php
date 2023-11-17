@@ -18,15 +18,28 @@ class LoginController extends BaseController
     {
         $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
         // dd($siteKey);
+        $ip  = $this->request->getIPAddress();
+
+        // dd($ip);
+        $cooldownTime = session()->get('cooldown_time') ?? 0;
         return view('login', [
             'validation' => \Config\Services::validation(),
             'key' => $siteKey,
+            'cooldownTime' => $cooldownTime,
         ]);
     }
 
     public function login()
     {
 
+        $loginAttempts = session()->get('login_attempts') ?? 0;
+        $cooldownTime = session()->get('cooldown_time') ?? 0;
+
+        
+        if ($loginAttempts >= 3 && time() < $cooldownTime) {
+            // Jika sudah melebihi batas percobaan dan masih dalam cooldown, tampilkan pesan kesalahan
+            return redirect()->back()->withInput()->with('errors', 'Anda telah mencoba login terlalu banyak. Silakan coba lagi nanti.');
+        }
         $recaptchaSecretKey = '6Ldc6pQoAAAAAOgAa4PU6aT8GwfhXH61llUBzIEy';
         $recaptchaResponse = $_POST['g-recaptcha-response'];
 
@@ -59,9 +72,8 @@ class LoginController extends BaseController
             // Cari pengguna berdasarkan email
             $user = $this->userModel->where('email', $email)->first();
 
-            if ($user) {
+            if ($user && password_verify($password, $user['password'])) {
                 // Periksa apakah password sesuai
-                if (password_verify($password, $user['password'])) {
                     if ($password == $_ENV['passwordBawaan']) {
                         return view("gantiPassword", [
                             'email' => $email,
@@ -80,14 +92,26 @@ class LoginController extends BaseController
                         ];
                         // dd($userData);
                         session()->set($userData);
-
+                        session()->remove(['login_attempts', 'cooldown_time']);
                         return redirect()->to(base_url('/'));
-
-                    }
-                } else {
-                    return redirect()->back()->withInput()->with('errors', 'Invalid email or password');
                 }
             } else {
+                $loginAttempts++;
+                session()->set('login_attempts', $loginAttempts);
+                if ($loginAttempts == 3) {
+                    $cooldownDuration = 60; // cooldown selama 1 menit
+                    $cooldownTime = time() + $cooldownDuration;
+                    session()->set('cooldown_time', $cooldownTime);
+                }
+                elseif ($loginAttempts >= 4 && $loginAttempts < 6) {
+                $cooldownDuration = 300; // cooldown selama 5 menit
+                $cooldownTime = time() + $cooldownDuration;
+                session()->set('cooldown_time', $cooldownTime);
+                } elseif ($loginAttempts >= 6) {
+                    // Blokir IP dan simpan ke database
+                    // $this->blockIP($this->request->getIPAddress());
+                    return redirect()->back()->withInput()->with('errors', 'IP Anda telah diblokir karena percobaan login yang berulang.');
+                }
                 return redirect()->back()->withInput()->with('errors', 'Invalid email or password');
             }
         }

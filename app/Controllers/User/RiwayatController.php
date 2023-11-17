@@ -30,9 +30,7 @@ class RiwayatController extends BaseController
     {
         session();
         if (!session()->has('user_id')) {
-            return view('login', [
-                'validation' => \Config\Services::validation()
-            ]);
+           return redirect()->to(base_url('/login'));
         }
         $user = $this->user->getByid(session()->get('user_id'))??[];
         $generate = $this->generate->getAllByUserId_id(session()->get('user_id'));

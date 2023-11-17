@@ -25,12 +25,13 @@
             <div class="container-fluid">
                 <div class="row d-flex justify-content-center w-auto p-3 "
                     style="margin: auto; height:5%; margin-top: 1%;">
+
                     <?php if (session('errors')): ?>
                     <div class="alert alert-danger">
                         <ul>
                             <li><?=esc(session('errors'))?></li>
                         </ul>
-                        <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
+                        <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
                     </div>
                     <?php endif;?>
 
@@ -41,7 +42,8 @@
                             <div class="card-body ">
                                 <div class=" text-center">
 
-                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 20%; ">
+                                    <img src="<?= base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng"
+                                        style="max-width: 20%; ">
                                     <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 25%; ">
 
                                 </div>
@@ -79,6 +81,12 @@
 
                     <!-- Form Login -->
                     <div class="col-md-4 mt-2">
+                        <?php if ($cooldownTime > time()): ?>
+                        <div id="cooldown-info" class="alert alert-warning" role="alert">
+                            Anda telah mencoba login beberapa kali. Silakan coba lagi dalam <span
+                                id="cooldown-counter"></span> detik.
+                        </div>
+                        <?php endif; ?>
                         <div class="card shadow-lg p-3 bg-dark bg-gradient" style="height: 95%; --bs-bg-opacity: .1;">
                             <div class="card-body">
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
@@ -174,6 +182,31 @@
         });
     });
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var cooldownTime = <?= $cooldownTime ?>;
+        var cooldownCounterElement = document.getElementById("cooldown-counter");
+        var cooldownInfoElement = document.getElementById("cooldown-info");
+
+        function updateCooldownCounter() {
+            var currentTime = Math.floor(Date.now() / 1000);
+            var remainingTime = cooldownTime - currentTime;
+
+            if (remainingTime > 0) {
+                cooldownCounterElement.innerText = remainingTime;
+            } else {
+                cooldownInfoElement.style.display = "none";
+            }
+        }
+
+        // Update counter every second
+        setInterval(updateCooldownCounter, 1000);
+
+        // Initial update
+        updateCooldownCounter();
+    });
+    </script>
+
 </body>
 
 </html>

@@ -118,6 +118,7 @@ echo implode(', ', $bidangNames);
                                                     <i class=" fas fa-pen"></i>
                                                 </button>
                                             </a>
+
                                             <form id="resetPasswordForm" class="pr-3"
                                                 action="<?php echo base_url('admin/users/resetPassword/') ?><?=$user['slug'];?>"
                                                 method="POST">
@@ -128,6 +129,7 @@ echo implode(', ', $bidangNames);
                                                     <i class="fas fa-lock"></i>
                                                 </button>
                                             </form>
+                                            <?php if ($user['level'] == 1): ?>
                                             <form id="deleteForm" class="pr-3"
                                                 action="<?php echo base_url('admin/users/delete/') ?><?=$user['slug'];?>"
                                                 method="POST">
@@ -137,6 +139,10 @@ echo implode(', ', $bidangNames);
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
+                                            <?php elseif ($user['level'] == 2): ?>
+
+                                            <?php endif;?>
+
 
 
                                         </div>
