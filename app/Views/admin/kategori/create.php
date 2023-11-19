@@ -27,6 +27,15 @@
                 </div>
             <?php endif; ?>
 
+            <?php if (session('success')) : ?>
+                    <div class="alert alert-success">
+                        <ul>
+                            <li><?= (session('success')) ?></li>
+                        </ul>
+                        <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
+                    </div>
+                <?php endif; ?>
+
             <div class="card card-success">
 
 

@@ -40,13 +40,15 @@ class SubPerihalController extends BaseController
 
         // dd($detailSubPerihals);
 
-        return view('admin/subperihal/index', [
-            'active' => 'subperihal',
-            'subperihals' => $subperihals,
-            'perihal' => $perihal,
-            'kategori' => $kategori,
-            'detailsubperihals' => $detailSubPerihals,
-        ],
+        return view(
+            'admin/subperihal/index',
+            [
+                'active' => 'subperihal',
+                'subperihals' => $subperihals,
+                'perihal' => $perihal,
+                'kategori' => $kategori,
+                'detailsubperihals' => $detailSubPerihals,
+            ],
         );
     }
 
@@ -75,10 +77,10 @@ class SubPerihalController extends BaseController
             $name = $this->request->getPost('name');
             $kode = $this->request->getPost('kode');
             if ($this->subperihal->where('kode', $kode)->first()) {
-                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+                return redirect()->back()->with('error', 'Kode Sudah terdaftar');
             }
-             if ($this->subperihal->where('slug', $slug)->first()) {
-                return redirect()->back()->with('error', 'Data Sudah terdaftar');
+            if ($this->subperihal->where('slug', $slug)->first()) {
+                return redirect()->back()->with('error', 'Nama Sudah terdaftar');
             }
 
             // Data valid, simpan ke dalam database
@@ -94,7 +96,7 @@ class SubPerihalController extends BaseController
             ];
             // dd($data);
             $this->subperihal->insert($data);
-            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/' . $perihal['slug']))->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/create/' . $perihal['slug']))->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
@@ -156,5 +158,4 @@ class SubPerihalController extends BaseController
             return redirect()->to(base_url('admin/kategori/perihal/subperihal' . $perihal['slug']))->with('error', 'data not found.');
         }
     }
-
 }

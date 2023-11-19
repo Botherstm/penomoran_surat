@@ -30,14 +30,15 @@ class DetailSubPerihalController extends BaseController
         $detailsubperihal = $this->detailsubperihal->getAllBySubPerihalId($subperihal['id']);
         $perihal = $this->perihal->getById($subperihal['detail_id']);
         // dd($detailsubperihal);
-        return view('admin/detailsubperihal/index', [
-            'active' => 'detailsubperihal',
-            'perihal' => $perihal,
-            'subperihal' => $subperihal,
-            'detailsubperihals' => $detailsubperihal,
-        ],
+        return view(
+            'admin/detailsubperihal/index',
+            [
+                'active' => 'detailsubperihal',
+                'perihal' => $perihal,
+                'subperihal' => $subperihal,
+                'detailsubperihals' => $detailsubperihal,
+            ],
         );
-
     }
 
     public function create($slug)
@@ -71,12 +72,10 @@ class DetailSubPerihalController extends BaseController
             $kode = $this->request->getPost('kode');
             // Data valid, simpan ke dalam database
             if ($this->detailsubperihal->where('kode', $kode)->first()) {
-                return redirect()->back()->with('error', 'Data Sudah terdaftar');
-
+                return redirect()->back()->with('error', 'Kode Sudah terdaftar');
             }
             if ($this->detailsubperihal->where('slug', $slug)->first()) {
-                return redirect()->back()->with('error', 'Data Sudah terdaftar');
-
+                return redirect()->back()->with('error', 'Nama Sudah terdaftar');
             }
 
             $uuid = Uuid::uuid4();
@@ -92,7 +91,7 @@ class DetailSubPerihalController extends BaseController
 
             $this->detailsubperihal->insert($data);
 
-            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/detailsubperihal/' . $subperihal['slug']))->with('success', 'Data detail berhasil disimpan.');
+            return redirect()->to(base_url('/admin/kategori/perihal/subperihal/detailsubperihal/create/' . $subperihal['slug']))->with('success', 'Data detail berhasil disimpan.');
         } else {
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');
         }
