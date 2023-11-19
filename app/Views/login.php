@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="mb-3 ">
                                         <div class="input-group">
-                                            <input type="email" class="shadow form-control" name="email"
+                                            <input type="name" autofocus class="shadow form-control" name="username"
                                                 id="exampleInputEmail1" aria-describedby="emailHelp" required
                                                 placeholder="Email" style="opacity: 0.7;">
                                             <i class="shadow input-group-text bi bi-person-fill"></i>
@@ -111,15 +111,10 @@
                                     </div>
                                     <div class="mb-2" style="padding-bottom: 6%;">
                                         <div class=" input-group ">
-                                            <input type="password"
-                                                class="shadow form-control <?=($validation->hasError('password')) ? 'is-invalid' : '';?>"
-                                                required id="exampleInputPassword1" placeholder="Password"
-                                                name="password" style="opacity: 0.7;">
-                                            <?php if ($validation->hasError('password')): ?>
-                                            <div class="invalid-feedback">
-                                                <?=$validation->getError('password');?>
-                                            </div>
-                                            <?php endif;?>
+                                            <input type="password" class="shadow form-control "
+                                                id="exampleInputPassword1" placeholder="Password" name="password"
+                                                style="opacity: 0.7;">
+
                                             <span class="shadow input-group-text bi bi-eye-slash"
                                                 id="showPassword"></span>
                                         </div>

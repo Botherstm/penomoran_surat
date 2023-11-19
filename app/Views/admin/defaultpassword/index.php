@@ -41,13 +41,14 @@
                                     <label for="exampleFormControlInput1">Password Default</label>
                                     <input type="text" name="password" value="<?=$default['password_default']?>"
                                         class="form-control" id="password" placeholder="Masukkan Password Default">
-                                    <div class="row text-center" style="padding-bottom: 50px;">
-                                        <div class="col-md-12">
-                                            <button id="submitButton" type="submit" class="btn btn-success"
-                                                style="width: 150px;">Kirim
-                                            </button>
-                                        </div>
+                                </div>
+                                <div class="row text-center" style="padding-bottom: 50px;">
+                                    <div class="col-md-12">
+                                        <button id="submitButton" type="submit" class="btn btn-success"
+                                            style="width: 150px;">Kirim
+                                        </button>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -74,5 +75,33 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+        var passwordInput = document.getElementById("password");
+        var password = passwordInput.value;
+
+        if (!isValidPassword(password)) {
+            event.preventDefault(); // Mencegah pengiriman formulir jika password tidak valid
+
+            // Menampilkan pesan kesalahan
+            var errorDiv = document.createElement("div");
+            errorDiv.classList.add("alert", "alert-danger", "small");
+            errorDiv.innerHTML = "Password harus memiliki 1 huruf kecil, 1 huruf besar, dan 1 angka.";
+
+            var formGroup = document.querySelector(".form-group");
+            formGroup.appendChild(errorDiv);
+        }
+    });
+
+    function isValidPassword(password) {
+        // Regex untuk memastikan password memiliki 1 huruf kecil, 1 huruf besar, dan 1 angka
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+        return regex.test(password);
+    }
+});
+</script>
+
 
 <?=$this->endSection('content');?>

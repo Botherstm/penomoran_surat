@@ -17,6 +17,16 @@
 </style>
 
 <div class="content-wrapper">
+    <?php if (session('success')): ?>
+    <div class="alert alert-success">
+        <ul>
+
+            <li><?=esc(session('success'))?></li>
+
+        </ul>
+        <button id="dismissError" class="btn btn-secondary">Ok</button>
+    </div>
+    <?php endif;?>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -61,7 +71,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Nama</th>
-                                    <th>Email</th>
+                                    <th>username</th>
                                     <th>No.Telp</th>
                                     <?php if (session()->get('level') == 2): ?>
                                     <th>Dinas</th>
@@ -79,14 +89,16 @@
                                 <tr>
                                     <td><?=$i++;?></td>
                                     <td><?=$user['name'];?></td>
-                                    <td><?=$user['email'];?></td>
+                                    <td><?=$user['username'];?></td>
                                     <td><?=$user['no_hp'];?></td>
                                     <?php if (session()->get('level') == 2): ?>
                                     <td>
+                                        <?php if ($user['level'] == 1): ?>
                                         <?php ?>
                                         <?php $instansiId = $user['instansi_id'];?>
                                         <?php if (isset($dinas[$instansiId]['name'])): ?>
                                         <?=$dinas[$instansiId]['name'] . '<br>';?>
+                                        <?php endif;?>
                                         <?php endif;?>
                                     </td>
                                     <td>
@@ -97,6 +109,7 @@
                                         <?php endif;?>
                                     </td>
                                     <?php elseif (session()->get('level') == 1): ?>
+
                                     <td>
                                         <?php
 $bidangNames = [];
@@ -109,6 +122,7 @@ echo implode(', ', $bidangNames);
 ?>
                                     </td>
                                     <?php endif?>
+
                                     <td>
                                         <div class="btn-group d-flex mx-2" style="justify-content: space-between;">
                                             <!-- update -->
@@ -139,7 +153,7 @@ echo implode(', ', $bidangNames);
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
-                                            <?php elseif ($user['level'] == 2): ?>
+
 
                                             <?php endif;?>
 
@@ -162,264 +176,7 @@ echo implode(', ', $bidangNames);
 
 
 
-<div class="modal fade" id="generateModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Tambah Akun User</h3>
-            </div>
-            <div class="card-body">
-                <form class="card-body" action="<?php echo base_url('admin/users/save') ?>" method="post"
-                    enctype="multipart/form-data" id="generateForm">
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Nama</label>
-                        <input type="text" name="name" required class="form-control" id="name"
-                            placeholder="Masukkan Nama">
-                    </div>
 
-                    <div class="form-group text-center">
-                        <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email </label>
-                        <input type="email" name="email" required class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">No Telp.</label>
-                        <input type="number" name="no_hp" required class="form-control" id="exampleFormControlInput1"
-                            placeholder="Masukan No. Telp">
-                    </div>
-
-                    <?php if (session()->get('level') == 1): ?>
-                    <input type="name" hidden value="<?=session()->get('instansi_id')?>" name="instansi_id">
-                    <div class="form-group">
-                        <label for="bidangSelect">Bidang</label>
-                        <select class="form-control" id="bidangSelect" name="bidang_id">
-                            <?php foreach ($bidangs as $bidang): ?>
-                            <option value="<?=$bidang['id']?>"><?=$bidang['name']?></option>
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-
-                    <?php elseif (session()->get('level') == 2): ?>
-                    <div class="form-group">
-                        <label for="instansiSelect">Dinas</label>
-                        <select class="form-control" id="instansiSelect" name="instansi_id">
-                            <?php foreach ($instansis as $dinas): ?>
-                            <option value="<?=$dinas['id']?>"><?=$dinas['name']?></option>
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="instansiSelect">Level Admin</label>
-                        <select class="form-control" id="instansiSelect" name="level">
-                            <option selected>Pilih Level Akun ...</option>
-                            <option value="2">Super Admin</option>
-                            <option value="1">Operator</option>
-                        </select>
-                    </div>
-                    <?php endif;?>
-
-                    <div class="form-group">
-                        <label for="Password1">Password</label>
-                        <div class="input-group">
-                            <input type="password" name="password" class="form-control" required id="Password1"
-                                placeholder="Password">
-                            <span class="input-group-text" id="togglePassword">
-                                <i class="fas fa-eye-slash"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="InputPassword2">Confirm Password</label>
-                        <div class="input-group">
-                            <input type="password" name="confirm_password" class="form-control" id="InputPassword2"
-                                placeholder="Confirm Password">
-                            <span class="input-group-text" id="toggleConfirmPassword">
-                                <i class="fas fa-eye-slash"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="text-danger" id="passwordMatchError" style="display: none;">Password tidak
-                        cocok.</div>
-                    <div class="row text-center" style="padding-bottom: 50px;">
-                        <div class="col-md-6">
-                            <button class="btn btn-danger" type="button" style="width: 150px;"
-                                data-dismiss="modal">Batal</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-success " style="width: 150px;">Tambah
-                                data</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Edit Akun User</h3>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?=$user['id']?>">
-
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Nama</label>
-                        <input type="text" value="<?=$user['name']?>" name="name" class="form-control" id="name"
-                            placeholder="Masukkan Nama">
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="name" hidden value="<?=$user['slug']?>" class="form-control" id="slug" name="slug"
-                            readonly>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email </label>
-                        <input type="email" value="<?=$user['email']?>" name="email" class="form-control"
-                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="no_telp">No Telp.</label>
-                        <input type="number" value="<?=$user['no_hp']?>" name="no_hp" class="form-control"
-                            id="exampleFormControlInput1" placeholder="Masukan No. Telp">
-                    </div>
-
-                    <?php if (session()->get('level') == 2): ?>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Dinas</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
-
-                        </select>
-                    </div>
-                    <?php elseif (session()->get('level') == 1): ?>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Bidang</label>
-                        <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
-                            <option value="<?=$bidang['id'];?>"><?=$bidang['name'];?></option>
-                            <?php foreach ($bidangs as $bid): ?>
-                            <?php if ($bid['id'] == $bidang['id']): ?>
-                            <?php else: ?>
-                            <option value="<?=$bid['id']?>"><?=$bid['name']?></option>
-                            <?php endif?>
-
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-                    <?php endif?>
-
-                    <div class="row text-center" style="padding-bottom: 50px;">
-                        <div class="col-md-6">
-                            <button class="btn btn-danger" type="button" style="width: 150px;"
-                                data-dismiss="modal">Batal</button>
-                        </div>
-
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-success " style="width: 150px;">Ubah data</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- //create -->
-<script>
-var nameInput = document.getElementById('name');
-var slugInput = document.getElementById('slug');
-const passwordInput = document.getElementById("Password1");
-const confirmInput = document.getElementById("InputPassword2");
-const togglePasswordButton = document.getElementById("togglePassword");
-const toggleConfirmPasswordButton = document.getElementById("toggleConfirmPassword");
-const passwordMatchError = document.getElementById("passwordMatchError");
-const submitButton = document.querySelector("button[type=submit]");
-
-//slug
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/\-\-+/g, '-')
-        .substring(0, 50);
-}
-
-
-nameInput.addEventListener('input', function() {
-    var nameValue = nameInput.value;
-    var slugValue = slugify(nameValue);
-    slugInput.value = slugValue;
-});
-
-
-//tombol mata
-togglePasswordButton.addEventListener("click", function() {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        togglePasswordButton.innerHTML = '<i class="fas fa-eye"></i>';
-    } else {
-        passwordInput.type = "password";
-        togglePasswordButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
-    }
-});
-toggleConfirmPasswordButton.addEventListener("click", function() {
-    if (confirmInput.type === "password") {
-        confirmInput.type = "text";
-        toggleConfirmPasswordButton.innerHTML = '<i class="fas fa-eye"></i>';
-    } else {
-        confirmInput.type = "password";
-        toggleConfirmPasswordButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
-    }
-});
-
-passwordInput.addEventListener("input", validatePassword);
-confirmInput.addEventListener("input", validatePassword);
-
-function validatePassword() {
-    const password = passwordInput.value;
-    const confirm = confirmInput.value;
-
-    if (password === confirm) {
-        passwordMatchError.style.display = "none";
-    } else {
-        passwordMatchError.style.display = "block";
-    }
-}
-
-
-//validate password
-
-
-passwordInput.addEventListener("input", validatePassword);
-
-confirmInput.addEventListener("input", validatePassword);
-
-function validatePassword() {
-    const password = passwordInput.value;
-    const confirm = confirmInput.value;
-
-    if (password === confirm) {
-
-        submitButton.disabled = false;
-    } else {
-
-        submitButton.disabled = true;
-    }
-}
-</script>
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 <script>
@@ -467,16 +224,16 @@ function confirmUpdatePassword(slug) {
     });
 }
 
-// Popup success message
-<?php if (session()->getFlashdata('success')): ?>
-Swal.fire({
-    title: 'Success',
-    text: '<?=session()->getFlashdata('success')?>',
-    icon: 'success',
-    timer: 3000,
-    showConfirmButton: false
-});
-<?php endif;?>
+// // Popup success message
+// <?php if (session()->getFlashdata('success')): ?>
+// Swal.fire({
+//     title: 'Success',
+//     text: '<?=session()->getFlashdata('success')?>',
+//     icon: 'success',
+//     timer: 3000,
+//     showConfirmButton: false
+// });
+// <?php endif;?>
 
 
 <?php if (session()->getFlashdata('error')): ?>
@@ -536,6 +293,16 @@ nameInput.addEventListener('input', function() {
     var nameValue = nameInput.value;
     var slugValue = slugify(nameValue);
     slugInput.value = slugValue;
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dismissButton = document.getElementById("dismissError");
+    const errorAlert = document.querySelector(".alert.alert-danger");
+
+    dismissButton.addEventListener("click", function() {
+        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+    });
 });
 </script>
 

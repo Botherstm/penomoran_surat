@@ -100,46 +100,53 @@ class UserController extends BaseController
         ]);
     }
 
-    public function save()
-    {
-        $rules = [
-            'instansi_id' => 'required',
-            'no_hp' => 'required|integer',
-            'slug' => 'required|is_unique[users.slug]',
-            'name' => 'required|is_unique[users.name]',
-            'email' => 'required|valid_email|is_unique[users.email]',
-        ];
-
-        if (session()->get('level') == 2) {
-            $level = $this->request->getPost('level');
-        } else {
-            $level = 0;
-        }
-        $uuid = Uuid::uuid4();
-        $uuidString = $uuid->toString();
-        $passworddefault = $this->default->getOne();
-        $password = $passworddefault['password_default'];
-        if ($this->validate($rules)) {
-            $userData = [
-                'id' => $uuidString,
-                'instansi_id' => $this->request->getPost('instansi_id'),
-                'bidang_id' => $this->request->getPost('bidang_id'),
-                'slug' => $this->request->getPost('slug'),
-                'name' => $this->request->getPost('name'),
-                'email' => $this->request->getPost('email'),
-                'no_hp' => $this->request->getPost('no_hp'),
-                'level' => $level,
-                'password' => password_hash($password['password_default'], PASSWORD_DEFAULT),
-            ];
-
-            // dd($userData, $pasnjangpassword);
-            $this->UserModel->insert($userData);
-            return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil terdaftar.');
-        } else {
-            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
-
-        }
+   public function save()
+{    
+    if (session()->get('level') == 2) {
+        $level = $this->request->getPost('level');
+    } else {
+        $level = 0;
     }
+    $rules = [
+        'no_hp' => 'required|integer',
+        'slug' => 'required',
+        'name' => 'required|is_unique[users.name]',
+        'username' => 'required|is_unique[users.username]',
+    ];
+
+
+    $uuid = Uuid::uuid4();
+    $uuidString = $uuid->toString();
+    $passworddefault = $this->default->getOne();
+    $password = $passworddefault['password_default'];
+    $data = [
+        'slug' => $this->request->getPost('slug'),
+        'name' => $this->request->getPost('name'),
+        'username' => $this->request->getPost('username'),
+        'no_hp' => $this->request->getPost('no_hp'),
+    ];
+
+    if ($this->validate($rules)) {
+        $userData = [
+            'id' => $uuidString,
+            'instansi_id' => $this->request->getPost('instansi_id'),
+            'bidang_id' => $this->request->getPost('bidang_id'),
+            'slug' =>$data['slug'],
+            'name' => $data['name'],
+            'username' =>$data['username'],
+            'no_hp' => $data['no_hp'],
+            'level' => $level,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+        ];
+        // dd($userData);
+        $this->UserModel->insert($userData);
+        return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil didaftarkan.');
+    } else {
+        session()->setFlashData('data', $data);
+        return redirect()->back()->with('errors', service('validation')->getErrors());
+    }
+}
+
 
     public function edit($slug)
     {
@@ -164,47 +171,41 @@ class UserController extends BaseController
         $instansi = $this->dinas->getAllById($instansiId);
         return json_encode($instansi); // Mengembalikan data dalam format JSON
     }
-    public function update($id)
+   public function update($id)
     {
         $rules = [
-            'instansi_id' => 'required',
-            'name' => 'required',
-            'slug' => 'required',
             'no_hp' => 'required|integer',
-            'email' => 'required|valid_email',
+            'slug' => 'required',
+            'name' => "required|is_unique[users.name,id,{$id}]",
+            'username' => "required|is_unique[users.username,id,{$id}]",
         ];
 
-        $validation = \Config\Services::validation(); // Mendapatkan instance validasi
+        $data = [
+            'slug' => $this->request->getPost('slug'),
+            'name' => $this->request->getPost('name'),
+            'username' => $this->request->getPost('username'),
+            'no_hp' => $this->request->getPost('no_hp'),
+        ];
 
-        $gambar = $this->request->getFile('gambar');
-
-        if ($gambar) {
-            $uuid = Uuid::uuid4();
-            $uuidString = $uuid->toString();
-
-            $namaGambar = $uuidString . $gambar->getClientName();
-            $gambar->move(ROOTPATH . 'public/img', $namaGambar);
-        }
         if ($this->validate($rules)) {
             // Data pengguna yang akan disimpan
             $userData = [
                 'instansi_id' => $this->request->getPost('instansi_id'),
                 'bidang_id' => $this->request->getPost('bidang_id'),
-                'slug' => $this->request->getPost('slug'),
-                'name' => $this->request->getPost('name'),
-                'email' => $this->request->getPost('email'),
-                'gambar' => $namaGambar??null,
-                'no_hp' => $this->request->getPost('no_hp'),
+                'slug' => $data['slug'],
+                'name' => $data['name'],
+                'username' => $data['username'],
+                'no_hp' => $data['no_hp'],
             ];
-
-            // dd($userData);
 
             $this->UserModel->update($id, $userData);
             return redirect()->to(base_url('/admin/users'))->with('success', 'Akun berhasil Di Update !');
         } else {
-            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+            session()->setFlashData('data', $data);
+            return redirect()->back()->with('errors', service('validation')->getErrors());
         }
     }
+
 
     public function updateData()
     {
@@ -217,7 +218,7 @@ class UserController extends BaseController
             'name' => 'required',
             'slug' => 'required',
             'no_hp' => 'required|integer',
-            'email' => 'required|valid_email',
+            'username' => 'required|valid_email',
         ];
 
         if (!empty($password_baru)) {
@@ -231,7 +232,7 @@ class UserController extends BaseController
                     $userData = [
                         'slug' => $this->request->getPost('slug'),
                         'name' => $this->request->getPost('name'),
-                        'email' => $this->request->getPost('email'),
+                        'username' => $this->request->getPost('username'),
                         'no_hp' => $this->request->getPost('no_hp'),
                         'password' => password_hash($password_baru, PASSWORD_DEFAULT), // Hash password baru
                     ];
@@ -243,7 +244,7 @@ class UserController extends BaseController
                 $userData = [
                     'slug' => $this->request->getPost('slug'),
                     'name' => $this->request->getPost('name'),
-                    'email' => $this->request->getPost('email'),
+                    'username' => $this->request->getPost('username'),
                     'no_hp' => $this->request->getPost('no_hp'),
                 ];
             }
@@ -304,7 +305,7 @@ class UserController extends BaseController
             'name' => 'required',
             'slug' => 'required',
             'no_hp' => 'required|integer',
-            'email' => 'required|valid_email',
+            'username' => 'required|valid_email',
         ];
         $id = $this->request->getFile('id');
         if ($this->validate($rules)) {
@@ -312,7 +313,7 @@ class UserController extends BaseController
             $userData = [
                 'name' => $this->request->getPost('name'),
                 'slug' => $this->request->getPost('slug'),
-                'email' => $this->request->getPost('email'),
+                'username' => $this->request->getPost('username'),
                 'no_hp' => $this->request->getPost('no_hp'),
             ];
             $this->UserModel->update($id, $userData);

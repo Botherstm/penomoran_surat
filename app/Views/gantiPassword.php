@@ -59,7 +59,7 @@
                                         <div class="input-group justify-content-center my-4">
                                             <h2>Reset Password</h2>
                                         </div>
-                                        <input type="hidden" name="email" value="<?=$email;?>">
+                                        <input type="hidden" name="username" value="<?=$username;?>">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password Baru</label>
                                             <div class="input-group">
@@ -97,7 +97,7 @@
                                             <button type="button" class="btn btn-danger"
                                                 style="width: 100px">Batal</button>
                                         </a>
-                                        <button type="submit" disabled id="submitButton" class="btn btn-primary"
+                                        <button type="button" id="submitButton" class="btn btn-primary"
                                             style="width: 100px" onclick="validatePassword()">Submit</button>
                                     </div>
                                 </form>
@@ -117,6 +117,7 @@
         const confirmPasswordInput = document.getElementById("exampleInputPassword2");
         const passwordIcon = document.getElementById("passwordIcon");
         const confirmPasswordIcon = document.getElementById("confirmPasswordIcon");
+        const confirmPasswordHelp = document.getElementById("confirmPasswordHelp");
 
         passwordIcon.addEventListener("click", function() {
             togglePassword('exampleInputPassword1', 'passwordIcon');
@@ -137,48 +138,60 @@
                 passwordInput.type = "password";
                 passwordIcon.className = "fas fa-eye-slash";
             }
-
-            // Validate password after toggling visibility
-            validatePassword();
         }
+
+        function validatePassword() {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+
+            // Reset previous error messages
+            confirmPasswordHelp.innerText = "";
+            document.getElementById("passwordHelp").innerText = "";
+
+            // Password strength validation
+            var lowercaseRegex = /[a-z]/;
+            var uppercaseRegex = /[A-Z]/;
+            var digitRegex = /[0-9]/;
+
+            var passwordStrengthValid =
+                lowercaseRegex.test(password) && uppercaseRegex.test(password) && digitRegex.test(password);
+
+            // Check if passwords match
+            var passwordsMatch = password === confirmPassword;
+
+            // Update error messages
+            if (!passwordStrengthValid) {
+                document.getElementById("passwordHelp").innerText =
+                    "Password harus mengandung setidaknya 1 huruf kecil, 1 huruf besar, dan 1 angka.";
+            }
+
+            if (!passwordsMatch) {
+                confirmPasswordHelp.innerText = "Password tidak sesuai";
+            } else {
+                confirmPasswordHelp.innerText = ""; // Hapus pesan kesalahan
+            }
+
+            // Enable or disable the submit button based on conditions
+            var submitButton = document.getElementById("submitButton");
+            submitButton.disabled = !passwordStrengthValid || !passwordsMatch;
+        }
+
+        // Add event listener for input changes in confirmPassword field
+        confirmPasswordInput.addEventListener("input", validatePassword);
+
+        // Add event listener for the submit button
+        document.getElementById("submitButton").addEventListener("click", function(event) {
+            // Prevent form submission if conditions are not met
+            if (document.getElementById("submitButton").disabled) {
+                event.preventDefault();
+            } else {
+                // Submit the form
+                document.getElementById("quickForm").submit();
+            }
+        });
     });
-
-    function validatePassword() {
-        var password = document.getElementById("exampleInputPassword1").value;
-        var confirmPassword = document.getElementById("exampleInputPassword2").value;
-
-        // Reset previous error messages
-        document.getElementById("confirmPasswordHelp").innerText = "";
-        document.getElementById("passwordHelp").innerText = "";
-
-        // Password strength validation
-        var lowercaseRegex = /[a-z]/;
-        var uppercaseRegex = /[A-Z]/;
-        var digitRegex = /[0-9]/;
-
-        var passwordStrengthValid =
-            lowercaseRegex.test(password) && uppercaseRegex.test(password) && digitRegex.test(password);
-
-        // Check if passwords match
-        var passwordsMatch = password === confirmPassword;
-
-        // Update error messages
-        if (!passwordStrengthValid) {
-            document.getElementById("passwordHelp").innerText =
-                "Password harus mengandung setidaknya 1 huruf kecil, 1 huruf besar, dan 1 angka.";
-        }
-
-        if (!passwordsMatch) {
-            document.getElementById("confirmPasswordHelp").innerText = "Password tidak sesuai";
-        }
-
-        // Enable or disable the submit button based on conditions
-        var submitButton = document.getElementById("submitButton");
-        submitButton.disabled = !passwordStrengthValid || !passwordsMatch;
-
-        return passwordStrengthValid && passwordsMatch;
-    }
     </script>
+
 
 </body>
 

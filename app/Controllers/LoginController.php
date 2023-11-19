@@ -70,17 +70,17 @@ class LoginController extends BaseController
             return redirect()->back()->withInput()->with('errors', 'Silakan verifikasi reCAPTCHA terlebih dahulu.');
         } else {
             session();
-            $email = $this->request->getPost('email');
+            $username = $this->request->getPost('username');
             $password = (string) $this->request->getPost('password');
-            // Cari pengguna berdasarkan email
-            $user = $this->userModel->where('email', $email)->first();
+            // Cari pengguna berdasarkan username
+            $user = $this->userModel->where('username', $username)->first();
 
             if ($user && password_verify($password, $user['password'])) {
                   $default = $this->default_password->getOne();
                 // Periksa apakah password sesuai
                     if ($password == $default['password_default']) {
                         return view("gantiPassword", [
-                            'email' => $email,
+                            'username' => $username,
                         ]);
                     } else {
                         $userData = [
@@ -89,7 +89,7 @@ class LoginController extends BaseController
                             'bidang_id' => $user['bidang_id'],
                             'slug' => $user['slug'],
                             'name' => $user['name'],
-                            'email' => $user['email'],
+                            'username' => $user['username'],
                             'no_hp' => $user['no_hp'],
                             'gambar' => $user['gambar'],
                             'level' => $user['level'],
@@ -102,21 +102,20 @@ class LoginController extends BaseController
             } else {
                 $loginAttempts++;
                 session()->set('login_attempts', $loginAttempts);
+
                 if ($loginAttempts == 3) {
                     $cooldownDuration = 60; // cooldown selama 1 menit
                     $cooldownTime = time() + $cooldownDuration;
                     session()->set('cooldown_time', $cooldownTime);
-                }
-                elseif ($loginAttempts >= 4 && $loginAttempts < 6) {
-                $cooldownDuration = 300; // cooldown selama 5 menit
-                $cooldownTime = time() + $cooldownDuration;
-                session()->set('cooldown_time', $cooldownTime);
+                } elseif ($loginAttempts >= 4 && $loginAttempts < 6) {
+                    $cooldownDuration = 300; // cooldown selama 5 menit
+                    $cooldownTime = time() + $cooldownDuration;
+                    session()->set('cooldown_time', $cooldownTime);
                 } elseif ($loginAttempts >= 6) {
-                    // Blokir IP dan simpan ke database
-                    // $this->blockIP($this->request->getIPAddress());
                     return redirect()->back()->withInput()->with('errors', 'IP Anda telah diblokir karena percobaan login yang berulang.');
+                } else {
+                    return redirect()->back()->withInput()->with('errors', 'Invalid username or password');
                 }
-                return redirect()->back()->withInput()->with('errors', 'Invalid email or password');
             }
         }
 
@@ -125,7 +124,7 @@ class LoginController extends BaseController
     public function logout()
     {
         // Hapus data pengguna dari session
-        session()->remove(['user_id', 'instansi_id', 'bidang_id', 'slug', 'nip', 'name', 'email', 'no_hp', 'level']);
+        session()->remove(['user_id', 'instansi_id', 'bidang_id', 'slug', 'nip', 'name', 'username', 'no_hp', 'level']);
         return redirect()->to(base_url('/'));
     }
 

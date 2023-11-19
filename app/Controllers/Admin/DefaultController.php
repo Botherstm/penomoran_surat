@@ -22,6 +22,12 @@ class DefaultController extends BaseController
    
       public function index()
     {
+        if (!session()->has('user_id')) {
+           return redirect()->to(base_url('/login'));
+        }
+        if (session()->get('level') != 2) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
         $default = $this->default_password->getOne();
         // dd($default);
         return view('admin/defaultpassword/index', [
@@ -31,6 +37,12 @@ class DefaultController extends BaseController
     }
     public function update()
     {
+        if (!session()->has('user_id')) {
+           return redirect()->to(base_url('/login'));
+        }
+        if (session()->get('level') != 2) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
         $rules = [
             'password' => 'required',
         ];

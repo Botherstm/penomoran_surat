@@ -186,9 +186,9 @@ class LupaPasswordController extends BaseController
 
     public function ubahPassword()
     {
-        $email = $this->request->getPost('email');
+        $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
-        $user = $this->userModel->where('email', $email)->first();
+        $user = $this->userModel->where('username', $username)->first();
         if ($user) {
             // Hash password baru
             $userData = [
