@@ -177,7 +177,7 @@
                             </span>
                         </div>
                         <div class="text-danger" id="passwordStrengthError" style="display: none;">password setidaknya
-                            memiliki 1 hurf kecil 1 hruf besar dan 1 angka</div>
+                            memiliki 1 huruf kecil, 1 huruf besar, 1 angka dan 8 karakter</div>
                     </div>
                     <div class="form-group">
                         <label for="InputPassword2">Confirm Password Baru</label>
@@ -319,7 +319,11 @@ function validatePassword() {
     const isUppercase = uppercaseRegex.test(password);
     const isDigit = digitRegex.test(password);
 
-    const isPasswordValid = isLowercase && isUppercase && isDigit;
+    // Check for minimum length of 8 characters
+    const isMinimumLength = password.length >= 8;
+
+    const isPasswordValid = isLowercase && isUppercase && isDigit && isMinimumLength;
+
 
     const passwordStrengthError = document.getElementById("passwordStrengthError");
 
