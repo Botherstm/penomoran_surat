@@ -16,10 +16,8 @@
         "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.8",
         "intervention/image": "^2.7",
-        "mpdf/mpdf": "^8.2",
-        "ramsey/uuid": "^4.2",
-        "setasign/fpdf": "1.8.*",
-        "setasign/fpdi": "^2.3"
+        "ramsey/uuid": "^4.2"
+ 
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

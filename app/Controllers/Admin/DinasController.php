@@ -21,12 +21,7 @@ class DinasController extends BaseController
     {
 
         if (!session()->has('user_id')) {
-            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-            // dd($siteKey);
-            return view('login', [
-                'validation' => \Config\Services::validation(),
-                'key' => $siteKey,
-            ]);
+           return redirect()->to(base_url('/login'));
         }
         if (session()->get('level') != 2) {
             // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
@@ -52,7 +47,14 @@ class DinasController extends BaseController
     }
 
     public function create()
-    {
+    {   
+        if (!session()->has('user_id')) {
+           return redirect()->to(base_url('/login'));
+        }
+          if (session()->get('level') != 2) {
+            // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
         return view('admin/dinas/create', [
             'active' => 'dinas',
         ]);

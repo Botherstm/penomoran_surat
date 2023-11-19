@@ -5,15 +5,17 @@
 
 
     <a class="brand-link bg-teal">
-    <div class="row align-items-center">
-        <div class="col-auto">
-            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="40" width="65">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="40"
+                    width="65">
+            </div>
+            <div class="col-auto">
+                <span class="brand-text font-weight-bold"
+                    style="text-shadow: 2px 2px 1px grey; padding-top: 10px; ">E-NOMOR Admin</span>
+            </div>
         </div>
-        <div class="col-auto">
-            <span class="brand-text font-weight-bold" style="text-shadow: 2px 2px 1px grey; padding-top: 10px; " >E-NOMOR Admin</span>
-        </div>
-    </div>
-</a>
+    </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="padding-top: 10px; align-items: center;">
             <?php if (session()->get('gambar') !== null): ?>
@@ -91,6 +93,16 @@
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Kategori
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="<?php echo base_url('admin/defaultPassword') ?>"
+                        class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'defaultPassword') ? 'active bg-success  shadow-lg' : '';?>">
+                        <i class="nav-icon fas fa-lock"></i>
+                        <p>
+                            Password Default
                         </p>
                     </a>
                 </li>

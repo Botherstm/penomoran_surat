@@ -37,12 +37,7 @@ class HomeController extends BaseController
     public function index()
     {
         if (!session()->has('user_id')) {
-            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-            // dd($siteKey);
-            return view('login', [
-                'validation' => \Config\Services::validation(),
-                'key' => $siteKey,
-            ]);
+           return redirect()->to(base_url('/login'));
         }
         if (session()->get('level') == 1 || session()->get('level') == 2) {
             return redirect()->to(base_url('/admin'));
@@ -75,12 +70,7 @@ class HomeController extends BaseController
     public function create()
     {
         if (!session()->has('user_id')) {
-            $siteKey = $_ENV['RECAPTCHA_SITE_KEY'];
-            // dd($siteKey);
-            return view('login', [
-                'validation' => \Config\Services::validation(),
-                'key' => $siteKey,
-            ]);
+           return redirect()->to(base_url('/login'));
         }
         if (session()->get('level') == 1 || session()->get('level') == 2) {
             return redirect()->to(base_url('/admin'));
