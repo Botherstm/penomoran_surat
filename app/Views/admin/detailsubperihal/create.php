@@ -28,11 +28,6 @@
                         <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
                     </div>
                 <?php endif; ?>
-<<<<<<< HEAD
-
-                <div class="card-header">
-                    <h3 class="card-title" style="font-weight: bold;">Buat Data DetailPerihal
-=======
                 <?php if (session('error')) : ?>
                     <div class="alert alert-danger">
                         <ul>
@@ -41,9 +36,16 @@
                         <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
                     </div>
                 <?php endif; ?>
+                <?php if (session('success')) : ?>
+                    <div class="alert alert-success">
+                        <ul>
+                            <li><?= (session('success')) ?></li>
+                        </ul>
+                        <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
+                    </div>
+                <?php endif; ?>
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">Buat Data Detail Perihal
->>>>>>> 072509cd26a4e8bb10ebe57c29eaf987f58765f6
                         <?= $subperihal['name']; ?></h3>
                 </div>
                 <div class="card-body">

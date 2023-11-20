@@ -239,10 +239,11 @@ function confirmDelete() {
         text: 'Jika dihapus Foto tidak bisa di kembalikan.',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
+        confirmButtonColor: '#28a745',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             const form = document.getElementById('deleteForm');

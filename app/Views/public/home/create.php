@@ -35,21 +35,24 @@
                 <div class="card-body">
                     <form class="card-body " action="<? base_url('generate/save') ?>" method="post"
                         enctype="multipart/form-data" id="generateForm">
+                        <div class="row" >
+                        <div class="col-sm-6 form-group">
+                            <label for="nomorSurat">Dinas</label>
+                            <input type="name" value="<?=$dinas['name'];?>" class="form-control form-control-border"
+                                name="instansi" id="dinas" readonly>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="nomorSurat">Bidang</label>
+                            <input type="text" value="<?=$bidang['name'];?>" class="form-control" name="bidang"
+                                id="bidang" readonly>
+                        </div>
+                        </div>
                         <div class="form-group">
                             <label for="tanggal">Tanggal Surat</label>
                             <input type="date" name="tanggal" max="<?=$tanggalmax;?>" class="form-control" id="tanggal"
                                 required>
                         </div>
-                        <div class="form-group">
-                            <label for="nomorSurat">Dinas</label>
-                            <input type="name" value="<?=$dinas['name'];?>" class="form-control form-control-border"
-                                name="instansi" id="dinas" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="nomorSurat">Bidang</label>
-                            <input type="text" value="<?=$bidang['name'];?>" class="form-control" name="bidang"
-                                id="bidang" readonly>
-                        </div>
+                        
                         <div class="form-group">
                             <label for="urutan">Urutan Surat</label>
                             <input type="text" class="form-control" value="<?=$urutan;?>" name="urutan" id="urutan"

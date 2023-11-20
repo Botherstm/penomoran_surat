@@ -4,10 +4,10 @@
     <!-- ready -->
 
 
-    <a class="brand-link bg-teal " >
+    <a class="brand-link bg-teal " style="height: 58px;" >
         <div class="row"  >
         <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65" >
-        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 10px;" >E-NOMOR</span>
+        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 5px;" >E-NOMOR</span>
         </div>
     
         
@@ -29,11 +29,11 @@
         <!-- SidebarSearch Form -->
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column " role="menu" data-accordion="false" style="padding-bottom: 25em;">
+        <nav class="mt-2" >
+            <ul class="nav nav-pills nav-sidebar flex-column " role="menu" data-accordion="false" >
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item">
+                <li class="nav-item" style="padding-bottom: 34em;">
                     <a href="<?php echo base_url('/') ?>" class="nav-link <?= $active == 'home' ? 'active bg-success' : ''; ?>">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
@@ -45,7 +45,7 @@
 
             </ul>
 
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"  >
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class=" nav-item ">

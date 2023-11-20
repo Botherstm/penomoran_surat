@@ -4,16 +4,12 @@
 
 
 
-    <a class="brand-link bg-teal">
+    <a class="brand-link bg-teal" style="height: 58px;" >
         <div class="row align-items-center">
-            <div class="col-auto">
-                <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" height="40"
-                    width="65">
-            </div>
-            <div class="col-auto">
-                <span class="brand-text font-weight-bold"
-                    style="text-shadow: 2px 2px 1px grey; padding-top: 10px; ">E-NOMOR Admin</span>
-            </div>
+            
+   
+        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65" >
+        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 5px;" >E-NOMOR Admin</span>
         </div>
     </a>
     <div class="sidebar">
@@ -36,7 +32,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2 ">
             <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false"
-                style=" padding-bottom: 16em; ">
+                style=" padding-bottom: 22em; ">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">

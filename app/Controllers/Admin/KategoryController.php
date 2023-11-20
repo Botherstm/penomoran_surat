@@ -77,7 +77,7 @@ class KategoryController extends BaseController
             // dd($data);
             $this->Kategory->insert($data);
 
-            return redirect()->to(base_url('/admin/kategori'))->with('success', 'Data Kategory berhasil disimpan.');
+            return redirect()->to(base_url('/admin/kategori/create'))->with('success', 'Data Kategory berhasil disimpan.');
         } else {
             // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
             return redirect()->back()->with('error', 'periksa apakah data sudah terisi dengan benar');

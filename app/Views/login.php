@@ -35,6 +35,13 @@
                     </div>
                     <?php endif;?>
 
+                    <?php if ($cooldownTime > time()): ?>
+                        <div id="cooldown-info" class="alert alert-warning" role="alert" >
+                            Anda telah mencoba login beberapa kali. Silakan coba lagi dalam <span
+                                id="cooldown-counter"></span> detik.
+                        </div>
+                        <?php endif; ?>
+
                     <!-- Logo Aplikasi -->
                     <div class="col-md-5">
                         <div class="card shadow-lg bg-success bg-gradient text-white "
@@ -78,15 +85,10 @@
                         </div>
                     </div>
 
-
+ 
                     <!-- Form Login -->
                     <div class="col-md-4 mt-2">
-                        <?php if ($cooldownTime > time()): ?>
-                        <div id="cooldown-info" class="alert alert-warning" role="alert">
-                            Anda telah mencoba login beberapa kali. Silakan coba lagi dalam <span
-                                id="cooldown-counter"></span> detik.
-                        </div>
-                        <?php endif; ?>
+                        
                         <div class="card shadow-lg p-3 bg-dark bg-gradient" style="height: 95%; --bs-bg-opacity: .1;">
                             <div class="card-body">
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">

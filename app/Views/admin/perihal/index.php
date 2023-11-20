@@ -197,10 +197,11 @@ function confirmDelete(slug) {
         text: 'Jika dihapus data tidak bisa di kembalikan.',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
+        confirmButtonColor: '#28a745 ',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
