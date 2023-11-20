@@ -162,9 +162,10 @@ function confirmGenerate() {
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#35DC5C',
-            cancelButtonColor: '#A91C1C',
+            cancelButtonColor: '#6c757d',
             confirmButtonText: 'Generate',
-            cancelButtonText: 'Cancel'
+            cancelButtonText: 'Cancel',
+            reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
                 const form = document.getElementById('generateForm');
