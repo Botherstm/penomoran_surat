@@ -17,11 +17,11 @@
 
     <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item d-none d-sm-inline-block font-weight-bold">
-            <a href="/" class="nav-link text-light ">Home</a>
-        </li>
+     
         <li class="nav-item d-none d-sm-inline-block font-weight-bold ">
-            <a href="/tentang" class="nav-link text-light">Contact</a>
+            <a href="/logout" class="nav-link text-light">
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
