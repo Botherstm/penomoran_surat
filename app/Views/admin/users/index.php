@@ -190,10 +190,11 @@ function confirmDelete(slug) {
         text: 'Jika dihapus data tidak bisa di kembalikan.',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
         cancelButtonColor: '#6c757d',
+        confirmButtonColor: '#28a745 ',
         confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
@@ -210,10 +211,11 @@ function confirmUpdatePassword(slug) {
         text: 'jika kamu mereset password user akan memasukan ulang password',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
         cancelButtonColor: '#6c757d',
+        confirmButtonColor: '#28a745 ',
         confirmButtonText: 'Reset Password',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             // Menggunakan slug yang diterima sebagai bagian dari URL saat mengirim form
