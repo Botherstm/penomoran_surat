@@ -96,8 +96,8 @@
                             <input type="text" required name="nomor" class="form-control" id="nomorSurat" readonly>
                         </div>
                         <div class="form-group d-flex justify-content-between">
-                            <a href="<?=base_url('/');?>"><button class="btn btn-danger" type="button" style="width: 150px;"
-                                    data-dismiss="modal">Batal</button></a>
+                            <a href="<?=base_url('/');?>"><button class="btn btn-danger" type="button"
+                                    style="width: 150px;" data-dismiss="modal">Batal</button></a>
                             <button class="btn btn-success" type="button" id="generateButton"
                                 onclick="confirmGenerate()" style="width: 150px;">Generate</button>
                         </div>
@@ -148,9 +148,9 @@ Swal.fire({
 
 
 function confirmGenerate() {
-    var tanggalSurat = document.getElementById("tanggalSurat").value;
+    var tanggal = document.getElementById("tanggal").value;
     var kategori = document.getElementById("kategori").value;
-    if (tanggalSurat && kategori !== "Pilih kategori...") {
+    if (tanggal && kategori !== "Pilih kategori...") {
         // Jika semua data diisi, aktifkan tombol "Generate"
         document.getElementById("generateButton").removeAttribute("disabled");
         Swal.fire({
