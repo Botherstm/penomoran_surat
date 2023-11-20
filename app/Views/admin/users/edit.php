@@ -6,16 +6,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-            <?php if (session('errors')): ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php foreach (session('errors') as $error): ?>
-                    <li><?=esc($error)?></li>
-                    <?php endforeach;?>
-                </ul>
-                <button id="dismissError" class="btn btn-primary">Ok</button>
-            </div>
-            <?php endif;?>
+
             <!-- Main content -->
             <!-- <div class="row jarak ">
                     <div class="card-tools">
@@ -26,19 +17,22 @@
                     </div>
                 </div> -->
 
-            <div class="card card-success" >
+            <div class="card card-success">
 
 
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">Edit User</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="<?php echo base_url('admin/users/update/') ?><?= $user['id'] ?>">
+                    <form method="POST" action="<?= base_url('admin/users/update/') ?><?= $user['id'] ?>">
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nama</label>
-                            <input type="text" value="<?= $user['name'] ?>" name="name" class="form-control" id="name"
-                                placeholder="Masukkan NIP">
+                            <input type="text" value="<?= esc(session('data.name') ?? $user['name'] ) ?>" name="name"
+                                class="form-control" id="name" placeholder="Masukkan NIP">
+                            <?php if(session("errors.name")): ?>
+                            <div class="text-danger"><?= esc(session("errors.name")) ?></div>
+                            <?php endif ?>
                         </div>
                         <div class="form-group text-center">
                             <input type="name" hidden value="<?= $user['slug'] ?>" class="form-control" id="slug"
@@ -46,10 +40,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email </label>
-                            <input type="email" value="<?= $user['email'] ?>" name="email" class="form-control"
-                                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="exampleFormControlInput1">Username</label>
+                            <input type="text" readonly value="<?= $user['username'] ?>" name="username"
+                                class="form-control">
+                            <?php if(session("errors.username")): ?>
+                            <div class="text-danger"><?= esc(session("errors.username")) ?></div>
+                            <?php endif ?>
                         </div>
+
 
                         <div class="form-group">
                             <label for="no_telp">No Telp.</label>
@@ -57,7 +55,8 @@
                                 id="exampleFormControlInput1" placeholder="Masukan No. Telp">
                         </div>
 
-                        <?php if(session()->get('level') == 2): ?>
+
+                        <?php if($user['level'] == 1): ?>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Dinas</label>
                             <select class="form-control" id="exampleFormControlSelect1" name="instansi_id">
@@ -67,11 +66,9 @@
                                 <?php else: ?>
                                 <option value="<?= $dinas['id'] ?>"><?= $dinas['name'] ?></option>
                                 <?php endif ?>
-
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <?php elseif(session()->get('level') == 1): ?>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Bidang</label>
                             <select class="form-control" name="bidang_id" id="exampleFormControlSelect1">
@@ -88,7 +85,7 @@
                         <?php endif ?>
 
                         <div class="row text-center" style="padding-bottom: 30px; padding-top: 20px;">
-                            <div class="col-md-6 d-flex" style="justify-content: start;" >
+                            <div class="col-md-6 d-flex" style="justify-content: start;">
                                 <a href="<?php echo base_url('admin/users') ?>">
                                     <button type="button" class="btn btn-danger" style="width: 150px;">Batal</button>
                                 </a>

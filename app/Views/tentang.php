@@ -145,22 +145,14 @@
                                 <div class="row g-0" style="display: flex; justify-content: center; ">
                                     <div class="card-wrapper">
                                         <div class="col">
-                                            <img src="<?php echo base_url('/img/yasoda.jpeg') ?>" style="border-radius: 100%;" class="profile-img" id="profile-img-yasoda">
-                                            <h5 class="card-text" style="font-weight: bold; display: flex; text-align: center;  " id="profile-name-yasoda">Yasoda</h5>
+                                            <img src="<?php echo base_url('/img/yasoda.jpeg') ?>" style="border-radius: 100%; margin-left: 10%; " class="profile-img" id="profile-img-yasoda">
+                                            <h5 class="card-text" style="font-weight: bold; display: flex; text-align: center;  " id="profile-name-yasoda">I Gede Arya Yasoda Putra</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
 
-                                        <h5 style="font-weight: bold;">I Gede Arya Yasoda Putra</h5>
-                                        <p>Front End</p>
-                                        <div>
-                                            <a href=""><i class="fa-brands fa-instagram fa-2xl" style="color: #fc034e;"></i></a>
-                                            <a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a>
-                                        </div>
-
-
                                         <div class="profile-info " id="profile-info-yasoda">
-                                            <h5 class="card-text" style="font-weight: bold; padding-left: 40px;">Yasoda</h5>
+                                        <h5 class="card-text" style="font-weight: bold; padding-left: 40px; font-size: medium; ">I Gede Arya Yasoda Putra</h5>
                                             <ul class="card-text">
                                                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos cum unde repudiandae asperiores sint exercitationem, saepe possimus aspernatur dolores corporis laboriosam sapiente incidunt sunt quam, nobis cupiditate temporibus nam illum.</li>
                                             </ul>

@@ -37,9 +37,9 @@
                                     <td><?=$user['name'];?></td>
                                 </tr>
                                 <tr>
-                                    <th>Email</th>
+                                    <th>Username</th>
                                     <td>:</td>
-                                    <td><?=$user['email'];?></td>
+                                    <td><?=$user['username'];?></td>
                                 </tr>
                                 <tr>
                                     <th>No Telepon</th>
@@ -145,8 +145,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email </label>
-                        <input type="email" value="<?=$user['email']?>" name="email" class="form-control"
+                        <label for="exampleInputEmail1">Username </label>
+                        <input type="name" readonly value="<?=$user['username']?>" name="username" class="form-control"
                             id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
 
@@ -176,6 +176,8 @@
                                 <i class="far fa-eye"></i>
                             </span>
                         </div>
+                        <div class="text-danger" id="passwordStrengthError" style="display: none;">password setidaknya
+                            memiliki 1 huruf kecil, 1 huruf besar, 1 angka dan 8 karakter</div>
                     </div>
                     <div class="form-group">
                         <label for="InputPassword2">Confirm Password Baru</label>
@@ -223,62 +225,6 @@ const togglePasswordButton = document.getElementById("togglePassword");
 const toggleConfirmPasswordButton = document.getElementById("toggleConfirmPassword");
 const passwordMatchError = document.getElementById("passwordMatchError");
 
-// Toggle password visibility for the "Password" field
-togglePasswordButton.addEventListener("click", function() {
-    togglePasswordVisibility(passwordInput, togglePasswordButton);
-});
-toggleOldPasswordButton.addEventListener("click", function() {
-    togglePasswordVisibility(passwordLamaInput, toggleOldPasswordButton);
-});
-
-// Toggle password visibility for the "Confirm Password" field
-toggleConfirmPasswordButton.addEventListener("click", function() {
-    togglePasswordVisibility(confirmInput, toggleConfirmPasswordButton);
-});
-
-passwordInput.addEventListener("input", validatePassword);
-confirmInput.addEventListener("input", validatePassword);
-
-function togglePasswordVisibility(inputField, toggleButton) {
-    const type = inputField.getAttribute("type");
-    if (type === "password") {
-        inputField.setAttribute("type", "text");
-        toggleButton.innerHTML = '<i class="far fa-eye-slash"></i>';
-    } else {
-        inputField.setAttribute("type", "password");
-        toggleButton.innerHTML = '<i class="far fa-eye"></i>';
-    }
-}
-
-function validatePassword() {
-    const password = passwordInput.value;
-    const confirm = confirmInput.value;
-
-    if (password === confirm) {
-        passwordMatchError.style.display = "none";
-    } else {
-        passwordMatchError.style.display = "block";
-    }
-
-    // Disable the submit button if passwords don't match
-    const submitButton = document.getElementById("submitButton");
-    if (password === confirm) {
-        submitButton.disabled = false;
-    } else {
-        submitButton.disabled = true;
-    }
-}
-
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/\-\-+/g, '-')
-        .substring(0, 50);
-}
-
-
 nameInput.addEventListener('input', function() {
     var nameValue = nameInput.value;
     var slugValue = slugify(nameValue);
@@ -293,10 +239,11 @@ function confirmDelete() {
         text: 'Jika dihapus Foto tidak bisa di kembalikan.',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
+        confirmButtonColor: '#28a745',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Delete',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             const form = document.getElementById('deleteForm');
@@ -331,25 +278,98 @@ document.getElementById('upload_image').addEventListener('change', function() {
 });
 
 
-$(document).ready(function() {
-    $("#ubahNamaBtn").click(function(e) {
-        e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
-        $("#formUbahNama").toggle();
-    });
+
+
+// Toggle password visibility for the "Password" field
+togglePasswordButton.addEventListener("click", function() {
+    togglePasswordVisibility(passwordInput, togglePasswordButton);
 });
-</script>
-<script>
+toggleOldPasswordButton.addEventListener("click", function() {
+    togglePasswordVisibility(passwordLamaInput, toggleOldPasswordButton);
+});
+
+// Toggle password visibility for the "Confirm Password" field
+toggleConfirmPasswordButton.addEventListener("click", function() {
+    togglePasswordVisibility(confirmInput, toggleConfirmPasswordButton);
+});
+
+passwordInput.addEventListener("input", validatePassword);
+confirmInput.addEventListener("input", validatePassword);
+
+function togglePasswordVisibility(inputField, toggleButton) {
+    const type = inputField.getAttribute("type");
+    if (type === "password") {
+        inputField.setAttribute("type", "text");
+        toggleButton.innerHTML = '<i class="far fa-eye-slash"></i>';
+    } else {
+        inputField.setAttribute("type", "password");
+        toggleButton.innerHTML = '<i class="far fa-eye"></i>';
+    }
+}
+
+function validatePassword() {
+    const password = passwordInput.value;
+    const confirm = confirmInput.value;
+
+    const lowercaseRegex = /[a-z]/;
+    const uppercaseRegex = /[A-Z]/;
+    const digitRegex = /\d/;
+
+    const isLowercase = lowercaseRegex.test(password);
+    const isUppercase = uppercaseRegex.test(password);
+    const isDigit = digitRegex.test(password);
+
+    // Check for minimum length of 8 characters
+    const isMinimumLength = password.length >= 8;
+
+    const isPasswordValid = isLowercase && isUppercase && isDigit && isMinimumLength;
+
+
+    const passwordStrengthError = document.getElementById("passwordStrengthError");
+
+    if (isPasswordValid) {
+        passwordStrengthError.style.display = "none";
+    } else {
+        passwordStrengthError.style.display = "block";
+    }
+    if (password === confirm) {
+        passwordMatchError.style.display = "none";
+    } else {
+        passwordMatchError.style.display = "block";
+    }
+
+    // Disable the submit button if passwords don't match or password is not valid
+    const submitButton = document.getElementById("submitButton");
+    if (password === confirm && isPasswordValid) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
+}
+
+
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .substring(0, 50);
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const dismissButton = document.getElementById("dismissError");
     const errorAlert = document.querySelector(".alert.alert-danger");
 
     dismissButton.addEventListener("click", function() {
-        errorAlert.style.display = "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
+        errorAlert.style.display =
+            "none"; // Menyembunyikan pesan kesalahan saat tombol "Ok" ditekan
     });
 });
-</script>
-<script>
+
 $(document).ready(function() {
     $("#ubahEmailBtn").click(function(e) {
         e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
@@ -358,13 +378,5 @@ $(document).ready(function() {
     });
 });
 </script>
-<script>
-$(document).ready(function() {
-    $("#ubahPasswordBtn").click(function(e) {
-        e.preventDefault(); // Untuk mencegah tindakan bawaan dari tautan
 
-        $("#formUbahPassword").toggle();
-    });
-});
-</script>
 <?=$this->endSection('content');?>

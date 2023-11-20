@@ -20,25 +20,11 @@
 </head>
 
 <body>
-
-    <!-- Akhir Navbar -->
-
-    <!-- Form Login -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row d-flex justify-content-center w-auto p-3 "
                     style="margin: auto; height:50%; margin-top: 50px;">
-                    <?php if (session('errors')): ?>
-                    <div class="alert alert-danger">
-                        <ul>
-                            <li><?=esc(session('errors'))?></li>
-                        </ul>
-                    </div>
-                    <?php endif;?>
-
-                    <!-- Logo Aplikasi -->
                     <div class="col-md-4 mt-2">
                         <div class="card p-3  bg-success bg-gradient text-white" style="height: 100%;">
                             <div class="card-body ">
@@ -51,23 +37,20 @@
                                     <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>"
                                         alt="Pemkab Buleleng" style="max-width: 40%; ">
                                     <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 49%; ">
-
                                 </div>
                                 <hr>
                                 <div class=" text-center">
                                     <p>Fungsi Aplikasi : Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                         Repudiandae, dolorem voluptas suscipit magnam autem beatae atque facilis
-                                        provident fugit tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo
-                                        optio commodi eveniet!</p>
+                                        provident fugit
+                                        tenetur quas eveniet commodi doloremque, ducimus blanditiis. Quo optio commodi
+                                        eveniet!
+                                    </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
-
-                    <!-- Form Login -->
-                    <!-- Form Login -->
                     <div class="col-md-4 mt-2">
                         <div class="card shadow-lg p-3 .bg-light.bg-gradient" style="height: 100%;">
                             <div class="card-body">
@@ -76,77 +59,140 @@
                                         <div class="input-group justify-content-center my-4">
                                             <h2>Reset Password</h2>
                                         </div>
-                                        <input type="hidden" name="email" value="<?=$email;?>">
+                                        <input type="hidden" name="username" value="<?=$username;?>">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password Baru</label>
                                             <div class="input-group">
-                                                <input type="password" minlength="8" required name="password"
-                                                    id="exampleInputPassword1" class="form-control"
-                                                    placeholder="Masukkan Password">
+                                                <input type="password" name="password" id="exampleInputPassword1"
+                                                    class="form-control" placeholder="Masukkan Password">
                                                 <span class="input-group-text" id="showPassword"
-                                                    style="cursor: pointer;">
+                                                    style="cursor: pointer;"
+                                                    onclick="togglePassword('exampleInputPassword1', 'passwordIcon')">
                                                     <i class="fas fa-eye-slash" id="passwordIcon"></i>
                                                 </span>
                                             </div>
                                             <small id="passwordHelp" class="form-text text-danger"></small>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword2">Konfirmasi Password Baru</label>
+                                            <div class="input-group">
+                                                <input type="password" name="confirm_password"
+                                                    id="exampleInputPassword2" class="form-control"
+                                                    placeholder="Konfirmasi Password">
+                                                <span class="input-group-text" id="showConfirmPassword"
+                                                    style="cursor: pointer;"
+                                                    onclick="togglePassword('exampleInputPassword2', 'confirmPasswordIcon')">
+                                                    <i class="fas fa-eye-slash" id="confirmPasswordIcon"></i>
+                                                </span>
+                                            </div>
+                                            <small id="confirmPasswordHelp" class="form-text text-danger"></small>
+                                        </div>
                                     </div>
+
                                     <!-- Tombol Batal dan Submit di bawah -->
                                     <div
-                                        style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 60%;; ">
+                                        style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 60%;">
                                         <a href="<?=base_url('login');?>">
                                             <button type="button" class="btn btn-danger"
                                                 style="width: 100px">Batal</button>
                                         </a>
-                                        <button type="submit" class="btn btn-primary"
-                                            style="width: 100px">Submit</button>
+                                        <button type="button" id="submitButton" class="btn btn-primary"
+                                            style="width: 100px" onclick="validatePassword()">Submit</button>
                                     </div>
-                                    <!-- Akhir Tombol Batal dan Submit -->
                                 </form>
+
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
-        <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const passwordInput = document.getElementById("exampleInputPassword1");
-            const passwordIcon = document.getElementById("passwordIcon");
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const passwordInput = document.getElementById("exampleInputPassword1");
+        const confirmPasswordInput = document.getElementById("exampleInputPassword2");
+        const passwordIcon = document.getElementById("passwordIcon");
+        const confirmPasswordIcon = document.getElementById("confirmPasswordIcon");
+        const confirmPasswordHelp = document.getElementById("confirmPasswordHelp");
 
-            passwordIcon.addEventListener("click", function() {
-                if (passwordInput.type === "password") {
-                    passwordInput.type = "text";
-                    passwordIcon.className = "fas fa-eye";
-                } else {
-                    passwordInput.type = "password";
-                    passwordIcon.className = "fas fa-eye-slash";
-                }
-            });
+        passwordIcon.addEventListener("click", function() {
+            togglePassword('exampleInputPassword1', 'passwordIcon');
         });
-        </script>
 
-        <?php if (session()->getFlashdata('error')): ?>
-        <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '<?php echo session()->getFlashdata('error'); ?>',
+        confirmPasswordIcon.addEventListener("click", function() {
+            togglePassword('exampleInputPassword2', 'confirmPasswordIcon');
         });
-        </script>
-        <?php endif;?>
-        <?php if (session()->getFlashdata('success')): ?>
-        <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: '<?php echo session()->getFlashdata('success'); ?>',
+
+        function togglePassword(inputId, iconId) {
+            const passwordInput = document.getElementById(inputId);
+            const passwordIcon = document.getElementById(iconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.className = "fas fa-eye";
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.className = "fas fa-eye-slash";
+            }
+        }
+
+        function validatePassword() {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+
+            // Reset previous error messages
+            confirmPasswordHelp.innerText = "";
+            document.getElementById("passwordHelp").innerText = "";
+
+            // Password strength validation
+            var lowercaseRegex = /[a-z]/;
+            var uppercaseRegex = /[A-Z]/;
+            var digitRegex = /[0-9]/;
+
+            var passwordStrengthValid =
+                lowercaseRegex.test(password) && uppercaseRegex.test(password) && digitRegex.test(password) &&
+                password.length >= 8;
+
+            // Check if passwords match
+            var passwordsMatch = password === confirmPassword;
+
+            // Update error messages
+            if (!passwordStrengthValid) {
+                document.getElementById("passwordHelp").innerText =
+                    "Password harus mengandung setidaknya 1 huruf kecil, 1 huruf besar,  1 angka, dan 8 karakter";
+            }
+
+            if (!passwordsMatch) {
+                confirmPasswordHelp.innerText = "Password tidak sesuai";
+            } else {
+                confirmPasswordHelp.innerText = ""; // Hapus pesan kesalahan
+            }
+
+            // Enable or disable the submit button based on conditions
+            var submitButton = document.getElementById("submitButton");
+            submitButton.disabled = !passwordStrengthValid || !passwordsMatch;
+        }
+
+        // Add event listener for input changes in confirmPassword field
+        confirmPasswordInput.addEventListener("input", validatePassword);
+
+        // Add event listener for the submit button
+        document.getElementById("submitButton").addEventListener("click", function(event) {
+            // Prevent form submission if conditions are not met
+            if (document.getElementById("submitButton").disabled) {
+                event.preventDefault();
+            } else {
+                // Submit the form
+                document.getElementById("quickForm").submit();
+            }
         });
-        </script>
-        <?php endif;?>
+    });
+    </script>
+
 
 </body>
 

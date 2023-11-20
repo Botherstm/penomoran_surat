@@ -25,14 +25,22 @@
             <div class="container-fluid">
                 <div class="row d-flex justify-content-center w-auto p-3 "
                     style="margin: auto; height:5%; margin-top: 1%;">
+
                     <?php if (session('errors')): ?>
                     <div class="alert alert-danger">
                         <ul>
                             <li><?=esc(session('errors'))?></li>
                         </ul>
-                        <button id="dismissError" class="btn btn-dark" style="width: 10%;" >Hide</button>
+                        <button id="dismissError" class="btn btn-dark" style="width: 10%;">Hide</button>
                     </div>
                     <?php endif;?>
+
+                    <?php if ($cooldownTime > time()): ?>
+                        <div id="cooldown-info" class="alert alert-warning" role="alert" >
+                            Anda telah mencoba login beberapa kali. Silakan coba lagi dalam <span
+                                id="cooldown-counter"></span> detik.
+                        </div>
+                        <?php endif; ?>
 
                     <!-- Logo Aplikasi -->
                     <div class="col-md-5">
@@ -41,7 +49,8 @@
                             <div class="card-body ">
                                 <div class=" text-center">
 
-                                    <img src="<?php echo base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng" style="max-width: 20%; ">
+                                    <img src="<?= base_url('img/logo-kabupaten-buleleng.png') ?>" alt="Pemkab Buleleng"
+                                        style="max-width: 20%; ">
                                     <img src="/img/logo_kominfosanti_buleleng.png" alt="" style="max-width: 25%; ">
 
                                 </div>
@@ -76,9 +85,10 @@
                         </div>
                     </div>
 
-
+ 
                     <!-- Form Login -->
                     <div class="col-md-4 mt-2">
+                        
                         <div class="card shadow-lg p-3 bg-dark bg-gradient" style="height: 95%; --bs-bg-opacity: .1;">
                             <div class="card-body">
                                 <form class="form" method="POST" action="<?php echo base_url('login') ?>">
@@ -95,7 +105,7 @@
                                     </div>
                                     <div class="mb-3 ">
                                         <div class="input-group">
-                                            <input type="email" class="shadow form-control" name="email"
+                                            <input type="name" autofocus class="shadow form-control" name="username"
                                                 id="exampleInputEmail1" aria-describedby="emailHelp" required
                                                 placeholder="Email" style="opacity: 0.7;">
                                             <i class="shadow input-group-text bi bi-person-fill"></i>
@@ -103,15 +113,10 @@
                                     </div>
                                     <div class="mb-2" style="padding-bottom: 6%;">
                                         <div class=" input-group ">
-                                            <input type="password"
-                                                class="shadow form-control <?=($validation->hasError('password')) ? 'is-invalid' : '';?>"
-                                                required id="exampleInputPassword1" placeholder="Password"
-                                                name="password" style="opacity: 0.7;">
-                                            <?php if ($validation->hasError('password')): ?>
-                                            <div class="invalid-feedback">
-                                                <?=$validation->getError('password');?>
-                                            </div>
-                                            <?php endif;?>
+                                            <input type="password" class="shadow form-control "
+                                                id="exampleInputPassword1" placeholder="Password" name="password"
+                                                style="opacity: 0.7;">
+
                                             <span class="shadow input-group-text bi bi-eye-slash"
                                                 id="showPassword"></span>
                                         </div>
@@ -174,6 +179,31 @@
         });
     });
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var cooldownTime = <?= $cooldownTime ?>;
+        var cooldownCounterElement = document.getElementById("cooldown-counter");
+        var cooldownInfoElement = document.getElementById("cooldown-info");
+
+        function updateCooldownCounter() {
+            var currentTime = Math.floor(Date.now() / 1000);
+            var remainingTime = cooldownTime - currentTime;
+
+            if (remainingTime > 0) {
+                cooldownCounterElement.innerText = remainingTime;
+            } else {
+                cooldownInfoElement.style.display = "none";
+            }
+        }
+
+        // Update counter every second
+        setInterval(updateCooldownCounter, 1000);
+
+        // Initial update
+        updateCooldownCounter();
+    });
+    </script>
+
 </body>
 
 </html>

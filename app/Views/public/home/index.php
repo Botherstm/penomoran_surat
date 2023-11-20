@@ -76,8 +76,6 @@
                                                 colspan="1"
                                                 aria-label="Engine version: activate to sort column ascending">
                                                 Dibuat Pada</th>
-
-
                                         </tr>
                                     </thead>
                                     <tbody>

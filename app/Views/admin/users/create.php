@@ -3,41 +3,10 @@
 <?=$this->section('content');?>
 
 <div class="content-wrapper ">
-    <!-- Content Header (Page header) -->
+
     <div class="content-header">
         <div class="container-fluid">
-            <?php if (session('errors')): ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php foreach (session('errors') as $error): ?>
-                    <li><?=esc($error)?></li>
-                    <?php endforeach;?>
-                </ul>
-                <button id="dismissError" class="btn btn-primary">Ok</button>
-            </div>
-            <?php endif;?>
-            <!-- Main content -->
-            <!-- <div class="row jarak ">
-                    <div class="card-tools">
-                        <div class="btnadd">
-                        </div>
-                    </div>
-                    <div class="card-tools">
-                    </div>
-                </div> -->
-
             <div class="card card-success">
-                <?php if (session('errors')): ?>
-                <div class="alert alert-danger">
-                    <ul>
-                        <?php foreach (session('errors') as $error): ?>
-                        <li><?=esc($error)?></li>
-                        <?php endforeach;?>
-                    </ul>
-                    <button id="dismissError" class="btn btn-primary">Ok</button>
-                </div>
-                <?php endif;?>
-
                 <div class="card-header">
                     <h3 class="card-title" style="font-weight: bold;">create User</h3>
                 </div>
@@ -46,23 +15,36 @@
                         enctype="multipart/form-data" id="generateForm">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nama</label>
-                            <input type="text" name="name" required class="form-control" id="name"
-                                placeholder="Masukkan Nama">
+                            <input type="text" name="name" class="form-control"
+                                value="<?= esc(session('data.name') ?? '') ?>" id="name" placeholder="Masukkan Nama">
+                            <?php if(session("errors.name")): ?>
+                            <div class="text-danger"><?= esc(session("errors.name")) ?></div>
+                            <?php endif ?>
                         </div>
                         <div class="form-group text-center">
                             <input type="name" hidden class="form-control" id="slug" name="slug" readonly>
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email </label>
-                            <input type="email" name="email" required class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="exampleFormControlInput1">Username</label>
+                            <input type="name" name="username" class="form-control"
+                                value="<?= isset(session('data')['username']) ? esc(session('data')['username']) : '' ?>"
+                                id="username" placeholder="Masukkan Username">
+                            <?php if(session("errors.username")): ?>
+                            <div class="text-danger"><?= esc(session("errors.username")) ?></div>
+                            <?php endif ?>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">No Telp.</label>
-                            <input type="number" name="no_hp" required class="form-control"
-                                id="exampleFormControlInput1" placeholder="Masukan No. Telp">
+                            <input type="number" name="no_hp" class="form-control" id="exampleFormControlInput1"
+                                value="<?= isset(session('data')['no_hp']) ? esc(session('data')['no_hp']) : '' ?>"
+                                placeholder="Masukan No. Telp">
+                            <?php if(session("errors.no_hp")): ?>
+                            <div class="text-danger"><?= esc(session("errors.no_hp")) ?></div>
+                            <?php endif ?>
                         </div>
+
 
                         <?php if (session()->get('level') == 1): ?>
                         <input type="name" hidden value="<?=session()->get('instansi_id')?>" name="instansi_id">
@@ -76,23 +58,25 @@
                         </div>
 
                         <?php elseif (session()->get('level') == 2): ?>
-                        <div class="form-group">
+                        <div class="form-group" id="levelDropdown">
+                            <label for="instansiSelect">Level Admin</label>
+                            <select class="form-control" id="instansiSelect" name="level">
+
+                                <option value="2" selected>Super Admin</option>
+                                <option value="1">Operator</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="dinasDropdown">
                             <label for="instansiSelect">Dinas</label>
-                            <select class="form-control" id="instansiSelect" name="instansi_id">
+                            <select class="form-control" name="instansi_id">
                                 <?php foreach ($instansis as $dinas): ?>
                                 <option value="<?=$dinas['id']?>"><?=$dinas['name']?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
+                        <div id="dinasError" class="text-danger" style="display: none;">Dinas wajib dipilih!</div>
 
-                        <div class="form-group">
-                            <label for="instansiSelect">Level Admin</label>
-                            <select class="form-control" id="instansiSelect" name="level">
-                                <option selected>Pilih Level Akun ...</option>
-                                <option value="2">Super Admin</option>
-                                <option value="1">Operator</option>
-                            </select>
-                        </div>
                         <?php endif;?>
                         <div class="row text-center" style="padding-bottom: 50px;">
                             <div class="col-md-6 d-flex" style="justify-content: start;">
@@ -146,4 +130,44 @@ nameInput.addEventListener('input', function() {
     slugInput.value = slugValue;
 });
 </script>
+
+<script>
+function handleLevelChange() {
+    var selectedLevel = document.getElementById("instansiSelect").value;
+    var dinasDropdown = document.getElementById("dinasDropdown");
+
+    if (selectedLevel == 2) {
+        dinasDropdown.style.display = "none";
+    } else {
+        dinasDropdown.style.display = "block";
+    }
+}
+
+document.getElementById("instansiSelect").addEventListener("change", handleLevelChange);
+handleLevelChange(); // Panggil fungsi untuk mengatur tampilan awal
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("generateForm");
+    const levelDropdown = document.getElementById("levelDropdown");
+    const dinasDropdown = document.getElementById("dinasDropdown");
+    const errorMessage = document.getElementById("dinasError");
+
+    form.addEventListener("submit", function(event) {
+        // Check if the selected level is operator and dinas is not selected
+        if (levelDropdown.style.display === "block" && dinasDropdown.value === "") {
+            event.preventDefault(); // Prevent form submission
+            errorMessage.style.display = "block"; // Display the error message
+        }
+    });
+
+    // Add event listener to dinas dropdown to hide the error message when a dinas is selected
+    dinasDropdown.addEventListener("change", function() {
+        errorMessage.style.display = "none";
+    });
+});
+</script>
+
+
+
 <?=$this->endSection('content');?>

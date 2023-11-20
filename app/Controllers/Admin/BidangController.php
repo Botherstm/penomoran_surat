@@ -22,6 +22,9 @@ class BidangController extends BaseController
     }
     public function index($slug)
     {
+                if (!session()->has('user_id')) {
+           return redirect()->to(base_url('/login'));
+        }
         if (session()->get('level') != 1 && session()->get('level') != 2) {
             // Jika level pengguna bukan 2 atau 3, lempar error Access Forbidden
             throw new \CodeIgniter\Exceptions\PageNotFoundException();
