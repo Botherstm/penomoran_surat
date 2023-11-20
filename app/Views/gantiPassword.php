@@ -154,7 +154,8 @@
             var digitRegex = /[0-9]/;
 
             var passwordStrengthValid =
-                lowercaseRegex.test(password) && uppercaseRegex.test(password) && digitRegex.test(password);
+                lowercaseRegex.test(password) && uppercaseRegex.test(password) && digitRegex.test(password) &&
+                password.length >= 8;
 
             // Check if passwords match
             var passwordsMatch = password === confirmPassword;
@@ -162,7 +163,7 @@
             // Update error messages
             if (!passwordStrengthValid) {
                 document.getElementById("passwordHelp").innerText =
-                    "Password harus mengandung setidaknya 1 huruf kecil, 1 huruf besar, dan 1 angka.";
+                    "Password harus mengandung setidaknya 1 huruf kecil, 1 huruf besar,  1 angka, dan 8 karakter";
             }
 
             if (!passwordsMatch) {

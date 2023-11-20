@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", function() {
             // Menampilkan pesan kesalahan
             var errorDiv = document.createElement("div");
             errorDiv.classList.add("alert", "alert-danger", "small");
-            errorDiv.innerHTML = "Password harus memiliki 1 huruf kecil, 1 huruf besar, dan 1 angka.";
+            errorDiv.innerHTML =
+                "Password harus memiliki 1 huruf kecil, 1 huruf besar, 1 angka dan minimal 8 Karakter";
 
             var formGroup = document.querySelector(".form-group");
             formGroup.appendChild(errorDiv);
@@ -96,10 +97,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function isValidPassword(password) {
-        // Regex untuk memastikan password memiliki 1 huruf kecil, 1 huruf besar, dan 1 angka
-        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+        // Regex untuk memastikan password memiliki 1 huruf kecil, 1 huruf besar, 1 angka, dan minimal 8 karakter
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
         return regex.test(password);
     }
+
 });
 </script>
 
