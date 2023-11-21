@@ -96,4 +96,27 @@ class GenerateModel extends Model
         return $this->where('instansi_id', $instansi_id)
             ->orderBy('created_at', 'desc')->findAll();
     }
+
+    public function getAllByYear($year)
+    {
+        $startDate = $year . '-01-01 00:00:00';
+        $endDate = $year . '-12-31 23:59:59';
+
+        return $this->where('created_at >=', $startDate)
+                    ->where('created_at <=', $endDate)
+                    ->orderBy('created_at', 'DESC')
+                    ->findAll();
+    }
+    public function getAllByMonth($year, $month)
+    {
+        $startDate = $year . '-' . $month . '-01 00:00:00';
+        $endDate = date('Y-m-t 23:59:59', strtotime($startDate));
+
+        return $this->where('created_at >=', $startDate)
+                    ->where('created_at <=', $endDate)
+                    ->orderBy('created_at', 'DESC')
+                    ->findAll();
+    }
+
+
 }

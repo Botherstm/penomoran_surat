@@ -156,3 +156,47 @@ $routes->get('/rinciansurat', 'TerlewatController::rinciansurat');
 
 //-----coba2------
 $routes->post('server', 'TerlewatController::generatePdf');
+
+
+
+
+
+
+
+//API-------------------------------------
+
+
+$routes->get('/api/user', 'Api\UserController::index');
+$routes->get('/api/user/getone', 'Api\UserController::getOne');
+$routes->get('/api/user/getallbyinstansi', 'Api\UserController::getAllByInstansiId');
+$routes->get('/api/user/login', 'Api\UserController::login');
+$routes->post('/api/user/register', 'Api\UserController::register');
+$routes->post('/api/user/delete', 'Api\UserController::delete');
+
+//bidang
+$routes->get('/api/bidang', 'Api\BidangController::index');
+$routes->get('/api/bidang/getone', 'Api\BidangController::getOne');
+$routes->get('/api/bidang/getallbyinstansi', 'Api\BidangController::getAllByInstansiId');
+$routes->post('/api/bidang/create', 'Api\BidangController::create');
+$routes->post('/api/bidang/update', 'Api\BidangController::update');
+$routes->post('/api/bidang/delete', 'Api\BidangController::delete');
+
+$routes->get('/api/dinas', 'Api\DinasController::index');
+$routes->get('/api/dinas/getone', 'Api\DinasController::getOne');
+$routes->post('/api/dinas/create', 'Api\DinasController::create');
+$routes->post('/api/dinas/update', 'Api\DinasController::update');
+$routes->post('/api/dinas/delete', 'Api\DinasController::delete');
+
+
+$routes->get('/api/kategori', 'Api\kategoriController::index');
+$routes->get('/api/kategori/getone', 'Api\kategoriController::getOne');
+$routes->post('/api/kategori/create', 'Api\kategoriController::create');
+$routes->post('/api/kategori/update', 'Api\kategoriController::update');
+$routes->post('/api/kategori/delete', 'Api\kategoriController::delete');
+
+$routes->get('/api/perihal', 'Api\PerihalController::index');
+$routes->get('/api/perihal/getone', 'Api\PerihalController::getOne');
+$routes->get('/api/perihal/getallbydetail', 'Api\PerihalController::getAllByDetailId');
+$routes->post('/api/perihal/create', 'Api\PerihalController::create');
+$routes->post('/api/perihal/update', 'Api\PerihalController::update');
+$routes->post('/api/perihal/delete', 'Api\PerihalController::delete');

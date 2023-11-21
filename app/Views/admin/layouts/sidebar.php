@@ -4,20 +4,22 @@
 
 
 
-    <a class="brand-link bg-teal" style="height: 58px;" >
+    <a class="brand-link bg-teal" style="height: 58px;">
         <div class="row align-items-center">
-            
-   
-        <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja" class="justify-content-center" height="40" width="65" >
-        <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 5px;" >E-NOMOR Admin</span>
+
+
+            <img src="https://i.ibb.co/wph2S6n/singa-ambara-raja.png" alt="singa-ambara-raja"
+                class="justify-content-center" height="40" width="65">
+            <span class="brand-text font-weight-bold " style="text-shadow: 2px 2px 1px black; padding-top: 5px;">E-NOMOR
+                Admin</span>
         </div>
     </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="padding-top: 10px; align-items: center;">
             <?php if (session()->get('gambar') !== null): ?>
             <div class="image" style="margin-right: 10px;">
-                <img src="<?php echo base_url('userimage/') ?><?=session()->get('gambar');?>"
-                    class="img-circle elevation-2" alt="User Image" style="width: 45px;"> <!-- Sesuaikan nilai width -->
+                <img src="<?=base_url('userimage/') ?><?=session()->get('gambar');?>" class="img-circle elevation-2"
+                    alt="User Image" style="width: 45px;"> <!-- Sesuaikan nilai width -->
             </div>
             <?php else: ?>
             <?php endif?>
@@ -36,7 +38,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin') ?>"
+                    <a href="<?=base_url('admin') ?>"
                         class="nav-link <?=$active == 'admin' ? 'active bg-success' : '';?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -46,7 +48,7 @@
 
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/users') ?>"
+                    <a href="<?=base_url('admin/users') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'users') ? 'active bg-success  shadow-lg' : '';?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Users</p>
@@ -55,7 +57,7 @@
                 <?php if (session()->get('level') == 1): ?>
 
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/bidang/') ?>"
+                    <a href="<?=base_url('admin/bidang/') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'bidang') ? 'active bg-success  shadow-lg' : '';?> ">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
@@ -64,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/riwayatsurat') ?>"
+                    <a href="<?=base_url('admin/riwayatsurat') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'riwayatsurat') ? 'active bg-success  shadow-lg' : '';?>">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
@@ -74,7 +76,7 @@
                 </li>
                 <?php elseif (session()->get('level') == 2): ?>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/dinas/') ?>"
+                    <a href="<?=base_url('admin/dinas/') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'dinas') ? 'active bg-success  shadow-lg' : '';?>">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
@@ -84,7 +86,7 @@
                 </li>
                 <!-- Develop KATEGORI, perihal, sub perihal, detail  -->
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/kategori') ?>"
+                    <a href="<?=base_url('admin/kategori') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'kategori') ? 'active bg-success  shadow-lg' : '';?>">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -94,7 +96,7 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/defaultPassword') ?>"
+                    <a href="<?=base_url('admin/defaultPassword') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'defaultPassword') ? 'active bg-success  shadow-lg' : '';?>">
                         <i class="nav-icon fas fa-lock"></i>
                         <p>
@@ -113,7 +115,7 @@
 
 
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('/admin/tentang') ?>"
+                    <a href="<?=base_url('/admin/tentang') ?>"
                         class="nav-link <?=$active == 'tentang' ? 'active bg-success shadow-lg' : '';?>">
                         <i class="nav-icon fas fa-info"></i>
                         <p>
@@ -122,7 +124,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="<?php echo base_url('admin/user/profile') ?>"
+                    <a href="<?=base_url('admin/user/profile') ?>"
                         class="nav-link <?=(current_url(true)->getSegment(1) == 'admin' && current_url(true)->getSegment(2) == 'user') ? 'active bg-success  shadow-lg' : '';?>">
                         <i class="nav-icon fa fa-user"></i>
                         <p>
@@ -132,7 +134,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/logout" class="nav-link"
+                    <a href="<?= base_url('/logout') ?>" class="nav-link"
                         onmouseover="this.style.backgroundColor='red'; this.style.color='white';"
                         onmouseout="this.style.backgroundColor=''; this.style.color='';">
 
